@@ -1,6 +1,16 @@
 package cohesivenetv1
 
 /*
+
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"net/http"
+	"strings"
+)
+
+/*
 // Sign up - Create new user, return user token upon successful creation
 func (c *Client) SignUp(auth AuthStruct) (*AuthResponse, error) {
 	if auth.Username == "" || auth.Password == "" {
