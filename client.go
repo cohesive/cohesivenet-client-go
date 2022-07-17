@@ -1,6 +1,7 @@
 package cohesivenet
 
 import (
+	"crypto/tls"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -15,7 +16,7 @@ type Client struct {
 	HostURL    string
 	HTTPClient *http.Client
 	Token      string
-	Auth       AuthStruct
+	//Auth       AuthStruct
 }
 
 // AuthStruct -
@@ -32,46 +33,25 @@ type AuthResponse struct {
 }
 
 // NewClient -
-func NewClient(host, username, password *string) (*Client, error) {
+func NewClient(username, password, token *string) (*Client, error) {
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 		// Default Hashicups URL
 		HostURL: HostURL,
 	}
 
-	if host != nil {
-		c.HostURL = *host
-	}
-
-	// If username or password not provided, return empty client
+	//If username or password not provided, return empty client
 	if username == nil || password == nil {
 		return &c, nil
 	}
 
-	c.Auth = AuthStruct{
-		Username: *username,
-		Password: *password,
-	}
-
-	ar, err := c.SignIn()
-	if err != nil {
-		return nil, err
-	}
-
-	c.Token = ar.Token
-
 	return &c, nil
 }
 
-func (c *Client) doRequest(req *http.Request, authToken *string) ([]byte, error) {
-	token := c.Token
-
-	if authToken != nil {
-		token = *authToken
-	}
-
-	req.Header.Set("Authorization", token)
-
+func (c *Client) doRequest(req *http.Request) ([]byte, error) {
+	req.Header.Add("Api-Token", c.Token)
+	//req.Header.Add("Api-Token", " ") - Temp hardcoded, above call not working
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	res, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err

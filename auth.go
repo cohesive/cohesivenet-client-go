@@ -1,4 +1,6 @@
-package cohesivenet 
+package cohesivenet
+
+/*
 
 import (
 	"encoding/json"
@@ -113,3 +115,4 @@ func (c *Client) SignOut(authToken *string) error {
 
 	return nil
 }
+*/
