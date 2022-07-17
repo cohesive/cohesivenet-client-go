@@ -8,36 +8,19 @@ import (
 	"time"
 )
 
-// HostURL - Default Hashicups URL
-const HostURL string = "https://3.127.171.216:8000/api"
-
 // Client -
 type Client struct {
 	HostURL    string
 	HTTPClient *http.Client
 	Token      string
-	//Auth       AuthStruct
-}
-
-// AuthStruct -
-type AuthStruct struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-// AuthResponse -
-type AuthResponse struct {
-	UserID   int    `json:"user_id`
-	Username string `json:"username`
-	Token    string `json:"token"`
 }
 
 // NewClient -
-func NewClient(username, password, token *string) (*Client, error) {
+func NewClient(username, password, token, hostUrl *string) (*Client, error) {
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
-		// Default Hashicups URL
-		HostURL: HostURL,
+		HostURL:    *hostUrl,
+		Token:      *token,
 	}
 
 	//If username or password not provided, return empty client
@@ -50,7 +33,6 @@ func NewClient(username, password, token *string) (*Client, error) {
 
 func (c *Client) doRequest(req *http.Request) ([]byte, error) {
 	req.Header.Add("Api-Token", c.Token)
-	//req.Header.Add("Api-Token", " ") - Temp hardcoded, above call not working
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	res, err := c.HTTPClient.Do(req)
 	if err != nil {
