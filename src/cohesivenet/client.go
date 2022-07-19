@@ -62,7 +62,7 @@ type APIClient struct {
 
 	InterfacesApi *InterfacesApiService
 
-	MonitoringAndAlertingApi *MonitoringAndAlertingApiService
+	MonitoringAlertingApi *MonitoringAlertingApiService
 
 	NetworkEdgePluginsApi *NetworkEdgePluginsApiService
 
@@ -99,7 +99,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.FirewallApi = (*FirewallApiService)(&c.common)
 	c.IPsecApi = (*IPsecApiService)(&c.common)
 	c.InterfacesApi = (*InterfacesApiService)(&c.common)
-	c.MonitoringAndAlertingApi = (*MonitoringAndAlertingApiService)(&c.common)
+	c.MonitoringAlertingApi = (*MonitoringAlertingApiService)(&c.common)
 	c.NetworkEdgePluginsApi = (*NetworkEdgePluginsApiService)(&c.common)
 	c.OverlayNetworkApi = (*OverlayNetworkApiService)(&c.common)
 	c.PeeringApi = (*PeeringApiService)(&c.common)
