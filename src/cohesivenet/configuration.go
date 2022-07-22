@@ -99,19 +99,20 @@ type Configuration struct {
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration() *Configuration {
+func NewConfiguration(host string) *Configuration {
+	var serverurl string = fmt.Sprintf("https://%s:8000/api", host)
+
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "OpenAPI-Generator/1.0.0/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://vns3-host:8000/api",
-				Description: "No description provided",
+				URL: serverurl,
+				Description: "",
 			},
 		},
-		OperationServers: map[string]ServerConfigurations{
-		},
+		OperationServers: map[string]ServerConfigurations{},
 	}
 	return cfg
 }
