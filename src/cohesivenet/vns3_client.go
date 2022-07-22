@@ -14,6 +14,7 @@ package cohesivenet
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"encoding/xml"
 	"errors"
@@ -42,9 +43,9 @@ var (
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
 )
 
-// APIClient manages communication with the VNS3 Controller API API v6.0.0
-// In most cases there should be only one, shared, APIClient.
-type APIClient struct {
+// VNS3Client manages communication with the VNS3 Controller API API v6.0.0
+// In most cases there should be only one, shared, VNS3Client.
+type VNS3Client struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
@@ -54,7 +55,7 @@ type APIClient struct {
 
 	// BGPApi *BGPApiService
 
-	// ConfigurationApi *ConfigurationApiService
+	ConfigurationApi *ConfigurationApiService
 
 	// FirewallApi *FirewallApiService
 
@@ -78,26 +79,44 @@ type APIClient struct {
 }
 
 type service struct {
-	client *APIClient
+	client *VNS3Client
 }
 
-// NewAPIClient creates a new API client. Requires a userAgent string describing your application.
+type ClientParams struct {
+	Timeout int
+	TLS bool
+}
+
+// NewVNS3Client creates a new API client. Requires a userAgent string describing your application.
 // optionally a custom http.Client to allow for advanced features such as caching.
-func NewAPIClient(cfg *Configuration) *APIClient {
-	if cfg.HTTPClient == nil {
-		cfg.HTTPClient = http.DefaultClient
+func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
+	if params.Timeout == 0 {
+		params.Timeout = 10
 	}
 
-	c := &APIClient{}
+
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+
+	if cfg.HTTPClient == nil {
+		// Todo. support certs
+		transport := http.DefaultTransport.(*http.Transport).Clone()
+		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: !params.TLS}
+		cfg.HTTPClient = &http.Client{
+			Timeout: time.Second * time.Duration(params.Timeout),
+			Transport: transport,
+		}
+	}
+
+	c := &VNS3Client{}
 	c.cfg = cfg
 	c.common.client = c
 
 	// API Services
 	// For golang newbies (like me): this is casting c.common pointer (which is type service) as 
-	// a AccessApiService pointer. as APIClient.AccessApi is defined as type AccessApiService pointer
+	// a AccessApiService pointer. as VNS3Client.AccessApi is defined as type AccessApiService pointer
 	c.AccessApi = (*AccessApiService)(&c.common)
 	// c.BGPApi = (*BGPApiService)(&c.common)
-	// c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
+	c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
 	// c.FirewallApi = (*FirewallApiService)(&c.common)
 	// c.IPsecApi = (*IPsecApiService)(&c.common)
 	// c.InterfacesApi = (*InterfacesApiService)(&c.common)
@@ -198,7 +217,7 @@ func parameterToJson(obj interface{}) (string, error) {
 }
 
 // callAPI do the request.
-func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
+func (c *VNS3Client) callAPI(request *http.Request) (*http.Response, error) {
 	if c.cfg.Debug {
 		dump, err := httputil.DumpRequestOut(request, true)
 		if err != nil {
@@ -224,7 +243,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 
 // Allow modification of underlying config for alternate implementations and testing
 // Caution: modifying the configuration while live can cause data races and potentially unwanted behavior
-func (c *APIClient) GetConfig() *Configuration {
+func (c *VNS3Client) GetConfig() *Configuration {
 	return c.cfg
 }
 
@@ -235,7 +254,7 @@ type formFile struct {
 }
 
 // prepareRequest build the request
-func (c *APIClient) prepareRequest(
+func (c *VNS3Client) prepareRequest(
 	ctx context.Context,
 	path string, method string,
 	postBody interface{},
@@ -396,7 +415,7 @@ func (c *APIClient) prepareRequest(
 	return localVarRequest, nil
 }
 
-func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err error) {
+func (c *VNS3Client) decode(v interface{}, b []byte, contentType string) (err error) {
 	if len(b) == 0 {
 		return nil
 	}

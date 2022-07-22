@@ -3,20 +3,33 @@ package main
 import (
 	"flag"
 	"fmt"
-	"os"
+	// "os"
+	"context"
 	"cohesivenet"
+    "encoding/json"
 )
 
 func main() {
-    textPtr := flag.String("text", "", "Text to parse.")
-    metricPtr := flag.String("metric", "chars", "Metric {chars|words|lines};.")
-    uniquePtr := flag.Bool("unique", false, "Measure unique values of a metric.")
     flag.Parse()
 
-	if *textPtr == "" {
-        flag.PrintDefaults()
-        os.Exit(1)
-    }
+    auth := context.WithValue(context.Background(), cohesivenet.ContextBasicAuth, cohesivenet.BasicAuth{
+        UserName: "api",
+        Password: "XXXX",
+    })
+    config := cohesivenet.NewConfiguration("3.222.246.246")
+    vns3 := cohesivenet.NewVNS3Client(config, cohesivenet.ClientParams{
+        Timeout: 10,
+        TLS: false,
+    })
+    req := vns3.ConfigurationApi.GetConfig(auth)
+    r, _, err := vns3.ConfigurationApi.GetConfigExecute(req)
 
-    fmt.Printf("textPtr: %s, metricPtr: %s, uniquePtr: %t\n", *textPtr, *metricPtr, *uniquePtr)
+    if err != nil {
+        fmt.Printf("Error is not nil")
+        fmt.Printf("%+v\n", err)    
+    } else {
+        d, _ := json.Marshal(r.Response)
+        fmt.Printf("Heres the response\n")
+        fmt.Printf(string(d))
+    }
 }
