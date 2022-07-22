@@ -52,29 +52,29 @@ type APIClient struct {
 
 	AccessApi *AccessApiService
 
-	BGPApi *BGPApiService
+	// BGPApi *BGPApiService
 
-	ConfigurationApi *ConfigurationApiService
+	// ConfigurationApi *ConfigurationApiService
 
-	FirewallApi *FirewallApiService
+	// FirewallApi *FirewallApiService
 
-	IPsecApi *IpsecApiService
+	// IPsecApi *IpsecApiService
 
-	InterfacesApi *InterfacesApiService
+	// InterfacesApi *InterfacesApiService
 
-	MonitoringAlertingApi *MonitoringAlertingApiService
+	// MonitoringAlertingApi *MonitoringAlertingApiService
 
-	NetworkEdgePluginsApi *NetworkEdgePluginsApiService
+	// NetworkEdgePluginsApi *NetworkEdgePluginsApiService
 
-	OverlayNetworkApi *OverlayNetworkApiService
+	// OverlayNetworkApi *OverlayNetworkApiService
 
-	PeeringApi *PeeringApiService
+	// PeeringApi *PeeringApiService
 
-	RoutingApi *RoutingApiService
+	// RoutingApi *RoutingApiService
 
-	SnapshotsApi *SnapshotsApiService
+	// SnapshotsApi *SnapshotsApiService
 
-	SystemAdministrationApi *SystemAdministrationApiService
+	// SystemAdministrationApi *SystemAdministrationApiService
 }
 
 type service struct {
@@ -93,19 +93,21 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	// For golang newbies (like me): this is casting c.common pointer (which is type service) as 
+	// a AccessApiService pointer. as APIClient.AccessApi is defined as type AccessApiService pointer
 	c.AccessApi = (*AccessApiService)(&c.common)
-	c.BGPApi = (*BGPApiService)(&c.common)
-	c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
-	c.FirewallApi = (*FirewallApiService)(&c.common)
-	c.IPsecApi = (*IPsecApiService)(&c.common)
-	c.InterfacesApi = (*InterfacesApiService)(&c.common)
-	c.MonitoringAlertingApi = (*MonitoringAlertingApiService)(&c.common)
-	c.NetworkEdgePluginsApi = (*NetworkEdgePluginsApiService)(&c.common)
-	c.OverlayNetworkApi = (*OverlayNetworkApiService)(&c.common)
-	c.PeeringApi = (*PeeringApiService)(&c.common)
-	c.RoutingApi = (*RoutingApiService)(&c.common)
-	c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
-	c.SystemAdministrationApi = (*SystemAdministrationApiService)(&c.common)
+	// c.BGPApi = (*BGPApiService)(&c.common)
+	// c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
+	// c.FirewallApi = (*FirewallApiService)(&c.common)
+	// c.IPsecApi = (*IPsecApiService)(&c.common)
+	// c.InterfacesApi = (*InterfacesApiService)(&c.common)
+	// c.MonitoringAlertingApi = (*MonitoringAlertingApiService)(&c.common)
+	// c.NetworkEdgePluginsApi = (*NetworkEdgePluginsApiService)(&c.common)
+	// c.OverlayNetworkApi = (*OverlayNetworkApiService)(&c.common)
+	// c.PeeringApi = (*PeeringApiService)(&c.common)
+	// c.RoutingApi = (*RoutingApiService)(&c.common)
+	// c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
+	// c.SystemAdministrationApi = (*SystemAdministrationApiService)(&c.common)
 
 	return c
 }
