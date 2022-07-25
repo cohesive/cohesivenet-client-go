@@ -55,3 +55,7 @@ type FirewallResponse struct {
 type RouteResponse struct {
 	Response interface{} `json:"response"`
 }
+
+type EndpointResponse struct {
+	Endpoints interface{} `json:"response"`
+}
