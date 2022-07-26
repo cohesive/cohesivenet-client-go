@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// IpsecTunnelDetail struct for IpsecTunnelDetail
-type IpsecTunnelDetail struct {
-	Response *RuntimeStatusIpsecValue `json:"response,omitempty"`
+// FirewallFwsetResponse struct for FirewallFwsetResponse
+type FirewallFwsetResponse struct {
+	Response *FirewallFwset `json:"response,omitempty"`
 }
 
-// NewIpsecTunnelDetail instantiates a new IpsecTunnelDetail object
+// NewFirewallFwsetResponse instantiates a new FirewallFwsetResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpsecTunnelDetail() *IpsecTunnelDetail {
-	this := IpsecTunnelDetail{}
+func NewFirewallFwsetResponse() *FirewallFwsetResponse {
+	this := FirewallFwsetResponse{}
 	return &this
 }
 
-// NewIpsecTunnelDetailWithDefaults instantiates a new IpsecTunnelDetail object
+// NewFirewallFwsetResponseWithDefaults instantiates a new FirewallFwsetResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIpsecTunnelDetailWithDefaults() *IpsecTunnelDetail {
-	this := IpsecTunnelDetail{}
+func NewFirewallFwsetResponseWithDefaults() *FirewallFwsetResponse {
+	this := FirewallFwsetResponse{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *IpsecTunnelDetail) GetResponse() RuntimeStatusIpsecValue {
+func (o *FirewallFwsetResponse) GetResponse() FirewallFwset {
 	if o == nil || o.Response == nil {
-		var ret RuntimeStatusIpsecValue
+		var ret FirewallFwset
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *IpsecTunnelDetail) GetResponse() RuntimeStatusIpsecValue {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecTunnelDetail) GetResponseOk() (*RuntimeStatusIpsecValue, bool) {
+func (o *FirewallFwsetResponse) GetResponseOk() (*FirewallFwset, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *IpsecTunnelDetail) GetResponseOk() (*RuntimeStatusIpsecValue, bool) {
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *IpsecTunnelDetail) HasResponse() bool {
+func (o *FirewallFwsetResponse) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *IpsecTunnelDetail) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given RuntimeStatusIpsecValue and assigns it to the Response field.
-func (o *IpsecTunnelDetail) SetResponse(v RuntimeStatusIpsecValue) {
+// SetResponse gets a reference to the given FirewallFwset and assigns it to the Response field.
+func (o *FirewallFwsetResponse) SetResponse(v FirewallFwset) {
 	o.Response = &v
 }
 
-func (o IpsecTunnelDetail) MarshalJSON() ([]byte, error) {
+func (o FirewallFwsetResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o IpsecTunnelDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableIpsecTunnelDetail struct {
-	value *IpsecTunnelDetail
+type NullableFirewallFwsetResponse struct {
+	value *FirewallFwsetResponse
 	isSet bool
 }
 
-func (v NullableIpsecTunnelDetail) Get() *IpsecTunnelDetail {
+func (v NullableFirewallFwsetResponse) Get() *FirewallFwsetResponse {
 	return v.value
 }
 
-func (v *NullableIpsecTunnelDetail) Set(val *IpsecTunnelDetail) {
+func (v *NullableFirewallFwsetResponse) Set(val *FirewallFwsetResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIpsecTunnelDetail) IsSet() bool {
+func (v NullableFirewallFwsetResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIpsecTunnelDetail) Unset() {
+func (v *NullableFirewallFwsetResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIpsecTunnelDetail(val *IpsecTunnelDetail) *NullableIpsecTunnelDetail {
-	return &NullableIpsecTunnelDetail{value: val, isSet: true}
+func NewNullableFirewallFwsetResponse(val *FirewallFwsetResponse) *NullableFirewallFwsetResponse {
+	return &NullableFirewallFwsetResponse{value: val, isSet: true}
 }
 
-func (v NullableIpsecTunnelDetail) MarshalJSON() ([]byte, error) {
+func (v NullableFirewallFwsetResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIpsecTunnelDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableFirewallFwsetResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

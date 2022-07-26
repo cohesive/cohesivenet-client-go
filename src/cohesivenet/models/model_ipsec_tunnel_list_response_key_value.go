@@ -18,7 +18,7 @@ import (
 // IpsecTunnelListResponseKeyValue struct for IpsecTunnelListResponseKeyValue
 type IpsecTunnelListResponseKeyValue struct {
 	// Ipsec tunnel details keyed by ID
-	Response *map[string]RuntimeStatusIpsecValue `json:"response,omitempty"`
+	Response *map[string]IpsecTunnel `json:"response,omitempty"`
 }
 
 // NewIpsecTunnelListResponseKeyValue instantiates a new IpsecTunnelListResponseKeyValue object
@@ -39,9 +39,9 @@ func NewIpsecTunnelListResponseKeyValueWithDefaults() *IpsecTunnelListResponseKe
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *IpsecTunnelListResponseKeyValue) GetResponse() map[string]RuntimeStatusIpsecValue {
+func (o *IpsecTunnelListResponseKeyValue) GetResponse() map[string]IpsecTunnel {
 	if o == nil || o.Response == nil {
-		var ret map[string]RuntimeStatusIpsecValue
+		var ret map[string]IpsecTunnel
 		return ret
 	}
 	return *o.Response
@@ -49,7 +49,7 @@ func (o *IpsecTunnelListResponseKeyValue) GetResponse() map[string]RuntimeStatus
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecTunnelListResponseKeyValue) GetResponseOk() (*map[string]RuntimeStatusIpsecValue, bool) {
+func (o *IpsecTunnelListResponseKeyValue) GetResponseOk() (*map[string]IpsecTunnel, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *IpsecTunnelListResponseKeyValue) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given map[string]RuntimeStatusIpsecValue and assigns it to the Response field.
-func (o *IpsecTunnelListResponseKeyValue) SetResponse(v map[string]RuntimeStatusIpsecValue) {
+// SetResponse gets a reference to the given map[string]IpsecTunnel and assigns it to the Response field.
+func (o *IpsecTunnelListResponseKeyValue) SetResponse(v map[string]IpsecTunnel) {
 	o.Response = &v
 }
 

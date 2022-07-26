@@ -17,7 +17,7 @@ import (
 
 // BGPPeerResponse struct for BGPPeerResponse
 type BGPPeerResponse struct {
-	Response *IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue `json:"response,omitempty"`
+	Response *IpsecEndpointBgpPeer `json:"response,omitempty"`
 }
 
 // NewBGPPeerResponse instantiates a new BGPPeerResponse object
@@ -38,9 +38,9 @@ func NewBGPPeerResponseWithDefaults() *BGPPeerResponse {
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *BGPPeerResponse) GetResponse() IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue {
+func (o *BGPPeerResponse) GetResponse() IpsecEndpointBgpPeer {
 	if o == nil || o.Response == nil {
-		var ret IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue
+		var ret IpsecEndpointBgpPeer
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *BGPPeerResponse) GetResponse() IpsecSystemDetailResponseRemoteEndpoints
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BGPPeerResponse) GetResponseOk() (*IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue, bool) {
+func (o *BGPPeerResponse) GetResponseOk() (*IpsecEndpointBgpPeer, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *BGPPeerResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue and assigns it to the Response field.
-func (o *BGPPeerResponse) SetResponse(v IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue) {
+// SetResponse gets a reference to the given IpsecEndpointBgpPeer and assigns it to the Response field.
+func (o *BGPPeerResponse) SetResponse(v IpsecEndpointBgpPeer) {
 	o.Response = &v
 }
 

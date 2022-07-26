@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// IpsecSystemDetailResponseRemoteEndpointsValue struct for IpsecSystemDetailResponseRemoteEndpointsValue
-type IpsecSystemDetailResponseRemoteEndpointsValue struct {
+// IpsecRemoteEndpoint struct for IpsecRemoteEndpoint
+type IpsecRemoteEndpoint struct {
 	Id *int32 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Ipaddress *string `json:"ipaddress,omitempty"`
@@ -27,9 +27,9 @@ type IpsecSystemDetailResponseRemoteEndpointsValue struct {
 	Pfs *bool `json:"pfs,omitempty"`
 	PrivateIpaddress *string `json:"private_ipaddress,omitempty"`
 	ExtraConfig []string `json:"extra_config,omitempty"`
-	Tunnels *map[string]RuntimeStatusIpsecValue `json:"tunnels,omitempty"`
-	TrafficPairs *map[string]IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue `json:"traffic_pairs,omitempty"`
-	BgpPeers *map[string]IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue `json:"bgp_peers,omitempty"`
+	Tunnels *map[string]IpsecTunnel `json:"tunnels,omitempty"`
+	TrafficPairs *map[string]IpsecEndpointTrafficPair `json:"traffic_pairs,omitempty"`
+	BgpPeers *map[string]IpsecEndpointBgpPeer `json:"bgp_peers,omitempty"`
 	// Indicating Ipsec or GRE over ipsec
 	Type *string `json:"type,omitempty"`
 	VpnType *string `json:"vpn_type,omitempty"`
@@ -40,25 +40,25 @@ type IpsecSystemDetailResponseRemoteEndpointsValue struct {
 	Psk *string `json:"psk,omitempty"`
 }
 
-// NewIpsecSystemDetailResponseRemoteEndpointsValue instantiates a new IpsecSystemDetailResponseRemoteEndpointsValue object
+// NewIpsecRemoteEndpoint instantiates a new IpsecRemoteEndpoint object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpsecSystemDetailResponseRemoteEndpointsValue() *IpsecSystemDetailResponseRemoteEndpointsValue {
-	this := IpsecSystemDetailResponseRemoteEndpointsValue{}
+func NewIpsecRemoteEndpoint() *IpsecRemoteEndpoint {
+	this := IpsecRemoteEndpoint{}
 	return &this
 }
 
-// NewIpsecSystemDetailResponseRemoteEndpointsValueWithDefaults instantiates a new IpsecSystemDetailResponseRemoteEndpointsValue object
+// NewIpsecRemoteEndpointWithDefaults instantiates a new IpsecRemoteEndpoint object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIpsecSystemDetailResponseRemoteEndpointsValueWithDefaults() *IpsecSystemDetailResponseRemoteEndpointsValue {
-	this := IpsecSystemDetailResponseRemoteEndpointsValue{}
+func NewIpsecRemoteEndpointWithDefaults() *IpsecRemoteEndpoint {
+	this := IpsecRemoteEndpoint{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetId() int32 {
+func (o *IpsecRemoteEndpoint) GetId() int32 {
 	if o == nil || o.Id == nil {
 		var ret int32
 		return ret
@@ -68,7 +68,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIdOk() (*int32, bool) {
+func (o *IpsecRemoteEndpoint) GetIdOk() (*int32, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIdOk() (*int32, bool)
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasId() bool {
+func (o *IpsecRemoteEndpoint) HasId() bool {
 	if o != nil && o.Id != nil {
 		return true
 	}
@@ -85,12 +85,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetId(v int32) {
+func (o *IpsecRemoteEndpoint) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetName() string {
+func (o *IpsecRemoteEndpoint) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -100,7 +100,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetNameOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -108,7 +108,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetNameOk() (*string, bo
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasName() bool {
+func (o *IpsecRemoteEndpoint) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -117,12 +117,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetName(v string) {
+func (o *IpsecRemoteEndpoint) SetName(v string) {
 	o.Name = &v
 }
 
 // GetIpaddress returns the Ipaddress field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIpaddress() string {
+func (o *IpsecRemoteEndpoint) GetIpaddress() string {
 	if o == nil || o.Ipaddress == nil {
 		var ret string
 		return ret
@@ -132,7 +132,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIpaddress() string {
 
 // GetIpaddressOk returns a tuple with the Ipaddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIpaddressOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetIpaddressOk() (*string, bool) {
 	if o == nil || o.Ipaddress == nil {
 		return nil, false
 	}
@@ -140,7 +140,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIpaddressOk() (*strin
 }
 
 // HasIpaddress returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasIpaddress() bool {
+func (o *IpsecRemoteEndpoint) HasIpaddress() bool {
 	if o != nil && o.Ipaddress != nil {
 		return true
 	}
@@ -149,12 +149,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasIpaddress() bool {
 }
 
 // SetIpaddress gets a reference to the given string and assigns it to the Ipaddress field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetIpaddress(v string) {
+func (o *IpsecRemoteEndpoint) SetIpaddress(v string) {
 	o.Ipaddress = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetDescription() string {
+func (o *IpsecRemoteEndpoint) GetDescription() string {
 	if o == nil || o.Description == nil {
 		var ret string
 		return ret
@@ -164,7 +164,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetDescription() string 
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetDescriptionOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetDescriptionOk() (*string, bool) {
 	if o == nil || o.Description == nil {
 		return nil, false
 	}
@@ -172,7 +172,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetDescriptionOk() (*str
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasDescription() bool {
+func (o *IpsecRemoteEndpoint) HasDescription() bool {
 	if o != nil && o.Description != nil {
 		return true
 	}
@@ -181,12 +181,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetDescription(v string) {
+func (o *IpsecRemoteEndpoint) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetNatTEnabled returns the NatTEnabled field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetNatTEnabled() bool {
+func (o *IpsecRemoteEndpoint) GetNatTEnabled() bool {
 	if o == nil || o.NatTEnabled == nil {
 		var ret bool
 		return ret
@@ -196,7 +196,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetNatTEnabled() bool {
 
 // GetNatTEnabledOk returns a tuple with the NatTEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetNatTEnabledOk() (*bool, bool) {
+func (o *IpsecRemoteEndpoint) GetNatTEnabledOk() (*bool, bool) {
 	if o == nil || o.NatTEnabled == nil {
 		return nil, false
 	}
@@ -204,7 +204,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetNatTEnabledOk() (*boo
 }
 
 // HasNatTEnabled returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasNatTEnabled() bool {
+func (o *IpsecRemoteEndpoint) HasNatTEnabled() bool {
 	if o != nil && o.NatTEnabled != nil {
 		return true
 	}
@@ -213,12 +213,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasNatTEnabled() bool {
 }
 
 // SetNatTEnabled gets a reference to the given bool and assigns it to the NatTEnabled field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetNatTEnabled(v bool) {
+func (o *IpsecRemoteEndpoint) SetNatTEnabled(v bool) {
 	o.NatTEnabled = &v
 }
 
 // GetIkeVersion returns the IkeVersion field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIkeVersion() int32 {
+func (o *IpsecRemoteEndpoint) GetIkeVersion() int32 {
 	if o == nil || o.IkeVersion == nil {
 		var ret int32
 		return ret
@@ -228,7 +228,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIkeVersion() int32 {
 
 // GetIkeVersionOk returns a tuple with the IkeVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIkeVersionOk() (*int32, bool) {
+func (o *IpsecRemoteEndpoint) GetIkeVersionOk() (*int32, bool) {
 	if o == nil || o.IkeVersion == nil {
 		return nil, false
 	}
@@ -236,7 +236,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetIkeVersionOk() (*int3
 }
 
 // HasIkeVersion returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasIkeVersion() bool {
+func (o *IpsecRemoteEndpoint) HasIkeVersion() bool {
 	if o != nil && o.IkeVersion != nil {
 		return true
 	}
@@ -245,12 +245,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasIkeVersion() bool {
 }
 
 // SetIkeVersion gets a reference to the given int32 and assigns it to the IkeVersion field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetIkeVersion(v int32) {
+func (o *IpsecRemoteEndpoint) SetIkeVersion(v int32) {
 	o.IkeVersion = &v
 }
 
 // GetPfs returns the Pfs field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPfs() bool {
+func (o *IpsecRemoteEndpoint) GetPfs() bool {
 	if o == nil || o.Pfs == nil {
 		var ret bool
 		return ret
@@ -260,7 +260,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPfs() bool {
 
 // GetPfsOk returns a tuple with the Pfs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPfsOk() (*bool, bool) {
+func (o *IpsecRemoteEndpoint) GetPfsOk() (*bool, bool) {
 	if o == nil || o.Pfs == nil {
 		return nil, false
 	}
@@ -268,7 +268,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPfsOk() (*bool, bool)
 }
 
 // HasPfs returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasPfs() bool {
+func (o *IpsecRemoteEndpoint) HasPfs() bool {
 	if o != nil && o.Pfs != nil {
 		return true
 	}
@@ -277,12 +277,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasPfs() bool {
 }
 
 // SetPfs gets a reference to the given bool and assigns it to the Pfs field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetPfs(v bool) {
+func (o *IpsecRemoteEndpoint) SetPfs(v bool) {
 	o.Pfs = &v
 }
 
 // GetPrivateIpaddress returns the PrivateIpaddress field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPrivateIpaddress() string {
+func (o *IpsecRemoteEndpoint) GetPrivateIpaddress() string {
 	if o == nil || o.PrivateIpaddress == nil {
 		var ret string
 		return ret
@@ -292,7 +292,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPrivateIpaddress() st
 
 // GetPrivateIpaddressOk returns a tuple with the PrivateIpaddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPrivateIpaddressOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetPrivateIpaddressOk() (*string, bool) {
 	if o == nil || o.PrivateIpaddress == nil {
 		return nil, false
 	}
@@ -300,7 +300,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPrivateIpaddressOk() 
 }
 
 // HasPrivateIpaddress returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasPrivateIpaddress() bool {
+func (o *IpsecRemoteEndpoint) HasPrivateIpaddress() bool {
 	if o != nil && o.PrivateIpaddress != nil {
 		return true
 	}
@@ -309,12 +309,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasPrivateIpaddress() bo
 }
 
 // SetPrivateIpaddress gets a reference to the given string and assigns it to the PrivateIpaddress field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetPrivateIpaddress(v string) {
+func (o *IpsecRemoteEndpoint) SetPrivateIpaddress(v string) {
 	o.PrivateIpaddress = &v
 }
 
 // GetExtraConfig returns the ExtraConfig field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetExtraConfig() []string {
+func (o *IpsecRemoteEndpoint) GetExtraConfig() []string {
 	if o == nil || o.ExtraConfig == nil {
 		var ret []string
 		return ret
@@ -324,7 +324,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetExtraConfig() []strin
 
 // GetExtraConfigOk returns a tuple with the ExtraConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetExtraConfigOk() ([]string, bool) {
+func (o *IpsecRemoteEndpoint) GetExtraConfigOk() ([]string, bool) {
 	if o == nil || o.ExtraConfig == nil {
 		return nil, false
 	}
@@ -332,7 +332,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetExtraConfigOk() ([]st
 }
 
 // HasExtraConfig returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasExtraConfig() bool {
+func (o *IpsecRemoteEndpoint) HasExtraConfig() bool {
 	if o != nil && o.ExtraConfig != nil {
 		return true
 	}
@@ -341,14 +341,14 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasExtraConfig() bool {
 }
 
 // SetExtraConfig gets a reference to the given []string and assigns it to the ExtraConfig field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetExtraConfig(v []string) {
+func (o *IpsecRemoteEndpoint) SetExtraConfig(v []string) {
 	o.ExtraConfig = v
 }
 
 // GetTunnels returns the Tunnels field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTunnels() map[string]RuntimeStatusIpsecValue {
+func (o *IpsecRemoteEndpoint) GetTunnels() map[string]IpsecTunnel {
 	if o == nil || o.Tunnels == nil {
-		var ret map[string]RuntimeStatusIpsecValue
+		var ret map[string]IpsecTunnel
 		return ret
 	}
 	return *o.Tunnels
@@ -356,7 +356,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTunnels() map[string]
 
 // GetTunnelsOk returns a tuple with the Tunnels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTunnelsOk() (*map[string]RuntimeStatusIpsecValue, bool) {
+func (o *IpsecRemoteEndpoint) GetTunnelsOk() (*map[string]IpsecTunnel, bool) {
 	if o == nil || o.Tunnels == nil {
 		return nil, false
 	}
@@ -364,7 +364,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTunnelsOk() (*map[str
 }
 
 // HasTunnels returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasTunnels() bool {
+func (o *IpsecRemoteEndpoint) HasTunnels() bool {
 	if o != nil && o.Tunnels != nil {
 		return true
 	}
@@ -372,15 +372,15 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasTunnels() bool {
 	return false
 }
 
-// SetTunnels gets a reference to the given map[string]RuntimeStatusIpsecValue and assigns it to the Tunnels field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetTunnels(v map[string]RuntimeStatusIpsecValue) {
+// SetTunnels gets a reference to the given map[string]IpsecTunnel and assigns it to the Tunnels field.
+func (o *IpsecRemoteEndpoint) SetTunnels(v map[string]IpsecTunnel) {
 	o.Tunnels = &v
 }
 
 // GetTrafficPairs returns the TrafficPairs field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTrafficPairs() map[string]IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue {
+func (o *IpsecRemoteEndpoint) GetTrafficPairs() map[string]IpsecEndpointTrafficPair {
 	if o == nil || o.TrafficPairs == nil {
-		var ret map[string]IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue
+		var ret map[string]IpsecEndpointTrafficPair
 		return ret
 	}
 	return *o.TrafficPairs
@@ -388,7 +388,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTrafficPairs() map[st
 
 // GetTrafficPairsOk returns a tuple with the TrafficPairs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTrafficPairsOk() (*map[string]IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue, bool) {
+func (o *IpsecRemoteEndpoint) GetTrafficPairsOk() (*map[string]IpsecEndpointTrafficPair, bool) {
 	if o == nil || o.TrafficPairs == nil {
 		return nil, false
 	}
@@ -396,7 +396,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTrafficPairsOk() (*ma
 }
 
 // HasTrafficPairs returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasTrafficPairs() bool {
+func (o *IpsecRemoteEndpoint) HasTrafficPairs() bool {
 	if o != nil && o.TrafficPairs != nil {
 		return true
 	}
@@ -404,15 +404,15 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasTrafficPairs() bool {
 	return false
 }
 
-// SetTrafficPairs gets a reference to the given map[string]IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue and assigns it to the TrafficPairs field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetTrafficPairs(v map[string]IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue) {
+// SetTrafficPairs gets a reference to the given map[string]IpsecEndpointTrafficPair and assigns it to the TrafficPairs field.
+func (o *IpsecRemoteEndpoint) SetTrafficPairs(v map[string]IpsecEndpointTrafficPair) {
 	o.TrafficPairs = &v
 }
 
 // GetBgpPeers returns the BgpPeers field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetBgpPeers() map[string]IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue {
+func (o *IpsecRemoteEndpoint) GetBgpPeers() map[string]IpsecEndpointBgpPeer {
 	if o == nil || o.BgpPeers == nil {
-		var ret map[string]IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue
+		var ret map[string]IpsecEndpointBgpPeer
 		return ret
 	}
 	return *o.BgpPeers
@@ -420,7 +420,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetBgpPeers() map[string
 
 // GetBgpPeersOk returns a tuple with the BgpPeers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetBgpPeersOk() (*map[string]IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue, bool) {
+func (o *IpsecRemoteEndpoint) GetBgpPeersOk() (*map[string]IpsecEndpointBgpPeer, bool) {
 	if o == nil || o.BgpPeers == nil {
 		return nil, false
 	}
@@ -428,7 +428,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetBgpPeersOk() (*map[st
 }
 
 // HasBgpPeers returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasBgpPeers() bool {
+func (o *IpsecRemoteEndpoint) HasBgpPeers() bool {
 	if o != nil && o.BgpPeers != nil {
 		return true
 	}
@@ -436,13 +436,13 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasBgpPeers() bool {
 	return false
 }
 
-// SetBgpPeers gets a reference to the given map[string]IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue and assigns it to the BgpPeers field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetBgpPeers(v map[string]IpsecSystemDetailResponseRemoteEndpointsValueBgpPeersValue) {
+// SetBgpPeers gets a reference to the given map[string]IpsecEndpointBgpPeer and assigns it to the BgpPeers field.
+func (o *IpsecRemoteEndpoint) SetBgpPeers(v map[string]IpsecEndpointBgpPeer) {
 	o.BgpPeers = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetType() string {
+func (o *IpsecRemoteEndpoint) GetType() string {
 	if o == nil || o.Type == nil {
 		var ret string
 		return ret
@@ -452,7 +452,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTypeOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetTypeOk() (*string, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -460,7 +460,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetTypeOk() (*string, bo
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasType() bool {
+func (o *IpsecRemoteEndpoint) HasType() bool {
 	if o != nil && o.Type != nil {
 		return true
 	}
@@ -469,12 +469,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetType(v string) {
+func (o *IpsecRemoteEndpoint) SetType(v string) {
 	o.Type = &v
 }
 
 // GetVpnType returns the VpnType field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetVpnType() string {
+func (o *IpsecRemoteEndpoint) GetVpnType() string {
 	if o == nil || o.VpnType == nil {
 		var ret string
 		return ret
@@ -484,7 +484,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetVpnType() string {
 
 // GetVpnTypeOk returns a tuple with the VpnType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetVpnTypeOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetVpnTypeOk() (*string, bool) {
 	if o == nil || o.VpnType == nil {
 		return nil, false
 	}
@@ -492,7 +492,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetVpnTypeOk() (*string,
 }
 
 // HasVpnType returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasVpnType() bool {
+func (o *IpsecRemoteEndpoint) HasVpnType() bool {
 	if o != nil && o.VpnType != nil {
 		return true
 	}
@@ -501,12 +501,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasVpnType() bool {
 }
 
 // SetVpnType gets a reference to the given string and assigns it to the VpnType field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetVpnType(v string) {
+func (o *IpsecRemoteEndpoint) SetVpnType(v string) {
 	o.VpnType = &v
 }
 
 // GetGreInterfaceAddress returns the GreInterfaceAddress field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetGreInterfaceAddress() string {
+func (o *IpsecRemoteEndpoint) GetGreInterfaceAddress() string {
 	if o == nil || o.GreInterfaceAddress == nil {
 		var ret string
 		return ret
@@ -516,7 +516,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetGreInterfaceAddress()
 
 // GetGreInterfaceAddressOk returns a tuple with the GreInterfaceAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetGreInterfaceAddressOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetGreInterfaceAddressOk() (*string, bool) {
 	if o == nil || o.GreInterfaceAddress == nil {
 		return nil, false
 	}
@@ -524,7 +524,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetGreInterfaceAddressOk
 }
 
 // HasGreInterfaceAddress returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasGreInterfaceAddress() bool {
+func (o *IpsecRemoteEndpoint) HasGreInterfaceAddress() bool {
 	if o != nil && o.GreInterfaceAddress != nil {
 		return true
 	}
@@ -533,12 +533,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasGreInterfaceAddress()
 }
 
 // SetGreInterfaceAddress gets a reference to the given string and assigns it to the GreInterfaceAddress field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetGreInterfaceAddress(v string) {
+func (o *IpsecRemoteEndpoint) SetGreInterfaceAddress(v string) {
 	o.GreInterfaceAddress = &v
 }
 
 // GetRouteBasedIntAddress returns the RouteBasedIntAddress field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedIntAddress() string {
+func (o *IpsecRemoteEndpoint) GetRouteBasedIntAddress() string {
 	if o == nil || o.RouteBasedIntAddress == nil {
 		var ret string
 		return ret
@@ -548,7 +548,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedIntAddress(
 
 // GetRouteBasedIntAddressOk returns a tuple with the RouteBasedIntAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedIntAddressOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetRouteBasedIntAddressOk() (*string, bool) {
 	if o == nil || o.RouteBasedIntAddress == nil {
 		return nil, false
 	}
@@ -556,7 +556,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedIntAddressO
 }
 
 // HasRouteBasedIntAddress returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasRouteBasedIntAddress() bool {
+func (o *IpsecRemoteEndpoint) HasRouteBasedIntAddress() bool {
 	if o != nil && o.RouteBasedIntAddress != nil {
 		return true
 	}
@@ -565,12 +565,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasRouteBasedIntAddress(
 }
 
 // SetRouteBasedIntAddress gets a reference to the given string and assigns it to the RouteBasedIntAddress field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetRouteBasedIntAddress(v string) {
+func (o *IpsecRemoteEndpoint) SetRouteBasedIntAddress(v string) {
 	o.RouteBasedIntAddress = &v
 }
 
 // GetRouteBasedLocal returns the RouteBasedLocal field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedLocal() string {
+func (o *IpsecRemoteEndpoint) GetRouteBasedLocal() string {
 	if o == nil || o.RouteBasedLocal == nil {
 		var ret string
 		return ret
@@ -580,7 +580,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedLocal() str
 
 // GetRouteBasedLocalOk returns a tuple with the RouteBasedLocal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedLocalOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetRouteBasedLocalOk() (*string, bool) {
 	if o == nil || o.RouteBasedLocal == nil {
 		return nil, false
 	}
@@ -588,7 +588,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedLocalOk() (
 }
 
 // HasRouteBasedLocal returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasRouteBasedLocal() bool {
+func (o *IpsecRemoteEndpoint) HasRouteBasedLocal() bool {
 	if o != nil && o.RouteBasedLocal != nil {
 		return true
 	}
@@ -597,12 +597,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasRouteBasedLocal() boo
 }
 
 // SetRouteBasedLocal gets a reference to the given string and assigns it to the RouteBasedLocal field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetRouteBasedLocal(v string) {
+func (o *IpsecRemoteEndpoint) SetRouteBasedLocal(v string) {
 	o.RouteBasedLocal = &v
 }
 
 // GetRouteBasedRemote returns the RouteBasedRemote field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedRemote() string {
+func (o *IpsecRemoteEndpoint) GetRouteBasedRemote() string {
 	if o == nil || o.RouteBasedRemote == nil {
 		var ret string
 		return ret
@@ -612,7 +612,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedRemote() st
 
 // GetRouteBasedRemoteOk returns a tuple with the RouteBasedRemote field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedRemoteOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetRouteBasedRemoteOk() (*string, bool) {
 	if o == nil || o.RouteBasedRemote == nil {
 		return nil, false
 	}
@@ -620,7 +620,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetRouteBasedRemoteOk() 
 }
 
 // HasRouteBasedRemote returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasRouteBasedRemote() bool {
+func (o *IpsecRemoteEndpoint) HasRouteBasedRemote() bool {
 	if o != nil && o.RouteBasedRemote != nil {
 		return true
 	}
@@ -629,12 +629,12 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasRouteBasedRemote() bo
 }
 
 // SetRouteBasedRemote gets a reference to the given string and assigns it to the RouteBasedRemote field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetRouteBasedRemote(v string) {
+func (o *IpsecRemoteEndpoint) SetRouteBasedRemote(v string) {
 	o.RouteBasedRemote = &v
 }
 
 // GetPsk returns the Psk field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPsk() string {
+func (o *IpsecRemoteEndpoint) GetPsk() string {
 	if o == nil || o.Psk == nil {
 		var ret string
 		return ret
@@ -644,7 +644,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPsk() string {
 
 // GetPskOk returns a tuple with the Psk field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPskOk() (*string, bool) {
+func (o *IpsecRemoteEndpoint) GetPskOk() (*string, bool) {
 	if o == nil || o.Psk == nil {
 		return nil, false
 	}
@@ -652,7 +652,7 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) GetPskOk() (*string, boo
 }
 
 // HasPsk returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasPsk() bool {
+func (o *IpsecRemoteEndpoint) HasPsk() bool {
 	if o != nil && o.Psk != nil {
 		return true
 	}
@@ -661,11 +661,11 @@ func (o *IpsecSystemDetailResponseRemoteEndpointsValue) HasPsk() bool {
 }
 
 // SetPsk gets a reference to the given string and assigns it to the Psk field.
-func (o *IpsecSystemDetailResponseRemoteEndpointsValue) SetPsk(v string) {
+func (o *IpsecRemoteEndpoint) SetPsk(v string) {
 	o.Psk = &v
 }
 
-func (o IpsecSystemDetailResponseRemoteEndpointsValue) MarshalJSON() ([]byte, error) {
+func (o IpsecRemoteEndpoint) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -727,38 +727,38 @@ func (o IpsecSystemDetailResponseRemoteEndpointsValue) MarshalJSON() ([]byte, er
 	return json.Marshal(toSerialize)
 }
 
-type NullableIpsecSystemDetailResponseRemoteEndpointsValue struct {
-	value *IpsecSystemDetailResponseRemoteEndpointsValue
+type NullableIpsecRemoteEndpoint struct {
+	value *IpsecRemoteEndpoint
 	isSet bool
 }
 
-func (v NullableIpsecSystemDetailResponseRemoteEndpointsValue) Get() *IpsecSystemDetailResponseRemoteEndpointsValue {
+func (v NullableIpsecRemoteEndpoint) Get() *IpsecRemoteEndpoint {
 	return v.value
 }
 
-func (v *NullableIpsecSystemDetailResponseRemoteEndpointsValue) Set(val *IpsecSystemDetailResponseRemoteEndpointsValue) {
+func (v *NullableIpsecRemoteEndpoint) Set(val *IpsecRemoteEndpoint) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIpsecSystemDetailResponseRemoteEndpointsValue) IsSet() bool {
+func (v NullableIpsecRemoteEndpoint) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIpsecSystemDetailResponseRemoteEndpointsValue) Unset() {
+func (v *NullableIpsecRemoteEndpoint) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIpsecSystemDetailResponseRemoteEndpointsValue(val *IpsecSystemDetailResponseRemoteEndpointsValue) *NullableIpsecSystemDetailResponseRemoteEndpointsValue {
-	return &NullableIpsecSystemDetailResponseRemoteEndpointsValue{value: val, isSet: true}
+func NewNullableIpsecRemoteEndpoint(val *IpsecRemoteEndpoint) *NullableIpsecRemoteEndpoint {
+	return &NullableIpsecRemoteEndpoint{value: val, isSet: true}
 }
 
-func (v NullableIpsecSystemDetailResponseRemoteEndpointsValue) MarshalJSON() ([]byte, error) {
+func (v NullableIpsecRemoteEndpoint) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIpsecSystemDetailResponseRemoteEndpointsValue) UnmarshalJSON(src []byte) error {
+func (v *NullableIpsecRemoteEndpoint) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

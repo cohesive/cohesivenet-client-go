@@ -18,7 +18,7 @@ import (
 // IpsecSystemDetailResponse struct for IpsecSystemDetailResponse
 type IpsecSystemDetailResponse struct {
 	ThisEndpoint *IpsecLocalEndpoint `json:"this_endpoint,omitempty"`
-	RemoteEndpoints *map[string]IpsecSystemDetailResponseRemoteEndpointsValue `json:"remote_endpoints,omitempty"`
+	RemoteEndpoints *map[string]IpsecRemoteEndpoint `json:"remote_endpoints,omitempty"`
 }
 
 // NewIpsecSystemDetailResponse instantiates a new IpsecSystemDetailResponse object
@@ -71,9 +71,9 @@ func (o *IpsecSystemDetailResponse) SetThisEndpoint(v IpsecLocalEndpoint) {
 }
 
 // GetRemoteEndpoints returns the RemoteEndpoints field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponse) GetRemoteEndpoints() map[string]IpsecSystemDetailResponseRemoteEndpointsValue {
+func (o *IpsecSystemDetailResponse) GetRemoteEndpoints() map[string]IpsecRemoteEndpoint {
 	if o == nil || o.RemoteEndpoints == nil {
-		var ret map[string]IpsecSystemDetailResponseRemoteEndpointsValue
+		var ret map[string]IpsecRemoteEndpoint
 		return ret
 	}
 	return *o.RemoteEndpoints
@@ -81,7 +81,7 @@ func (o *IpsecSystemDetailResponse) GetRemoteEndpoints() map[string]IpsecSystemD
 
 // GetRemoteEndpointsOk returns a tuple with the RemoteEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponse) GetRemoteEndpointsOk() (*map[string]IpsecSystemDetailResponseRemoteEndpointsValue, bool) {
+func (o *IpsecSystemDetailResponse) GetRemoteEndpointsOk() (*map[string]IpsecRemoteEndpoint, bool) {
 	if o == nil || o.RemoteEndpoints == nil {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *IpsecSystemDetailResponse) HasRemoteEndpoints() bool {
 	return false
 }
 
-// SetRemoteEndpoints gets a reference to the given map[string]IpsecSystemDetailResponseRemoteEndpointsValue and assigns it to the RemoteEndpoints field.
-func (o *IpsecSystemDetailResponse) SetRemoteEndpoints(v map[string]IpsecSystemDetailResponseRemoteEndpointsValue) {
+// SetRemoteEndpoints gets a reference to the given map[string]IpsecRemoteEndpoint and assigns it to the RemoteEndpoints field.
+func (o *IpsecSystemDetailResponse) SetRemoteEndpoints(v map[string]IpsecRemoteEndpoint) {
 	o.RemoteEndpoints = &v
 }
 

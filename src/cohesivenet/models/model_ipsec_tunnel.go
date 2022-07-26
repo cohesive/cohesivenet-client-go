@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// RuntimeStatusIpsecValue struct for RuntimeStatusIpsecValue
-type RuntimeStatusIpsecValue struct {
+// IpsecTunnel struct for IpsecTunnel
+type IpsecTunnel struct {
 	Id *int32 `json:"id,omitempty"`
 	LocalSubnet *string `json:"local_subnet,omitempty"`
 	RemoteSubnet *string `json:"remote_subnet,omitempty"`
@@ -36,25 +36,25 @@ type RuntimeStatusIpsecValue struct {
 	TunnelParams *IpsecTunnelParams `json:"tunnel_params,omitempty"`
 }
 
-// NewRuntimeStatusIpsecValue instantiates a new RuntimeStatusIpsecValue object
+// NewIpsecTunnel instantiates a new IpsecTunnel object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuntimeStatusIpsecValue() *RuntimeStatusIpsecValue {
-	this := RuntimeStatusIpsecValue{}
+func NewIpsecTunnel() *IpsecTunnel {
+	this := IpsecTunnel{}
 	return &this
 }
 
-// NewRuntimeStatusIpsecValueWithDefaults instantiates a new RuntimeStatusIpsecValue object
+// NewIpsecTunnelWithDefaults instantiates a new IpsecTunnel object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRuntimeStatusIpsecValueWithDefaults() *RuntimeStatusIpsecValue {
-	this := RuntimeStatusIpsecValue{}
+func NewIpsecTunnelWithDefaults() *IpsecTunnel {
+	this := IpsecTunnel{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetId() int32 {
+func (o *IpsecTunnel) GetId() int32 {
 	if o == nil || o.Id == nil {
 		var ret int32
 		return ret
@@ -64,7 +64,7 @@ func (o *RuntimeStatusIpsecValue) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetIdOk() (*int32, bool) {
+func (o *IpsecTunnel) GetIdOk() (*int32, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -72,7 +72,7 @@ func (o *RuntimeStatusIpsecValue) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasId() bool {
+func (o *IpsecTunnel) HasId() bool {
 	if o != nil && o.Id != nil {
 		return true
 	}
@@ -81,12 +81,12 @@ func (o *RuntimeStatusIpsecValue) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *RuntimeStatusIpsecValue) SetId(v int32) {
+func (o *IpsecTunnel) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetLocalSubnet returns the LocalSubnet field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetLocalSubnet() string {
+func (o *IpsecTunnel) GetLocalSubnet() string {
 	if o == nil || o.LocalSubnet == nil {
 		var ret string
 		return ret
@@ -96,7 +96,7 @@ func (o *RuntimeStatusIpsecValue) GetLocalSubnet() string {
 
 // GetLocalSubnetOk returns a tuple with the LocalSubnet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetLocalSubnetOk() (*string, bool) {
+func (o *IpsecTunnel) GetLocalSubnetOk() (*string, bool) {
 	if o == nil || o.LocalSubnet == nil {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *RuntimeStatusIpsecValue) GetLocalSubnetOk() (*string, bool) {
 }
 
 // HasLocalSubnet returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasLocalSubnet() bool {
+func (o *IpsecTunnel) HasLocalSubnet() bool {
 	if o != nil && o.LocalSubnet != nil {
 		return true
 	}
@@ -113,12 +113,12 @@ func (o *RuntimeStatusIpsecValue) HasLocalSubnet() bool {
 }
 
 // SetLocalSubnet gets a reference to the given string and assigns it to the LocalSubnet field.
-func (o *RuntimeStatusIpsecValue) SetLocalSubnet(v string) {
+func (o *IpsecTunnel) SetLocalSubnet(v string) {
 	o.LocalSubnet = &v
 }
 
 // GetRemoteSubnet returns the RemoteSubnet field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetRemoteSubnet() string {
+func (o *IpsecTunnel) GetRemoteSubnet() string {
 	if o == nil || o.RemoteSubnet == nil {
 		var ret string
 		return ret
@@ -128,7 +128,7 @@ func (o *RuntimeStatusIpsecValue) GetRemoteSubnet() string {
 
 // GetRemoteSubnetOk returns a tuple with the RemoteSubnet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetRemoteSubnetOk() (*string, bool) {
+func (o *IpsecTunnel) GetRemoteSubnetOk() (*string, bool) {
 	if o == nil || o.RemoteSubnet == nil {
 		return nil, false
 	}
@@ -136,7 +136,7 @@ func (o *RuntimeStatusIpsecValue) GetRemoteSubnetOk() (*string, bool) {
 }
 
 // HasRemoteSubnet returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasRemoteSubnet() bool {
+func (o *IpsecTunnel) HasRemoteSubnet() bool {
 	if o != nil && o.RemoteSubnet != nil {
 		return true
 	}
@@ -145,12 +145,12 @@ func (o *RuntimeStatusIpsecValue) HasRemoteSubnet() bool {
 }
 
 // SetRemoteSubnet gets a reference to the given string and assigns it to the RemoteSubnet field.
-func (o *RuntimeStatusIpsecValue) SetRemoteSubnet(v string) {
+func (o *IpsecTunnel) SetRemoteSubnet(v string) {
 	o.RemoteSubnet = &v
 }
 
 // GetEndpointid returns the Endpointid field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetEndpointid() int32 {
+func (o *IpsecTunnel) GetEndpointid() int32 {
 	if o == nil || o.Endpointid == nil {
 		var ret int32
 		return ret
@@ -160,7 +160,7 @@ func (o *RuntimeStatusIpsecValue) GetEndpointid() int32 {
 
 // GetEndpointidOk returns a tuple with the Endpointid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetEndpointidOk() (*int32, bool) {
+func (o *IpsecTunnel) GetEndpointidOk() (*int32, bool) {
 	if o == nil || o.Endpointid == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *RuntimeStatusIpsecValue) GetEndpointidOk() (*int32, bool) {
 }
 
 // HasEndpointid returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasEndpointid() bool {
+func (o *IpsecTunnel) HasEndpointid() bool {
 	if o != nil && o.Endpointid != nil {
 		return true
 	}
@@ -177,12 +177,12 @@ func (o *RuntimeStatusIpsecValue) HasEndpointid() bool {
 }
 
 // SetEndpointid gets a reference to the given int32 and assigns it to the Endpointid field.
-func (o *RuntimeStatusIpsecValue) SetEndpointid(v int32) {
+func (o *IpsecTunnel) SetEndpointid(v int32) {
 	o.Endpointid = &v
 }
 
 // GetEndpointId returns the EndpointId field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetEndpointId() int32 {
+func (o *IpsecTunnel) GetEndpointId() int32 {
 	if o == nil || o.EndpointId == nil {
 		var ret int32
 		return ret
@@ -192,7 +192,7 @@ func (o *RuntimeStatusIpsecValue) GetEndpointId() int32 {
 
 // GetEndpointIdOk returns a tuple with the EndpointId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetEndpointIdOk() (*int32, bool) {
+func (o *IpsecTunnel) GetEndpointIdOk() (*int32, bool) {
 	if o == nil || o.EndpointId == nil {
 		return nil, false
 	}
@@ -200,7 +200,7 @@ func (o *RuntimeStatusIpsecValue) GetEndpointIdOk() (*int32, bool) {
 }
 
 // HasEndpointId returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasEndpointId() bool {
+func (o *IpsecTunnel) HasEndpointId() bool {
 	if o != nil && o.EndpointId != nil {
 		return true
 	}
@@ -209,12 +209,12 @@ func (o *RuntimeStatusIpsecValue) HasEndpointId() bool {
 }
 
 // SetEndpointId gets a reference to the given int32 and assigns it to the EndpointId field.
-func (o *RuntimeStatusIpsecValue) SetEndpointId(v int32) {
+func (o *IpsecTunnel) SetEndpointId(v int32) {
 	o.EndpointId = &v
 }
 
 // GetEndpointName returns the EndpointName field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetEndpointName() string {
+func (o *IpsecTunnel) GetEndpointName() string {
 	if o == nil || o.EndpointName == nil {
 		var ret string
 		return ret
@@ -224,7 +224,7 @@ func (o *RuntimeStatusIpsecValue) GetEndpointName() string {
 
 // GetEndpointNameOk returns a tuple with the EndpointName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetEndpointNameOk() (*string, bool) {
+func (o *IpsecTunnel) GetEndpointNameOk() (*string, bool) {
 	if o == nil || o.EndpointName == nil {
 		return nil, false
 	}
@@ -232,7 +232,7 @@ func (o *RuntimeStatusIpsecValue) GetEndpointNameOk() (*string, bool) {
 }
 
 // HasEndpointName returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasEndpointName() bool {
+func (o *IpsecTunnel) HasEndpointName() bool {
 	if o != nil && o.EndpointName != nil {
 		return true
 	}
@@ -241,12 +241,12 @@ func (o *RuntimeStatusIpsecValue) HasEndpointName() bool {
 }
 
 // SetEndpointName gets a reference to the given string and assigns it to the EndpointName field.
-func (o *RuntimeStatusIpsecValue) SetEndpointName(v string) {
+func (o *IpsecTunnel) SetEndpointName(v string) {
 	o.EndpointName = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetEnabled() bool {
+func (o *IpsecTunnel) GetEnabled() bool {
 	if o == nil || o.Enabled == nil {
 		var ret bool
 		return ret
@@ -256,7 +256,7 @@ func (o *RuntimeStatusIpsecValue) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetEnabledOk() (*bool, bool) {
+func (o *IpsecTunnel) GetEnabledOk() (*bool, bool) {
 	if o == nil || o.Enabled == nil {
 		return nil, false
 	}
@@ -264,7 +264,7 @@ func (o *RuntimeStatusIpsecValue) GetEnabledOk() (*bool, bool) {
 }
 
 // HasEnabled returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasEnabled() bool {
+func (o *IpsecTunnel) HasEnabled() bool {
 	if o != nil && o.Enabled != nil {
 		return true
 	}
@@ -273,12 +273,12 @@ func (o *RuntimeStatusIpsecValue) HasEnabled() bool {
 }
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *RuntimeStatusIpsecValue) SetEnabled(v bool) {
+func (o *IpsecTunnel) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
 // GetActive returns the Active field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetActive() bool {
+func (o *IpsecTunnel) GetActive() bool {
 	if o == nil || o.Active == nil {
 		var ret bool
 		return ret
@@ -288,7 +288,7 @@ func (o *RuntimeStatusIpsecValue) GetActive() bool {
 
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetActiveOk() (*bool, bool) {
+func (o *IpsecTunnel) GetActiveOk() (*bool, bool) {
 	if o == nil || o.Active == nil {
 		return nil, false
 	}
@@ -296,7 +296,7 @@ func (o *RuntimeStatusIpsecValue) GetActiveOk() (*bool, bool) {
 }
 
 // HasActive returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasActive() bool {
+func (o *IpsecTunnel) HasActive() bool {
 	if o != nil && o.Active != nil {
 		return true
 	}
@@ -305,12 +305,12 @@ func (o *RuntimeStatusIpsecValue) HasActive() bool {
 }
 
 // SetActive gets a reference to the given bool and assigns it to the Active field.
-func (o *RuntimeStatusIpsecValue) SetActive(v bool) {
+func (o *IpsecTunnel) SetActive(v bool) {
 	o.Active = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuntimeStatusIpsecValue) GetDescription() string {
+func (o *IpsecTunnel) GetDescription() string {
 	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
@@ -321,7 +321,7 @@ func (o *RuntimeStatusIpsecValue) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuntimeStatusIpsecValue) GetDescriptionOk() (*string, bool) {
+func (o *IpsecTunnel) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -329,7 +329,7 @@ func (o *RuntimeStatusIpsecValue) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasDescription() bool {
+func (o *IpsecTunnel) HasDescription() bool {
 	if o != nil && o.Description.IsSet() {
 		return true
 	}
@@ -338,21 +338,21 @@ func (o *RuntimeStatusIpsecValue) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *RuntimeStatusIpsecValue) SetDescription(v string) {
+func (o *IpsecTunnel) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 // SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *RuntimeStatusIpsecValue) SetDescriptionNil() {
+func (o *IpsecTunnel) SetDescriptionNil() {
 	o.Description.Set(nil)
 }
 
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *RuntimeStatusIpsecValue) UnsetDescription() {
+func (o *IpsecTunnel) UnsetDescription() {
 	o.Description.Unset()
 }
 
 // GetBounce returns the Bounce field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetBounce() bool {
+func (o *IpsecTunnel) GetBounce() bool {
 	if o == nil || o.Bounce == nil {
 		var ret bool
 		return ret
@@ -362,7 +362,7 @@ func (o *RuntimeStatusIpsecValue) GetBounce() bool {
 
 // GetBounceOk returns a tuple with the Bounce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetBounceOk() (*bool, bool) {
+func (o *IpsecTunnel) GetBounceOk() (*bool, bool) {
 	if o == nil || o.Bounce == nil {
 		return nil, false
 	}
@@ -370,7 +370,7 @@ func (o *RuntimeStatusIpsecValue) GetBounceOk() (*bool, bool) {
 }
 
 // HasBounce returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasBounce() bool {
+func (o *IpsecTunnel) HasBounce() bool {
 	if o != nil && o.Bounce != nil {
 		return true
 	}
@@ -379,12 +379,12 @@ func (o *RuntimeStatusIpsecValue) HasBounce() bool {
 }
 
 // SetBounce gets a reference to the given bool and assigns it to the Bounce field.
-func (o *RuntimeStatusIpsecValue) SetBounce(v bool) {
+func (o *IpsecTunnel) SetBounce(v bool) {
 	o.Bounce = &v
 }
 
 // GetConnected returns the Connected field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetConnected() bool {
+func (o *IpsecTunnel) GetConnected() bool {
 	if o == nil || o.Connected == nil {
 		var ret bool
 		return ret
@@ -394,7 +394,7 @@ func (o *RuntimeStatusIpsecValue) GetConnected() bool {
 
 // GetConnectedOk returns a tuple with the Connected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetConnectedOk() (*bool, bool) {
+func (o *IpsecTunnel) GetConnectedOk() (*bool, bool) {
 	if o == nil || o.Connected == nil {
 		return nil, false
 	}
@@ -402,7 +402,7 @@ func (o *RuntimeStatusIpsecValue) GetConnectedOk() (*bool, bool) {
 }
 
 // HasConnected returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasConnected() bool {
+func (o *IpsecTunnel) HasConnected() bool {
 	if o != nil && o.Connected != nil {
 		return true
 	}
@@ -411,12 +411,12 @@ func (o *RuntimeStatusIpsecValue) HasConnected() bool {
 }
 
 // SetConnected gets a reference to the given bool and assigns it to the Connected field.
-func (o *RuntimeStatusIpsecValue) SetConnected(v bool) {
+func (o *IpsecTunnel) SetConnected(v bool) {
 	o.Connected = &v
 }
 
 // GetPingInterface returns the PingInterface field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetPingInterface() string {
+func (o *IpsecTunnel) GetPingInterface() string {
 	if o == nil || o.PingInterface == nil {
 		var ret string
 		return ret
@@ -426,7 +426,7 @@ func (o *RuntimeStatusIpsecValue) GetPingInterface() string {
 
 // GetPingInterfaceOk returns a tuple with the PingInterface field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetPingInterfaceOk() (*string, bool) {
+func (o *IpsecTunnel) GetPingInterfaceOk() (*string, bool) {
 	if o == nil || o.PingInterface == nil {
 		return nil, false
 	}
@@ -434,7 +434,7 @@ func (o *RuntimeStatusIpsecValue) GetPingInterfaceOk() (*string, bool) {
 }
 
 // HasPingInterface returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasPingInterface() bool {
+func (o *IpsecTunnel) HasPingInterface() bool {
 	if o != nil && o.PingInterface != nil {
 		return true
 	}
@@ -443,12 +443,12 @@ func (o *RuntimeStatusIpsecValue) HasPingInterface() bool {
 }
 
 // SetPingInterface gets a reference to the given string and assigns it to the PingInterface field.
-func (o *RuntimeStatusIpsecValue) SetPingInterface(v string) {
+func (o *IpsecTunnel) SetPingInterface(v string) {
 	o.PingInterface = &v
 }
 
 // GetPingInterval returns the PingInterval field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuntimeStatusIpsecValue) GetPingInterval() int32 {
+func (o *IpsecTunnel) GetPingInterval() int32 {
 	if o == nil || o.PingInterval.Get() == nil {
 		var ret int32
 		return ret
@@ -459,7 +459,7 @@ func (o *RuntimeStatusIpsecValue) GetPingInterval() int32 {
 // GetPingIntervalOk returns a tuple with the PingInterval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuntimeStatusIpsecValue) GetPingIntervalOk() (*int32, bool) {
+func (o *IpsecTunnel) GetPingIntervalOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -467,7 +467,7 @@ func (o *RuntimeStatusIpsecValue) GetPingIntervalOk() (*int32, bool) {
 }
 
 // HasPingInterval returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasPingInterval() bool {
+func (o *IpsecTunnel) HasPingInterval() bool {
 	if o != nil && o.PingInterval.IsSet() {
 		return true
 	}
@@ -476,21 +476,21 @@ func (o *RuntimeStatusIpsecValue) HasPingInterval() bool {
 }
 
 // SetPingInterval gets a reference to the given NullableInt32 and assigns it to the PingInterval field.
-func (o *RuntimeStatusIpsecValue) SetPingInterval(v int32) {
+func (o *IpsecTunnel) SetPingInterval(v int32) {
 	o.PingInterval.Set(&v)
 }
 // SetPingIntervalNil sets the value for PingInterval to be an explicit nil
-func (o *RuntimeStatusIpsecValue) SetPingIntervalNil() {
+func (o *IpsecTunnel) SetPingIntervalNil() {
 	o.PingInterval.Set(nil)
 }
 
 // UnsetPingInterval ensures that no value is present for PingInterval, not even an explicit nil
-func (o *RuntimeStatusIpsecValue) UnsetPingInterval() {
+func (o *IpsecTunnel) UnsetPingInterval() {
 	o.PingInterval.Unset()
 }
 
 // GetPingIpaddress returns the PingIpaddress field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetPingIpaddress() string {
+func (o *IpsecTunnel) GetPingIpaddress() string {
 	if o == nil || o.PingIpaddress == nil {
 		var ret string
 		return ret
@@ -500,7 +500,7 @@ func (o *RuntimeStatusIpsecValue) GetPingIpaddress() string {
 
 // GetPingIpaddressOk returns a tuple with the PingIpaddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetPingIpaddressOk() (*string, bool) {
+func (o *IpsecTunnel) GetPingIpaddressOk() (*string, bool) {
 	if o == nil || o.PingIpaddress == nil {
 		return nil, false
 	}
@@ -508,7 +508,7 @@ func (o *RuntimeStatusIpsecValue) GetPingIpaddressOk() (*string, bool) {
 }
 
 // HasPingIpaddress returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasPingIpaddress() bool {
+func (o *IpsecTunnel) HasPingIpaddress() bool {
 	if o != nil && o.PingIpaddress != nil {
 		return true
 	}
@@ -517,12 +517,12 @@ func (o *RuntimeStatusIpsecValue) HasPingIpaddress() bool {
 }
 
 // SetPingIpaddress gets a reference to the given string and assigns it to the PingIpaddress field.
-func (o *RuntimeStatusIpsecValue) SetPingIpaddress(v string) {
+func (o *IpsecTunnel) SetPingIpaddress(v string) {
 	o.PingIpaddress = &v
 }
 
 // GetTunnelParams returns the TunnelParams field value if set, zero value otherwise.
-func (o *RuntimeStatusIpsecValue) GetTunnelParams() IpsecTunnelParams {
+func (o *IpsecTunnel) GetTunnelParams() IpsecTunnelParams {
 	if o == nil || o.TunnelParams == nil {
 		var ret IpsecTunnelParams
 		return ret
@@ -532,7 +532,7 @@ func (o *RuntimeStatusIpsecValue) GetTunnelParams() IpsecTunnelParams {
 
 // GetTunnelParamsOk returns a tuple with the TunnelParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusIpsecValue) GetTunnelParamsOk() (*IpsecTunnelParams, bool) {
+func (o *IpsecTunnel) GetTunnelParamsOk() (*IpsecTunnelParams, bool) {
 	if o == nil || o.TunnelParams == nil {
 		return nil, false
 	}
@@ -540,7 +540,7 @@ func (o *RuntimeStatusIpsecValue) GetTunnelParamsOk() (*IpsecTunnelParams, bool)
 }
 
 // HasTunnelParams returns a boolean if a field has been set.
-func (o *RuntimeStatusIpsecValue) HasTunnelParams() bool {
+func (o *IpsecTunnel) HasTunnelParams() bool {
 	if o != nil && o.TunnelParams != nil {
 		return true
 	}
@@ -549,11 +549,11 @@ func (o *RuntimeStatusIpsecValue) HasTunnelParams() bool {
 }
 
 // SetTunnelParams gets a reference to the given IpsecTunnelParams and assigns it to the TunnelParams field.
-func (o *RuntimeStatusIpsecValue) SetTunnelParams(v IpsecTunnelParams) {
+func (o *IpsecTunnel) SetTunnelParams(v IpsecTunnelParams) {
 	o.TunnelParams = &v
 }
 
-func (o RuntimeStatusIpsecValue) MarshalJSON() ([]byte, error) {
+func (o IpsecTunnel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Id != nil {
 		toSerialize["id"] = o.Id
@@ -603,38 +603,38 @@ func (o RuntimeStatusIpsecValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableRuntimeStatusIpsecValue struct {
-	value *RuntimeStatusIpsecValue
+type NullableIpsecTunnel struct {
+	value *IpsecTunnel
 	isSet bool
 }
 
-func (v NullableRuntimeStatusIpsecValue) Get() *RuntimeStatusIpsecValue {
+func (v NullableIpsecTunnel) Get() *IpsecTunnel {
 	return v.value
 }
 
-func (v *NullableRuntimeStatusIpsecValue) Set(val *RuntimeStatusIpsecValue) {
+func (v *NullableIpsecTunnel) Set(val *IpsecTunnel) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRuntimeStatusIpsecValue) IsSet() bool {
+func (v NullableIpsecTunnel) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRuntimeStatusIpsecValue) Unset() {
+func (v *NullableIpsecTunnel) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRuntimeStatusIpsecValue(val *RuntimeStatusIpsecValue) *NullableRuntimeStatusIpsecValue {
-	return &NullableRuntimeStatusIpsecValue{value: val, isSet: true}
+func NewNullableIpsecTunnel(val *IpsecTunnel) *NullableIpsecTunnel {
+	return &NullableIpsecTunnel{value: val, isSet: true}
 }
 
-func (v NullableRuntimeStatusIpsecValue) MarshalJSON() ([]byte, error) {
+func (v NullableIpsecTunnel) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRuntimeStatusIpsecValue) UnmarshalJSON(src []byte) error {
+func (v *NullableIpsecTunnel) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

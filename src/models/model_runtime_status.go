@@ -22,7 +22,7 @@ type RuntimeStatus struct {
 	// Array of arrays with each element of length 2 representing [network, subnet mask]
 	ConnectedSubnets [][]string `json:"connected_subnets,omitempty"`
 	// IPSEC tunnels keyed by tunnel ID
-	Ipsec *map[string]RuntimeStatusIpsecValue `json:"ipsec,omitempty"`
+	Ipsec *map[string]IpsecTunnel `json:"ipsec,omitempty"`
 }
 
 // NewRuntimeStatus instantiates a new RuntimeStatus object
@@ -107,9 +107,9 @@ func (o *RuntimeStatus) SetConnectedSubnets(v [][]string) {
 }
 
 // GetIpsec returns the Ipsec field value if set, zero value otherwise.
-func (o *RuntimeStatus) GetIpsec() map[string]RuntimeStatusIpsecValue {
+func (o *RuntimeStatus) GetIpsec() map[string]IpsecTunnel {
 	if o == nil || o.Ipsec == nil {
-		var ret map[string]RuntimeStatusIpsecValue
+		var ret map[string]IpsecTunnel
 		return ret
 	}
 	return *o.Ipsec
@@ -117,7 +117,7 @@ func (o *RuntimeStatus) GetIpsec() map[string]RuntimeStatusIpsecValue {
 
 // GetIpsecOk returns a tuple with the Ipsec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatus) GetIpsecOk() (*map[string]RuntimeStatusIpsecValue, bool) {
+func (o *RuntimeStatus) GetIpsecOk() (*map[string]IpsecTunnel, bool) {
 	if o == nil || o.Ipsec == nil {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *RuntimeStatus) HasIpsec() bool {
 	return false
 }
 
-// SetIpsec gets a reference to the given map[string]RuntimeStatusIpsecValue and assigns it to the Ipsec field.
-func (o *RuntimeStatus) SetIpsec(v map[string]RuntimeStatusIpsecValue) {
+// SetIpsec gets a reference to the given map[string]IpsecTunnel and assigns it to the Ipsec field.
+func (o *RuntimeStatus) SetIpsec(v map[string]IpsecTunnel) {
 	o.Ipsec = &v
 }
 

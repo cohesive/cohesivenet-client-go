@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"cohesivenet/models"
 )
 
 
@@ -30,7 +31,7 @@ type ApiDeleteRouteRequest struct {
 	routeId int32
 }
 
-func (r ApiDeleteRouteRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiDeleteRouteRequest) Execute() (*models.RoutesListResponse, *http.Response, error) {
 	return r.ApiService.DeleteRouteExecute(r)
 }
 
@@ -43,25 +44,25 @@ Delete route
  @param routeId ID for Route
  @return ApiDeleteRouteRequest
 */
-func (a *RoutingApiService) DeleteRoute(ctx context.Context, routeId int32) ApiDeleteRouteRequest {
+func (api *RoutingApiService) DeleteRoute(ctx context.Context, routeId int32) ApiDeleteRouteRequest {
 	return ApiDeleteRouteRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		routeId: routeId,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *RoutingApiService) DeleteRouteExecute(r ApiDeleteRouteRequest) (*Object, *http.Response, error) {
+//  @return models.RoutesListResponse
+func (api *RoutingApiService) DeleteRouteExecute(r ApiDeleteRouteRequest) (*models.RoutesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *models.RoutesListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.DeleteRoute")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.DeleteRoute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -93,12 +94,12 @@ func (a *RoutingApiService) DeleteRouteExecute(r ApiDeleteRouteRequest) (*Object
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -116,8 +117,8 @@ func (a *RoutingApiService) DeleteRouteExecute(r ApiDeleteRouteRequest) (*Object
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v models.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -128,7 +129,7 @@ func (a *RoutingApiService) DeleteRouteExecute(r ApiDeleteRouteRequest) (*Object
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -146,7 +147,7 @@ type ApiDisableRouteRequest struct {
 	routeId int32
 }
 
-func (r ApiDisableRouteRequest) Execute() (*RouteDetailResponse, *http.Response, error) {
+func (r ApiDisableRouteRequest) Execute() (*models.RouteDetailResponse, *http.Response, error) {
 	return r.ApiService.DisableRouteExecute(r)
 }
 
@@ -159,25 +160,25 @@ Disable route
  @param routeId ID for Route
  @return ApiDisableRouteRequest
 */
-func (a *RoutingApiService) DisableRoute(ctx context.Context, routeId int32) ApiDisableRouteRequest {
+func (api *RoutingApiService) DisableRoute(ctx context.Context, routeId int32) ApiDisableRouteRequest {
 	return ApiDisableRouteRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		routeId: routeId,
 	}
 }
 
 // Execute executes the request
-//  @return RouteDetailResponse
-func (a *RoutingApiService) DisableRouteExecute(r ApiDisableRouteRequest) (*RouteDetailResponse, *http.Response, error) {
+//  @return models.RouteDetailResponse
+func (api *RoutingApiService) DisableRouteExecute(r ApiDisableRouteRequest) (*models.RouteDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RouteDetailResponse
+		localVarReturnValue  *models.RouteDetailResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.DisableRoute")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.DisableRoute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -209,12 +210,12 @@ func (a *RoutingApiService) DisableRouteExecute(r ApiDisableRouteRequest) (*Rout
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -232,8 +233,8 @@ func (a *RoutingApiService) DisableRouteExecute(r ApiDisableRouteRequest) (*Rout
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v models.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -244,7 +245,7 @@ func (a *RoutingApiService) DisableRouteExecute(r ApiDisableRouteRequest) (*Rout
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -262,7 +263,7 @@ type ApiEnableRouteRequest struct {
 	routeId int32
 }
 
-func (r ApiEnableRouteRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiEnableRouteRequest) Execute() (*models.RouteDetailResponse, *http.Response, error) {
 	return r.ApiService.EnableRouteExecute(r)
 }
 
@@ -275,25 +276,25 @@ Enable route
  @param routeId ID for Route
  @return ApiEnableRouteRequest
 */
-func (a *RoutingApiService) EnableRoute(ctx context.Context, routeId int32) ApiEnableRouteRequest {
+func (api *RoutingApiService) EnableRoute(ctx context.Context, routeId int32) ApiEnableRouteRequest {
 	return ApiEnableRouteRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		routeId: routeId,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *RoutingApiService) EnableRouteExecute(r ApiEnableRouteRequest) (*Object, *http.Response, error) {
+//  @return models.RouteDetailResponse
+func (api *RoutingApiService) EnableRouteExecute(r ApiEnableRouteRequest) (*models.RouteDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *models.RouteDetailResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.EnableRoute")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.EnableRoute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -325,12 +326,12 @@ func (a *RoutingApiService) EnableRouteExecute(r ApiEnableRouteRequest) (*Object
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -348,8 +349,8 @@ func (a *RoutingApiService) EnableRouteExecute(r ApiEnableRouteRequest) (*Object
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v models.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -360,7 +361,7 @@ func (a *RoutingApiService) EnableRouteExecute(r ApiEnableRouteRequest) (*Object
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -384,7 +385,7 @@ func (r ApiGetRoutesRequest) Table(table string) ApiGetRoutesRequest {
 	return r
 }
 
-func (r ApiGetRoutesRequest) Execute() (*RoutesListResponse, *http.Response, error) {
+func (r ApiGetRoutesRequest) Execute() (*models.RoutesListResponse, *http.Response, error) {
 	return r.ApiService.GetRoutesExecute(r)
 }
 
@@ -397,24 +398,24 @@ Describes routes that this manager has access to via its network interfaces (vir
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRoutesRequest
 */
-func (a *RoutingApiService) GetRoutes(ctx context.Context) ApiGetRoutesRequest {
+func (api *RoutingApiService) GetRoutes(ctx context.Context) ApiGetRoutesRequest {
 	return ApiGetRoutesRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RoutesListResponse
-func (a *RoutingApiService) GetRoutesExecute(r ApiGetRoutesRequest) (*RoutesListResponse, *http.Response, error) {
+//  @return models.RoutesListResponse
+func (api *RoutingApiService) GetRoutesExecute(r ApiGetRoutesRequest) (*models.RoutesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RoutesListResponse
+		localVarReturnValue  *models.RoutesListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.GetRoutes")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.GetRoutes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -445,12 +446,12 @@ func (a *RoutingApiService) GetRoutesExecute(r ApiGetRoutesRequest) (*RoutesList
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -470,7 +471,7 @@ func (a *RoutingApiService) GetRoutesExecute(r ApiGetRoutesRequest) (*RoutesList
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -485,15 +486,15 @@ func (a *RoutingApiService) GetRoutesExecute(r ApiGetRoutesRequest) (*RoutesList
 type ApiPostCreateRouteRequest struct {
 	ctx context.Context
 	ApiService *RoutingApiService
-	createRouteRequest *CreateRouteRequest
+	createRouteRequest *models.CreateRouteRequest
 }
 
-func (r ApiPostCreateRouteRequest) CreateRouteRequest(createRouteRequest CreateRouteRequest) ApiPostCreateRouteRequest {
+func (r ApiPostCreateRouteRequest) CreateRouteRequest(createRouteRequest models.CreateRouteRequest) ApiPostCreateRouteRequest {
 	r.createRouteRequest = &createRouteRequest
 	return r
 }
 
-func (r ApiPostCreateRouteRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiPostCreateRouteRequest) Execute() (*models.RoutesListResponse, *http.Response, error) {
 	return r.ApiService.PostCreateRouteExecute(r)
 }
 
@@ -506,24 +507,24 @@ Pushes routes that this manager has access to via its network interfaces (virtua
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateRouteRequest
 */
-func (a *RoutingApiService) PostCreateRoute(ctx context.Context) ApiPostCreateRouteRequest {
+func (api *RoutingApiService) PostCreateRoute(ctx context.Context) ApiPostCreateRouteRequest {
 	return ApiPostCreateRouteRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *RoutingApiService) PostCreateRouteExecute(r ApiPostCreateRouteRequest) (*Object, *http.Response, error) {
+//  @return models.RoutesListResponse
+func (api *RoutingApiService) PostCreateRouteExecute(r ApiPostCreateRouteRequest) (*models.RoutesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *models.RoutesListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.PostCreateRoute")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.PostCreateRoute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -556,12 +557,12 @@ func (a *RoutingApiService) PostCreateRouteExecute(r ApiPostCreateRouteRequest) 
 	}
 	// body params
 	localVarPostBody = r.createRouteRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -579,8 +580,8 @@ func (a *RoutingApiService) PostCreateRouteExecute(r ApiPostCreateRouteRequest) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v models.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -591,7 +592,7 @@ func (a *RoutingApiService) PostCreateRouteExecute(r ApiPostCreateRouteRequest) 
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
