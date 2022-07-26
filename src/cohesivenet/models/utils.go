@@ -12,10 +12,17 @@ Contact: support@cohesive.net
 package models
 
 import (
+	"bytes"
 	"encoding/json"
 	"time"
 )
 
+// A wrapper for strict JSON decoding
+func newStrictDecoder(data []byte) *json.Decoder {
+	dec := json.NewDecoder(bytes.NewBuffer(data))
+	dec.DisallowUnknownFields()
+	return dec
+}
 
 type NullableBool struct {
 	value *bool
