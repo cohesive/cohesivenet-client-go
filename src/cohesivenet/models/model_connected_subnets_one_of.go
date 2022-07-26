@@ -16,29 +16,29 @@ import (
 	"fmt"
 )
 
-// ConnectedSubnetsDetail - struct for ConnectedSubnetsDetail
-type ConnectedSubnetsDetail struct {
+// ConnectedSubnetsOneOf - struct for ConnectedSubnetsOneOf
+type ConnectedSubnetsOneOf struct {
 	ArrayOfConnectedSubnet *[]ConnectedSubnet
 	ArrayOfArrayOfString *[][]string
 }
 
-// []ConnectedSubnetAsConnectedSubnetsDetail is a convenience function that returns []ConnectedSubnet wrapped in ConnectedSubnetsDetail
-func ArrayOfConnectedSubnetAsConnectedSubnetsDetail(v *[]ConnectedSubnet) ConnectedSubnetsDetail {
-	return ConnectedSubnetsDetail{
+// []ConnectedSubnetAsConnectedSubnetsOneOf is a convenience function that returns []ConnectedSubnet wrapped in ConnectedSubnetsOneOf
+func ArrayOfConnectedSubnetAsConnectedSubnetsOneOf(v *[]ConnectedSubnet) ConnectedSubnetsOneOf {
+	return ConnectedSubnetsOneOf{
 		ArrayOfConnectedSubnet: v,
 	}
 }
 
-// [][]stringAsConnectedSubnetsDetail is a convenience function that returns [][]string wrapped in ConnectedSubnetsDetail
-func ArrayOfArrayOfStringAsConnectedSubnetsDetail(v *[][]string) ConnectedSubnetsDetail {
-	return ConnectedSubnetsDetail{
+// [][]stringAsConnectedSubnetsOneOf is a convenience function that returns [][]string wrapped in ConnectedSubnetsOneOf
+func ArrayOfArrayOfStringAsConnectedSubnetsOneOf(v *[][]string) ConnectedSubnetsOneOf {
+	return ConnectedSubnetsOneOf{
 		ArrayOfArrayOfString: v,
 	}
 }
 
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *ConnectedSubnetsDetail) UnmarshalJSON(data []byte) error {
+func (dst *ConnectedSubnetsOneOf) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into ArrayOfConnectedSubnet
@@ -72,16 +72,16 @@ func (dst *ConnectedSubnetsDetail) UnmarshalJSON(data []byte) error {
 		dst.ArrayOfConnectedSubnet = nil
 		dst.ArrayOfArrayOfString = nil
 
-		return fmt.Errorf("Data matches more than one schema in oneOf(ConnectedSubnetsDetail)")
+		return fmt.Errorf("Data matches more than one schema in oneOf(ConnectedSubnetsOneOf)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("Data failed to match schemas in oneOf(ConnectedSubnetsDetail)")
+		return fmt.Errorf("Data failed to match schemas in oneOf(ConnectedSubnetsOneOf)")
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src ConnectedSubnetsDetail) MarshalJSON() ([]byte, error) {
+func (src ConnectedSubnetsOneOf) MarshalJSON() ([]byte, error) {
 	if src.ArrayOfConnectedSubnet != nil {
 		return json.Marshal(&src.ArrayOfConnectedSubnet)
 	}
@@ -94,7 +94,7 @@ func (src ConnectedSubnetsDetail) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ConnectedSubnetsDetail) GetActualInstance() (interface{}) {
+func (obj *ConnectedSubnetsOneOf) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -110,38 +110,38 @@ func (obj *ConnectedSubnetsDetail) GetActualInstance() (interface{}) {
 	return nil
 }
 
-type NullableConnectedSubnetsDetail struct {
-	value *ConnectedSubnetsDetail
+type NullableConnectedSubnetsOneOf struct {
+	value *ConnectedSubnetsOneOf
 	isSet bool
 }
 
-func (v NullableConnectedSubnetsDetail) Get() *ConnectedSubnetsDetail {
+func (v NullableConnectedSubnetsOneOf) Get() *ConnectedSubnetsOneOf {
 	return v.value
 }
 
-func (v *NullableConnectedSubnetsDetail) Set(val *ConnectedSubnetsDetail) {
+func (v *NullableConnectedSubnetsOneOf) Set(val *ConnectedSubnetsOneOf) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableConnectedSubnetsDetail) IsSet() bool {
+func (v NullableConnectedSubnetsOneOf) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableConnectedSubnetsDetail) Unset() {
+func (v *NullableConnectedSubnetsOneOf) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableConnectedSubnetsDetail(val *ConnectedSubnetsDetail) *NullableConnectedSubnetsDetail {
-	return &NullableConnectedSubnetsDetail{value: val, isSet: true}
+func NewNullableConnectedSubnetsOneOf(val *ConnectedSubnetsOneOf) *NullableConnectedSubnetsOneOf {
+	return &NullableConnectedSubnetsOneOf{value: val, isSet: true}
 }
 
-func (v NullableConnectedSubnetsDetail) MarshalJSON() ([]byte, error) {
+func (v NullableConnectedSubnetsOneOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableConnectedSubnetsDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableConnectedSubnetsOneOf) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

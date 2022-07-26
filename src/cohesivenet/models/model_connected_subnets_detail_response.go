@@ -17,7 +17,7 @@ import (
 
 // ConnectedSubnetsDetailResponse struct for ConnectedSubnetsDetailResponse
 type ConnectedSubnetsDetailResponse struct {
-	Response *ConnectedSubnetsDetail `json:"response,omitempty"`
+	Response *ConnectedSubnetsOneOf `json:"response,omitempty"`
 }
 
 // NewConnectedSubnetsDetailResponse instantiates a new ConnectedSubnetsDetailResponse object
@@ -38,9 +38,9 @@ func NewConnectedSubnetsDetailResponseWithDefaults() *ConnectedSubnetsDetailResp
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *ConnectedSubnetsDetailResponse) GetResponse() ConnectedSubnetsDetail {
+func (o *ConnectedSubnetsDetailResponse) GetResponse() ConnectedSubnetsOneOf {
 	if o == nil || o.Response == nil {
-		var ret ConnectedSubnetsDetail
+		var ret ConnectedSubnetsOneOf
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *ConnectedSubnetsDetailResponse) GetResponse() ConnectedSubnetsDetail {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedSubnetsDetailResponse) GetResponseOk() (*ConnectedSubnetsDetail, bool) {
+func (o *ConnectedSubnetsDetailResponse) GetResponseOk() (*ConnectedSubnetsOneOf, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ConnectedSubnetsDetailResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given ConnectedSubnetsDetail and assigns it to the Response field.
-func (o *ConnectedSubnetsDetailResponse) SetResponse(v ConnectedSubnetsDetail) {
+// SetResponse gets a reference to the given ConnectedSubnetsOneOf and assigns it to the Response field.
+func (o *ConnectedSubnetsDetailResponse) SetResponse(v ConnectedSubnetsOneOf) {
 	o.Response = &v
 }
 

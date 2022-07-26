@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// IpsecTunnelListResponseKeyValue struct for IpsecTunnelListResponseKeyValue
-type IpsecTunnelListResponseKeyValue struct {
+// IpsecTunnelListResponseAsObject struct for IpsecTunnelListResponseAsObject
+type IpsecTunnelListResponseAsObject struct {
 	// Ipsec tunnel details keyed by ID
 	Response *map[string]IpsecTunnel `json:"response,omitempty"`
 }
 
-// NewIpsecTunnelListResponseKeyValue instantiates a new IpsecTunnelListResponseKeyValue object
+// NewIpsecTunnelListResponseAsObject instantiates a new IpsecTunnelListResponseAsObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpsecTunnelListResponseKeyValue() *IpsecTunnelListResponseKeyValue {
-	this := IpsecTunnelListResponseKeyValue{}
+func NewIpsecTunnelListResponseAsObject() *IpsecTunnelListResponseAsObject {
+	this := IpsecTunnelListResponseAsObject{}
 	return &this
 }
 
-// NewIpsecTunnelListResponseKeyValueWithDefaults instantiates a new IpsecTunnelListResponseKeyValue object
+// NewIpsecTunnelListResponseAsObjectWithDefaults instantiates a new IpsecTunnelListResponseAsObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIpsecTunnelListResponseKeyValueWithDefaults() *IpsecTunnelListResponseKeyValue {
-	this := IpsecTunnelListResponseKeyValue{}
+func NewIpsecTunnelListResponseAsObjectWithDefaults() *IpsecTunnelListResponseAsObject {
+	this := IpsecTunnelListResponseAsObject{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *IpsecTunnelListResponseKeyValue) GetResponse() map[string]IpsecTunnel {
+func (o *IpsecTunnelListResponseAsObject) GetResponse() map[string]IpsecTunnel {
 	if o == nil || o.Response == nil {
 		var ret map[string]IpsecTunnel
 		return ret
@@ -49,7 +49,7 @@ func (o *IpsecTunnelListResponseKeyValue) GetResponse() map[string]IpsecTunnel {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecTunnelListResponseKeyValue) GetResponseOk() (*map[string]IpsecTunnel, bool) {
+func (o *IpsecTunnelListResponseAsObject) GetResponseOk() (*map[string]IpsecTunnel, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *IpsecTunnelListResponseKeyValue) GetResponseOk() (*map[string]IpsecTunn
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *IpsecTunnelListResponseKeyValue) HasResponse() bool {
+func (o *IpsecTunnelListResponseAsObject) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -66,11 +66,11 @@ func (o *IpsecTunnelListResponseKeyValue) HasResponse() bool {
 }
 
 // SetResponse gets a reference to the given map[string]IpsecTunnel and assigns it to the Response field.
-func (o *IpsecTunnelListResponseKeyValue) SetResponse(v map[string]IpsecTunnel) {
+func (o *IpsecTunnelListResponseAsObject) SetResponse(v map[string]IpsecTunnel) {
 	o.Response = &v
 }
 
-func (o IpsecTunnelListResponseKeyValue) MarshalJSON() ([]byte, error) {
+func (o IpsecTunnelListResponseAsObject) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -78,38 +78,38 @@ func (o IpsecTunnelListResponseKeyValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableIpsecTunnelListResponseKeyValue struct {
-	value *IpsecTunnelListResponseKeyValue
+type NullableIpsecTunnelListResponseAsObject struct {
+	value *IpsecTunnelListResponseAsObject
 	isSet bool
 }
 
-func (v NullableIpsecTunnelListResponseKeyValue) Get() *IpsecTunnelListResponseKeyValue {
+func (v NullableIpsecTunnelListResponseAsObject) Get() *IpsecTunnelListResponseAsObject {
 	return v.value
 }
 
-func (v *NullableIpsecTunnelListResponseKeyValue) Set(val *IpsecTunnelListResponseKeyValue) {
+func (v *NullableIpsecTunnelListResponseAsObject) Set(val *IpsecTunnelListResponseAsObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIpsecTunnelListResponseKeyValue) IsSet() bool {
+func (v NullableIpsecTunnelListResponseAsObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIpsecTunnelListResponseKeyValue) Unset() {
+func (v *NullableIpsecTunnelListResponseAsObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIpsecTunnelListResponseKeyValue(val *IpsecTunnelListResponseKeyValue) *NullableIpsecTunnelListResponseKeyValue {
-	return &NullableIpsecTunnelListResponseKeyValue{value: val, isSet: true}
+func NewNullableIpsecTunnelListResponseAsObject(val *IpsecTunnelListResponseAsObject) *NullableIpsecTunnelListResponseAsObject {
+	return &NullableIpsecTunnelListResponseAsObject{value: val, isSet: true}
 }
 
-func (v NullableIpsecTunnelListResponseKeyValue) MarshalJSON() ([]byte, error) {
+func (v NullableIpsecTunnelListResponseAsObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIpsecTunnelListResponseKeyValue) UnmarshalJSON(src []byte) error {
+func (v *NullableIpsecTunnelListResponseAsObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

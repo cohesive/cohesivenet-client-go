@@ -31,7 +31,7 @@ type ApiDeleteIpsecEndpointRequest struct {
 	endpointId int32
 }
 
-func (r ApiDeleteIpsecEndpointRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiDeleteIpsecEndpointRequest) Execute() (*m.IpsecSystemDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteIpsecEndpointExecute(r)
 }
 
@@ -44,25 +44,25 @@ Delete IPsec endpoint
  @param endpointId ID for IPsec endpoint
  @return ApiDeleteIpsecEndpointRequest
 */
-func (a *IpsecApiService) DeleteIpsecEndpoint(ctx context.Context, endpointId int32) ApiDeleteIpsecEndpointRequest {
+func (api *IpsecApiService) DeleteIpsecEndpoint(ctx context.Context, endpointId int32) ApiDeleteIpsecEndpointRequest {
 	return ApiDeleteIpsecEndpointRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecSystemDetailResponse
+func (api *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointRequest) (*m.IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecSystemDetailResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpoint")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -94,12 +94,12 @@ func (a *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -117,8 +117,8 @@ func (a *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -129,7 +129,7 @@ func (a *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointReq
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -148,7 +148,7 @@ type ApiDeleteIpsecEndpointTunnelRequest struct {
 	tunnelId int32
 }
 
-func (r ApiDeleteIpsecEndpointTunnelRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiDeleteIpsecEndpointTunnelRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.DeleteIpsecEndpointTunnelExecute(r)
 }
 
@@ -162,9 +162,9 @@ Delete IPsec tunnel
  @param tunnelId ID for tunnel
  @return ApiDeleteIpsecEndpointTunnelRequest
 */
-func (a *IpsecApiService) DeleteIpsecEndpointTunnel(ctx context.Context, endpointId int32, tunnelId int32) ApiDeleteIpsecEndpointTunnelRequest {
+func (api *IpsecApiService) DeleteIpsecEndpointTunnel(ctx context.Context, endpointId int32, tunnelId int32) ApiDeleteIpsecEndpointTunnelRequest {
 	return ApiDeleteIpsecEndpointTunnelRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 		tunnelId: tunnelId,
@@ -172,16 +172,16 @@ func (a *IpsecApiService) DeleteIpsecEndpointTunnel(ctx context.Context, endpoin
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpointTunnelRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecRemoteEndpointDetail
+func (api *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpointTunnelRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecRemoteEndpointDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpointTunnel")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpointTunnel")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -214,12 +214,12 @@ func (a *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -237,8 +237,8 @@ func (a *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -249,7 +249,7 @@ func (a *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpo
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -268,7 +268,7 @@ type ApiDeleteIpsecTrafficPairRequest struct {
 	pairId int32
 }
 
-func (r ApiDeleteIpsecTrafficPairRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiDeleteIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.DeleteIpsecTrafficPairExecute(r)
 }
 
@@ -282,9 +282,9 @@ Delete IPsec traffic pair
  @param pairId ID for traffic pair
  @return ApiDeleteIpsecTrafficPairRequest
 */
-func (a *IpsecApiService) DeleteIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiDeleteIpsecTrafficPairRequest {
+func (api *IpsecApiService) DeleteIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiDeleteIpsecTrafficPairRequest {
 	return ApiDeleteIpsecTrafficPairRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 		pairId: pairId,
@@ -292,16 +292,16 @@ func (a *IpsecApiService) DeleteIpsecTrafficPair(ctx context.Context, endpointId
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficPairRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecTrafficPairResponse
+func (api *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecTrafficPairResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecTrafficPair")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecTrafficPair")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -334,12 +334,12 @@ func (a *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficP
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -357,8 +357,8 @@ func (a *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -369,7 +369,7 @@ func (a *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficP
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -388,7 +388,7 @@ type ApiDisableIpsecTrafficPairRequest struct {
 	pairId int32
 }
 
-func (r ApiDisableIpsecTrafficPairRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiDisableIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.DisableIpsecTrafficPairExecute(r)
 }
 
@@ -402,9 +402,9 @@ Disable Ipsec Traffic Pair
  @param pairId ID for traffic pair
  @return ApiDisableIpsecTrafficPairRequest
 */
-func (a *IpsecApiService) DisableIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiDisableIpsecTrafficPairRequest {
+func (api *IpsecApiService) DisableIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiDisableIpsecTrafficPairRequest {
 	return ApiDisableIpsecTrafficPairRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 		pairId: pairId,
@@ -412,16 +412,16 @@ func (a *IpsecApiService) DisableIpsecTrafficPair(ctx context.Context, endpointI
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTrafficPairRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecTrafficPairResponse
+func (api *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecTrafficPairResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DisableIpsecTrafficPair")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DisableIpsecTrafficPair")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -454,12 +454,12 @@ func (a *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTraffi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -477,8 +477,8 @@ func (a *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTraffi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -487,8 +487,8 @@ func (a *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTraffi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -498,7 +498,7 @@ func (a *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTraffi
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -517,7 +517,7 @@ type ApiEnableIpsecTrafficPairRequest struct {
 	pairId int32
 }
 
-func (r ApiEnableIpsecTrafficPairRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiEnableIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.EnableIpsecTrafficPairExecute(r)
 }
 
@@ -531,9 +531,9 @@ Enable Ipsec Traffic Pair
  @param pairId ID for traffic pair
  @return ApiEnableIpsecTrafficPairRequest
 */
-func (a *IpsecApiService) EnableIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiEnableIpsecTrafficPairRequest {
+func (api *IpsecApiService) EnableIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiEnableIpsecTrafficPairRequest {
 	return ApiEnableIpsecTrafficPairRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 		pairId: pairId,
@@ -541,16 +541,16 @@ func (a *IpsecApiService) EnableIpsecTrafficPair(ctx context.Context, endpointId
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficPairRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecTrafficPairResponse
+func (api *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecTrafficPairResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.EnableIpsecTrafficPair")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.EnableIpsecTrafficPair")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -583,12 +583,12 @@ func (a *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficP
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -606,8 +606,8 @@ func (a *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficP
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -616,8 +616,8 @@ func (a *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficP
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -627,7 +627,7 @@ func (a *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficP
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -651,7 +651,7 @@ func (r ApiGetConnectedSubnetsRequest) ExtendedOutput(extendedOutput bool) ApiGe
 	return r
 }
 
-func (r ApiGetConnectedSubnetsRequest) Execute() (*ConnectedSubnetsDetailResponse, *http.Response, error) {
+func (r ApiGetConnectedSubnetsRequest) Execute() (*m.ConnectedSubnetsDetailResponse, *http.Response, error) {
 	return r.ApiService.GetConnectedSubnetsExecute(r)
 }
 
@@ -663,24 +663,24 @@ Provides information about any connected subnets.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectedSubnetsRequest
 */
-func (a *IpsecApiService) GetConnectedSubnets(ctx context.Context) ApiGetConnectedSubnetsRequest {
+func (api *IpsecApiService) GetConnectedSubnets(ctx context.Context) ApiGetConnectedSubnetsRequest {
 	return ApiGetConnectedSubnetsRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ConnectedSubnetsDetailResponse
-func (a *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsRequest) (*ConnectedSubnetsDetailResponse, *http.Response, error) {
+//  @return m.ConnectedSubnetsDetailResponse
+func (api *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsRequest) (*m.ConnectedSubnetsDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ConnectedSubnetsDetailResponse
+		localVarReturnValue  *m.ConnectedSubnetsDetailResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetConnectedSubnets")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetConnectedSubnets")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -711,12 +711,12 @@ func (a *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -736,7 +736,7 @@ func (a *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsReq
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -753,7 +753,7 @@ type ApiGetIpsecDetailsRequest struct {
 	ApiService *IpsecApiService
 }
 
-func (r ApiGetIpsecDetailsRequest) Execute() (*IpsecSystemDetail, *http.Response, error) {
+func (r ApiGetIpsecDetailsRequest) Execute() (*m.IpsecSystemDetailResponse, *http.Response, error) {
 	return r.ApiService.GetIpsecDetailsExecute(r)
 }
 
@@ -765,24 +765,24 @@ Get details for all IPsec endpoints/subnets
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIpsecDetailsRequest
 */
-func (a *IpsecApiService) GetIpsecDetails(ctx context.Context) ApiGetIpsecDetailsRequest {
+func (api *IpsecApiService) GetIpsecDetails(ctx context.Context) ApiGetIpsecDetailsRequest {
 	return ApiGetIpsecDetailsRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpsecSystemDetail
-func (a *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*IpsecSystemDetail, *http.Response, error) {
+//  @return m.IpsecSystemDetailResponse
+func (api *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*m.IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *IpsecSystemDetail
+		localVarReturnValue  *m.IpsecSystemDetailResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecDetails")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -810,12 +810,12 @@ func (a *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -835,7 +835,7 @@ func (a *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -853,7 +853,7 @@ type ApiGetIpsecEndpointRequest struct {
 	endpointId int32
 }
 
-func (r ApiGetIpsecEndpointRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiGetIpsecEndpointRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.GetIpsecEndpointExecute(r)
 }
 
@@ -866,25 +866,25 @@ Get IPsec endpoint information
  @param endpointId ID for IPsec endpoint
  @return ApiGetIpsecEndpointRequest
 */
-func (a *IpsecApiService) GetIpsecEndpoint(ctx context.Context, endpointId int32) ApiGetIpsecEndpointRequest {
+func (api *IpsecApiService) GetIpsecEndpoint(ctx context.Context, endpointId int32) ApiGetIpsecEndpointRequest {
 	return ApiGetIpsecEndpointRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecRemoteEndpointDetail
+func (api *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecRemoteEndpointDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecEndpoint")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -916,12 +916,12 @@ func (a *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -941,7 +941,7 @@ func (a *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) 
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -979,7 +979,7 @@ func (r ApiGetIpsecLinkHistoryRequest) Tunnelid(tunnelid int32) ApiGetIpsecLinkH
 	return r
 }
 
-func (r ApiGetIpsecLinkHistoryRequest) Execute() (*LinkHistoryDetail, *http.Response, error) {
+func (r ApiGetIpsecLinkHistoryRequest) Execute() (*m.LinkHistoryDetail, *http.Response, error) {
 	return r.ApiService.GetIpsecLinkHistoryExecute(r)
 }
 
@@ -991,24 +991,24 @@ Provides information about the connection history of the subnet or tunnel
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIpsecLinkHistoryRequest
 */
-func (a *IpsecApiService) GetIpsecLinkHistory(ctx context.Context) ApiGetIpsecLinkHistoryRequest {
+func (api *IpsecApiService) GetIpsecLinkHistory(ctx context.Context) ApiGetIpsecLinkHistoryRequest {
 	return ApiGetIpsecLinkHistoryRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return LinkHistoryDetail
-func (a *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryRequest) (*LinkHistoryDetail, *http.Response, error) {
+//  @return m.LinkHistoryDetail
+func (api *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryRequest) (*m.LinkHistoryDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LinkHistoryDetail
+		localVarReturnValue  *m.LinkHistoryDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecLinkHistory")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecLinkHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1045,12 +1045,12 @@ func (a *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1068,8 +1068,8 @@ func (a *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1080,7 +1080,7 @@ func (a *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryReq
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1104,7 +1104,7 @@ func (r ApiGetIpsecStatusRequest) UpDownStatusOnly(upDownStatusOnly bool) ApiGet
 	return r
 }
 
-func (r ApiGetIpsecStatusRequest) Execute() (*IpsecTunnelListResponseKeyValue, *http.Response, error) {
+func (r ApiGetIpsecStatusRequest) Execute() (*m.IpsecTunnelListResponseAsObject, *http.Response, error) {
 	return r.ApiService.GetIpsecStatusExecute(r)
 }
 
@@ -1116,24 +1116,24 @@ Describe ipsec tunnels status
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIpsecStatusRequest
 */
-func (a *IpsecApiService) GetIpsecStatus(ctx context.Context) ApiGetIpsecStatusRequest {
+func (api *IpsecApiService) GetIpsecStatus(ctx context.Context) ApiGetIpsecStatusRequest {
 	return ApiGetIpsecStatusRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpsecTunnelListResponseKeyValue
-func (a *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*IpsecTunnelListResponseKeyValue, *http.Response, error) {
+//  @return m.IpsecTunnelListResponseAsObject
+func (api *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*m.IpsecTunnelListResponseAsObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *IpsecTunnelListResponseKeyValue
+		localVarReturnValue  *m.IpsecTunnelListResponseAsObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecStatus")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1164,12 +1164,12 @@ func (a *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*Ip
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1189,7 +1189,7 @@ func (a *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*Ip
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1204,15 +1204,15 @@ func (a *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*Ip
 type ApiPostCreateIpsecEndpointRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
-	createIpsecEndpointRequest *CreateIpsecEndpointRequest
+	createIpsecEndpointRequest *m.CreateIpsecEndpointRequest
 }
 
-func (r ApiPostCreateIpsecEndpointRequest) CreateIpsecEndpointRequest(createIpsecEndpointRequest CreateIpsecEndpointRequest) ApiPostCreateIpsecEndpointRequest {
+func (r ApiPostCreateIpsecEndpointRequest) CreateIpsecEndpointRequest(createIpsecEndpointRequest m.CreateIpsecEndpointRequest) ApiPostCreateIpsecEndpointRequest {
 	r.createIpsecEndpointRequest = &createIpsecEndpointRequest
 	return r
 }
 
-func (r ApiPostCreateIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (r ApiPostCreateIpsecEndpointRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.PostCreateIpsecEndpointExecute(r)
 }
 
@@ -1224,24 +1224,24 @@ Create IPsec connection to the defined remote gateway
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateIpsecEndpointRequest
 */
-func (a *IpsecApiService) PostCreateIpsecEndpoint(ctx context.Context) ApiPostCreateIpsecEndpointRequest {
+func (api *IpsecApiService) PostCreateIpsecEndpoint(ctx context.Context) ApiPostCreateIpsecEndpointRequest {
 	return ApiPostCreateIpsecEndpointRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return IpsecRemoteEndpointDetail
-func (a *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+//  @return m.IpsecRemoteEndpointDetail
+func (api *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEndpointRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *IpsecRemoteEndpointDetail
+		localVarReturnValue  *m.IpsecRemoteEndpointDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpoint")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1274,12 +1274,12 @@ func (a *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEnd
 	}
 	// body params
 	localVarPostBody = r.createIpsecEndpointRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1297,8 +1297,8 @@ func (a *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEnd
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1309,7 +1309,7 @@ func (a *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEnd
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1325,15 +1325,15 @@ type ApiPostCreateIpsecEndpointTunnelRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
 	endpointId int32
-	createIpsecTunnelRequest *CreateIpsecTunnelRequest
+	createIpsecTunnelRequest *m.CreateIpsecTunnelRequest
 }
 
-func (r ApiPostCreateIpsecEndpointTunnelRequest) CreateIpsecTunnelRequest(createIpsecTunnelRequest CreateIpsecTunnelRequest) ApiPostCreateIpsecEndpointTunnelRequest {
+func (r ApiPostCreateIpsecEndpointTunnelRequest) CreateIpsecTunnelRequest(createIpsecTunnelRequest m.CreateIpsecTunnelRequest) ApiPostCreateIpsecEndpointTunnelRequest {
 	r.createIpsecTunnelRequest = &createIpsecTunnelRequest
 	return r
 }
 
-func (r ApiPostCreateIpsecEndpointTunnelRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiPostCreateIpsecEndpointTunnelRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.PostCreateIpsecEndpointTunnelExecute(r)
 }
 
@@ -1346,25 +1346,25 @@ Create IPsec endpoint tunnel
  @param endpointId ID for IPsec endpoint
  @return ApiPostCreateIpsecEndpointTunnelRequest
 */
-func (a *IpsecApiService) PostCreateIpsecEndpointTunnel(ctx context.Context, endpointId int32) ApiPostCreateIpsecEndpointTunnelRequest {
+func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(ctx context.Context, endpointId int32) ApiPostCreateIpsecEndpointTunnelRequest {
 	return ApiPostCreateIpsecEndpointTunnelRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIpsecEndpointTunnelRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecRemoteEndpointDetail
+func (api *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIpsecEndpointTunnelRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecRemoteEndpointDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpointTunnel")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpointTunnel")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1401,12 +1401,12 @@ func (a *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIp
 	}
 	// body params
 	localVarPostBody = r.createIpsecTunnelRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1424,8 +1424,8 @@ func (a *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1434,8 +1434,8 @@ func (a *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIp
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1445,7 +1445,7 @@ func (a *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIp
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1461,15 +1461,15 @@ type ApiPostCreateIpsecTrafficPairRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
 	endpointId int32
-	createIpsecTrafficPairRequest *CreateIpsecTrafficPairRequest
+	createIpsecTrafficPairRequest *m.CreateIpsecTrafficPairRequest
 }
 
-func (r ApiPostCreateIpsecTrafficPairRequest) CreateIpsecTrafficPairRequest(createIpsecTrafficPairRequest CreateIpsecTrafficPairRequest) ApiPostCreateIpsecTrafficPairRequest {
+func (r ApiPostCreateIpsecTrafficPairRequest) CreateIpsecTrafficPairRequest(createIpsecTrafficPairRequest m.CreateIpsecTrafficPairRequest) ApiPostCreateIpsecTrafficPairRequest {
 	r.createIpsecTrafficPairRequest = &createIpsecTrafficPairRequest
 	return r
 }
 
-func (r ApiPostCreateIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
+func (r ApiPostCreateIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.PostCreateIpsecTrafficPairExecute(r)
 }
 
@@ -1482,25 +1482,25 @@ Create IPsec endpoint traffic pair
  @param endpointId ID for IPsec endpoint
  @return ApiPostCreateIpsecTrafficPairRequest
 */
-func (a *IpsecApiService) PostCreateIpsecTrafficPair(ctx context.Context, endpointId int32) ApiPostCreateIpsecTrafficPairRequest {
+func (api *IpsecApiService) PostCreateIpsecTrafficPair(ctx context.Context, endpointId int32) ApiPostCreateIpsecTrafficPairRequest {
 	return ApiPostCreateIpsecTrafficPairRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 	}
 }
 
 // Execute executes the request
-//  @return IpsecTrafficPairResponse
-func (a *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
+//  @return m.IpsecTrafficPairResponse
+func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *IpsecTrafficPairResponse
+		localVarReturnValue  *m.IpsecTrafficPairResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecTrafficPair")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecTrafficPair")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1537,12 +1537,12 @@ func (a *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsec
 	}
 	// body params
 	localVarPostBody = r.createIpsecTrafficPairRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1560,8 +1560,8 @@ func (a *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1570,8 +1570,8 @@ func (a *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1581,7 +1581,7 @@ func (a *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsec
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1596,15 +1596,15 @@ func (a *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsec
 type ApiPostRestartIpsecActionRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
-	restartRequest *RestartRequest
+	restartRequest *m.RestartRequest
 }
 
-func (r ApiPostRestartIpsecActionRequest) RestartRequest(restartRequest RestartRequest) ApiPostRestartIpsecActionRequest {
+func (r ApiPostRestartIpsecActionRequest) RestartRequest(restartRequest m.RestartRequest) ApiPostRestartIpsecActionRequest {
 	r.restartRequest = &restartRequest
 	return r
 }
 
-func (r ApiPostRestartIpsecActionRequest) Execute() (*RestartStatus, *http.Response, error) {
+func (r ApiPostRestartIpsecActionRequest) Execute() (*m.RestartStatusResponse, *http.Response, error) {
 	return r.ApiService.PostRestartIpsecActionExecute(r)
 }
 
@@ -1616,24 +1616,24 @@ Restart ipsec subystem
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostRestartIpsecActionRequest
 */
-func (a *IpsecApiService) PostRestartIpsecAction(ctx context.Context) ApiPostRestartIpsecActionRequest {
+func (api *IpsecApiService) PostRestartIpsecAction(ctx context.Context) ApiPostRestartIpsecActionRequest {
 	return ApiPostRestartIpsecActionRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RestartStatus
-func (a *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecActionRequest) (*RestartStatus, *http.Response, error) {
+//  @return m.RestartStatusResponse
+func (api *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecActionRequest) (*m.RestartStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RestartStatus
+		localVarReturnValue  *m.RestartStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostRestartIpsecAction")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostRestartIpsecAction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1666,12 +1666,12 @@ func (a *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecAct
 	}
 	// body params
 	localVarPostBody = r.restartRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1689,8 +1689,8 @@ func (a *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecAct
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1701,7 +1701,7 @@ func (a *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecAct
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1716,15 +1716,15 @@ func (a *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecAct
 type ApiPutUpdateIpsecConfigRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
-	updateIpsecAddressRequest *UpdateIpsecAddressRequest
+	updateIpsecAddressRequest *m.UpdateIpsecAddressRequest
 }
 
-func (r ApiPutUpdateIpsecConfigRequest) UpdateIpsecAddressRequest(updateIpsecAddressRequest UpdateIpsecAddressRequest) ApiPutUpdateIpsecConfigRequest {
+func (r ApiPutUpdateIpsecConfigRequest) UpdateIpsecAddressRequest(updateIpsecAddressRequest m.UpdateIpsecAddressRequest) ApiPutUpdateIpsecConfigRequest {
 	r.updateIpsecAddressRequest = &updateIpsecAddressRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecConfigRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiPutUpdateIpsecConfigRequest) Execute() (*m.IpsecSystemDetailResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecConfigExecute(r)
 }
 
@@ -1737,24 +1737,24 @@ Edit Ipsec Configuration on device. Note, This is device wide and must be set be
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUpdateIpsecConfigRequest
 */
-func (a *IpsecApiService) PutUpdateIpsecConfig(ctx context.Context) ApiPutUpdateIpsecConfigRequest {
+func (api *IpsecApiService) PutUpdateIpsecConfig(ctx context.Context) ApiPutUpdateIpsecConfigRequest {
 	return ApiPutUpdateIpsecConfigRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecSystemDetailResponse
+func (api *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigRequest) (*m.IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecSystemDetailResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecConfig")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1787,12 +1787,12 @@ func (a *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigR
 	}
 	// body params
 	localVarPostBody = r.updateIpsecAddressRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1810,8 +1810,8 @@ func (a *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1822,7 +1822,7 @@ func (a *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigR
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1838,15 +1838,15 @@ type ApiPutUpdateIpsecEndpointRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
 	endpointId int32
-	updateIpsecEndpointRequest *UpdateIpsecEndpointRequest
+	updateIpsecEndpointRequest *m.UpdateIpsecEndpointRequest
 }
 
-func (r ApiPutUpdateIpsecEndpointRequest) UpdateIpsecEndpointRequest(updateIpsecEndpointRequest UpdateIpsecEndpointRequest) ApiPutUpdateIpsecEndpointRequest {
+func (r ApiPutUpdateIpsecEndpointRequest) UpdateIpsecEndpointRequest(updateIpsecEndpointRequest m.UpdateIpsecEndpointRequest) ApiPutUpdateIpsecEndpointRequest {
 	r.updateIpsecEndpointRequest = &updateIpsecEndpointRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecEndpointRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiPutUpdateIpsecEndpointRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecEndpointExecute(r)
 }
 
@@ -1859,25 +1859,25 @@ Edit IPsec endpoint connection configuration parameters
  @param endpointId ID for IPsec endpoint
  @return ApiPutUpdateIpsecEndpointRequest
 */
-func (a *IpsecApiService) PutUpdateIpsecEndpoint(ctx context.Context, endpointId int32) ApiPutUpdateIpsecEndpointRequest {
+func (api *IpsecApiService) PutUpdateIpsecEndpoint(ctx context.Context, endpointId int32) ApiPutUpdateIpsecEndpointRequest {
 	return ApiPutUpdateIpsecEndpointRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 	}
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpointRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecRemoteEndpointDetail
+func (api *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpointRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecRemoteEndpointDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpoint")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1914,12 +1914,12 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpo
 	}
 	// body params
 	localVarPostBody = r.updateIpsecEndpointRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1937,8 +1937,8 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1949,7 +1949,7 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpo
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -1966,15 +1966,15 @@ type ApiPutUpdateIpsecEndpointTunnelRequest struct {
 	ApiService *IpsecApiService
 	endpointId int32
 	tunnelId int32
-	updateIpsecTunnelRequest *UpdateIpsecTunnelRequest
+	updateIpsecTunnelRequest *m.UpdateIpsecTunnelRequest
 }
 
-func (r ApiPutUpdateIpsecEndpointTunnelRequest) UpdateIpsecTunnelRequest(updateIpsecTunnelRequest UpdateIpsecTunnelRequest) ApiPutUpdateIpsecEndpointTunnelRequest {
+func (r ApiPutUpdateIpsecEndpointTunnelRequest) UpdateIpsecTunnelRequest(updateIpsecTunnelRequest m.UpdateIpsecTunnelRequest) ApiPutUpdateIpsecEndpointTunnelRequest {
 	r.updateIpsecTunnelRequest = &updateIpsecTunnelRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecEndpointTunnelRequest) Execute() (*IpsecTunnelDetail, *http.Response, error) {
+func (r ApiPutUpdateIpsecEndpointTunnelRequest) Execute() (*m.IpsecTunnelDetail, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecEndpointTunnelExecute(r)
 }
 
@@ -1988,9 +1988,9 @@ Edit IPsec endpoint tunnel configuration
  @param tunnelId ID for tunnel
  @return ApiPutUpdateIpsecEndpointTunnelRequest
 */
-func (a *IpsecApiService) PutUpdateIpsecEndpointTunnel(ctx context.Context, endpointId int32, tunnelId int32) ApiPutUpdateIpsecEndpointTunnelRequest {
+func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(ctx context.Context, endpointId int32, tunnelId int32) ApiPutUpdateIpsecEndpointTunnelRequest {
 	return ApiPutUpdateIpsecEndpointTunnelRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 		tunnelId: tunnelId,
@@ -1998,16 +1998,16 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointTunnel(ctx context.Context, endp
 }
 
 // Execute executes the request
-//  @return IpsecTunnelDetail
-func (a *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpsecEndpointTunnelRequest) (*IpsecTunnelDetail, *http.Response, error) {
+//  @return m.IpsecTunnelDetail
+func (api *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpsecEndpointTunnelRequest) (*m.IpsecTunnelDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *IpsecTunnelDetail
+		localVarReturnValue  *m.IpsecTunnelDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpointTunnel")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpointTunnel")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2045,12 +2045,12 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpse
 	}
 	// body params
 	localVarPostBody = r.updateIpsecTunnelRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2068,8 +2068,8 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpse
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2080,7 +2080,7 @@ func (a *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpse
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -2097,15 +2097,15 @@ type ApiPutUpdateIpsecTrafficPairRequest struct {
 	ApiService *IpsecApiService
 	endpointId int32
 	pairId int32
-	updateIpsecTrafficPairRequest *UpdateIpsecTrafficPairRequest
+	updateIpsecTrafficPairRequest *m.UpdateIpsecTrafficPairRequest
 }
 
-func (r ApiPutUpdateIpsecTrafficPairRequest) UpdateIpsecTrafficPairRequest(updateIpsecTrafficPairRequest UpdateIpsecTrafficPairRequest) ApiPutUpdateIpsecTrafficPairRequest {
+func (r ApiPutUpdateIpsecTrafficPairRequest) UpdateIpsecTrafficPairRequest(updateIpsecTrafficPairRequest m.UpdateIpsecTrafficPairRequest) ApiPutUpdateIpsecTrafficPairRequest {
 	r.updateIpsecTrafficPairRequest = &updateIpsecTrafficPairRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecTrafficPairRequest) Execute() (*Object, *http.Response, error) {
+func (r ApiPutUpdateIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecTrafficPairExecute(r)
 }
 
@@ -2119,9 +2119,9 @@ Edit IPsec endpoint traffic pair
  @param pairId ID for traffic pair
  @return ApiPutUpdateIpsecTrafficPairRequest
 */
-func (a *IpsecApiService) PutUpdateIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiPutUpdateIpsecTrafficPairRequest {
+func (api *IpsecApiService) PutUpdateIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiPutUpdateIpsecTrafficPairRequest {
 	return ApiPutUpdateIpsecTrafficPairRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 		endpointId: endpointId,
 		pairId: pairId,
@@ -2129,16 +2129,16 @@ func (a *IpsecApiService) PutUpdateIpsecTrafficPair(ctx context.Context, endpoin
 }
 
 // Execute executes the request
-//  @return Object
-func (a *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTrafficPairRequest) (*Object, *http.Response, error) {
+//  @return m.IpsecTrafficPairResponse
+func (api *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Object
+		localVarReturnValue  *m.IpsecTrafficPairResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecTrafficPair")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecTrafficPair")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2176,12 +2176,12 @@ func (a *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTr
 	}
 	// body params
 	localVarPostBody = r.updateIpsecTrafficPairRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2199,8 +2199,8 @@ func (a *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTr
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2209,8 +2209,8 @@ func (a *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v m.ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2220,7 +2220,7 @@ func (a *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTr
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
