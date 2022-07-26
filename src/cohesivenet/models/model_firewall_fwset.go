@@ -16,8 +16,8 @@ import (
 	"time"
 )
 
-// FirewallFwSetV2 struct for FirewallFwSetV2
-type FirewallFwSetV2 struct {
+// FirewallFwset struct for FirewallFwset
+type FirewallFwset struct {
 	Name *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
@@ -26,28 +26,28 @@ type FirewallFwSetV2 struct {
 	Type *string `json:"type,omitempty"`
 	// number of entries in set
 	Size *int32 `json:"size,omitempty"`
-	Entries []Object `json:"entries,omitempty"`
+	Entries []FirewallFwsetEntry `json:"entries,omitempty"`
 }
 
-// NewFirewallFwSetV2 instantiates a new FirewallFwSetV2 object
+// NewFirewallFwset instantiates a new FirewallFwset object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFirewallFwSetV2() *FirewallFwSetV2 {
-	this := FirewallFwSetV2{}
+func NewFirewallFwset() *FirewallFwset {
+	this := FirewallFwset{}
 	return &this
 }
 
-// NewFirewallFwSetV2WithDefaults instantiates a new FirewallFwSetV2 object
+// NewFirewallFwsetWithDefaults instantiates a new FirewallFwset object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFirewallFwSetV2WithDefaults() *FirewallFwSetV2 {
-	this := FirewallFwSetV2{}
+func NewFirewallFwsetWithDefaults() *FirewallFwset {
+	this := FirewallFwset{}
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetName() string {
+func (o *FirewallFwset) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -57,7 +57,7 @@ func (o *FirewallFwSetV2) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetNameOk() (*string, bool) {
+func (o *FirewallFwset) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *FirewallFwSetV2) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasName() bool {
+func (o *FirewallFwset) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -74,12 +74,12 @@ func (o *FirewallFwSetV2) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *FirewallFwSetV2) SetName(v string) {
+func (o *FirewallFwset) SetName(v string) {
 	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetDescription() string {
+func (o *FirewallFwset) GetDescription() string {
 	if o == nil || o.Description == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *FirewallFwSetV2) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetDescriptionOk() (*string, bool) {
+func (o *FirewallFwset) GetDescriptionOk() (*string, bool) {
 	if o == nil || o.Description == nil {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *FirewallFwSetV2) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasDescription() bool {
+func (o *FirewallFwset) HasDescription() bool {
 	if o != nil && o.Description != nil {
 		return true
 	}
@@ -106,12 +106,12 @@ func (o *FirewallFwSetV2) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *FirewallFwSetV2) SetDescription(v string) {
+func (o *FirewallFwset) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetCreatedAt() time.Time {
+func (o *FirewallFwset) GetCreatedAt() time.Time {
 	if o == nil || o.CreatedAt == nil {
 		var ret time.Time
 		return ret
@@ -121,7 +121,7 @@ func (o *FirewallFwSetV2) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetCreatedAtOk() (*time.Time, bool) {
+func (o *FirewallFwset) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *FirewallFwSetV2) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasCreatedAt() bool {
+func (o *FirewallFwset) HasCreatedAt() bool {
 	if o != nil && o.CreatedAt != nil {
 		return true
 	}
@@ -138,12 +138,12 @@ func (o *FirewallFwSetV2) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *FirewallFwSetV2) SetCreatedAt(v time.Time) {
+func (o *FirewallFwset) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetUpdatedAt() time.Time {
+func (o *FirewallFwset) GetUpdatedAt() time.Time {
 	if o == nil || o.UpdatedAt == nil {
 		var ret time.Time
 		return ret
@@ -153,7 +153,7 @@ func (o *FirewallFwSetV2) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *FirewallFwset) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || o.UpdatedAt == nil {
 		return nil, false
 	}
@@ -161,7 +161,7 @@ func (o *FirewallFwSetV2) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasUpdatedAt() bool {
+func (o *FirewallFwset) HasUpdatedAt() bool {
 	if o != nil && o.UpdatedAt != nil {
 		return true
 	}
@@ -170,12 +170,12 @@ func (o *FirewallFwSetV2) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *FirewallFwSetV2) SetUpdatedAt(v time.Time) {
+func (o *FirewallFwset) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetType() string {
+func (o *FirewallFwset) GetType() string {
 	if o == nil || o.Type == nil {
 		var ret string
 		return ret
@@ -185,7 +185,7 @@ func (o *FirewallFwSetV2) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetTypeOk() (*string, bool) {
+func (o *FirewallFwset) GetTypeOk() (*string, bool) {
 	if o == nil || o.Type == nil {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *FirewallFwSetV2) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasType() bool {
+func (o *FirewallFwset) HasType() bool {
 	if o != nil && o.Type != nil {
 		return true
 	}
@@ -202,12 +202,12 @@ func (o *FirewallFwSetV2) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *FirewallFwSetV2) SetType(v string) {
+func (o *FirewallFwset) SetType(v string) {
 	o.Type = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetSize() int32 {
+func (o *FirewallFwset) GetSize() int32 {
 	if o == nil || o.Size == nil {
 		var ret int32
 		return ret
@@ -217,7 +217,7 @@ func (o *FirewallFwSetV2) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetSizeOk() (*int32, bool) {
+func (o *FirewallFwset) GetSizeOk() (*int32, bool) {
 	if o == nil || o.Size == nil {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *FirewallFwSetV2) GetSizeOk() (*int32, bool) {
 }
 
 // HasSize returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasSize() bool {
+func (o *FirewallFwset) HasSize() bool {
 	if o != nil && o.Size != nil {
 		return true
 	}
@@ -234,14 +234,14 @@ func (o *FirewallFwSetV2) HasSize() bool {
 }
 
 // SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *FirewallFwSetV2) SetSize(v int32) {
+func (o *FirewallFwset) SetSize(v int32) {
 	o.Size = &v
 }
 
 // GetEntries returns the Entries field value if set, zero value otherwise.
-func (o *FirewallFwSetV2) GetEntries() []Object {
+func (o *FirewallFwset) GetEntries() []FirewallFwsetEntry {
 	if o == nil || o.Entries == nil {
-		var ret []Object
+		var ret []FirewallFwsetEntry
 		return ret
 	}
 	return o.Entries
@@ -249,7 +249,7 @@ func (o *FirewallFwSetV2) GetEntries() []Object {
 
 // GetEntriesOk returns a tuple with the Entries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallFwSetV2) GetEntriesOk() ([]Object, bool) {
+func (o *FirewallFwset) GetEntriesOk() ([]FirewallFwsetEntry, bool) {
 	if o == nil || o.Entries == nil {
 		return nil, false
 	}
@@ -257,7 +257,7 @@ func (o *FirewallFwSetV2) GetEntriesOk() ([]Object, bool) {
 }
 
 // HasEntries returns a boolean if a field has been set.
-func (o *FirewallFwSetV2) HasEntries() bool {
+func (o *FirewallFwset) HasEntries() bool {
 	if o != nil && o.Entries != nil {
 		return true
 	}
@@ -265,12 +265,12 @@ func (o *FirewallFwSetV2) HasEntries() bool {
 	return false
 }
 
-// SetEntries gets a reference to the given []Object and assigns it to the Entries field.
-func (o *FirewallFwSetV2) SetEntries(v []Object) {
+// SetEntries gets a reference to the given []FirewallFwsetEntry and assigns it to the Entries field.
+func (o *FirewallFwset) SetEntries(v []FirewallFwsetEntry) {
 	o.Entries = v
 }
 
-func (o FirewallFwSetV2) MarshalJSON() ([]byte, error) {
+func (o FirewallFwset) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
@@ -296,38 +296,38 @@ func (o FirewallFwSetV2) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableFirewallFwSetV2 struct {
-	value *FirewallFwSetV2
+type NullableFirewallFwset struct {
+	value *FirewallFwset
 	isSet bool
 }
 
-func (v NullableFirewallFwSetV2) Get() *FirewallFwSetV2 {
+func (v NullableFirewallFwset) Get() *FirewallFwset {
 	return v.value
 }
 
-func (v *NullableFirewallFwSetV2) Set(val *FirewallFwSetV2) {
+func (v *NullableFirewallFwset) Set(val *FirewallFwset) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFirewallFwSetV2) IsSet() bool {
+func (v NullableFirewallFwset) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFirewallFwSetV2) Unset() {
+func (v *NullableFirewallFwset) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFirewallFwSetV2(val *FirewallFwSetV2) *NullableFirewallFwSetV2 {
-	return &NullableFirewallFwSetV2{value: val, isSet: true}
+func NewNullableFirewallFwset(val *FirewallFwset) *NullableFirewallFwset {
+	return &NullableFirewallFwset{value: val, isSet: true}
 }
 
-func (v NullableFirewallFwSetV2) MarshalJSON() ([]byte, error) {
+func (v NullableFirewallFwset) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFirewallFwSetV2) UnmarshalJSON(src []byte) error {
+func (v *NullableFirewallFwset) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

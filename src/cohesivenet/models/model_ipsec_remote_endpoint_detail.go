@@ -17,7 +17,7 @@ import (
 
 // IpsecRemoteEndpointDetail struct for IpsecRemoteEndpointDetail
 type IpsecRemoteEndpointDetail struct {
-	Response *IpsecSystemDetailResponseRemoteEndpointsValue `json:"response,omitempty"`
+	Response *IpsecRemoteEndpoint `json:"response,omitempty"`
 }
 
 // NewIpsecRemoteEndpointDetail instantiates a new IpsecRemoteEndpointDetail object
@@ -38,9 +38,9 @@ func NewIpsecRemoteEndpointDetailWithDefaults() *IpsecRemoteEndpointDetail {
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *IpsecRemoteEndpointDetail) GetResponse() IpsecSystemDetailResponseRemoteEndpointsValue {
+func (o *IpsecRemoteEndpointDetail) GetResponse() IpsecRemoteEndpoint {
 	if o == nil || o.Response == nil {
-		var ret IpsecSystemDetailResponseRemoteEndpointsValue
+		var ret IpsecRemoteEndpoint
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *IpsecRemoteEndpointDetail) GetResponse() IpsecSystemDetailResponseRemot
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecRemoteEndpointDetail) GetResponseOk() (*IpsecSystemDetailResponseRemoteEndpointsValue, bool) {
+func (o *IpsecRemoteEndpointDetail) GetResponseOk() (*IpsecRemoteEndpoint, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *IpsecRemoteEndpointDetail) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given IpsecSystemDetailResponseRemoteEndpointsValue and assigns it to the Response field.
-func (o *IpsecRemoteEndpointDetail) SetResponse(v IpsecSystemDetailResponseRemoteEndpointsValue) {
+// SetResponse gets a reference to the given IpsecRemoteEndpoint and assigns it to the Response field.
+func (o *IpsecRemoteEndpointDetail) SetResponse(v IpsecRemoteEndpoint) {
 	o.Response = &v
 }
 

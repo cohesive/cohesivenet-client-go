@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// AddFirewallEntryToFwsetRequest struct for AddFirewallEntryToFwsetRequest
-type AddFirewallEntryToFwsetRequest struct {
+// CreateFirewallEntryRequest struct for CreateFirewallEntryRequest
+type CreateFirewallEntryRequest struct {
 	// resolvable entry for fwset
 	Entry string `json:"entry"`
 	Comment *string `json:"comment,omitempty"`
 }
 
-// NewAddFirewallEntryToFwsetRequest instantiates a new AddFirewallEntryToFwsetRequest object
+// NewCreateFirewallEntryRequest instantiates a new CreateFirewallEntryRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAddFirewallEntryToFwsetRequest(entry string) *AddFirewallEntryToFwsetRequest {
-	this := AddFirewallEntryToFwsetRequest{}
+func NewCreateFirewallEntryRequest(entry string) *CreateFirewallEntryRequest {
+	this := CreateFirewallEntryRequest{}
 	this.Entry = entry
 	return &this
 }
 
-// NewAddFirewallEntryToFwsetRequestWithDefaults instantiates a new AddFirewallEntryToFwsetRequest object
+// NewCreateFirewallEntryRequestWithDefaults instantiates a new CreateFirewallEntryRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAddFirewallEntryToFwsetRequestWithDefaults() *AddFirewallEntryToFwsetRequest {
-	this := AddFirewallEntryToFwsetRequest{}
+func NewCreateFirewallEntryRequestWithDefaults() *CreateFirewallEntryRequest {
+	this := CreateFirewallEntryRequest{}
 	return &this
 }
 
 // GetEntry returns the Entry field value
-func (o *AddFirewallEntryToFwsetRequest) GetEntry() string {
+func (o *CreateFirewallEntryRequest) GetEntry() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -52,7 +52,7 @@ func (o *AddFirewallEntryToFwsetRequest) GetEntry() string {
 
 // GetEntryOk returns a tuple with the Entry field value
 // and a boolean to check if the value has been set.
-func (o *AddFirewallEntryToFwsetRequest) GetEntryOk() (*string, bool) {
+func (o *CreateFirewallEntryRequest) GetEntryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,12 +60,12 @@ func (o *AddFirewallEntryToFwsetRequest) GetEntryOk() (*string, bool) {
 }
 
 // SetEntry sets field value
-func (o *AddFirewallEntryToFwsetRequest) SetEntry(v string) {
+func (o *CreateFirewallEntryRequest) SetEntry(v string) {
 	o.Entry = v
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise.
-func (o *AddFirewallEntryToFwsetRequest) GetComment() string {
+func (o *CreateFirewallEntryRequest) GetComment() string {
 	if o == nil || o.Comment == nil {
 		var ret string
 		return ret
@@ -75,7 +75,7 @@ func (o *AddFirewallEntryToFwsetRequest) GetComment() string {
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AddFirewallEntryToFwsetRequest) GetCommentOk() (*string, bool) {
+func (o *CreateFirewallEntryRequest) GetCommentOk() (*string, bool) {
 	if o == nil || o.Comment == nil {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *AddFirewallEntryToFwsetRequest) GetCommentOk() (*string, bool) {
 }
 
 // HasComment returns a boolean if a field has been set.
-func (o *AddFirewallEntryToFwsetRequest) HasComment() bool {
+func (o *CreateFirewallEntryRequest) HasComment() bool {
 	if o != nil && o.Comment != nil {
 		return true
 	}
@@ -92,11 +92,11 @@ func (o *AddFirewallEntryToFwsetRequest) HasComment() bool {
 }
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
-func (o *AddFirewallEntryToFwsetRequest) SetComment(v string) {
+func (o *CreateFirewallEntryRequest) SetComment(v string) {
 	o.Comment = &v
 }
 
-func (o AddFirewallEntryToFwsetRequest) MarshalJSON() ([]byte, error) {
+func (o CreateFirewallEntryRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["entry"] = o.Entry
@@ -107,38 +107,38 @@ func (o AddFirewallEntryToFwsetRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableAddFirewallEntryToFwsetRequest struct {
-	value *AddFirewallEntryToFwsetRequest
+type NullableCreateFirewallEntryRequest struct {
+	value *CreateFirewallEntryRequest
 	isSet bool
 }
 
-func (v NullableAddFirewallEntryToFwsetRequest) Get() *AddFirewallEntryToFwsetRequest {
+func (v NullableCreateFirewallEntryRequest) Get() *CreateFirewallEntryRequest {
 	return v.value
 }
 
-func (v *NullableAddFirewallEntryToFwsetRequest) Set(val *AddFirewallEntryToFwsetRequest) {
+func (v *NullableCreateFirewallEntryRequest) Set(val *CreateFirewallEntryRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAddFirewallEntryToFwsetRequest) IsSet() bool {
+func (v NullableCreateFirewallEntryRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAddFirewallEntryToFwsetRequest) Unset() {
+func (v *NullableCreateFirewallEntryRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAddFirewallEntryToFwsetRequest(val *AddFirewallEntryToFwsetRequest) *NullableAddFirewallEntryToFwsetRequest {
-	return &NullableAddFirewallEntryToFwsetRequest{value: val, isSet: true}
+func NewNullableCreateFirewallEntryRequest(val *CreateFirewallEntryRequest) *NullableCreateFirewallEntryRequest {
+	return &NullableCreateFirewallEntryRequest{value: val, isSet: true}
 }
 
-func (v NullableAddFirewallEntryToFwsetRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCreateFirewallEntryRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAddFirewallEntryToFwsetRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateFirewallEntryRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

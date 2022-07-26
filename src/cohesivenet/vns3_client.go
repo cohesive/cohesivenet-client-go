@@ -404,7 +404,7 @@ func (c *VNS3Client) prepareRequest(
 
 		// AccessToken Authentication
 		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
-			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
+			localVarRequest.Header.Add("Api-Token", auth)
 		}
 
 	}

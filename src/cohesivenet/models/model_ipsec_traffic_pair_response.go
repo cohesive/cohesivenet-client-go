@@ -17,7 +17,7 @@ import (
 
 // IpsecTrafficPairResponse struct for IpsecTrafficPairResponse
 type IpsecTrafficPairResponse struct {
-	Response *IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue `json:"response,omitempty"`
+	Response *IpsecEndpointTrafficPair `json:"response,omitempty"`
 }
 
 // NewIpsecTrafficPairResponse instantiates a new IpsecTrafficPairResponse object
@@ -38,9 +38,9 @@ func NewIpsecTrafficPairResponseWithDefaults() *IpsecTrafficPairResponse {
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *IpsecTrafficPairResponse) GetResponse() IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue {
+func (o *IpsecTrafficPairResponse) GetResponse() IpsecEndpointTrafficPair {
 	if o == nil || o.Response == nil {
-		var ret IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue
+		var ret IpsecEndpointTrafficPair
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *IpsecTrafficPairResponse) GetResponse() IpsecSystemDetailResponseRemote
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecTrafficPairResponse) GetResponseOk() (*IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue, bool) {
+func (o *IpsecTrafficPairResponse) GetResponseOk() (*IpsecEndpointTrafficPair, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *IpsecTrafficPairResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue and assigns it to the Response field.
-func (o *IpsecTrafficPairResponse) SetResponse(v IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue) {
+// SetResponse gets a reference to the given IpsecEndpointTrafficPair and assigns it to the Response field.
+func (o *IpsecTrafficPairResponse) SetResponse(v IpsecEndpointTrafficPair) {
 	o.Response = &v
 }
 

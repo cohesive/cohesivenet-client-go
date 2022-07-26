@@ -32,8 +32,8 @@ type Route struct {
 	RouteBasedGateway *string `json:"route_based_gateway,omitempty"`
 	// message about state of route
 	Msg *string `json:"msg,omitempty"`
-	Tunnel *RuntimeStatusIpsecValue `json:"tunnel,omitempty"`
-	TrafficPair *IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue `json:"traffic_pair,omitempty"`
+	Tunnel *IpsecTunnel `json:"tunnel,omitempty"`
+	TrafficPair *IpsecEndpointTrafficPair `json:"traffic_pair,omitempty"`
 }
 
 // NewRoute instantiates a new Route object
@@ -502,9 +502,9 @@ func (o *Route) SetMsg(v string) {
 }
 
 // GetTunnel returns the Tunnel field value if set, zero value otherwise.
-func (o *Route) GetTunnel() RuntimeStatusIpsecValue {
+func (o *Route) GetTunnel() IpsecTunnel {
 	if o == nil || o.Tunnel == nil {
-		var ret RuntimeStatusIpsecValue
+		var ret IpsecTunnel
 		return ret
 	}
 	return *o.Tunnel
@@ -512,7 +512,7 @@ func (o *Route) GetTunnel() RuntimeStatusIpsecValue {
 
 // GetTunnelOk returns a tuple with the Tunnel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Route) GetTunnelOk() (*RuntimeStatusIpsecValue, bool) {
+func (o *Route) GetTunnelOk() (*IpsecTunnel, bool) {
 	if o == nil || o.Tunnel == nil {
 		return nil, false
 	}
@@ -528,15 +528,15 @@ func (o *Route) HasTunnel() bool {
 	return false
 }
 
-// SetTunnel gets a reference to the given RuntimeStatusIpsecValue and assigns it to the Tunnel field.
-func (o *Route) SetTunnel(v RuntimeStatusIpsecValue) {
+// SetTunnel gets a reference to the given IpsecTunnel and assigns it to the Tunnel field.
+func (o *Route) SetTunnel(v IpsecTunnel) {
 	o.Tunnel = &v
 }
 
 // GetTrafficPair returns the TrafficPair field value if set, zero value otherwise.
-func (o *Route) GetTrafficPair() IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue {
+func (o *Route) GetTrafficPair() IpsecEndpointTrafficPair {
 	if o == nil || o.TrafficPair == nil {
-		var ret IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue
+		var ret IpsecEndpointTrafficPair
 		return ret
 	}
 	return *o.TrafficPair
@@ -544,7 +544,7 @@ func (o *Route) GetTrafficPair() IpsecSystemDetailResponseRemoteEndpointsValueTr
 
 // GetTrafficPairOk returns a tuple with the TrafficPair field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Route) GetTrafficPairOk() (*IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue, bool) {
+func (o *Route) GetTrafficPairOk() (*IpsecEndpointTrafficPair, bool) {
 	if o == nil || o.TrafficPair == nil {
 		return nil, false
 	}
@@ -560,8 +560,8 @@ func (o *Route) HasTrafficPair() bool {
 	return false
 }
 
-// SetTrafficPair gets a reference to the given IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue and assigns it to the TrafficPair field.
-func (o *Route) SetTrafficPair(v IpsecSystemDetailResponseRemoteEndpointsValueTrafficPairsValue) {
+// SetTrafficPair gets a reference to the given IpsecEndpointTrafficPair and assigns it to the TrafficPair field.
+func (o *Route) SetTrafficPair(v IpsecEndpointTrafficPair) {
 	o.TrafficPair = &v
 }
 

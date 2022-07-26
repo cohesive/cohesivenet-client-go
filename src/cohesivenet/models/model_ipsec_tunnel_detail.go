@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// RoutesListResponse struct for RoutesListResponse
-type RoutesListResponse struct {
-	Response *map[string]RoutesList `json:"response,omitempty"`
+// IpsecTunnelDetail struct for IpsecTunnelDetail
+type IpsecTunnelDetail struct {
+	Response *IpsecTunnel `json:"response,omitempty"`
 }
 
-// NewRoutesListResponse instantiates a new RoutesListResponse object
+// NewIpsecTunnelDetail instantiates a new IpsecTunnelDetail object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRoutesListResponse() *RoutesListResponse {
-	this := RoutesListResponse{}
+func NewIpsecTunnelDetail() *IpsecTunnelDetail {
+	this := IpsecTunnelDetail{}
 	return &this
 }
 
-// NewRoutesListResponseWithDefaults instantiates a new RoutesListResponse object
+// NewIpsecTunnelDetailWithDefaults instantiates a new IpsecTunnelDetail object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRoutesListResponseWithDefaults() *RoutesListResponse {
-	this := RoutesListResponse{}
+func NewIpsecTunnelDetailWithDefaults() *IpsecTunnelDetail {
+	this := IpsecTunnelDetail{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *RoutesListResponse) GetResponse() map[string]RoutesList {
+func (o *IpsecTunnelDetail) GetResponse() IpsecTunnel {
 	if o == nil || o.Response == nil {
-		var ret map[string]RoutesList
+		var ret IpsecTunnel
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *RoutesListResponse) GetResponse() map[string]RoutesList {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoutesListResponse) GetResponseOk() (*map[string]RoutesList, bool) {
+func (o *IpsecTunnelDetail) GetResponseOk() (*IpsecTunnel, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *RoutesListResponse) GetResponseOk() (*map[string]RoutesList, bool) {
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *RoutesListResponse) HasResponse() bool {
+func (o *IpsecTunnelDetail) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *RoutesListResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given map[string]RoutesList and assigns it to the Response field.
-func (o *RoutesListResponse) SetResponse(v map[string]RoutesList) {
+// SetResponse gets a reference to the given IpsecTunnel and assigns it to the Response field.
+func (o *IpsecTunnelDetail) SetResponse(v IpsecTunnel) {
 	o.Response = &v
 }
 
-func (o RoutesListResponse) MarshalJSON() ([]byte, error) {
+func (o IpsecTunnelDetail) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o RoutesListResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableRoutesListResponse struct {
-	value *RoutesListResponse
+type NullableIpsecTunnelDetail struct {
+	value *IpsecTunnelDetail
 	isSet bool
 }
 
-func (v NullableRoutesListResponse) Get() *RoutesListResponse {
+func (v NullableIpsecTunnelDetail) Get() *IpsecTunnelDetail {
 	return v.value
 }
 
-func (v *NullableRoutesListResponse) Set(val *RoutesListResponse) {
+func (v *NullableIpsecTunnelDetail) Set(val *IpsecTunnelDetail) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRoutesListResponse) IsSet() bool {
+func (v NullableIpsecTunnelDetail) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRoutesListResponse) Unset() {
+func (v *NullableIpsecTunnelDetail) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRoutesListResponse(val *RoutesListResponse) *NullableRoutesListResponse {
-	return &NullableRoutesListResponse{value: val, isSet: true}
+func NewNullableIpsecTunnelDetail(val *IpsecTunnelDetail) *NullableIpsecTunnelDetail {
+	return &NullableIpsecTunnelDetail{value: val, isSet: true}
 }
 
-func (v NullableRoutesListResponse) MarshalJSON() ([]byte, error) {
+func (v NullableIpsecTunnelDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRoutesListResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableIpsecTunnelDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
