@@ -17,7 +17,7 @@ import (
 
 // RestartStatusResponse struct for RestartStatusResponse
 type RestartStatusResponse struct {
-	Restart *bool `json:"restart,omitempty"`
+	Response *RestartStatus `json:"response,omitempty"`
 }
 
 // NewRestartStatusResponse instantiates a new RestartStatusResponse object
@@ -37,42 +37,42 @@ func NewRestartStatusResponseWithDefaults() *RestartStatusResponse {
 	return &this
 }
 
-// GetRestart returns the Restart field value if set, zero value otherwise.
-func (o *RestartStatusResponse) GetRestart() bool {
-	if o == nil || o.Restart == nil {
-		var ret bool
+// GetResponse returns the Response field value if set, zero value otherwise.
+func (o *RestartStatusResponse) GetResponse() RestartStatus {
+	if o == nil || o.Response == nil {
+		var ret RestartStatus
 		return ret
 	}
-	return *o.Restart
+	return *o.Response
 }
 
-// GetRestartOk returns a tuple with the Restart field value if set, nil otherwise
+// GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RestartStatusResponse) GetRestartOk() (*bool, bool) {
-	if o == nil || o.Restart == nil {
+func (o *RestartStatusResponse) GetResponseOk() (*RestartStatus, bool) {
+	if o == nil || o.Response == nil {
 		return nil, false
 	}
-	return o.Restart, true
+	return o.Response, true
 }
 
-// HasRestart returns a boolean if a field has been set.
-func (o *RestartStatusResponse) HasRestart() bool {
-	if o != nil && o.Restart != nil {
+// HasResponse returns a boolean if a field has been set.
+func (o *RestartStatusResponse) HasResponse() bool {
+	if o != nil && o.Response != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRestart gets a reference to the given bool and assigns it to the Restart field.
-func (o *RestartStatusResponse) SetRestart(v bool) {
-	o.Restart = &v
+// SetResponse gets a reference to the given RestartStatus and assigns it to the Response field.
+func (o *RestartStatusResponse) SetResponse(v RestartStatus) {
+	o.Response = &v
 }
 
 func (o RestartStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Restart != nil {
-		toSerialize["restart"] = o.Restart
+	if o.Response != nil {
+		toSerialize["response"] = o.Response
 	}
 	return json.Marshal(toSerialize)
 }

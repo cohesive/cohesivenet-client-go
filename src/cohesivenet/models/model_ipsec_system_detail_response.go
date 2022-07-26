@@ -15,31 +15,31 @@ import (
 	"encoding/json"
 )
 
-// IpsecSystemDetailResponse struct for IpsecSystemDetailResponse
-type IpsecSystemDetailResponse struct {
+// IpsecSystemDetail struct for IpsecSystemDetail
+type IpsecSystemDetail struct {
 	ThisEndpoint *IpsecLocalEndpoint `json:"this_endpoint,omitempty"`
 	RemoteEndpoints *map[string]IpsecRemoteEndpoint `json:"remote_endpoints,omitempty"`
 }
 
-// NewIpsecSystemDetailResponse instantiates a new IpsecSystemDetailResponse object
+// NewIpsecSystemDetail instantiates a new IpsecSystemDetail object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpsecSystemDetailResponse() *IpsecSystemDetailResponse {
-	this := IpsecSystemDetailResponse{}
+func NewIpsecSystemDetail() *IpsecSystemDetail {
+	this := IpsecSystemDetail{}
 	return &this
 }
 
-// NewIpsecSystemDetailResponseWithDefaults instantiates a new IpsecSystemDetailResponse object
+// NewIpsecSystemDetailWithDefaults instantiates a new IpsecSystemDetail object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIpsecSystemDetailResponseWithDefaults() *IpsecSystemDetailResponse {
-	this := IpsecSystemDetailResponse{}
+func NewIpsecSystemDetailWithDefaults() *IpsecSystemDetail {
+	this := IpsecSystemDetail{}
 	return &this
 }
 
 // GetThisEndpoint returns the ThisEndpoint field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponse) GetThisEndpoint() IpsecLocalEndpoint {
+func (o *IpsecSystemDetail) GetThisEndpoint() IpsecLocalEndpoint {
 	if o == nil || o.ThisEndpoint == nil {
 		var ret IpsecLocalEndpoint
 		return ret
@@ -49,7 +49,7 @@ func (o *IpsecSystemDetailResponse) GetThisEndpoint() IpsecLocalEndpoint {
 
 // GetThisEndpointOk returns a tuple with the ThisEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponse) GetThisEndpointOk() (*IpsecLocalEndpoint, bool) {
+func (o *IpsecSystemDetail) GetThisEndpointOk() (*IpsecLocalEndpoint, bool) {
 	if o == nil || o.ThisEndpoint == nil {
 		return nil, false
 	}
@@ -57,7 +57,7 @@ func (o *IpsecSystemDetailResponse) GetThisEndpointOk() (*IpsecLocalEndpoint, bo
 }
 
 // HasThisEndpoint returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponse) HasThisEndpoint() bool {
+func (o *IpsecSystemDetail) HasThisEndpoint() bool {
 	if o != nil && o.ThisEndpoint != nil {
 		return true
 	}
@@ -66,12 +66,12 @@ func (o *IpsecSystemDetailResponse) HasThisEndpoint() bool {
 }
 
 // SetThisEndpoint gets a reference to the given IpsecLocalEndpoint and assigns it to the ThisEndpoint field.
-func (o *IpsecSystemDetailResponse) SetThisEndpoint(v IpsecLocalEndpoint) {
+func (o *IpsecSystemDetail) SetThisEndpoint(v IpsecLocalEndpoint) {
 	o.ThisEndpoint = &v
 }
 
 // GetRemoteEndpoints returns the RemoteEndpoints field value if set, zero value otherwise.
-func (o *IpsecSystemDetailResponse) GetRemoteEndpoints() map[string]IpsecRemoteEndpoint {
+func (o *IpsecSystemDetail) GetRemoteEndpoints() map[string]IpsecRemoteEndpoint {
 	if o == nil || o.RemoteEndpoints == nil {
 		var ret map[string]IpsecRemoteEndpoint
 		return ret
@@ -81,7 +81,7 @@ func (o *IpsecSystemDetailResponse) GetRemoteEndpoints() map[string]IpsecRemoteE
 
 // GetRemoteEndpointsOk returns a tuple with the RemoteEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetailResponse) GetRemoteEndpointsOk() (*map[string]IpsecRemoteEndpoint, bool) {
+func (o *IpsecSystemDetail) GetRemoteEndpointsOk() (*map[string]IpsecRemoteEndpoint, bool) {
 	if o == nil || o.RemoteEndpoints == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *IpsecSystemDetailResponse) GetRemoteEndpointsOk() (*map[string]IpsecRem
 }
 
 // HasRemoteEndpoints returns a boolean if a field has been set.
-func (o *IpsecSystemDetailResponse) HasRemoteEndpoints() bool {
+func (o *IpsecSystemDetail) HasRemoteEndpoints() bool {
 	if o != nil && o.RemoteEndpoints != nil {
 		return true
 	}
@@ -98,11 +98,11 @@ func (o *IpsecSystemDetailResponse) HasRemoteEndpoints() bool {
 }
 
 // SetRemoteEndpoints gets a reference to the given map[string]IpsecRemoteEndpoint and assigns it to the RemoteEndpoints field.
-func (o *IpsecSystemDetailResponse) SetRemoteEndpoints(v map[string]IpsecRemoteEndpoint) {
+func (o *IpsecSystemDetail) SetRemoteEndpoints(v map[string]IpsecRemoteEndpoint) {
 	o.RemoteEndpoints = &v
 }
 
-func (o IpsecSystemDetailResponse) MarshalJSON() ([]byte, error) {
+func (o IpsecSystemDetail) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ThisEndpoint != nil {
 		toSerialize["this_endpoint"] = o.ThisEndpoint
@@ -113,38 +113,38 @@ func (o IpsecSystemDetailResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableIpsecSystemDetailResponse struct {
-	value *IpsecSystemDetailResponse
+type NullableIpsecSystemDetail struct {
+	value *IpsecSystemDetail
 	isSet bool
 }
 
-func (v NullableIpsecSystemDetailResponse) Get() *IpsecSystemDetailResponse {
+func (v NullableIpsecSystemDetail) Get() *IpsecSystemDetail {
 	return v.value
 }
 
-func (v *NullableIpsecSystemDetailResponse) Set(val *IpsecSystemDetailResponse) {
+func (v *NullableIpsecSystemDetail) Set(val *IpsecSystemDetail) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIpsecSystemDetailResponse) IsSet() bool {
+func (v NullableIpsecSystemDetail) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIpsecSystemDetailResponse) Unset() {
+func (v *NullableIpsecSystemDetail) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIpsecSystemDetailResponse(val *IpsecSystemDetailResponse) *NullableIpsecSystemDetailResponse {
-	return &NullableIpsecSystemDetailResponse{value: val, isSet: true}
+func NewNullableIpsecSystemDetail(val *IpsecSystemDetail) *NullableIpsecSystemDetail {
+	return &NullableIpsecSystemDetail{value: val, isSet: true}
 }
 
-func (v NullableIpsecSystemDetailResponse) MarshalJSON() ([]byte, error) {
+func (v NullableIpsecSystemDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIpsecSystemDetailResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableIpsecSystemDetail) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -17,7 +17,7 @@ import (
 
 // RestartStatus struct for RestartStatus
 type RestartStatus struct {
-	Response *RestartStatusResponse `json:"response,omitempty"`
+	Restart *bool `json:"restart,omitempty"`
 }
 
 // NewRestartStatus instantiates a new RestartStatus object
@@ -37,42 +37,42 @@ func NewRestartStatusWithDefaults() *RestartStatus {
 	return &this
 }
 
-// GetResponse returns the Response field value if set, zero value otherwise.
-func (o *RestartStatus) GetResponse() RestartStatusResponse {
-	if o == nil || o.Response == nil {
-		var ret RestartStatusResponse
+// GetRestart returns the Restart field value if set, zero value otherwise.
+func (o *RestartStatus) GetRestart() bool {
+	if o == nil || o.Restart == nil {
+		var ret bool
 		return ret
 	}
-	return *o.Response
+	return *o.Restart
 }
 
-// GetResponseOk returns a tuple with the Response field value if set, nil otherwise
+// GetRestartOk returns a tuple with the Restart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RestartStatus) GetResponseOk() (*RestartStatusResponse, bool) {
-	if o == nil || o.Response == nil {
+func (o *RestartStatus) GetRestartOk() (*bool, bool) {
+	if o == nil || o.Restart == nil {
 		return nil, false
 	}
-	return o.Response, true
+	return o.Restart, true
 }
 
-// HasResponse returns a boolean if a field has been set.
-func (o *RestartStatus) HasResponse() bool {
-	if o != nil && o.Response != nil {
+// HasRestart returns a boolean if a field has been set.
+func (o *RestartStatus) HasRestart() bool {
+	if o != nil && o.Restart != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetResponse gets a reference to the given RestartStatusResponse and assigns it to the Response field.
-func (o *RestartStatus) SetResponse(v RestartStatusResponse) {
-	o.Response = &v
+// SetRestart gets a reference to the given bool and assigns it to the Restart field.
+func (o *RestartStatus) SetRestart(v bool) {
+	o.Restart = &v
 }
 
 func (o RestartStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Response != nil {
-		toSerialize["response"] = o.Response
+	if o.Restart != nil {
+		toSerialize["restart"] = o.Restart
 	}
 	return json.Marshal(toSerialize)
 }

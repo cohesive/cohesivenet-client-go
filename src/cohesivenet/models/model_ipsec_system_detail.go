@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// IpsecSystemDetail struct for IpsecSystemDetail
-type IpsecSystemDetail struct {
-	Response *IpsecSystemDetailResponse `json:"response,omitempty"`
+// IpsecSystemDetailResponse struct for IpsecSystemDetailResponse
+type IpsecSystemDetailResponse struct {
+	Response *IpsecSystemDetail `json:"response,omitempty"`
 }
 
-// NewIpsecSystemDetail instantiates a new IpsecSystemDetail object
+// NewIpsecSystemDetailResponse instantiates a new IpsecSystemDetailResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIpsecSystemDetail() *IpsecSystemDetail {
-	this := IpsecSystemDetail{}
+func NewIpsecSystemDetailResponse() *IpsecSystemDetailResponse {
+	this := IpsecSystemDetailResponse{}
 	return &this
 }
 
-// NewIpsecSystemDetailWithDefaults instantiates a new IpsecSystemDetail object
+// NewIpsecSystemDetailResponseWithDefaults instantiates a new IpsecSystemDetailResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewIpsecSystemDetailWithDefaults() *IpsecSystemDetail {
-	this := IpsecSystemDetail{}
+func NewIpsecSystemDetailResponseWithDefaults() *IpsecSystemDetailResponse {
+	this := IpsecSystemDetailResponse{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *IpsecSystemDetail) GetResponse() IpsecSystemDetailResponse {
+func (o *IpsecSystemDetailResponse) GetResponse() IpsecSystemDetail {
 	if o == nil || o.Response == nil {
-		var ret IpsecSystemDetailResponse
+		var ret IpsecSystemDetail
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *IpsecSystemDetail) GetResponse() IpsecSystemDetailResponse {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IpsecSystemDetail) GetResponseOk() (*IpsecSystemDetailResponse, bool) {
+func (o *IpsecSystemDetailResponse) GetResponseOk() (*IpsecSystemDetail, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *IpsecSystemDetail) GetResponseOk() (*IpsecSystemDetailResponse, bool) {
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *IpsecSystemDetail) HasResponse() bool {
+func (o *IpsecSystemDetailResponse) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *IpsecSystemDetail) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given IpsecSystemDetailResponse and assigns it to the Response field.
-func (o *IpsecSystemDetail) SetResponse(v IpsecSystemDetailResponse) {
+// SetResponse gets a reference to the given IpsecSystemDetail and assigns it to the Response field.
+func (o *IpsecSystemDetailResponse) SetResponse(v IpsecSystemDetail) {
 	o.Response = &v
 }
 
-func (o IpsecSystemDetail) MarshalJSON() ([]byte, error) {
+func (o IpsecSystemDetailResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o IpsecSystemDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableIpsecSystemDetail struct {
-	value *IpsecSystemDetail
+type NullableIpsecSystemDetailResponse struct {
+	value *IpsecSystemDetailResponse
 	isSet bool
 }
 
-func (v NullableIpsecSystemDetail) Get() *IpsecSystemDetail {
+func (v NullableIpsecSystemDetailResponse) Get() *IpsecSystemDetailResponse {
 	return v.value
 }
 
-func (v *NullableIpsecSystemDetail) Set(val *IpsecSystemDetail) {
+func (v *NullableIpsecSystemDetailResponse) Set(val *IpsecSystemDetailResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableIpsecSystemDetail) IsSet() bool {
+func (v NullableIpsecSystemDetailResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableIpsecSystemDetail) Unset() {
+func (v *NullableIpsecSystemDetailResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableIpsecSystemDetail(val *IpsecSystemDetail) *NullableIpsecSystemDetail {
-	return &NullableIpsecSystemDetail{value: val, isSet: true}
+func NewNullableIpsecSystemDetailResponse(val *IpsecSystemDetailResponse) *NullableIpsecSystemDetailResponse {
+	return &NullableIpsecSystemDetailResponse{value: val, isSet: true}
 }
 
-func (v NullableIpsecSystemDetail) MarshalJSON() ([]byte, error) {
+func (v NullableIpsecSystemDetailResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableIpsecSystemDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableIpsecSystemDetailResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

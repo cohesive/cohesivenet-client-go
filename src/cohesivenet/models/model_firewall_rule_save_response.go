@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// FirewallRuleSaveResponse - struct for FirewallRuleSaveResponse
+// FirewallRuleSaveResponse - struct for FirewallRuleSaveResponse. Note OneOf logic
 type FirewallRuleSaveResponse struct {
 	FirewallRulesAndErrorsResponse *FirewallRulesAndErrorsResponse
 	FirewallRuleDetailResponse *FirewallRuleDetailResponse
