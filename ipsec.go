@@ -29,12 +29,15 @@ func (c *Client) GetEndpoints() (EndpointResponse, error) {
 }
 
 func (c *Client) CreateEndpoint(endpoint *Endpoint) (*EndpointResponse, error) {
+	//func (c *Client) CreateEndpoints(endpoints map[string]interface{}) (*EndpointResponse, error) {
+
 	rb, err := json.Marshal(endpoint)
 	if err != nil {
 		return nil, err
 	}
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/ipsec/endpoints", c.HostURL), strings.NewReader(string(rb)))
+	//req, err := http.NewRequest("POST", fmt.Sprintf("%s/ipsec/endpoints", c.HostURL), bytes.NewBuffer(rb))
 	if err != nil {
 		return nil, err
 	}

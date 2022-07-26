@@ -33,6 +33,7 @@ func NewClient(username, password, token, hostUrl *string) (*Client, error) {
 
 func (c *Client) doRequest(req *http.Request) ([]byte, error) {
 	req.Header.Add("Api-Token", c.Token)
+	req.Header.Add("Content-Type", "application/json")
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	res, err := c.HTTPClient.Do(req)
 	if err != nil {
