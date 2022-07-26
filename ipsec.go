@@ -28,8 +28,8 @@ func (c *Client) GetEndpoints() (EndpointResponse, error) {
 	return endpoints, nil
 }
 
-func (c *Client) CreateEndpoints(endpoints EndpointResponse) (*EndpointResponse, error) {
-	rb, err := json.Marshal(endpoints)
+func (c *Client) CreateEndpoint(endpoint *Endpoint) (*EndpointResponse, error) {
+	rb, err := json.Marshal(endpoint)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +45,7 @@ func (c *Client) CreateEndpoints(endpoints EndpointResponse) (*EndpointResponse,
 	}
 
 	newEndpoint := EndpointResponse{}
-	err = json.Unmarshal(body, &endpoints)
+	err = json.Unmarshal(body, &endpoint)
 	if err != nil {
 		log.Println(err)
 	}

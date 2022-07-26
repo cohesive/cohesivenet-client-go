@@ -59,3 +59,19 @@ type RouteResponse struct {
 type EndpointResponse struct {
 	Endpoints interface{} `json:"response"`
 }
+
+type Endpoint struct {
+	Id                      int
+	Name                    string `json:"name"`
+	Description             string `json:"description"`
+	Ipaddress               string `json:"ipaddress"`
+	Secret                  string `json:"secret"`
+	Pfs                     bool   `json:"pfs"`
+	Ike_version             int    `json:"ike_version"`
+	Nat_t_enabled           bool   `json:"nat_t_enabled"`
+	Extra_config            string `json:"extra_config"`
+	Vpn_type                string `json:"vpn_type"`
+	Route_based_int_address string `json:"route_based_int_address"`
+	Route_based_local       string `json:"route_based_local"`
+	Route_based_remote      string `json:"route_based_remote"`
+}
