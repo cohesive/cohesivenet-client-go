@@ -1,4 +1,4 @@
-module cohesivenet
+module github.com/cohesive/cohesivenet-client-go
 
 go 1.13
 
