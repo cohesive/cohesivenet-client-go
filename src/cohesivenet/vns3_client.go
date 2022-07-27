@@ -57,9 +57,9 @@ type VNS3Client struct {
 
 	ConfigurationApi *ConfigurationApiService
 
-	// FirewallApi *FirewallApiService
+	FirewallApi *FirewallApiService
 
-	// IPsecApi *IpsecApiService
+	IPsecApi *IpsecApiService
 
 	// InterfacesApi *InterfacesApiService
 
@@ -69,9 +69,9 @@ type VNS3Client struct {
 
 	// OverlayNetworkApi *OverlayNetworkApiService
 
-	// PeeringApi *PeeringApiService
+	PeeringApi *PeeringApiService
 
-	// RoutingApi *RoutingApiService
+	RoutingApi *RoutingApiService
 
 	// SnapshotsApi *SnapshotsApiService
 
@@ -117,14 +117,14 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 	c.AccessApi = (*AccessApiService)(&c.common)
 	// c.BGPApi = (*BGPApiService)(&c.common)
 	c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
-	// c.FirewallApi = (*FirewallApiService)(&c.common)
-	// c.IPsecApi = (*IPsecApiService)(&c.common)
+	c.FirewallApi = (*FirewallApiService)(&c.common)
+	c.IPsecApi = (*IpsecApiService)(&c.common)
 	// c.InterfacesApi = (*InterfacesApiService)(&c.common)
 	// c.MonitoringAlertingApi = (*MonitoringAlertingApiService)(&c.common)
 	// c.NetworkEdgePluginsApi = (*NetworkEdgePluginsApiService)(&c.common)
 	// c.OverlayNetworkApi = (*OverlayNetworkApiService)(&c.common)
-	// c.PeeringApi = (*PeeringApiService)(&c.common)
-	// c.RoutingApi = (*RoutingApiService)(&c.common)
+	c.PeeringApi = (*PeeringApiService)(&c.common)
+	c.RoutingApi = (*RoutingApiService)(&c.common)
 	// c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
 	// c.SystemAdministrationApi = (*SystemAdministrationApiService)(&c.common)
 
