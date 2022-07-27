@@ -61,7 +61,6 @@ type EndpointResponse struct {
 }
 
 type Endpoint struct {
-	Id                      int
 	Name                    string `json:"name"`
 	Description             string `json:"description"`
 	Ipaddress               string `json:"ipaddress"`
@@ -74,4 +73,37 @@ type Endpoint struct {
 	Route_based_int_address string `json:"route_based_int_address"`
 	Route_based_local       string `json:"route_based_local"`
 	Route_based_remote      string `json:"route_based_remote"`
+}
+
+type NewEndpoint struct {
+	Response struct {
+		ID          int      `json:"id"`
+		Name        string   `json:"name"`
+		Description string   `json:"description"`
+		Ipaddress   string   `json:"ipaddress"`
+		Pfs         bool     `json:"pfs"`
+		IkeVersion  int      `json:"ike_version"`
+		NatTEnabled bool     `json:"nat_t_enabled"`
+		ExtraConfig []string `json:"extra_config"`
+		Tunnels     struct {
+			Num3 struct {
+				ID           int    `json:"id"`
+				LocalSubnet  string `json:"local_subnet"`
+				RemoteSubnet string `json:"remote_subnet"`
+				EndpointID   int    `json:"endpoint_id"`
+				Enabled      bool   `json:"enabled"`
+				Description  string `json:"description"`
+			} `json:"3"`
+		} `json:"tunnels"`
+		TrafficPairs struct {
+		} `json:"traffic_pairs"`
+		BgpPeers struct {
+		} `json:"bgp_peers"`
+		Type                 string `json:"type"`
+		VpnType              string `json:"vpn_type"`
+		RouteBasedIntAddress string `json:"route_based_int_address"`
+		RouteBasedLocal      string `json:"route_based_local"`
+		RouteBasedRemote     string `json:"route_based_remote"`
+		Psk                  string `json:"psk"`
+	} `json:"response"`
 }
