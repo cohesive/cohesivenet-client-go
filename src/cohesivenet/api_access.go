@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	m "cohesivenet/models"
 )
 
 
@@ -28,15 +27,15 @@ type AccessApiService service
 type ApiCreateAccessURLRequest struct {
 	ctx context.Context
 	ApiService *AccessApiService
-	createAccessUrlRequest *m.CreateAccessURLRequest
+	createAccessUrlRequest *CreateAccessURLRequest
 }
 
-func (r ApiCreateAccessURLRequest) CreateAccessURLRequest(createAccessUrlRequest m.CreateAccessURLRequest) ApiCreateAccessURLRequest {
+func (r ApiCreateAccessURLRequest) CreateAccessURLRequest(createAccessUrlRequest CreateAccessURLRequest) ApiCreateAccessURLRequest {
 	r.createAccessUrlRequest = &createAccessUrlRequest
 	return r
 }
 
-func (r ApiCreateAccessURLRequest) Execute() (*m.AccessUrlDetail, *http.Response, error) {
+func (r ApiCreateAccessURLRequest) Execute() (*AccessUrlDetail, *http.Response, error) {
 	return r.ApiService.CreateAccessUrlExecute(r)
 }
 
@@ -57,12 +56,12 @@ func (api *AccessApiService) CreateAccessUrl(ctx context.Context) ApiCreateAcces
 
 // Execute executes the request
 //  @return AccessUrlDetail
-func (api *AccessApiService) CreateAccessUrlExecute(r ApiCreateAccessURLRequest) (*m.AccessUrlDetail, *http.Response, error) {
+func (api *AccessApiService) CreateAccessUrlExecute(r ApiCreateAccessURLRequest) (*AccessUrlDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.AccessUrlDetail
+		localVarReturnValue  *AccessUrlDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.CreateAccessUrl")
@@ -118,7 +117,7 @@ func (api *AccessApiService) CreateAccessUrlExecute(r ApiCreateAccessURLRequest)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,15 +144,15 @@ func (api *AccessApiService) CreateAccessUrlExecute(r ApiCreateAccessURLRequest)
 type ApiCreateApiTokenRequest struct {
 	ctx context.Context
 	ApiService *AccessApiService
-	createAPITokenRequest *m.CreateAPITokenRequest
+	createAPITokenRequest *CreateAPITokenRequest
 }
 
-func (r ApiCreateApiTokenRequest) CreateAPITokenRequest(createAPITokenRequest m.CreateAPITokenRequest) ApiCreateApiTokenRequest {
+func (r ApiCreateApiTokenRequest) CreateAPITokenRequest(createAPITokenRequest CreateAPITokenRequest) ApiCreateApiTokenRequest {
 	r.createAPITokenRequest = &createAPITokenRequest
 	return r
 }
 
-func (r ApiCreateApiTokenRequest) Execute() (*m.AccessTokenDetail, *http.Response, error) {
+func (r ApiCreateApiTokenRequest) Execute() (*AccessTokenDetail, *http.Response, error) {
 	return r.ApiService.CreateApiTokenExecute(r)
 }
 
@@ -174,12 +173,12 @@ func (api *AccessApiService) CreateApiToken(ctx context.Context) ApiCreateApiTok
 
 // Execute executes the request
 //  @return AccessTokenDetail
-func (api *AccessApiService) CreateApiTokenExecute(r ApiCreateApiTokenRequest) (*m.AccessTokenDetail, *http.Response, error) {
+func (api *AccessApiService) CreateApiTokenExecute(r ApiCreateApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.AccessTokenDetail
+		localVarReturnValue  *AccessTokenDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.CreateApiToken")
@@ -235,7 +234,7 @@ func (api *AccessApiService) CreateApiTokenExecute(r ApiCreateApiTokenRequest) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -265,7 +264,7 @@ type ApiDeleteAccessUrlRequest struct {
 	accessUrlId int32
 }
 
-func (r ApiDeleteAccessUrlRequest) Execute() (*m.SimpleStringResponse, *http.Response, error) {
+func (r ApiDeleteAccessUrlRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
 	return r.ApiService.DeleteAccessUrlExecute(r)
 }
 
@@ -287,13 +286,13 @@ func (api *AccessApiService) DeleteAccessUrl(ctx context.Context, accessUrlId in
 }
 
 // Execute executes the request
-//  @return m.SimpleStringResponse
-func (api *AccessApiService) DeleteAccessUrlExecute(r ApiDeleteAccessUrlRequest) (*m.SimpleStringResponse, *http.Response, error) {
+//  @return SimpleStringResponse
+func (api *AccessApiService) DeleteAccessUrlExecute(r ApiDeleteAccessUrlRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.SimpleStringResponse
+		localVarReturnValue  *SimpleStringResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.DeleteAccessUrl")
@@ -348,7 +347,7 @@ func (api *AccessApiService) DeleteAccessUrlExecute(r ApiDeleteAccessUrlRequest)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -374,15 +373,15 @@ func (api *AccessApiService) DeleteAccessUrlExecute(r ApiDeleteAccessUrlRequest)
 type ApiDeleteAccessUrlBySearchRequest struct {
 	ctx context.Context
 	ApiService *AccessApiService
-	deleteAccessUrlRequest *m.DeleteAccessURLSearchRequest
+	deleteAccessUrlRequest *DeleteAccessURLSearchRequest
 }
 
-func (r ApiDeleteAccessUrlBySearchRequest) DeleteAccessUrlRequest(deleteAccessUrlRequest m.DeleteAccessURLSearchRequest) ApiDeleteAccessUrlBySearchRequest {
+func (r ApiDeleteAccessUrlBySearchRequest) DeleteAccessUrlRequest(deleteAccessUrlRequest DeleteAccessURLSearchRequest) ApiDeleteAccessUrlBySearchRequest {
 	r.deleteAccessUrlRequest = &deleteAccessUrlRequest
 	return r
 }
 
-func (r ApiDeleteAccessUrlBySearchRequest) Execute() (*m.SimpleStringResponse, *http.Response, error) {
+func (r ApiDeleteAccessUrlBySearchRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
 	return r.ApiService.DeleteAccessUrlBySearchExecute(r)
 }
 
@@ -403,12 +402,12 @@ func (api *AccessApiService) DeleteAccessUrlBySearch(ctx context.Context) ApiDel
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (api *AccessApiService) DeleteAccessUrlBySearchExecute(r ApiDeleteAccessUrlBySearchRequest) (*m.SimpleStringResponse, *http.Response, error) {
+func (api *AccessApiService) DeleteAccessUrlBySearchExecute(r ApiDeleteAccessUrlBySearchRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.SimpleStringResponse
+		localVarReturnValue  *SimpleStringResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.DeleteAccessUrlBySearch")
@@ -464,7 +463,7 @@ func (api *AccessApiService) DeleteAccessUrlBySearchExecute(r ApiDeleteAccessUrl
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -493,7 +492,7 @@ type ApiDeleteApiTokenRequest struct {
 	tokenId int32
 }
 
-func (r ApiDeleteApiTokenRequest) Execute() (*m.SimpleStringResponse, *http.Response, error) {
+func (r ApiDeleteApiTokenRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
 	return r.ApiService.DeleteApiTokenExecute(r)
 }
 
@@ -516,12 +515,12 @@ func (api *AccessApiService) DeleteApiToken(ctx context.Context, tokenId int32) 
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (api *AccessApiService) DeleteApiTokenExecute(r ApiDeleteApiTokenRequest) (*m.SimpleStringResponse, *http.Response, error) {
+func (api *AccessApiService) DeleteApiTokenExecute(r ApiDeleteApiTokenRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.SimpleStringResponse
+		localVarReturnValue  *SimpleStringResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.DeleteApiToken")
@@ -576,7 +575,7 @@ func (api *AccessApiService) DeleteApiTokenExecute(r ApiDeleteApiTokenRequest) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -605,7 +604,7 @@ type ApiGetAccessUrlRequest struct {
 	accessUrlId int32
 }
 
-func (r ApiGetAccessUrlRequest) Execute() (*m.AccessUrlDetail, *http.Response, error) {
+func (r ApiGetAccessUrlRequest) Execute() (*AccessUrlDetail, *http.Response, error) {
 	return r.ApiService.GetAccessUrlExecute(r)
 }
 
@@ -628,12 +627,12 @@ func (api *AccessApiService) GetAccessUrl(ctx context.Context, accessUrlId int32
 
 // Execute executes the request
 //  @return AccessUrlDetail
-func (api *AccessApiService) GetAccessUrlExecute(r ApiGetAccessUrlRequest) (*m.AccessUrlDetail, *http.Response, error) {
+func (api *AccessApiService) GetAccessUrlExecute(r ApiGetAccessUrlRequest) (*AccessUrlDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.AccessUrlDetail
+		localVarReturnValue  *AccessUrlDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetAccessUrl")
@@ -688,7 +687,7 @@ func (api *AccessApiService) GetAccessUrlExecute(r ApiGetAccessUrlRequest) (*m.A
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -716,7 +715,7 @@ type ApiGetAccessUrlsRequest struct {
 	ApiService *AccessApiService
 }
 
-func (r ApiGetAccessUrlsRequest) Execute() (*m.AccessUrlListResponse, *http.Response, error) {
+func (r ApiGetAccessUrlsRequest) Execute() (*AccessUrlListResponse, *http.Response, error) {
 	return r.ApiService.GetAccessUrlsExecute(r)
 }
 
@@ -736,13 +735,13 @@ func (api *AccessApiService) GetAccessUrls(ctx context.Context) ApiGetAccessUrls
 }
 
 // Execute executes the request
-//  @return m.AccessUrlListResponse
-func (api *AccessApiService) GetAccessUrlsExecute(r ApiGetAccessUrlsRequest) (*m.AccessUrlListResponse, *http.Response, error) {
+//  @return AccessUrlListResponse
+func (api *AccessApiService) GetAccessUrlsExecute(r ApiGetAccessUrlsRequest) (*AccessUrlListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.AccessUrlListResponse
+		localVarReturnValue  *AccessUrlListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetAccessUrls")
@@ -816,7 +815,7 @@ type ApiGetApiTokenRequest struct {
 	tokenId int32
 }
 
-func (r ApiGetApiTokenRequest) Execute() (*m.AccessTokenDetail, *http.Response, error) {
+func (r ApiGetApiTokenRequest) Execute() (*AccessTokenDetail, *http.Response, error) {
 	return r.ApiService.GetApiTokenExecute(r)
 }
 
@@ -839,12 +838,12 @@ func (api *AccessApiService) GetApiToken(ctx context.Context, tokenId int32) Api
 
 // Execute executes the request
 //  @return AccessTokenDetail
-func (api *AccessApiService) GetApiTokenExecute(r ApiGetApiTokenRequest) (*m.AccessTokenDetail, *http.Response, error) {
+func (api *AccessApiService) GetApiTokenExecute(r ApiGetApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.AccessTokenDetail
+		localVarReturnValue  *AccessTokenDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetApiToken")
@@ -899,7 +898,7 @@ func (api *AccessApiService) GetApiTokenExecute(r ApiGetApiTokenRequest) (*m.Acc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -927,7 +926,7 @@ type ApiGetApiTokensRequest struct {
 	ApiService *AccessApiService
 }
 
-func (r ApiGetApiTokensRequest) Execute() (*m.AccessTokenListResponse, *http.Response, error) {
+func (r ApiGetApiTokensRequest) Execute() (*AccessTokenListResponse, *http.Response, error) {
 	return r.ApiService.GetApiTokensExecute(r)
 }
 
@@ -948,12 +947,12 @@ func (api *AccessApiService) GetApiTokens(ctx context.Context) ApiGetApiTokensRe
 
 // Execute executes the request
 //  @return AccessTokenListResponse
-func (api *AccessApiService) GetApiTokensExecute(r ApiGetApiTokensRequest) (*m.AccessTokenListResponse, *http.Response, error) {
+func (api *AccessApiService) GetApiTokensExecute(r ApiGetApiTokensRequest) (*AccessTokenListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.AccessTokenListResponse
+		localVarReturnValue  *AccessTokenListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetApiTokens")
@@ -1535,7 +1534,7 @@ TODO Identity API endpoints
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 404 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -1655,7 +1654,7 @@ TODO Identity API endpoints
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 404 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()

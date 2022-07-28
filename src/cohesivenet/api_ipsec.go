@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	m "cohesivenet/models"
 )
 
 
@@ -31,7 +30,7 @@ type ApiDeleteIpsecEndpointRequest struct {
 	endpointId int32
 }
 
-func (r ApiDeleteIpsecEndpointRequest) Execute() (*m.IpsecSystemDetailResponse, *http.Response, error) {
+func (r ApiDeleteIpsecEndpointRequest) Execute() (*IpsecSystemDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteIpsecEndpointExecute(r)
 }
 
@@ -53,13 +52,13 @@ func (api *IpsecApiService) DeleteIpsecEndpoint(ctx context.Context, endpointId 
 }
 
 // Execute executes the request
-//  @return m.IpsecSystemDetailResponse
-func (api *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointRequest) (*m.IpsecSystemDetailResponse, *http.Response, error) {
+//  @return IpsecSystemDetailResponse
+func (api *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecSystemDetailResponse
+		localVarReturnValue  *IpsecSystemDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpoint")
@@ -117,7 +116,7 @@ func (api *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -148,7 +147,7 @@ type ApiDeleteIpsecEndpointTunnelRequest struct {
 	tunnelId int32
 }
 
-func (r ApiDeleteIpsecEndpointTunnelRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+func (r ApiDeleteIpsecEndpointTunnelRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.DeleteIpsecEndpointTunnelExecute(r)
 }
 
@@ -172,13 +171,13 @@ func (api *IpsecApiService) DeleteIpsecEndpointTunnel(ctx context.Context, endpo
 }
 
 // Execute executes the request
-//  @return m.IpsecRemoteEndpointDetail
-func (api *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpointTunnelRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+//  @return IpsecRemoteEndpointDetail
+func (api *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpointTunnelRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecRemoteEndpointDetail
+		localVarReturnValue  *IpsecRemoteEndpointDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpointTunnel")
@@ -237,7 +236,7 @@ func (api *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEnd
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -268,7 +267,7 @@ type ApiDeleteIpsecTrafficPairRequest struct {
 	pairId int32
 }
 
-func (r ApiDeleteIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
+func (r ApiDeleteIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.DeleteIpsecTrafficPairExecute(r)
 }
 
@@ -292,13 +291,13 @@ func (api *IpsecApiService) DeleteIpsecTrafficPair(ctx context.Context, endpoint
 }
 
 // Execute executes the request
-//  @return m.IpsecTrafficPairResponse
-func (api *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
+//  @return IpsecTrafficPairResponse
+func (api *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTrafficPairResponse
+		localVarReturnValue  *IpsecTrafficPairResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecTrafficPair")
@@ -357,7 +356,7 @@ func (api *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTraffi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -388,7 +387,7 @@ type ApiDisableIpsecTrafficPairRequest struct {
 	pairId int32
 }
 
-func (r ApiDisableIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
+func (r ApiDisableIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.DisableIpsecTrafficPairExecute(r)
 }
 
@@ -412,13 +411,13 @@ func (api *IpsecApiService) DisableIpsecTrafficPair(ctx context.Context, endpoin
 }
 
 // Execute executes the request
-//  @return m.IpsecTrafficPairResponse
-func (api *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
+//  @return IpsecTrafficPairResponse
+func (api *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTrafficPairResponse
+		localVarReturnValue  *IpsecTrafficPairResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DisableIpsecTrafficPair")
@@ -477,7 +476,7 @@ func (api *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTraf
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -487,7 +486,7 @@ func (api *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTraf
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -517,7 +516,7 @@ type ApiEnableIpsecTrafficPairRequest struct {
 	pairId int32
 }
 
-func (r ApiEnableIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
+func (r ApiEnableIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.EnableIpsecTrafficPairExecute(r)
 }
 
@@ -541,13 +540,13 @@ func (api *IpsecApiService) EnableIpsecTrafficPair(ctx context.Context, endpoint
 }
 
 // Execute executes the request
-//  @return m.IpsecTrafficPairResponse
-func (api *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
+//  @return IpsecTrafficPairResponse
+func (api *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTrafficPairResponse
+		localVarReturnValue  *IpsecTrafficPairResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.EnableIpsecTrafficPair")
@@ -606,7 +605,7 @@ func (api *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTraffi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -616,7 +615,7 @@ func (api *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTraffi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -651,7 +650,7 @@ func (r ApiGetConnectedSubnetsRequest) ExtendedOutput(extendedOutput bool) ApiGe
 	return r
 }
 
-func (r ApiGetConnectedSubnetsRequest) Execute() (*m.ConnectedSubnetsDetailResponse, *http.Response, error) {
+func (r ApiGetConnectedSubnetsRequest) Execute() (*ConnectedSubnetsDetailResponse, *http.Response, error) {
 	return r.ApiService.GetConnectedSubnetsExecute(r)
 }
 
@@ -671,13 +670,13 @@ func (api *IpsecApiService) GetConnectedSubnets(ctx context.Context) ApiGetConne
 }
 
 // Execute executes the request
-//  @return m.ConnectedSubnetsDetailResponse
-func (api *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsRequest) (*m.ConnectedSubnetsDetailResponse, *http.Response, error) {
+//  @return ConnectedSubnetsDetailResponse
+func (api *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsRequest) (*ConnectedSubnetsDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.ConnectedSubnetsDetailResponse
+		localVarReturnValue  *ConnectedSubnetsDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetConnectedSubnets")
@@ -753,7 +752,7 @@ type ApiGetIpsecDetailsRequest struct {
 	ApiService *IpsecApiService
 }
 
-func (r ApiGetIpsecDetailsRequest) Execute() (*m.IpsecSystemDetailResponse, *http.Response, error) {
+func (r ApiGetIpsecDetailsRequest) Execute() (*IpsecSystemDetailResponse, *http.Response, error) {
 	return r.ApiService.GetIpsecDetailsExecute(r)
 }
 
@@ -773,13 +772,13 @@ func (api *IpsecApiService) GetIpsecDetails(ctx context.Context) ApiGetIpsecDeta
 }
 
 // Execute executes the request
-//  @return m.IpsecSystemDetailResponse
-func (api *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*m.IpsecSystemDetailResponse, *http.Response, error) {
+//  @return IpsecSystemDetailResponse
+func (api *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecSystemDetailResponse
+		localVarReturnValue  *IpsecSystemDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecDetails")
@@ -853,7 +852,7 @@ type ApiGetIpsecEndpointRequest struct {
 	endpointId int32
 }
 
-func (r ApiGetIpsecEndpointRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+func (r ApiGetIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.GetIpsecEndpointExecute(r)
 }
 
@@ -875,13 +874,13 @@ func (api *IpsecApiService) GetIpsecEndpoint(ctx context.Context, endpointId int
 }
 
 // Execute executes the request
-//  @return m.IpsecRemoteEndpointDetail
-func (api *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+//  @return IpsecRemoteEndpointDetail
+func (api *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecRemoteEndpointDetail
+		localVarReturnValue  *IpsecRemoteEndpointDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecEndpoint")
@@ -979,7 +978,7 @@ func (r ApiGetIpsecLinkHistoryRequest) Tunnelid(tunnelid int32) ApiGetIpsecLinkH
 	return r
 }
 
-func (r ApiGetIpsecLinkHistoryRequest) Execute() (*m.LinkHistoryDetail, *http.Response, error) {
+func (r ApiGetIpsecLinkHistoryRequest) Execute() (*LinkHistoryDetail, *http.Response, error) {
 	return r.ApiService.GetIpsecLinkHistoryExecute(r)
 }
 
@@ -999,13 +998,13 @@ func (api *IpsecApiService) GetIpsecLinkHistory(ctx context.Context) ApiGetIpsec
 }
 
 // Execute executes the request
-//  @return m.LinkHistoryDetail
-func (api *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryRequest) (*m.LinkHistoryDetail, *http.Response, error) {
+//  @return LinkHistoryDetail
+func (api *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryRequest) (*LinkHistoryDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.LinkHistoryDetail
+		localVarReturnValue  *LinkHistoryDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecLinkHistory")
@@ -1068,7 +1067,7 @@ func (api *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryR
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1104,7 +1103,7 @@ func (r ApiGetIpsecStatusRequest) UpDownStatusOnly(upDownStatusOnly bool) ApiGet
 	return r
 }
 
-func (r ApiGetIpsecStatusRequest) Execute() (*m.IpsecTunnelListResponseAsObject, *http.Response, error) {
+func (r ApiGetIpsecStatusRequest) Execute() (*IpsecTunnelListResponseAsObject, *http.Response, error) {
 	return r.ApiService.GetIpsecStatusExecute(r)
 }
 
@@ -1124,13 +1123,13 @@ func (api *IpsecApiService) GetIpsecStatus(ctx context.Context) ApiGetIpsecStatu
 }
 
 // Execute executes the request
-//  @return m.IpsecTunnelListResponseAsObject
-func (api *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*m.IpsecTunnelListResponseAsObject, *http.Response, error) {
+//  @return IpsecTunnelListResponseAsObject
+func (api *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*IpsecTunnelListResponseAsObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTunnelListResponseAsObject
+		localVarReturnValue  *IpsecTunnelListResponseAsObject
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecStatus")
@@ -1204,15 +1203,15 @@ func (api *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*
 type ApiPostCreateIpsecEndpointRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
-	createIpsecEndpointRequest *m.CreateIpsecEndpointRequest
+	createIpsecEndpointRequest *CreateIpsecEndpointRequest
 }
 
-func (r ApiPostCreateIpsecEndpointRequest) CreateIpsecEndpointRequest(createIpsecEndpointRequest m.CreateIpsecEndpointRequest) ApiPostCreateIpsecEndpointRequest {
+func (r ApiPostCreateIpsecEndpointRequest) CreateIpsecEndpointRequest(createIpsecEndpointRequest CreateIpsecEndpointRequest) ApiPostCreateIpsecEndpointRequest {
 	r.createIpsecEndpointRequest = &createIpsecEndpointRequest
 	return r
 }
 
-func (r ApiPostCreateIpsecEndpointRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+func (r ApiPostCreateIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.PostCreateIpsecEndpointExecute(r)
 }
 
@@ -1232,13 +1231,13 @@ func (api *IpsecApiService) PostCreateIpsecEndpoint(ctx context.Context) ApiPost
 }
 
 // Execute executes the request
-//  @return m.IpsecRemoteEndpointDetail
-func (api *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEndpointRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+//  @return IpsecRemoteEndpointDetail
+func (api *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecRemoteEndpointDetail
+		localVarReturnValue  *IpsecRemoteEndpointDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpoint")
@@ -1297,7 +1296,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecE
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1325,15 +1324,15 @@ type ApiPostCreateIpsecEndpointTunnelRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
 	endpointId int32
-	createIpsecTunnelRequest *m.CreateIpsecTunnelRequest
+	createIpsecTunnelRequest *CreateIpsecTunnelRequest
 }
 
-func (r ApiPostCreateIpsecEndpointTunnelRequest) CreateIpsecTunnelRequest(createIpsecTunnelRequest m.CreateIpsecTunnelRequest) ApiPostCreateIpsecEndpointTunnelRequest {
+func (r ApiPostCreateIpsecEndpointTunnelRequest) CreateIpsecTunnelRequest(createIpsecTunnelRequest CreateIpsecTunnelRequest) ApiPostCreateIpsecEndpointTunnelRequest {
 	r.createIpsecTunnelRequest = &createIpsecTunnelRequest
 	return r
 }
 
-func (r ApiPostCreateIpsecEndpointTunnelRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+func (r ApiPostCreateIpsecEndpointTunnelRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.PostCreateIpsecEndpointTunnelExecute(r)
 }
 
@@ -1355,13 +1354,13 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(ctx context.Context, e
 }
 
 // Execute executes the request
-//  @return m.IpsecRemoteEndpointDetail
-func (api *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIpsecEndpointTunnelRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+//  @return IpsecRemoteEndpointDetail
+func (api *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIpsecEndpointTunnelRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecRemoteEndpointDetail
+		localVarReturnValue  *IpsecRemoteEndpointDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpointTunnel")
@@ -1424,7 +1423,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1434,7 +1433,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1461,15 +1460,15 @@ type ApiPostCreateIpsecTrafficPairRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
 	endpointId int32
-	createIpsecTrafficPairRequest *m.CreateIpsecTrafficPairRequest
+	createIpsecTrafficPairRequest *CreateIpsecTrafficPairRequest
 }
 
-func (r ApiPostCreateIpsecTrafficPairRequest) CreateIpsecTrafficPairRequest(createIpsecTrafficPairRequest m.CreateIpsecTrafficPairRequest) ApiPostCreateIpsecTrafficPairRequest {
+func (r ApiPostCreateIpsecTrafficPairRequest) CreateIpsecTrafficPairRequest(createIpsecTrafficPairRequest CreateIpsecTrafficPairRequest) ApiPostCreateIpsecTrafficPairRequest {
 	r.createIpsecTrafficPairRequest = &createIpsecTrafficPairRequest
 	return r
 }
 
-func (r ApiPostCreateIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
+func (r ApiPostCreateIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.PostCreateIpsecTrafficPairExecute(r)
 }
 
@@ -1491,13 +1490,13 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPair(ctx context.Context, endp
 }
 
 // Execute executes the request
-//  @return m.IpsecTrafficPairResponse
-func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
+//  @return IpsecTrafficPairResponse
+func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTrafficPairResponse
+		localVarReturnValue  *IpsecTrafficPairResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecTrafficPair")
@@ -1560,7 +1559,7 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIps
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1570,7 +1569,7 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIps
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1596,15 +1595,15 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIps
 type ApiPostRestartIpsecActionRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
-	restartRequest *m.RestartRequest
+	restartRequest *RestartRequest
 }
 
-func (r ApiPostRestartIpsecActionRequest) RestartRequest(restartRequest m.RestartRequest) ApiPostRestartIpsecActionRequest {
+func (r ApiPostRestartIpsecActionRequest) RestartRequest(restartRequest RestartRequest) ApiPostRestartIpsecActionRequest {
 	r.restartRequest = &restartRequest
 	return r
 }
 
-func (r ApiPostRestartIpsecActionRequest) Execute() (*m.RestartStatusResponse, *http.Response, error) {
+func (r ApiPostRestartIpsecActionRequest) Execute() (*RestartStatusResponse, *http.Response, error) {
 	return r.ApiService.PostRestartIpsecActionExecute(r)
 }
 
@@ -1624,13 +1623,13 @@ func (api *IpsecApiService) PostRestartIpsecAction(ctx context.Context) ApiPostR
 }
 
 // Execute executes the request
-//  @return m.RestartStatusResponse
-func (api *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecActionRequest) (*m.RestartStatusResponse, *http.Response, error) {
+//  @return RestartStatusResponse
+func (api *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecActionRequest) (*RestartStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RestartStatusResponse
+		localVarReturnValue  *RestartStatusResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostRestartIpsecAction")
@@ -1689,7 +1688,7 @@ func (api *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecA
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1716,15 +1715,15 @@ func (api *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecA
 type ApiPutUpdateIpsecConfigRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
-	updateIpsecAddressRequest *m.UpdateIpsecAddressRequest
+	updateIpsecAddressRequest *UpdateIpsecAddressRequest
 }
 
-func (r ApiPutUpdateIpsecConfigRequest) UpdateIpsecAddressRequest(updateIpsecAddressRequest m.UpdateIpsecAddressRequest) ApiPutUpdateIpsecConfigRequest {
+func (r ApiPutUpdateIpsecConfigRequest) UpdateIpsecAddressRequest(updateIpsecAddressRequest UpdateIpsecAddressRequest) ApiPutUpdateIpsecConfigRequest {
 	r.updateIpsecAddressRequest = &updateIpsecAddressRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecConfigRequest) Execute() (*m.IpsecSystemDetailResponse, *http.Response, error) {
+func (r ApiPutUpdateIpsecConfigRequest) Execute() (*IpsecSystemDetailResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecConfigExecute(r)
 }
 
@@ -1745,13 +1744,13 @@ func (api *IpsecApiService) PutUpdateIpsecConfig(ctx context.Context) ApiPutUpda
 }
 
 // Execute executes the request
-//  @return m.IpsecSystemDetailResponse
-func (api *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigRequest) (*m.IpsecSystemDetailResponse, *http.Response, error) {
+//  @return IpsecSystemDetailResponse
+func (api *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecSystemDetailResponse
+		localVarReturnValue  *IpsecSystemDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecConfig")
@@ -1810,7 +1809,7 @@ func (api *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1838,15 +1837,15 @@ type ApiPutUpdateIpsecEndpointRequest struct {
 	ctx context.Context
 	ApiService *IpsecApiService
 	endpointId int32
-	updateIpsecEndpointRequest *m.UpdateIpsecEndpointRequest
+	updateIpsecEndpointRequest *UpdateIpsecEndpointRequest
 }
 
-func (r ApiPutUpdateIpsecEndpointRequest) UpdateIpsecEndpointRequest(updateIpsecEndpointRequest m.UpdateIpsecEndpointRequest) ApiPutUpdateIpsecEndpointRequest {
+func (r ApiPutUpdateIpsecEndpointRequest) UpdateIpsecEndpointRequest(updateIpsecEndpointRequest UpdateIpsecEndpointRequest) ApiPutUpdateIpsecEndpointRequest {
 	r.updateIpsecEndpointRequest = &updateIpsecEndpointRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecEndpointRequest) Execute() (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+func (r ApiPutUpdateIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecEndpointExecute(r)
 }
 
@@ -1868,13 +1867,13 @@ func (api *IpsecApiService) PutUpdateIpsecEndpoint(ctx context.Context, endpoint
 }
 
 // Execute executes the request
-//  @return m.IpsecRemoteEndpointDetail
-func (api *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpointRequest) (*m.IpsecRemoteEndpointDetail, *http.Response, error) {
+//  @return IpsecRemoteEndpointDetail
+func (api *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecRemoteEndpointDetail
+		localVarReturnValue  *IpsecRemoteEndpointDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpoint")
@@ -1937,7 +1936,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEnd
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1966,15 +1965,15 @@ type ApiPutUpdateIpsecEndpointTunnelRequest struct {
 	ApiService *IpsecApiService
 	endpointId int32
 	tunnelId int32
-	updateIpsecTunnelRequest *m.UpdateIpsecTunnelRequest
+	updateIpsecTunnelRequest *UpdateIpsecTunnelRequest
 }
 
-func (r ApiPutUpdateIpsecEndpointTunnelRequest) UpdateIpsecTunnelRequest(updateIpsecTunnelRequest m.UpdateIpsecTunnelRequest) ApiPutUpdateIpsecEndpointTunnelRequest {
+func (r ApiPutUpdateIpsecEndpointTunnelRequest) UpdateIpsecTunnelRequest(updateIpsecTunnelRequest UpdateIpsecTunnelRequest) ApiPutUpdateIpsecEndpointTunnelRequest {
 	r.updateIpsecTunnelRequest = &updateIpsecTunnelRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecEndpointTunnelRequest) Execute() (*m.IpsecTunnelDetail, *http.Response, error) {
+func (r ApiPutUpdateIpsecEndpointTunnelRequest) Execute() (*IpsecTunnelDetail, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecEndpointTunnelExecute(r)
 }
 
@@ -1998,13 +1997,13 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return m.IpsecTunnelDetail
-func (api *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpsecEndpointTunnelRequest) (*m.IpsecTunnelDetail, *http.Response, error) {
+//  @return IpsecTunnelDetail
+func (api *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpsecEndpointTunnelRequest) (*IpsecTunnelDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTunnelDetail
+		localVarReturnValue  *IpsecTunnelDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpointTunnel")
@@ -2068,7 +2067,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2097,15 +2096,15 @@ type ApiPutUpdateIpsecTrafficPairRequest struct {
 	ApiService *IpsecApiService
 	endpointId int32
 	pairId int32
-	updateIpsecTrafficPairRequest *m.UpdateIpsecTrafficPairRequest
+	updateIpsecTrafficPairRequest *UpdateIpsecTrafficPairRequest
 }
 
-func (r ApiPutUpdateIpsecTrafficPairRequest) UpdateIpsecTrafficPairRequest(updateIpsecTrafficPairRequest m.UpdateIpsecTrafficPairRequest) ApiPutUpdateIpsecTrafficPairRequest {
+func (r ApiPutUpdateIpsecTrafficPairRequest) UpdateIpsecTrafficPairRequest(updateIpsecTrafficPairRequest UpdateIpsecTrafficPairRequest) ApiPutUpdateIpsecTrafficPairRequest {
 	r.updateIpsecTrafficPairRequest = &updateIpsecTrafficPairRequest
 	return r
 }
 
-func (r ApiPutUpdateIpsecTrafficPairRequest) Execute() (*m.IpsecTrafficPairResponse, *http.Response, error) {
+func (r ApiPutUpdateIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateIpsecTrafficPairExecute(r)
 }
 
@@ -2129,13 +2128,13 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPair(ctx context.Context, endpo
 }
 
 // Execute executes the request
-//  @return m.IpsecTrafficPairResponse
-func (api *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTrafficPairRequest) (*m.IpsecTrafficPairResponse, *http.Response, error) {
+//  @return IpsecTrafficPairResponse
+func (api *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.IpsecTrafficPairResponse
+		localVarReturnValue  *IpsecTrafficPairResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecTrafficPair")
@@ -2199,7 +2198,7 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsec
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2209,7 +2208,7 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -19,7 +19,6 @@ import (
 	"net/url"
 	"strings"
 	"os"
-	"cohesivenet/models"
 )
 
 
@@ -32,7 +31,7 @@ type ApiDeleteCustomVariableRequest struct {
 	name string
 }
 
-func (r ApiDeleteCustomVariableRequest) Execute() (*models.VariablesListResponse, *http.Response, error) {
+func (r ApiDeleteCustomVariableRequest) Execute() (*VariablesListResponse, *http.Response, error) {
 	return r.ApiService.DeleteCustomVariableExecute(r)
 }
 
@@ -55,12 +54,12 @@ func (api *ConfigurationApiService) DeleteCustomVariable(ctx context.Context, na
 
 // Execute executes the request
 //  @return Object
-func (api *ConfigurationApiService) DeleteCustomVariableExecute(r ApiDeleteCustomVariableRequest) (*models.VariablesListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) DeleteCustomVariableExecute(r ApiDeleteCustomVariableRequest) (*VariablesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.VariablesListResponse
+		localVarReturnValue  *VariablesListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.DeleteCustomVariable")
@@ -115,7 +114,7 @@ func (api *ConfigurationApiService) DeleteCustomVariableExecute(r ApiDeleteCusto
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -151,7 +150,7 @@ func (r ApiGetVariableCollectionsRequest) Collections(collections string) ApiGet
 	return r
 }
 
-func (r ApiGetVariableCollectionsRequest) Execute() (*models.VariableCollectionsListResponse, *http.Response, error) {
+func (r ApiGetVariableCollectionsRequest) Execute() (*VariableCollectionsListResponse, *http.Response, error) {
 	return r.ApiService.GetVariableCollectionsExecute(r)
 }
 
@@ -172,12 +171,12 @@ func (api *ConfigurationApiService) GetVariableCollections(ctx context.Context) 
 
 // Execute executes the request
 //  @return VariableCollectionsListResponse
-func (api *ConfigurationApiService) GetVariableCollectionsExecute(r ApiGetVariableCollectionsRequest) (*models.VariableCollectionsListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetVariableCollectionsExecute(r ApiGetVariableCollectionsRequest) (*VariableCollectionsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.VariableCollectionsListResponse
+		localVarReturnValue  *VariableCollectionsListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetVariableCollections")
@@ -253,7 +252,7 @@ type ApiGetVariablesRequest struct {
 	ApiService *ConfigurationApiService
 }
 
-func (r ApiGetVariablesRequest) Execute() (*models.VariablesListResponse, *http.Response, error) {
+func (r ApiGetVariablesRequest) Execute() (*VariablesListResponse, *http.Response, error) {
 	return r.ApiService.GetVariablesExecute(r)
 }
 
@@ -274,12 +273,12 @@ func (api *ConfigurationApiService) GetVariables(ctx context.Context) ApiGetVari
 
 // Execute executes the request
 //  @return VariablesListResponse
-func (api *ConfigurationApiService) GetVariablesExecute(r ApiGetVariablesRequest) (*models.VariablesListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetVariablesExecute(r ApiGetVariablesRequest) (*VariablesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.VariablesListResponse
+		localVarReturnValue  *VariablesListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetVariables")
@@ -350,15 +349,15 @@ func (api *ConfigurationApiService) GetVariablesExecute(r ApiGetVariablesRequest
 type ApiPostCreateCustomVariableRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	createCustomVariableRequest *models.CreateCustomVariableRequest
+	createCustomVariableRequest *CreateCustomVariableRequest
 }
 
-func (r ApiPostCreateCustomVariableRequest) CreateCustomVariableRequest(createCustomVariableRequest models.CreateCustomVariableRequest) ApiPostCreateCustomVariableRequest {
+func (r ApiPostCreateCustomVariableRequest) CreateCustomVariableRequest(createCustomVariableRequest CreateCustomVariableRequest) ApiPostCreateCustomVariableRequest {
 	r.createCustomVariableRequest = &createCustomVariableRequest
 	return r
 }
 
-func (r ApiPostCreateCustomVariableRequest) Execute() (*models.VariablesListResponse, *http.Response, error) {
+func (r ApiPostCreateCustomVariableRequest) Execute() (*VariablesListResponse, *http.Response, error) {
 	return r.ApiService.PostCreateCustomVariableExecute(r)
 }
 
@@ -379,12 +378,12 @@ func (api *ConfigurationApiService) PostCreateCustomVariable(ctx context.Context
 
 // Execute executes the request
 //  @return Object
-func (api *ConfigurationApiService) PostCreateCustomVariableExecute(r ApiPostCreateCustomVariableRequest) (*models.VariablesListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PostCreateCustomVariableExecute(r ApiPostCreateCustomVariableRequest) (*VariablesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.VariablesListResponse
+		localVarReturnValue  *VariablesListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostCreateCustomVariable")
@@ -443,7 +442,7 @@ func (api *ConfigurationApiService) PostCreateCustomVariableExecute(r ApiPostCre
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -472,7 +471,7 @@ type ApiGetConfigRequest struct {
 	ApiService *ConfigurationApiService
 }
 
-func (r ApiGetConfigRequest) Execute() (*models.ConfigDetail, *http.Response, error) {
+func (r ApiGetConfigRequest) Execute() (*ConfigDetail, *http.Response, error) {
 	return r.ApiService.GetConfigExecute(r)
 }
 
@@ -493,12 +492,12 @@ func (api *ConfigurationApiService) GetConfig(ctx context.Context) ApiGetConfigR
 
 // Execute executes the request
 //  @return ConfigDetail
-func (api *ConfigurationApiService) GetConfigExecute(r ApiGetConfigRequest) (*models.ConfigDetail, *http.Response, error) {
+func (api *ConfigurationApiService) GetConfigExecute(r ApiGetConfigRequest) (*ConfigDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.ConfigDetail
+		localVarReturnValue  *ConfigDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetConfig")
@@ -571,7 +570,7 @@ type ApiGetKeysetRequest struct {
 	ApiService *ConfigurationApiService
 }
 
-func (r ApiGetKeysetRequest) Execute() (*models.KeysetDetail, *http.Response, error) {
+func (r ApiGetKeysetRequest) Execute() (*KeysetDetail, *http.Response, error) {
 	return r.ApiService.GetKeysetExecute(r)
 }
 
@@ -593,12 +592,12 @@ func (api *ConfigurationApiService) GetKeyset(ctx context.Context) ApiGetKeysetR
 
 // Execute executes the request
 //  @return KeysetDetail
-func (api *ConfigurationApiService) GetKeysetExecute(r ApiGetKeysetRequest) (*models.KeysetDetail, *http.Response, error) {
+func (api *ConfigurationApiService) GetKeysetExecute(r ApiGetKeysetRequest) (*KeysetDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.KeysetDetail
+		localVarReturnValue  *KeysetDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetKeyset")
@@ -652,7 +651,7 @@ func (api *ConfigurationApiService) GetKeysetExecute(r ApiGetKeysetRequest) (*mo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -680,7 +679,7 @@ type ApiGetLicenseRequest struct {
 	ApiService *ConfigurationApiService
 }
 
-func (r ApiGetLicenseRequest) Execute() (*models.LicenseDetail, *http.Response, error) {
+func (r ApiGetLicenseRequest) Execute() (*LicenseDetail, *http.Response, error) {
 	return r.ApiService.GetLicenseExecute(r)
 }
 
@@ -701,12 +700,12 @@ func (api *ConfigurationApiService) GetLicense(ctx context.Context) ApiGetLicens
 
 // Execute executes the request
 //  @return LicenseDetail
-func (api *ConfigurationApiService) GetLicenseExecute(r ApiGetLicenseRequest) (*models.LicenseDetail, *http.Response, error) {
+func (api *ConfigurationApiService) GetLicenseExecute(r ApiGetLicenseRequest) (*LicenseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.LicenseDetail
+		localVarReturnValue  *LicenseDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetLicense")
@@ -760,7 +759,7 @@ func (api *ConfigurationApiService) GetLicenseExecute(r ApiGetLicenseRequest) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -795,7 +794,7 @@ func (r ApiGetMsConfigRequest) Ip(ip string) ApiGetMsConfigRequest {
 	return r
 }
 
-func (r ApiGetMsConfigRequest) Execute() (*models.AlertDetailResponse, *http.Response, error) {
+func (r ApiGetMsConfigRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
 	return r.ApiService.GetMsConfigExecute(r)
 }
 
@@ -816,12 +815,12 @@ func (api *ConfigurationApiService) GetMsConfig(ctx context.Context) ApiGetMsCon
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (api *ConfigurationApiService) GetMsConfigExecute(r ApiGetMsConfigRequest) (*models.AlertDetailResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetMsConfigExecute(r ApiGetMsConfigRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.AlertDetailResponse
+		localVarReturnValue  *AlertDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetMsConfig")
@@ -897,7 +896,7 @@ type ApiGetSSLCertsRequest struct {
 	ApiService *ConfigurationApiService
 }
 
-func (r ApiGetSSLCertsRequest) Execute() (*models.SSLCertsListResponse, *http.Response, error) {
+func (r ApiGetSSLCertsRequest) Execute() (*SSLCertsListResponse, *http.Response, error) {
 	return r.ApiService.GetSSLCertsExecute(r)
 }
 
@@ -918,12 +917,12 @@ func (api *ConfigurationApiService) GetSSLCerts(ctx context.Context) ApiGetSSLCe
 
 // Execute executes the request
 //  @return SSLCertsListResponse
-func (api *ConfigurationApiService) GetSSLCertsExecute(r ApiGetSSLCertsRequest) (*models.SSLCertsListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetSSLCertsExecute(r ApiGetSSLCertsRequest) (*SSLCertsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.SSLCertsListResponse
+		localVarReturnValue  *SSLCertsListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetSSLCerts")
@@ -1085,7 +1084,7 @@ TODO SSL Endpoints
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 404 {
-// 			var v models.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -1194,7 +1193,7 @@ TODO SSL Endpoints
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v models.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -1309,7 +1308,7 @@ TODO MS config Endpoints
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v models.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -1336,10 +1335,10 @@ TODO MS config Endpoints
 // type ApiPostSetMsConfigRequest struct {
 // 	ctx context.Context
 // 	ApiService *ConfigurationApiService
-// 	msConfigRequest *models.MSConfigRequest
+// 	msConfigRequest *MSConfigRequest
 // }
 
-// func (r ApiPostSetMsConfigRequest) MSConfigRequest(msConfigRequest models.MSConfigRequest) ApiPostSetMsConfigRequest {
+// func (r ApiPostSetMsConfigRequest) MSConfigRequest(msConfigRequest MSConfigRequest) ApiPostSetMsConfigRequest {
 // 	r.msConfigRequest = &msConfigRequest
 // 	return r
 // }
@@ -1429,7 +1428,7 @@ TODO MS config Endpoints
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v models.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -1456,15 +1455,15 @@ TODO MS config Endpoints
 type ApiPutConfigRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updateConfigRequest *models.UpdateConfigRequest
+	updateConfigRequest *UpdateConfigRequest
 }
 
-func (r ApiPutConfigRequest) UpdateConfigRequest(updateConfigRequest models.UpdateConfigRequest) ApiPutConfigRequest {
+func (r ApiPutConfigRequest) UpdateConfigRequest(updateConfigRequest UpdateConfigRequest) ApiPutConfigRequest {
 	r.updateConfigRequest = &updateConfigRequest
 	return r
 }
 
-func (r ApiPutConfigRequest) Execute() (*models.ConfigDetail, *http.Response, error) {
+func (r ApiPutConfigRequest) Execute() (*ConfigDetail, *http.Response, error) {
 	return r.ApiService.PutConfigExecute(r)
 }
 
@@ -1485,13 +1484,13 @@ func (api *ConfigurationApiService) PutConfig(ctx context.Context) ApiPutConfigR
 }
 
 // Execute executes the request
-//  @return models.ConfigDetail
-func (api *ConfigurationApiService) PutConfigExecute(r ApiPutConfigRequest) (*models.ConfigDetail, *http.Response, error) {
+//  @return ConfigDetail
+func (api *ConfigurationApiService) PutConfigExecute(r ApiPutConfigRequest) (*ConfigDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.ConfigDetail
+		localVarReturnValue  *ConfigDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutConfig")
@@ -1550,7 +1549,7 @@ func (api *ConfigurationApiService) PutConfigExecute(r ApiPutConfigRequest) (*mo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1577,15 +1576,15 @@ func (api *ConfigurationApiService) PutConfigExecute(r ApiPutConfigRequest) (*mo
 type ApiPutKeysetRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updateKeysetRequest *models.UpdateKeysetRequest
+	updateKeysetRequest *UpdateKeysetRequest
 }
 
-func (r ApiPutKeysetRequest) UpdateKeysetRequest(updateKeysetRequest models.UpdateKeysetRequest) ApiPutKeysetRequest {
+func (r ApiPutKeysetRequest) UpdateKeysetRequest(updateKeysetRequest UpdateKeysetRequest) ApiPutKeysetRequest {
 	r.updateKeysetRequest = &updateKeysetRequest
 	return r
 }
 
-func (r ApiPutKeysetRequest) Execute() (*models.KeysetDetail, *http.Response, error) {
+func (r ApiPutKeysetRequest) Execute() (*KeysetDetail, *http.Response, error) {
 	return r.ApiService.PutKeysetExecute(r)
 }
 
@@ -1606,13 +1605,13 @@ func (api *ConfigurationApiService) PutKeyset(ctx context.Context) ApiPutKeysetR
 }
 
 // Execute executes the request
-//  @return models.KeysetDetail
-func (api *ConfigurationApiService) PutKeysetExecute(r ApiPutKeysetRequest) (*models.KeysetDetail, *http.Response, error) {
+//  @return KeysetDetail
+func (api *ConfigurationApiService) PutKeysetExecute(r ApiPutKeysetRequest) (*KeysetDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.KeysetDetail
+		localVarReturnValue  *KeysetDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutKeyset")
@@ -1671,7 +1670,7 @@ func (api *ConfigurationApiService) PutKeysetExecute(r ApiPutKeysetRequest) (*mo
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1707,7 +1706,7 @@ func (r ApiPutLicenseUpgradeRequest) Body(body *os.File) ApiPutLicenseUpgradeReq
 	return r
 }
 
-func (r ApiPutLicenseUpgradeRequest) Execute() (*models.UpgradeLicenseResponse, *http.Response, error) {
+func (r ApiPutLicenseUpgradeRequest) Execute() (*UpgradeLicenseResponse, *http.Response, error) {
 	return r.ApiService.PutLicenseUpgradeExecute(r)
 }
 
@@ -1728,12 +1727,12 @@ func (api *ConfigurationApiService) PutLicenseUpgrade(ctx context.Context) ApiPu
 
 // Execute executes the request
 //  @return UpgradeLicenseResponse
-func (api *ConfigurationApiService) PutLicenseUpgradeExecute(r ApiPutLicenseUpgradeRequest) (*models.UpgradeLicenseResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutLicenseUpgradeExecute(r ApiPutLicenseUpgradeRequest) (*UpgradeLicenseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.UpgradeLicenseResponse
+		localVarReturnValue  *UpgradeLicenseResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutLicenseUpgrade")
@@ -1809,15 +1808,15 @@ func (api *ConfigurationApiService) PutLicenseUpgradeExecute(r ApiPutLicenseUpgr
 type ApiPutSetLicenseParametersRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	putLicenseParametersRequest *models.SetLicenseParametersRequest
+	putLicenseParametersRequest *SetLicenseParametersRequest
 }
 
-func (r ApiPutSetLicenseParametersRequest) PutLicenseParametersRequest(putLicenseParametersRequest models.SetLicenseParametersRequest) ApiPutSetLicenseParametersRequest {
+func (r ApiPutSetLicenseParametersRequest) PutLicenseParametersRequest(putLicenseParametersRequest SetLicenseParametersRequest) ApiPutSetLicenseParametersRequest {
 	r.putLicenseParametersRequest = &putLicenseParametersRequest
 	return r
 }
 
-func (r ApiPutSetLicenseParametersRequest) Execute() (*models.LicenseParametersDetail, *http.Response, error) {
+func (r ApiPutSetLicenseParametersRequest) Execute() (*LicenseParametersDetail, *http.Response, error) {
 	return r.ApiService.PutSetLicenseParametersExecute(r)
 }
 
@@ -1838,12 +1837,12 @@ func (api *ConfigurationApiService) PutSetLicenseParameters(ctx context.Context)
 
 // Execute executes the request
 //  @return LicenseParametersDetail
-func (api *ConfigurationApiService) PutSetLicenseParametersExecute(r ApiPutSetLicenseParametersRequest) (*models.LicenseParametersDetail, *http.Response, error) {
+func (api *ConfigurationApiService) PutSetLicenseParametersExecute(r ApiPutSetLicenseParametersRequest) (*LicenseParametersDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.LicenseParametersDetail
+		localVarReturnValue  *LicenseParametersDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutSetLicenseParameters")
@@ -1902,7 +1901,7 @@ func (api *ConfigurationApiService) PutSetLicenseParametersExecute(r ApiPutSetLi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1929,15 +1928,15 @@ func (api *ConfigurationApiService) PutSetLicenseParametersExecute(r ApiPutSetLi
 type ApiPutUpdateAdminUiRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updateAdminUISettingsRequest *models.UpdateAdminUISettingsRequest
+	updateAdminUISettingsRequest *UpdateAdminUISettingsRequest
 }
 
-func (r ApiPutUpdateAdminUiRequest) UpdateAdminUISettingsRequest(updateAdminUISettingsRequest models.UpdateAdminUISettingsRequest) ApiPutUpdateAdminUiRequest {
+func (r ApiPutUpdateAdminUiRequest) UpdateAdminUISettingsRequest(updateAdminUISettingsRequest UpdateAdminUISettingsRequest) ApiPutUpdateAdminUiRequest {
 	r.updateAdminUISettingsRequest = &updateAdminUISettingsRequest
 	return r
 }
 
-func (r ApiPutUpdateAdminUiRequest) Execute() (*models.AdminUISettingsResponse, *http.Response, error) {
+func (r ApiPutUpdateAdminUiRequest) Execute() (*AdminUISettingsResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateAdminUiExecute(r)
 }
 
@@ -1959,12 +1958,12 @@ func (api *ConfigurationApiService) PutUpdateAdminUi(ctx context.Context) ApiPut
 
 // Execute executes the request
 //  @return AdminUISettingsResponse
-func (api *ConfigurationApiService) PutUpdateAdminUiExecute(r ApiPutUpdateAdminUiRequest) (*models.AdminUISettingsResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUpdateAdminUiExecute(r ApiPutUpdateAdminUiRequest) (*AdminUISettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.AdminUISettingsResponse
+		localVarReturnValue  *AdminUISettingsResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUpdateAdminUi")
@@ -2023,7 +2022,7 @@ func (api *ConfigurationApiService) PutUpdateAdminUiExecute(r ApiPutUpdateAdminU
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2050,15 +2049,15 @@ func (api *ConfigurationApiService) PutUpdateAdminUiExecute(r ApiPutUpdateAdminU
 type ApiPutUpdateApiPasswordRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updatePasswordRequest *models.UpdatePasswordRequest
+	updatePasswordRequest *UpdatePasswordRequest
 }
 
-func (r ApiPutUpdateApiPasswordRequest) UpdatePasswordRequest(updatePasswordRequest models.UpdatePasswordRequest) ApiPutUpdateApiPasswordRequest {
+func (r ApiPutUpdateApiPasswordRequest) UpdatePasswordRequest(updatePasswordRequest UpdatePasswordRequest) ApiPutUpdateApiPasswordRequest {
 	r.updatePasswordRequest = &updatePasswordRequest
 	return r
 }
 
-func (r ApiPutUpdateApiPasswordRequest) Execute() (*models.PasswordResetResponse, *http.Response, error) {
+func (r ApiPutUpdateApiPasswordRequest) Execute() (*PasswordResetResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateApiPasswordExecute(r)
 }
 
@@ -2080,12 +2079,12 @@ func (api *ConfigurationApiService) PutUpdateApiPassword(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return PasswordResetResponse
-func (api *ConfigurationApiService) PutUpdateApiPasswordExecute(r ApiPutUpdateApiPasswordRequest) (*models.PasswordResetResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUpdateApiPasswordExecute(r ApiPutUpdateApiPasswordRequest) (*PasswordResetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.PasswordResetResponse
+		localVarReturnValue  *PasswordResetResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUpdateApiPassword")
@@ -2144,7 +2143,7 @@ func (api *ConfigurationApiService) PutUpdateApiPasswordExecute(r ApiPutUpdateAp
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2172,15 +2171,15 @@ type ApiPutUpdateCustomVariableRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
 	name string
-	updateCustomVariableRequest *models.UpdateCustomVariableRequest
+	updateCustomVariableRequest *UpdateCustomVariableRequest
 }
 
-func (r ApiPutUpdateCustomVariableRequest) UpdateCustomVariableRequest(updateCustomVariableRequest models.UpdateCustomVariableRequest) ApiPutUpdateCustomVariableRequest {
+func (r ApiPutUpdateCustomVariableRequest) UpdateCustomVariableRequest(updateCustomVariableRequest UpdateCustomVariableRequest) ApiPutUpdateCustomVariableRequest {
 	r.updateCustomVariableRequest = &updateCustomVariableRequest
 	return r
 }
 
-func (r ApiPutUpdateCustomVariableRequest) Execute() (*models.VariableDetailResponse, *http.Response, error) {
+func (r ApiPutUpdateCustomVariableRequest) Execute() (*VariableDetailResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateCustomVariableExecute(r)
 }
 
@@ -2203,12 +2202,12 @@ func (api *ConfigurationApiService) PutUpdateCustomVariable(ctx context.Context,
 
 // Execute executes the request
 //  @return VariableDetailResponse
-func (api *ConfigurationApiService) PutUpdateCustomVariableExecute(r ApiPutUpdateCustomVariableRequest) (*models.VariableDetailResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUpdateCustomVariableExecute(r ApiPutUpdateCustomVariableRequest) (*VariableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.VariableDetailResponse
+		localVarReturnValue  *VariableDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUpdateCustomVariable")
@@ -2268,7 +2267,7 @@ func (api *ConfigurationApiService) PutUpdateCustomVariableExecute(r ApiPutUpdat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2294,15 +2293,15 @@ func (api *ConfigurationApiService) PutUpdateCustomVariableExecute(r ApiPutUpdat
 type ApiPutUploadSslKeypairRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updateServerSSLRequest *models.UpdateServerSSLRequest
+	updateServerSSLRequest *UpdateServerSSLRequest
 }
 
-func (r ApiPutUploadSslKeypairRequest) UpdateServerSSLRequest(updateServerSSLRequest models.UpdateServerSSLRequest) ApiPutUploadSslKeypairRequest {
+func (r ApiPutUploadSslKeypairRequest) UpdateServerSSLRequest(updateServerSSLRequest UpdateServerSSLRequest) ApiPutUploadSslKeypairRequest {
 	r.updateServerSSLRequest = &updateServerSSLRequest
 	return r
 }
 
-func (r ApiPutUploadSslKeypairRequest) Execute() (*models.SimpleStringResponse, *http.Response, error) {
+func (r ApiPutUploadSslKeypairRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
 	return r.ApiService.PutUploadSslKeypairExecute(r)
 }
 
@@ -2323,12 +2322,12 @@ func (api *ConfigurationApiService) PutUploadSslKeypair(ctx context.Context) Api
 
 // Execute executes the request
 //  @return Object
-func (api *ConfigurationApiService) PutUploadSslKeypairExecute(r ApiPutUploadSslKeypairRequest) (*models.SimpleStringResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUploadSslKeypairExecute(r ApiPutUploadSslKeypairRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.SimpleStringResponse
+		localVarReturnValue  *SimpleStringResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUploadSslKeypair")
@@ -2387,7 +2386,7 @@ func (api *ConfigurationApiService) PutUploadSslKeypairExecute(r ApiPutUploadSsl
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2414,15 +2413,15 @@ func (api *ConfigurationApiService) PutUploadSslKeypairExecute(r ApiPutUploadSsl
 type ApiUpdateMsConfigRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updateMSRequest *models.UpdateMSRequest
+	updateMSRequest *UpdateMSRequest
 }
 
-func (r ApiUpdateMsConfigRequest) UpdateMSRequest(updateMSRequest models.UpdateMSRequest) ApiUpdateMsConfigRequest {
+func (r ApiUpdateMsConfigRequest) UpdateMSRequest(updateMSRequest UpdateMSRequest) ApiUpdateMsConfigRequest {
 	r.updateMSRequest = &updateMSRequest
 	return r
 }
 
-func (r ApiUpdateMsConfigRequest) Execute() (*models.MSConfigResponse, *http.Response, error) {
+func (r ApiUpdateMsConfigRequest) Execute() (*MSConfigResponse, *http.Response, error) {
 	return r.ApiService.UpdateMsConfigExecute(r)
 }
 
@@ -2442,13 +2441,13 @@ func (api *ConfigurationApiService) UpdateMsConfig(ctx context.Context) ApiUpdat
 }
 
 // Execute executes the request
-//  @return models.MSConfigResponse
-func (api *ConfigurationApiService) UpdateMsConfigExecute(r ApiUpdateMsConfigRequest) (*models.MSConfigResponse, *http.Response, error) {
+//  @return MSConfigResponse
+func (api *ConfigurationApiService) UpdateMsConfigExecute(r ApiUpdateMsConfigRequest) (*MSConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.MSConfigResponse
+		localVarReturnValue  *MSConfigResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.UpdateMsConfig")
@@ -2507,7 +2506,7 @@ func (api *ConfigurationApiService) UpdateMsConfigExecute(r ApiUpdateMsConfigReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2543,7 +2542,7 @@ func (r ApiUploadLicenseRequest) Body(body *os.File) ApiUploadLicenseRequest {
 	return r
 }
 
-func (r ApiUploadLicenseRequest) Execute() (*models.InitLicenseDetail, *http.Response, error) {
+func (r ApiUploadLicenseRequest) Execute() (*InitLicenseDetail, *http.Response, error) {
 	return r.ApiService.UploadLicenseExecute(r)
 }
 
@@ -2564,12 +2563,12 @@ func (api *ConfigurationApiService) UploadLicense(ctx context.Context) ApiUpload
 
 // Execute executes the request
 //  @return InitLicenseDetail
-func (api *ConfigurationApiService) UploadLicenseExecute(r ApiUploadLicenseRequest) (*models.InitLicenseDetail, *http.Response, error) {
+func (api *ConfigurationApiService) UploadLicenseExecute(r ApiUploadLicenseRequest) (*InitLicenseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *models.InitLicenseDetail
+		localVarReturnValue  *InitLicenseDetail
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.UploadLicense")
@@ -2628,7 +2627,7 @@ func (api *ConfigurationApiService) UploadLicenseExecute(r ApiUploadLicenseReque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

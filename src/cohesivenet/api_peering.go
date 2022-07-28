@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	m "cohesivenet/models"
 )
 
 
@@ -31,7 +30,7 @@ type ApiDeletePeerRequest struct {
 	peerId int32
 }
 
-func (r ApiDeletePeerRequest) Execute() (*m.PeersDetailResponse, *http.Response, error) {
+func (r ApiDeletePeerRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
 	return r.ApiService.DeletePeerExecute(r)
 }
 
@@ -55,12 +54,12 @@ func (api *PeeringApiService) DeletePeer(ctx context.Context, peerId int32) ApiD
 
 // Execute executes the request
 //  @return Object
-func (api *PeeringApiService) DeletePeerExecute(r ApiDeletePeerRequest) (*m.PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) DeletePeerExecute(r ApiDeletePeerRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.PeersDetailResponse
+		localVarReturnValue  *PeersDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.DeletePeer")
@@ -115,7 +114,7 @@ func (api *PeeringApiService) DeletePeerExecute(r ApiDeletePeerRequest) (*m.Peer
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -144,7 +143,7 @@ type ApiGetPeeringStatusRequest struct {
 	ApiService *PeeringApiService
 }
 
-func (r ApiGetPeeringStatusRequest) Execute() (*m.PeersDetailResponse, *http.Response, error) {
+func (r ApiGetPeeringStatusRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
 	return r.ApiService.GetPeeringStatusExecute(r)
 }
 
@@ -165,12 +164,12 @@ func (api *PeeringApiService) GetPeeringStatus(ctx context.Context) ApiGetPeerin
 
 // Execute executes the request
 //  @return models.PeersDetailResponse
-func (api *PeeringApiService) GetPeeringStatusExecute(r ApiGetPeeringStatusRequest) (*m.PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) GetPeeringStatusExecute(r ApiGetPeeringStatusRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.PeersDetailResponse
+		localVarReturnValue  *PeersDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.GetPeeringStatus")
@@ -241,15 +240,15 @@ func (api *PeeringApiService) GetPeeringStatusExecute(r ApiGetPeeringStatusReque
 type ApiPostCreatePeerRequest struct {
 	ctx context.Context
 	ApiService *PeeringApiService
-	createPeerRequest *m.CreatePeerRequest
+	createPeerRequest *CreatePeerRequest
 }
 
-func (r ApiPostCreatePeerRequest) CreatePeerRequest(createPeerRequest m.CreatePeerRequest) ApiPostCreatePeerRequest {
+func (r ApiPostCreatePeerRequest) CreatePeerRequest(createPeerRequest CreatePeerRequest) ApiPostCreatePeerRequest {
 	r.createPeerRequest = &createPeerRequest
 	return r
 }
 
-func (r ApiPostCreatePeerRequest) Execute() (*m.PeersDetailResponse, *http.Response, error) {
+func (r ApiPostCreatePeerRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
 	return r.ApiService.PostCreatePeerExecute(r)
 }
 
@@ -271,12 +270,12 @@ func (api *PeeringApiService) PostCreatePeer(ctx context.Context) ApiPostCreateP
 
 // Execute executes the request
 //  @return models.PeersDetailResponse
-func (api *PeeringApiService) PostCreatePeerExecute(r ApiPostCreatePeerRequest) (*m.PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) PostCreatePeerExecute(r ApiPostCreatePeerRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.PeersDetailResponse
+		localVarReturnValue  *PeersDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.PostCreatePeer")
@@ -335,7 +334,7 @@ func (api *PeeringApiService) PostCreatePeerExecute(r ApiPostCreatePeerRequest) 
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -362,15 +361,15 @@ func (api *PeeringApiService) PostCreatePeerExecute(r ApiPostCreatePeerRequest) 
 type ApiPutSelfPeeringIdRequest struct {
 	ctx context.Context
 	ApiService *PeeringApiService
-	peerSelfRequest *m.PeerSelfRequest
+	peerSelfRequest *PeerSelfRequest
 }
 
-func (r ApiPutSelfPeeringIdRequest) PeerSelfRequest(peerSelfRequest m.PeerSelfRequest) ApiPutSelfPeeringIdRequest {
+func (r ApiPutSelfPeeringIdRequest) PeerSelfRequest(peerSelfRequest PeerSelfRequest) ApiPutSelfPeeringIdRequest {
 	r.peerSelfRequest = &peerSelfRequest
 	return r
 }
 
-func (r ApiPutSelfPeeringIdRequest) Execute() (*m.PeersDetailResponse, *http.Response, error) {
+func (r ApiPutSelfPeeringIdRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
 	return r.ApiService.PutSelfPeeringIdExecute(r)
 }
 
@@ -391,12 +390,12 @@ func (api *PeeringApiService) PutSelfPeeringId(ctx context.Context) ApiPutSelfPe
 
 // Execute executes the request
 //  @return models.PeersDetailResponse
-func (api *PeeringApiService) PutSelfPeeringIdExecute(r ApiPutSelfPeeringIdRequest) (*m.PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) PutSelfPeeringIdExecute(r ApiPutSelfPeeringIdRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.PeersDetailResponse
+		localVarReturnValue  *PeersDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.PutSelfPeeringId")
@@ -455,7 +454,7 @@ func (api *PeeringApiService) PutSelfPeeringIdExecute(r ApiPutSelfPeeringIdReque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -483,15 +482,15 @@ type ApiPutUpdatePeerRequest struct {
 	ctx context.Context
 	ApiService *PeeringApiService
 	peerId int32
-	updatePeerRequest *m.UpdatePeerRequest
+	updatePeerRequest *UpdatePeerRequest
 }
 
-func (r ApiPutUpdatePeerRequest) UpdatePeerRequest(updatePeerRequest m.UpdatePeerRequest) ApiPutUpdatePeerRequest {
+func (r ApiPutUpdatePeerRequest) UpdatePeerRequest(updatePeerRequest UpdatePeerRequest) ApiPutUpdatePeerRequest {
 	r.updatePeerRequest = &updatePeerRequest
 	return r
 }
 
-func (r ApiPutUpdatePeerRequest) Execute() (*m.PeersDetailResponse, *http.Response, error) {
+func (r ApiPutUpdatePeerRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
 	return r.ApiService.PutUpdatePeerExecute(r)
 }
 
@@ -514,13 +513,13 @@ func (api *PeeringApiService) PutUpdatePeer(ctx context.Context, peerId int32) A
 }
 
 // Execute executes the request
-//  @return m.PeersDetailResponse
-func (api *PeeringApiService) PutUpdatePeerExecute(r ApiPutUpdatePeerRequest) (*m.PeersDetailResponse, *http.Response, error) {
+//  @return PeersDetailResponse
+func (api *PeeringApiService) PutUpdatePeerExecute(r ApiPutUpdatePeerRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.PeersDetailResponse
+		localVarReturnValue  *PeersDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.PutUpdatePeer")
@@ -580,7 +579,7 @@ func (api *PeeringApiService) PutUpdatePeerExecute(r ApiPutUpdatePeerRequest) (*
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

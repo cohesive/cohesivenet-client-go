@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	m "cohesivenet/models"
 )
 
 
@@ -29,15 +28,15 @@ type ApiCreateFwsetEntryRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	addEntryRequest *m.CreateFirewallEntryRequest
+	addEntryRequest *CreateFirewallEntryRequest
 }
 
-func (r ApiCreateFwsetEntryRequest) CreateFirewallEntryRequest(createFirewallEntryRequest m.CreateFirewallEntryRequest) ApiCreateFwsetEntryRequest {
+func (r ApiCreateFwsetEntryRequest) CreateFirewallEntryRequest(createFirewallEntryRequest CreateFirewallEntryRequest) ApiCreateFwsetEntryRequest {
 	r.addEntryRequest = &createFirewallEntryRequest
 	return r
 }
 
-func (r ApiCreateFwsetEntryRequest) Execute() (*m.FirewallFwsetDetailResponse, *http.Response, error) {
+func (r ApiCreateFwsetEntryRequest) Execute() (*FirewallFwsetDetailResponse, *http.Response, error) {
 	return r.ApiService.AddEntryToFwsetExecute(r)
 }
 
@@ -59,13 +58,13 @@ func (api *FirewallApiService) AddEntryToFwset(ctx context.Context, name string)
 }
 
 // Execute executes the request
-//  @return m.FirewallFwsetDetailResponse
-func (api *FirewallApiService) AddEntryToFwsetExecute(r ApiCreateFwsetEntryRequest) (*m.FirewallFwsetDetailResponse, *http.Response, error) {
+//  @return FirewallFwsetDetailResponse
+func (api *FirewallApiService) AddEntryToFwsetExecute(r ApiCreateFwsetEntryRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallFwsetDetailResponse
+		localVarReturnValue  *FirewallFwsetDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.AddEntryToFwset")
@@ -125,7 +124,7 @@ func (api *FirewallApiService) AddEntryToFwsetExecute(r ApiCreateFwsetEntryReque
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -135,7 +134,7 @@ func (api *FirewallApiService) AddEntryToFwsetExecute(r ApiCreateFwsetEntryReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -145,7 +144,7 @@ func (api *FirewallApiService) AddEntryToFwsetExecute(r ApiCreateFwsetEntryReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -172,15 +171,15 @@ type ApiAddRuleToGroupRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	addRuleToGroupRequest *m.AddFirewallRuleToGroupRequest
+	addRuleToGroupRequest *AddFirewallRuleToGroupRequest
 }
 
-func (r ApiAddRuleToGroupRequest) AddFirewallRuleToGroupRequest(addRuleToGroupRequest m.AddFirewallRuleToGroupRequest) ApiAddRuleToGroupRequest {
+func (r ApiAddRuleToGroupRequest) AddFirewallRuleToGroupRequest(addRuleToGroupRequest AddFirewallRuleToGroupRequest) ApiAddRuleToGroupRequest {
 	r.addRuleToGroupRequest = &addRuleToGroupRequest
 	return r
 }
 
-func (r ApiAddRuleToGroupRequest) Execute() (*m.RuleGroupDetailResponse, *http.Response, error) {
+func (r ApiAddRuleToGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
 	return r.ApiService.AddRuleToGroupExecute(r)
 }
 
@@ -203,12 +202,12 @@ func (api *FirewallApiService) AddRuleToGroup(ctx context.Context, name string) 
 
 // Execute executes the request
 //  @return Object
-func (api *FirewallApiService) AddRuleToGroupExecute(r ApiAddRuleToGroupRequest) (*m.RuleGroupDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) AddRuleToGroupExecute(r ApiAddRuleToGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RuleGroupDetailResponse
+		localVarReturnValue  *RuleGroupDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.AddRuleToGroup")
@@ -268,7 +267,7 @@ func (api *FirewallApiService) AddRuleToGroupExecute(r ApiAddRuleToGroupRequest)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -278,7 +277,7 @@ func (api *FirewallApiService) AddRuleToGroupExecute(r ApiAddRuleToGroupRequest)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -288,7 +287,7 @@ func (api *FirewallApiService) AddRuleToGroupExecute(r ApiAddRuleToGroupRequest)
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -315,15 +314,15 @@ type ApiAddRuleToSubtableRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	addFirewallRuleToSubtableRequest *m.AddFirewallRuleToSubtableRequest
+	addFirewallRuleToSubtableRequest *AddFirewallRuleToSubtableRequest
 }
 
-func (r ApiAddRuleToSubtableRequest) AddFirewallRuleToSubtableRequest(addFirewallRuleToSubtableRequest m.AddFirewallRuleToSubtableRequest) ApiAddRuleToSubtableRequest {
+func (r ApiAddRuleToSubtableRequest) AddFirewallRuleToSubtableRequest(addFirewallRuleToSubtableRequest AddFirewallRuleToSubtableRequest) ApiAddRuleToSubtableRequest {
 	r.addFirewallRuleToSubtableRequest = &addFirewallRuleToSubtableRequest
 	return r
 }
 
-func (r ApiAddRuleToSubtableRequest) Execute() (*m.FirewallSubtableDetailResponse, *http.Response, error) {
+func (r ApiAddRuleToSubtableRequest) Execute() (*FirewallSubtableDetailResponse, *http.Response, error) {
 	return r.ApiService.AddRuleToSubtableExecute(r)
 }
 
@@ -345,13 +344,13 @@ func (api *FirewallApiService) AddRuleToSubtable(ctx context.Context, name strin
 }
 
 // Execute executes the request
-//  @return m.FirewallSubtableDetailResponse
-func (api *FirewallApiService) AddRuleToSubtableExecute(r ApiAddRuleToSubtableRequest) (*m.FirewallSubtableDetailResponse, *http.Response, error) {
+//  @return FirewallSubtableDetailResponse
+func (api *FirewallApiService) AddRuleToSubtableExecute(r ApiAddRuleToSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallSubtableDetailResponse
+		localVarReturnValue  *FirewallSubtableDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.AddRuleToSubtable")
@@ -411,7 +410,7 @@ func (api *FirewallApiService) AddRuleToSubtableExecute(r ApiAddRuleToSubtableRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -421,7 +420,7 @@ func (api *FirewallApiService) AddRuleToSubtableExecute(r ApiAddRuleToSubtableRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -431,7 +430,7 @@ func (api *FirewallApiService) AddRuleToSubtableExecute(r ApiAddRuleToSubtableRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -458,15 +457,15 @@ type ApiDeleteEntryFromFwsetRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	deleteFirewallEntryRequest *m.DeleteFirewallEntryRequest
+	deleteFirewallEntryRequest *DeleteFirewallEntryRequest
 }
 
-func (r ApiDeleteEntryFromFwsetRequest) DeleteFirewallEntryRequest(deleteFirewallEntryRequest m.DeleteFirewallEntryRequest) ApiDeleteEntryFromFwsetRequest {
+func (r ApiDeleteEntryFromFwsetRequest) DeleteFirewallEntryRequest(deleteFirewallEntryRequest DeleteFirewallEntryRequest) ApiDeleteEntryFromFwsetRequest {
 	r.deleteFirewallEntryRequest = &deleteFirewallEntryRequest
 	return r
 }
 
-func (r ApiDeleteEntryFromFwsetRequest) Execute() (*m.FirewallFwsetDetailResponse, *http.Response, error) {
+func (r ApiDeleteEntryFromFwsetRequest) Execute() (*FirewallFwsetDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteEntryFromFwsetExecute(r)
 }
 
@@ -488,13 +487,13 @@ func (api *FirewallApiService) DeleteEntryFromFwset(ctx context.Context, name st
 }
 
 // Execute executes the request
-//  @return m.FirewallFwsetDetailResponse
-func (api *FirewallApiService) DeleteEntryFromFwsetExecute(r ApiDeleteEntryFromFwsetRequest) (*m.FirewallFwsetDetailResponse, *http.Response, error) {
+//  @return FirewallFwsetDetailResponse
+func (api *FirewallApiService) DeleteEntryFromFwsetExecute(r ApiDeleteEntryFromFwsetRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallFwsetDetailResponse
+		localVarReturnValue  *FirewallFwsetDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.DeleteEntryFromFwset")
@@ -554,7 +553,7 @@ func (api *FirewallApiService) DeleteEntryFromFwsetExecute(r ApiDeleteEntryFromF
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -564,7 +563,7 @@ func (api *FirewallApiService) DeleteEntryFromFwsetExecute(r ApiDeleteEntryFromF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -574,7 +573,7 @@ func (api *FirewallApiService) DeleteEntryFromFwsetExecute(r ApiDeleteEntryFromF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -610,7 +609,7 @@ func (r ApiDeleteFirewallFwsetRequest) Force(force bool) ApiDeleteFirewallFwsetR
 	return r
 }
 
-func (r ApiDeleteFirewallFwsetRequest) Execute() (*m.FirewallFwsetDetailResponse, *http.Response, error) {
+func (r ApiDeleteFirewallFwsetRequest) Execute() (*FirewallFwsetDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteFirewallFwsetExecute(r)
 }
 
@@ -632,13 +631,13 @@ func (api *FirewallApiService) DeleteFirewallFwset(ctx context.Context, name str
 }
 
 // Execute executes the request
-//  @return m.FirewallFwsetDetailResponse
-func (api *FirewallApiService) DeleteFirewallFwsetExecute(r ApiDeleteFirewallFwsetRequest) (*m.FirewallFwsetDetailResponse, *http.Response, error) {
+//  @return FirewallFwsetDetailResponse
+func (api *FirewallApiService) DeleteFirewallFwsetExecute(r ApiDeleteFirewallFwsetRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallFwsetDetailResponse
+		localVarReturnValue  *FirewallFwsetDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.DeleteFirewallFwset")
@@ -696,7 +695,7 @@ func (api *FirewallApiService) DeleteFirewallFwsetExecute(r ApiDeleteFirewallFws
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -706,7 +705,7 @@ func (api *FirewallApiService) DeleteFirewallFwsetExecute(r ApiDeleteFirewallFws
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -716,7 +715,7 @@ func (api *FirewallApiService) DeleteFirewallFwsetExecute(r ApiDeleteFirewallFws
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -745,7 +744,7 @@ type ApiDeleteFirewallRuleRequest struct {
 	id string
 }
 
-func (r ApiDeleteFirewallRuleRequest) Execute() (*m.FirewallRuleDetailResponse, *http.Response, error) {
+func (r ApiDeleteFirewallRuleRequest) Execute() (*FirewallRuleDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteFirewallRuleExecute(r)
 }
 
@@ -767,13 +766,13 @@ func (api *FirewallApiService) DeleteFirewallRule(ctx context.Context, id string
 }
 
 // Execute executes the request
-//  @return m.FirewallRuleDetailResponse
-func (api *FirewallApiService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRuleRequest) (*m.FirewallRuleDetailResponse, *http.Response, error) {
+//  @return FirewallRuleDetailResponse
+func (api *FirewallApiService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRuleRequest) (*FirewallRuleDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallRuleDetailResponse
+		localVarReturnValue  *FirewallRuleDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.DeleteFirewallRule")
@@ -828,7 +827,7 @@ func (api *FirewallApiService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRule
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -838,7 +837,7 @@ func (api *FirewallApiService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRule
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -848,7 +847,7 @@ func (api *FirewallApiService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRule
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -884,7 +883,7 @@ func (r ApiDeleteFirewallRuleGroupRequest) Force(force bool) ApiDeleteFirewallRu
 	return r
 }
 
-func (r ApiDeleteFirewallRuleGroupRequest) Execute() (*m.RuleGroupDetailResponse, *http.Response, error) {
+func (r ApiDeleteFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteFirewallRuleGroupExecute(r)
 }
 
@@ -906,13 +905,13 @@ func (api *FirewallApiService) DeleteFirewallRuleGroup(ctx context.Context, name
 }
 
 // Execute executes the request
-//  @return m.RuleGroupDetailResponse
-func (api *FirewallApiService) DeleteFirewallRuleGroupExecute(r ApiDeleteFirewallRuleGroupRequest) (*m.RuleGroupDetailResponse, *http.Response, error) {
+//  @return RuleGroupDetailResponse
+func (api *FirewallApiService) DeleteFirewallRuleGroupExecute(r ApiDeleteFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RuleGroupDetailResponse
+		localVarReturnValue  *RuleGroupDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.DeleteFirewallRuleGroup")
@@ -970,7 +969,7 @@ func (api *FirewallApiService) DeleteFirewallRuleGroupExecute(r ApiDeleteFirewal
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -980,7 +979,7 @@ func (api *FirewallApiService) DeleteFirewallRuleGroupExecute(r ApiDeleteFirewal
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -990,7 +989,7 @@ func (api *FirewallApiService) DeleteFirewallRuleGroupExecute(r ApiDeleteFirewal
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1026,7 +1025,7 @@ func (r ApiDeleteFirewallSubtableRequest) Force(force bool) ApiDeleteFirewallSub
 	return r
 }
 
-func (r ApiDeleteFirewallSubtableRequest) Execute() (*m.FirewallSubtableDetailResponse, *http.Response, error) {
+func (r ApiDeleteFirewallSubtableRequest) Execute() (*FirewallSubtableDetailResponse, *http.Response, error) {
 	return r.ApiService.DeleteFirewallSubtableExecute(r)
 }
 
@@ -1048,13 +1047,13 @@ func (api *FirewallApiService) DeleteFirewallSubtable(ctx context.Context, name 
 }
 
 // Execute executes the request
-//  @return m.FirewallSubtableDetailResponse
-func (api *FirewallApiService) DeleteFirewallSubtableExecute(r ApiDeleteFirewallSubtableRequest) (*m.FirewallSubtableDetailResponse, *http.Response, error) {
+//  @return FirewallSubtableDetailResponse
+func (api *FirewallApiService) DeleteFirewallSubtableExecute(r ApiDeleteFirewallSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallSubtableDetailResponse
+		localVarReturnValue  *FirewallSubtableDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.DeleteFirewallSubtable")
@@ -1112,7 +1111,7 @@ func (api *FirewallApiService) DeleteFirewallSubtableExecute(r ApiDeleteFirewall
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1122,7 +1121,7 @@ func (api *FirewallApiService) DeleteFirewallSubtableExecute(r ApiDeleteFirewall
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1132,7 +1131,7 @@ func (api *FirewallApiService) DeleteFirewallSubtableExecute(r ApiDeleteFirewall
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1168,7 +1167,7 @@ func (r ApiGetFirewallFwsetRequest) Osview(osview bool) ApiGetFirewallFwsetReque
 	return r
 }
 
-func (r ApiGetFirewallFwsetRequest) Execute() (m.FirewallFwsetDetailResponse, *http.Response, error) {
+func (r ApiGetFirewallFwsetRequest) Execute() (FirewallFwsetDetailResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallFwsetExecute(r)
 }
 
@@ -1190,13 +1189,13 @@ func (api *FirewallApiService) GetFirewallFwset(ctx context.Context, name string
 }
 
 // Execute executes the request
-//  @return m.FirewallFwsetDetailResponse
-func (api *FirewallApiService) GetFirewallFwsetExecute(r ApiGetFirewallFwsetRequest) (m.FirewallFwsetDetailResponse, *http.Response, error) {
+//  @return FirewallFwsetDetailResponse
+func (api *FirewallApiService) GetFirewallFwsetExecute(r ApiGetFirewallFwsetRequest) (FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  m.FirewallFwsetDetailResponse
+		localVarReturnValue  FirewallFwsetDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallFwset")
@@ -1254,7 +1253,7 @@ func (api *FirewallApiService) GetFirewallFwsetExecute(r ApiGetFirewallFwsetRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1264,7 +1263,7 @@ func (api *FirewallApiService) GetFirewallFwsetExecute(r ApiGetFirewallFwsetRequ
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1292,7 +1291,7 @@ type ApiGetFirewallFwsetsRequest struct {
 	ApiService *FirewallApiService
 }
 
-func (r ApiGetFirewallFwsetsRequest) Execute() (m.FirewallFwsetListResponse, *http.Response, error) {
+func (r ApiGetFirewallFwsetsRequest) Execute() (FirewallFwsetListResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallFwsetsExecute(r)
 }
 
@@ -1312,13 +1311,13 @@ func (api *FirewallApiService) GetFirewallFwsets(ctx context.Context) ApiGetFire
 }
 
 // Execute executes the request
-//  @return m.FirewallFwsetListResponse
-func (api *FirewallApiService) GetFirewallFwsetsExecute(r ApiGetFirewallFwsetsRequest) (m.FirewallFwsetListResponse, *http.Response, error) {
+//  @return FirewallFwsetListResponse
+func (api *FirewallApiService) GetFirewallFwsetsExecute(r ApiGetFirewallFwsetsRequest) (FirewallFwsetListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  m.FirewallFwsetListResponse
+		localVarReturnValue  FirewallFwsetListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallFwsets")
@@ -1372,7 +1371,7 @@ func (api *FirewallApiService) GetFirewallFwsetsExecute(r ApiGetFirewallFwsetsRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1401,7 +1400,7 @@ type ApiGetFirewallRuleGroupRequest struct {
 	name string
 }
 
-func (r ApiGetFirewallRuleGroupRequest) Execute() (*m.RuleGroupDetailResponse, *http.Response, error) {
+func (r ApiGetFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallRuleGroupExecute(r)
 }
 
@@ -1423,13 +1422,13 @@ func (api *FirewallApiService) GetFirewallRuleGroup(ctx context.Context, name st
 }
 
 // Execute executes the request
-//  @return m.RuleGroupDetailResponse
-func (api *FirewallApiService) GetFirewallRuleGroupExecute(r ApiGetFirewallRuleGroupRequest) (*m.RuleGroupDetailResponse, *http.Response, error) {
+//  @return RuleGroupDetailResponse
+func (api *FirewallApiService) GetFirewallRuleGroupExecute(r ApiGetFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RuleGroupDetailResponse
+		localVarReturnValue  *RuleGroupDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallRuleGroup")
@@ -1484,7 +1483,7 @@ func (api *FirewallApiService) GetFirewallRuleGroupExecute(r ApiGetFirewallRuleG
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1494,7 +1493,7 @@ func (api *FirewallApiService) GetFirewallRuleGroupExecute(r ApiGetFirewallRuleG
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1522,7 +1521,7 @@ type ApiGetFirewallRuleGroupsRequest struct {
 	ApiService *FirewallApiService
 }
 
-func (r ApiGetFirewallRuleGroupsRequest) Execute() (*m.RuleGroupsListResponse, *http.Response, error) {
+func (r ApiGetFirewallRuleGroupsRequest) Execute() (*RuleGroupsListResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallRuleGroupsExecute(r)
 }
 
@@ -1543,12 +1542,12 @@ func (api *FirewallApiService) GetFirewallRuleGroups(ctx context.Context) ApiGet
 
 // Execute executes the request
 //  @return RuleGroupsListResponse
-func (api *FirewallApiService) GetFirewallRuleGroupsExecute(r ApiGetFirewallRuleGroupsRequest) (*m.RuleGroupsListResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallRuleGroupsExecute(r ApiGetFirewallRuleGroupsRequest) (*RuleGroupsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RuleGroupsListResponse
+		localVarReturnValue  *RuleGroupsListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallRuleGroups")
@@ -1602,7 +1601,7 @@ func (api *FirewallApiService) GetFirewallRuleGroupsExecute(r ApiGetFirewallRule
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1659,7 +1658,7 @@ func (r ApiGetFirewallRulesRequest) Tables(tables string) ApiGetFirewallRulesReq
 	return r
 }
 
-func (r ApiGetFirewallRulesRequest) Execute() (*m.FirewallRuleListResponse, *http.Response, error) {
+func (r ApiGetFirewallRulesRequest) Execute() (*FirewallRuleListResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallRulesExecute(r)
 }
 
@@ -1679,13 +1678,13 @@ func (api *FirewallApiService) GetFirewallRules(ctx context.Context) ApiGetFirew
 }
 
 // Execute executes the request
-//  @return m.FirewallRuleListResponse
-func (api *FirewallApiService) GetFirewallRulesExecute(r ApiGetFirewallRulesRequest) (*m.FirewallRuleListResponse, *http.Response, error) {
+//  @return FirewallRuleListResponse
+func (api *FirewallApiService) GetFirewallRulesExecute(r ApiGetFirewallRulesRequest) (*FirewallRuleListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallRuleListResponse
+		localVarReturnValue  *FirewallRuleListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallRules")
@@ -1751,7 +1750,7 @@ func (api *FirewallApiService) GetFirewallRulesExecute(r ApiGetFirewallRulesRequ
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1787,7 +1786,7 @@ func (r ApiGetFirewallSubtableRequest) Osview(osview bool) ApiGetFirewallSubtabl
 	return r
 }
 
-func (r ApiGetFirewallSubtableRequest) Execute() (*m.FirewallSubtableDetailResponse, *http.Response, error) {
+func (r ApiGetFirewallSubtableRequest) Execute() (*FirewallSubtableDetailResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallSubtableExecute(r)
 }
 
@@ -1809,13 +1808,13 @@ func (api *FirewallApiService) GetFirewallSubtable(ctx context.Context, name str
 }
 
 // Execute executes the request
-//  @return m.FirewallSubtableDetailResponse
-func (api *FirewallApiService) GetFirewallSubtableExecute(r ApiGetFirewallSubtableRequest) (*m.FirewallSubtableDetailResponse, *http.Response, error) {
+//  @return FirewallSubtableDetailResponse
+func (api *FirewallApiService) GetFirewallSubtableExecute(r ApiGetFirewallSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallSubtableDetailResponse
+		localVarReturnValue  *FirewallSubtableDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallSubtable")
@@ -1873,7 +1872,7 @@ func (api *FirewallApiService) GetFirewallSubtableExecute(r ApiGetFirewallSubtab
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1883,7 +1882,7 @@ func (api *FirewallApiService) GetFirewallSubtableExecute(r ApiGetFirewallSubtab
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1911,7 +1910,7 @@ type ApiGetFirewallSubtablesRequest struct {
 	ApiService *FirewallApiService
 }
 
-func (r ApiGetFirewallSubtablesRequest) Execute() (*m.FirewallSubtableListResponse, *http.Response, error) {
+func (r ApiGetFirewallSubtablesRequest) Execute() (*FirewallSubtableListResponse, *http.Response, error) {
 	return r.ApiService.GetFirewallSubtablesExecute(r)
 }
 
@@ -1932,12 +1931,12 @@ func (api *FirewallApiService) GetFirewallSubtables(ctx context.Context) ApiGetF
 
 // Execute executes the request
 //  @return FirewallSubtableListResponse
-func (api *FirewallApiService) GetFirewallSubtablesExecute(r ApiGetFirewallSubtablesRequest) (*m.FirewallSubtableListResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallSubtablesExecute(r ApiGetFirewallSubtablesRequest) (*FirewallSubtableListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallSubtableListResponse
+		localVarReturnValue  *FirewallSubtableListResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.GetFirewallSubtables")
@@ -1991,7 +1990,7 @@ func (api *FirewallApiService) GetFirewallSubtablesExecute(r ApiGetFirewallSubta
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2017,15 +2016,15 @@ func (api *FirewallApiService) GetFirewallSubtablesExecute(r ApiGetFirewallSubta
 type ApiImportFirewallRulesRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	importFirewallRulesRequest *m.ImportFirewallRulesRequest
+	importFirewallRulesRequest *ImportFirewallRulesRequest
 }
 
-func (r ApiImportFirewallRulesRequest) ImportFirewallRulesRequest(importFirewallRulesRequest m.ImportFirewallRulesRequest) ApiImportFirewallRulesRequest {
+func (r ApiImportFirewallRulesRequest) ImportFirewallRulesRequest(importFirewallRulesRequest ImportFirewallRulesRequest) ApiImportFirewallRulesRequest {
 	r.importFirewallRulesRequest = &importFirewallRulesRequest
 	return r
 }
 
-func (r ApiImportFirewallRulesRequest) Execute() (*m.FirewallRulesAndErrorsResponse, *http.Response, error) {
+func (r ApiImportFirewallRulesRequest) Execute() (*FirewallRulesAndErrorsResponse, *http.Response, error) {
 	return r.ApiService.ImportFirewallRulesExecute(r)
 }
 
@@ -2045,13 +2044,13 @@ func (api *FirewallApiService) ImportFirewallRules(ctx context.Context) ApiImpor
 }
 
 // Execute executes the request
-//  @return m.FirewallRulesAndErrorsResponse
-func (api *FirewallApiService) ImportFirewallRulesExecute(r ApiImportFirewallRulesRequest) (*m.FirewallRulesAndErrorsResponse, *http.Response, error) {
+//  @return FirewallRulesAndErrorsResponse
+func (api *FirewallApiService) ImportFirewallRulesExecute(r ApiImportFirewallRulesRequest) (*FirewallRulesAndErrorsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallRulesAndErrorsResponse
+		localVarReturnValue  *FirewallRulesAndErrorsResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.ImportFirewallRules")
@@ -2110,7 +2109,7 @@ func (api *FirewallApiService) ImportFirewallRulesExecute(r ApiImportFirewallRul
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2120,7 +2119,7 @@ func (api *FirewallApiService) ImportFirewallRulesExecute(r ApiImportFirewallRul
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2146,15 +2145,15 @@ func (api *FirewallApiService) ImportFirewallRulesExecute(r ApiImportFirewallRul
 type ApiPostCreateFirewallFwsetRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	createFirewallFwsetRequest *m.CreateFirewallFwsetRequest
+	createFirewallFwsetRequest *CreateFirewallFwsetRequest
 }
 
-func (r ApiPostCreateFirewallFwsetRequest) CreateFirewallFwsetRequest(createFirewallFwsetRequest m.CreateFirewallFwsetRequest) ApiPostCreateFirewallFwsetRequest {
+func (r ApiPostCreateFirewallFwsetRequest) CreateFirewallFwsetRequest(createFirewallFwsetRequest CreateFirewallFwsetRequest) ApiPostCreateFirewallFwsetRequest {
 	r.createFirewallFwsetRequest = &createFirewallFwsetRequest
 	return r
 }
 
-func (r ApiPostCreateFirewallFwsetRequest) Execute() (*m.FirewallFwsetSaveResponse, *http.Response, error) {
+func (r ApiPostCreateFirewallFwsetRequest) Execute() (*FirewallFwsetSaveResponse, *http.Response, error) {
 	return r.ApiService.PostCreateFirewallFwsetExecute(r)
 }
 
@@ -2175,12 +2174,12 @@ func (api *FirewallApiService) PostCreateFirewallFwset(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return FirewallFwsetSaveResponse
-func (api *FirewallApiService) PostCreateFirewallFwsetExecute(r ApiPostCreateFirewallFwsetRequest) (*m.FirewallFwsetSaveResponse, *http.Response, error) {
+func (api *FirewallApiService) PostCreateFirewallFwsetExecute(r ApiPostCreateFirewallFwsetRequest) (*FirewallFwsetSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallFwsetSaveResponse
+		localVarReturnValue  *FirewallFwsetSaveResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PostCreateFirewallFwset")
@@ -2239,7 +2238,7 @@ func (api *FirewallApiService) PostCreateFirewallFwsetExecute(r ApiPostCreateFir
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2249,7 +2248,7 @@ func (api *FirewallApiService) PostCreateFirewallFwsetExecute(r ApiPostCreateFir
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2275,15 +2274,15 @@ func (api *FirewallApiService) PostCreateFirewallFwsetExecute(r ApiPostCreateFir
 type ApiPostCreateFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	createFirewallRuleRequest *m.CreateFirewallRuleRequest
+	createFirewallRuleRequest *CreateFirewallRuleRequest
 }
 
-func (r ApiPostCreateFirewallRuleRequest) CreateFirewallRuleRequest(createFirewallRuleRequest m.CreateFirewallRuleRequest) ApiPostCreateFirewallRuleRequest {
+func (r ApiPostCreateFirewallRuleRequest) CreateFirewallRuleRequest(createFirewallRuleRequest CreateFirewallRuleRequest) ApiPostCreateFirewallRuleRequest {
 	r.createFirewallRuleRequest = &createFirewallRuleRequest
 	return r
 }
 
-func (r ApiPostCreateFirewallRuleRequest) Execute() (*m.FirewallRuleSaveResponse, *http.Response, error) {
+func (r ApiPostCreateFirewallRuleRequest) Execute() (*FirewallRuleSaveResponse, *http.Response, error) {
 	return r.ApiService.PostCreateFirewallRuleExecute(r)
 }
 
@@ -2303,13 +2302,13 @@ func (api *FirewallApiService) PostCreateFirewallRule(ctx context.Context) ApiPo
 }
 
 // Execute executes the request
-//  @return m.FirewallRuleSaveResponse
-func (api *FirewallApiService) PostCreateFirewallRuleExecute(r ApiPostCreateFirewallRuleRequest) (*m.FirewallRuleSaveResponse, *http.Response, error) {
+//  @return FirewallRuleSaveResponse
+func (api *FirewallApiService) PostCreateFirewallRuleExecute(r ApiPostCreateFirewallRuleRequest) (*FirewallRuleSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallRuleSaveResponse
+		localVarReturnValue  *FirewallRuleSaveResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PostCreateFirewallRule")
@@ -2368,7 +2367,7 @@ func (api *FirewallApiService) PostCreateFirewallRuleExecute(r ApiPostCreateFire
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2378,7 +2377,7 @@ func (api *FirewallApiService) PostCreateFirewallRuleExecute(r ApiPostCreateFire
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2404,15 +2403,15 @@ func (api *FirewallApiService) PostCreateFirewallRuleExecute(r ApiPostCreateFire
 type ApiPostCreateFirewallRuleGroupRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	createRuleGroupRequest *m.CreateFirewallRuleGroupRequest
+	createRuleGroupRequest *CreateFirewallRuleGroupRequest
 }
 
-func (r ApiPostCreateFirewallRuleGroupRequest) CreateFirewallRuleGroupRequest(createRuleGroupRequest m.CreateFirewallRuleGroupRequest) ApiPostCreateFirewallRuleGroupRequest {
+func (r ApiPostCreateFirewallRuleGroupRequest) CreateFirewallRuleGroupRequest(createRuleGroupRequest CreateFirewallRuleGroupRequest) ApiPostCreateFirewallRuleGroupRequest {
 	r.createRuleGroupRequest = &createRuleGroupRequest
 	return r
 }
 
-func (r ApiPostCreateFirewallRuleGroupRequest) Execute() (*m.RuleGroupDetailResponse, *http.Response, error) {
+func (r ApiPostCreateFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
 	return r.ApiService.PostCreateFirewallRuleGroupExecute(r)
 }
 
@@ -2432,13 +2431,13 @@ func (api *FirewallApiService) PostCreateFirewallRuleGroup(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return m.RuleGroupDetailResponse
-func (api *FirewallApiService) PostCreateFirewallRuleGroupExecute(r ApiPostCreateFirewallRuleGroupRequest) (*m.RuleGroupDetailResponse, *http.Response, error) {
+//  @return RuleGroupDetailResponse
+func (api *FirewallApiService) PostCreateFirewallRuleGroupExecute(r ApiPostCreateFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RuleGroupDetailResponse
+		localVarReturnValue  *RuleGroupDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PostCreateFirewallRuleGroup")
@@ -2497,7 +2496,7 @@ func (api *FirewallApiService) PostCreateFirewallRuleGroupExecute(r ApiPostCreat
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2507,7 +2506,7 @@ func (api *FirewallApiService) PostCreateFirewallRuleGroupExecute(r ApiPostCreat
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2533,15 +2532,15 @@ func (api *FirewallApiService) PostCreateFirewallRuleGroupExecute(r ApiPostCreat
 type ApiPostCreateFirewallSubtableRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	createFirewallSubtableRequest *m.CreateFirewallSubtableRequest
+	createFirewallSubtableRequest *CreateFirewallSubtableRequest
 }
 
-func (r ApiPostCreateFirewallSubtableRequest) CreateFirewallSubtableRequest(createFirewallSubtableRequest m.CreateFirewallSubtableRequest) ApiPostCreateFirewallSubtableRequest {
+func (r ApiPostCreateFirewallSubtableRequest) CreateFirewallSubtableRequest(createFirewallSubtableRequest CreateFirewallSubtableRequest) ApiPostCreateFirewallSubtableRequest {
 	r.createFirewallSubtableRequest = &createFirewallSubtableRequest
 	return r
 }
 
-func (r ApiPostCreateFirewallSubtableRequest) Execute() (*m.FirewallSubtableSaveResponse, *http.Response, error) {
+func (r ApiPostCreateFirewallSubtableRequest) Execute() (*FirewallSubtableSaveResponse, *http.Response, error) {
 	return r.ApiService.PostCreateFirewallSubtableExecute(r)
 }
 
@@ -2561,13 +2560,13 @@ func (api *FirewallApiService) PostCreateFirewallSubtable(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return m.FirewallSubtableSaveResponse
-func (api *FirewallApiService) PostCreateFirewallSubtableExecute(r ApiPostCreateFirewallSubtableRequest) (*m.FirewallSubtableSaveResponse, *http.Response, error) {
+//  @return FirewallSubtableSaveResponse
+func (api *FirewallApiService) PostCreateFirewallSubtableExecute(r ApiPostCreateFirewallSubtableRequest) (*FirewallSubtableSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallSubtableSaveResponse
+		localVarReturnValue  *FirewallSubtableSaveResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PostCreateFirewallSubtable")
@@ -2626,7 +2625,7 @@ func (api *FirewallApiService) PostCreateFirewallSubtableExecute(r ApiPostCreate
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2636,7 +2635,7 @@ func (api *FirewallApiService) PostCreateFirewallSubtableExecute(r ApiPostCreate
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2662,15 +2661,15 @@ func (api *FirewallApiService) PostCreateFirewallSubtableExecute(r ApiPostCreate
 type ApiPutFirewallActionRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	firewallActionRequest *m.FirewallActionRequest
+	firewallActionRequest *FirewallActionRequest
 }
 
-func (r ApiPutFirewallActionRequest) FirewallActionRequest(firewallActionRequest m.FirewallActionRequest) ApiPutFirewallActionRequest {
+func (r ApiPutFirewallActionRequest) FirewallActionRequest(firewallActionRequest FirewallActionRequest) ApiPutFirewallActionRequest {
 	r.firewallActionRequest = &firewallActionRequest
 	return r
 }
 
-func (r ApiPutFirewallActionRequest) Execute() (*m.SimpleStatusResponse, *http.Response, error) {
+func (r ApiPutFirewallActionRequest) Execute() (*SimpleStatusResponse, *http.Response, error) {
 	return r.ApiService.PutFirewallActionExecute(r)
 }
 
@@ -2690,13 +2689,13 @@ func (api *FirewallApiService) PutFirewallAction(ctx context.Context) ApiPutFire
 }
 
 // Execute executes the request
-//  @return m.SimpleStatusResponse
-func (api *FirewallApiService) PutFirewallActionExecute(r ApiPutFirewallActionRequest) (*m.SimpleStatusResponse, *http.Response, error) {
+//  @return SimpleStatusResponse
+func (api *FirewallApiService) PutFirewallActionExecute(r ApiPutFirewallActionRequest) (*SimpleStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.SimpleStatusResponse
+		localVarReturnValue  *SimpleStatusResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PutFirewallAction")
@@ -2755,7 +2754,7 @@ func (api *FirewallApiService) PutFirewallActionExecute(r ApiPutFirewallActionRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2781,15 +2780,15 @@ func (api *FirewallApiService) PutFirewallActionExecute(r ApiPutFirewallActionRe
 type ApiPutOverwriteFirewallRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
-	overwriteRequest *m.FirewallOverwriteRequest
+	overwriteRequest *FirewallOverwriteRequest
 }
 
-func (r ApiPutOverwriteFirewallRequest) OverwriteRequest(overwriteRequest m.FirewallOverwriteRequest) ApiPutOverwriteFirewallRequest {
+func (r ApiPutOverwriteFirewallRequest) OverwriteRequest(overwriteRequest FirewallOverwriteRequest) ApiPutOverwriteFirewallRequest {
 	r.overwriteRequest = &overwriteRequest
 	return r
 }
 
-func (r ApiPutOverwriteFirewallRequest) Execute() (*m.FirewallOverwriteResponse, *http.Response, error) {
+func (r ApiPutOverwriteFirewallRequest) Execute() (*FirewallOverwriteResponse, *http.Response, error) {
 	return r.ApiService.PutOverwriteFirewallExecute(r)
 }
 
@@ -2809,13 +2808,13 @@ func (api *FirewallApiService) PutOverwriteFirewall(ctx context.Context) ApiPutO
 }
 
 // Execute executes the request
-//  @return m.FirewallOverwriteResponse
-func (api *FirewallApiService) PutOverwriteFirewallExecute(r ApiPutOverwriteFirewallRequest) (*m.FirewallOverwriteResponse, *http.Response, error) {
+//  @return FirewallOverwriteResponse
+func (api *FirewallApiService) PutOverwriteFirewallExecute(r ApiPutOverwriteFirewallRequest) (*FirewallOverwriteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallOverwriteResponse
+		localVarReturnValue  *FirewallOverwriteResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PutOverwriteFirewall")
@@ -2874,7 +2873,7 @@ func (api *FirewallApiService) PutOverwriteFirewallExecute(r ApiPutOverwriteFire
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2901,15 +2900,15 @@ type ApiPutUpdateFirewallFwsetRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	updateFirewallFwsetRequest *m.UpdateFirewallFwsetRequest
+	updateFirewallFwsetRequest *UpdateFirewallFwsetRequest
 }
 
-func (r ApiPutUpdateFirewallFwsetRequest) UpdateFirewallFwsetRequest(updateFirewallFwsetRequest m.UpdateFirewallFwsetRequest) ApiPutUpdateFirewallFwsetRequest {
+func (r ApiPutUpdateFirewallFwsetRequest) UpdateFirewallFwsetRequest(updateFirewallFwsetRequest UpdateFirewallFwsetRequest) ApiPutUpdateFirewallFwsetRequest {
 	r.updateFirewallFwsetRequest = &updateFirewallFwsetRequest
 	return r
 }
 
-func (r ApiPutUpdateFirewallFwsetRequest) Execute() (*m.FirewallFwsetSaveResponse, *http.Response, error) {
+func (r ApiPutUpdateFirewallFwsetRequest) Execute() (*FirewallFwsetSaveResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateFirewallFwsetExecute(r)
 }
 
@@ -2931,13 +2930,13 @@ func (api *FirewallApiService) PutUpdateFirewallFwset(ctx context.Context, name 
 }
 
 // Execute executes the request
-//  @return m.FirewallFwsetSaveResponse
-func (api *FirewallApiService) PutUpdateFirewallFwsetExecute(r ApiPutUpdateFirewallFwsetRequest) (*m.FirewallFwsetSaveResponse, *http.Response, error) {
+//  @return FirewallFwsetSaveResponse
+func (api *FirewallApiService) PutUpdateFirewallFwsetExecute(r ApiPutUpdateFirewallFwsetRequest) (*FirewallFwsetSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallFwsetSaveResponse
+		localVarReturnValue  *FirewallFwsetSaveResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PutUpdateFirewallFwset")
@@ -2997,7 +2996,7 @@ func (api *FirewallApiService) PutUpdateFirewallFwsetExecute(r ApiPutUpdateFirew
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3007,7 +3006,7 @@ func (api *FirewallApiService) PutUpdateFirewallFwsetExecute(r ApiPutUpdateFirew
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3017,7 +3016,7 @@ func (api *FirewallApiService) PutUpdateFirewallFwsetExecute(r ApiPutUpdateFirew
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3044,15 +3043,15 @@ type ApiPutUpdateFirewallRuleRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	id string
-	updateFirewallRuleRequest *m.UpdateFirewallRuleRequest
+	updateFirewallRuleRequest *UpdateFirewallRuleRequest
 }
 
-func (r ApiPutUpdateFirewallRuleRequest) UpdateFirewallRuleRequest(updateFirewallRuleRequest m.UpdateFirewallRuleRequest) ApiPutUpdateFirewallRuleRequest {
+func (r ApiPutUpdateFirewallRuleRequest) UpdateFirewallRuleRequest(updateFirewallRuleRequest UpdateFirewallRuleRequest) ApiPutUpdateFirewallRuleRequest {
 	r.updateFirewallRuleRequest = &updateFirewallRuleRequest
 	return r
 }
 
-func (r ApiPutUpdateFirewallRuleRequest) Execute() (*m.FirewallRuleDetailResponse, *http.Response, error) {
+func (r ApiPutUpdateFirewallRuleRequest) Execute() (*FirewallRuleDetailResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateFirewallRuleExecute(r)
 }
 
@@ -3074,13 +3073,13 @@ func (api *FirewallApiService) PutUpdateFirewallRule(ctx context.Context, id str
 }
 
 // Execute executes the request
-//  @return m.FirewallRuleDetailResponse
-func (api *FirewallApiService) PutUpdateFirewallRuleExecute(r ApiPutUpdateFirewallRuleRequest) (*m.FirewallRuleDetailResponse, *http.Response, error) {
+//  @return FirewallRuleDetailResponse
+func (api *FirewallApiService) PutUpdateFirewallRuleExecute(r ApiPutUpdateFirewallRuleRequest) (*FirewallRuleDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallRuleDetailResponse
+		localVarReturnValue  *FirewallRuleDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PutUpdateFirewallRule")
@@ -3140,7 +3139,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleExecute(r ApiPutUpdateFirewa
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3150,7 +3149,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleExecute(r ApiPutUpdateFirewa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3160,7 +3159,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleExecute(r ApiPutUpdateFirewa
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3187,15 +3186,15 @@ type ApiPutUpdateFirewallRuleGroupRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	updateFirewallRuleGroupRequest *m.UpdateFirewallRuleGroupRequest
+	updateFirewallRuleGroupRequest *UpdateFirewallRuleGroupRequest
 }
 
-func (r ApiPutUpdateFirewallRuleGroupRequest) UpdateFirewallRuleGroupRequest(updateFirewallRuleGroupRequest m.UpdateFirewallRuleGroupRequest) ApiPutUpdateFirewallRuleGroupRequest {
+func (r ApiPutUpdateFirewallRuleGroupRequest) UpdateFirewallRuleGroupRequest(updateFirewallRuleGroupRequest UpdateFirewallRuleGroupRequest) ApiPutUpdateFirewallRuleGroupRequest {
 	r.updateFirewallRuleGroupRequest = &updateFirewallRuleGroupRequest
 	return r
 }
 
-func (r ApiPutUpdateFirewallRuleGroupRequest) Execute() (*m.RuleGroupDetailResponse, *http.Response, error) {
+func (r ApiPutUpdateFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateFirewallRuleGroupExecute(r)
 }
 
@@ -3217,13 +3216,13 @@ func (api *FirewallApiService) PutUpdateFirewallRuleGroup(ctx context.Context, n
 }
 
 // Execute executes the request
-//  @return m.RuleGroupDetailResponse
-func (api *FirewallApiService) PutUpdateFirewallRuleGroupExecute(r ApiPutUpdateFirewallRuleGroupRequest) (*m.RuleGroupDetailResponse, *http.Response, error) {
+//  @return RuleGroupDetailResponse
+func (api *FirewallApiService) PutUpdateFirewallRuleGroupExecute(r ApiPutUpdateFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.RuleGroupDetailResponse
+		localVarReturnValue  *RuleGroupDetailResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PutUpdateFirewallRuleGroup")
@@ -3283,7 +3282,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleGroupExecute(r ApiPutUpdateF
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3293,7 +3292,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleGroupExecute(r ApiPutUpdateF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3303,7 +3302,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleGroupExecute(r ApiPutUpdateF
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3330,15 +3329,15 @@ type ApiPutUpdateFirewallSubtableRequest struct {
 	ctx context.Context
 	ApiService *FirewallApiService
 	name string
-	updateFirewallSubtableRequest *m.UpdateFirewallSubtableRequest
+	updateFirewallSubtableRequest *UpdateFirewallSubtableRequest
 }
 
-func (r ApiPutUpdateFirewallSubtableRequest) UpdateFirewallSubtableRequest(updateFirewallSubtableRequest m.UpdateFirewallSubtableRequest) ApiPutUpdateFirewallSubtableRequest {
+func (r ApiPutUpdateFirewallSubtableRequest) UpdateFirewallSubtableRequest(updateFirewallSubtableRequest UpdateFirewallSubtableRequest) ApiPutUpdateFirewallSubtableRequest {
 	r.updateFirewallSubtableRequest = &updateFirewallSubtableRequest
 	return r
 }
 
-func (r ApiPutUpdateFirewallSubtableRequest) Execute() (*m.FirewallSubtableSaveResponse, *http.Response, error) {
+func (r ApiPutUpdateFirewallSubtableRequest) Execute() (*FirewallSubtableSaveResponse, *http.Response, error) {
 	return r.ApiService.PutUpdateFirewallSubtableExecute(r)
 }
 
@@ -3360,13 +3359,13 @@ func (api *FirewallApiService) PutUpdateFirewallSubtable(ctx context.Context, na
 }
 
 // Execute executes the request
-//  @return m.FirewallSubtableSaveResponse
-func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFirewallSubtableRequest) (*m.FirewallSubtableSaveResponse, *http.Response, error) {
+//  @return FirewallSubtableSaveResponse
+func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFirewallSubtableRequest) (*FirewallSubtableSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *m.FirewallSubtableSaveResponse
+		localVarReturnValue  *FirewallSubtableSaveResponse
 	)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "FirewallApiService.PutUpdateFirewallSubtable")
@@ -3426,7 +3425,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3436,7 +3435,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v m.ErrorResponse
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3558,7 +3557,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3568,7 +3567,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3682,7 +3681,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3692,7 +3691,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3812,7 +3811,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3822,7 +3821,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3942,7 +3941,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3952,7 +3951,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 404 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -3962,7 +3961,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 410 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4092,7 +4091,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4222,7 +4221,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4331,7 +4330,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4451,7 +4450,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4461,7 +4460,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4581,7 +4580,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4591,7 +4590,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4711,7 +4710,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 400 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4721,7 +4720,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			return localVarReturnValue, localVarHTTPResponse, newErr
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4841,7 +4840,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -4960,7 +4959,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -5077,7 +5076,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
@@ -5185,7 +5184,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // 			error: localVarHTTPResponse.Status,
 // 		}
 // 		if localVarHTTPResponse.StatusCode == 403 {
-// 			var v m.ErrorResponse
+// 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
 // 				newErr.error = err.Error()
