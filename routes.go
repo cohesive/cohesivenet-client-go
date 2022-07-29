@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -18,10 +19,9 @@ func (c *Client) GetRoutes() (RouteResponse, error) {
 		log.Println(err)
 	}
 
+	simpleJson := SimplifyJson(string(body))
 	routeResponse := RouteResponse{}
-	//var routeResponse map[string]interface{}
-
-	errUnmarshal := json.Unmarshal([]byte(body), &routeResponse)
+	errUnmarshal := json.Unmarshal([]byte(simpleJson), &routeResponse)
 
 	if err != nil {
 		log.Println(errUnmarshal)
@@ -30,17 +30,16 @@ func (c *Client) GetRoutes() (RouteResponse, error) {
 	return routeResponse, nil
 }
 
-func (c *Client) CreateRoute(route *Route) (*RouteResponse, error) {
+func (c *Client) CreateRoute(route *Route) (RouteResponse, error) {
 
 	rb, err := json.Marshal(route)
 	if err != nil {
-		return nil, err
+		log.Println(err)
 	}
-
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/routes", c.HostURL), strings.NewReader(string(rb)))
 
 	if err != nil {
-		return nil, err
+		log.Println(err)
 	}
 
 	body, err := c.doRequest(req)
@@ -48,11 +47,61 @@ func (c *Client) CreateRoute(route *Route) (*RouteResponse, error) {
 		log.Println(err)
 	}
 
+	simpleJson := SimplifyJson(string(body))
+
 	newRoute := RouteResponse{}
-	err = json.Unmarshal(body, &newRoute)
+	errUnmarshal := json.Unmarshal([]byte(simpleJson), &newRoute)
 	if err != nil {
-		log.Println(err)
+		log.Println(errUnmarshal)
 	}
 
-	return &newRoute, nil
+	return newRoute, err
+}
+
+func (c *Client) DeleteRoute(routeId string) error {
+	req, err := http.NewRequest("DELETE", fmt.Sprintf("%s/routes/%s", c.HostURL, routeId), nil)
+	if err != nil {
+		return err
+	}
+
+	body, err := c.doRequest(req)
+	if err != nil {
+		return err
+	}
+
+	if string(body) == "Deleted route" {
+		return err
+	}
+
+	return nil
+}
+
+func SimplifyJson(input string) string {
+	var result map[string]interface{}
+	json.Unmarshal([]byte(input), &result)
+
+	var routes = result["response"].(map[string]interface{})
+	var list string = "{\"response\" : [ "
+	for _, route := range routes {
+		list += "{ "
+		values := route.(map[string]interface{})
+		id := strconv.Itoa(int(values["id"].(float64)))
+		metric := strconv.Itoa(int(values["metric"].(float64)))
+		list += "\"id\":\"" + id + "\","
+		list += "\"description\":\"" + values["description"].(string) + "\","
+		list += "\"advertise\": " + strconv.FormatBool(values["advertise"].(bool)) + ","
+		list += "\"enabled\":" + strconv.FormatBool(values["enabled"].(bool)) + ","
+		list += "\"editable\":" + strconv.FormatBool(values["editable"].(bool)) + ","
+		list += "\"cidr\":\"" + values["cidr"].(string) + "\","
+		list += "\"gateway\":\"" + values["gateway"].(string) + "\","
+		list += "\"netmask\":\"" + values["netmask"].(string) + "\","
+		list += "\"table\":\"" + values["table"].(string) + "\","
+		list += "\"interface\":\"" + values["interface"].(string) + "\","
+		list += "\"metric\":" + metric + ""
+		list += " },"
+	}
+	list = list[:len(list)-1]
+	list += "]}"
+
+	return list
 }

@@ -42,4 +42,3 @@ func (c *Client) GetFirewallRules() (FirewallResponse, error) {
 
 	return firewallResponse, nil
 }
-

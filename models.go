@@ -55,10 +55,6 @@ type FirewallResponse struct {
 	} `json:"response"`
 }
 
-type RouteResponse struct {
-	Response interface{} `json:"response"`
-}
-
 type EndpointResponse struct {
 	Endpoints interface{} `json:"response"`
 }
@@ -124,4 +120,20 @@ type Route struct {
 	Tunnel      int    `json:"tunnel,omitempty"`
 	Advertise   bool   `json:"advertise,omitempty"`
 	Metric      int    `json:"metric,omitempty"`
+}
+
+type RouteResponse struct {
+	Routes []struct {
+		ID          string `json:"id,omitempty"`
+		Description string `json:"description,omitempty"`
+		Advertise   bool   `json:"advertise,omitempty"`
+		Enabled     bool   `json:"enabled,omitempty"`
+		Editable    bool   `json:"editable,omitempty"`
+		Cidr        string `json:"cidr,omitempty"`
+		Gateway     string `json:"gateway,omitempty"`
+		Netmask     string `json:"netmask,omitempty"`
+		Table       string `json:"table,omitempty"`
+		Interface   string `json:"interface,omitempty"`
+		Metric      int    `json:"metric,omitempty"`
+	} `json:"response"`
 }
