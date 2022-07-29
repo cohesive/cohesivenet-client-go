@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func (c *Client) GetRoutes() (RouteResponse, error) {
@@ -27,4 +28,31 @@ func (c *Client) GetRoutes() (RouteResponse, error) {
 	}
 
 	return routeResponse, nil
+}
+
+func (c *Client) CreateRoute(route *Route) (*RouteResponse, error) {
+
+	rb, err := json.Marshal(route)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/routes", c.HostURL), strings.NewReader(string(rb)))
+
+	if err != nil {
+		return nil, err
+	}
+
+	body, err := c.doRequest(req)
+	if err != nil {
+		log.Println(err)
+	}
+
+	newRoute := RouteResponse{}
+	err = json.Unmarshal(body, &newRoute)
+	if err != nil {
+		log.Println(err)
+	}
+
+	return &newRoute, nil
 }

@@ -107,3 +107,13 @@ type NewEndpoint struct {
 		Psk                  string `json:"psk"`
 	} `json:"response"`
 }
+
+type Route struct {
+	Cidr        string `json:"cidr,omitempty"`
+	Description string `json:"description,omitempty"`
+	Interface   string `json:"interface,omitempty"`
+	Gateway     string `json:"gateway,omitempty"`
+	Tunnel      int    `json:"tunnel,omitempty"`
+	Advertise   bool   `json:"advertise,omitempty"`
+	Metric      int    `json:"metric,omitempty"`
+}
