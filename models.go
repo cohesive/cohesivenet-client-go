@@ -49,7 +49,10 @@ type ConfigResponse struct {
 }
 
 type FirewallResponse struct {
-	Firewall [][]interface{} `json:"response"`
+	FirewallRules []struct {
+		ID   string `json:"id"`
+		Rule string `json:"rule"`
+	} `json:"response"`
 }
 
 type RouteResponse struct {
@@ -58,6 +61,11 @@ type RouteResponse struct {
 
 type EndpointResponse struct {
 	Endpoints interface{} `json:"response"`
+}
+
+type FirewallRule struct {
+	ID   string `json:"id"`
+	Rule string `json:"rule"`
 }
 
 type Endpoint struct {
