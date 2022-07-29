@@ -18,7 +18,7 @@ import (
 // RuntimeStatus struct for RuntimeStatus
 type RuntimeStatus struct {
 	// clients keyed by ip address
-	ConnectedClients *map[string]RuntimeStatusConnectedClientsValue `json:"connected_clients,omitempty"`
+	ConnectedClients *map[string]ConnectedClient `json:"connected_clients,omitempty"`
 	// Array of arrays with each element of length 2 representing [network, subnet mask]
 	ConnectedSubnets [][]string `json:"connected_subnets,omitempty"`
 	// IPSEC tunnels keyed by tunnel ID
@@ -43,9 +43,9 @@ func NewRuntimeStatusWithDefaults() *RuntimeStatus {
 }
 
 // GetConnectedClients returns the ConnectedClients field value if set, zero value otherwise.
-func (o *RuntimeStatus) GetConnectedClients() map[string]RuntimeStatusConnectedClientsValue {
+func (o *RuntimeStatus) GetConnectedClients() map[string]ConnectedClient {
 	if o == nil || o.ConnectedClients == nil {
-		var ret map[string]RuntimeStatusConnectedClientsValue
+		var ret map[string]ConnectedClient
 		return ret
 	}
 	return *o.ConnectedClients
@@ -53,7 +53,7 @@ func (o *RuntimeStatus) GetConnectedClients() map[string]RuntimeStatusConnectedC
 
 // GetConnectedClientsOk returns a tuple with the ConnectedClients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatus) GetConnectedClientsOk() (*map[string]RuntimeStatusConnectedClientsValue, bool) {
+func (o *RuntimeStatus) GetConnectedClientsOk() (*map[string]ConnectedClient, bool) {
 	if o == nil || o.ConnectedClients == nil {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *RuntimeStatus) HasConnectedClients() bool {
 	return false
 }
 
-// SetConnectedClients gets a reference to the given map[string]RuntimeStatusConnectedClientsValue and assigns it to the ConnectedClients field.
-func (o *RuntimeStatus) SetConnectedClients(v map[string]RuntimeStatusConnectedClientsValue) {
+// SetConnectedClients gets a reference to the given map[string]ConnectedClient and assigns it to the ConnectedClients field.
+func (o *RuntimeStatus) SetConnectedClients(v map[string]ConnectedClient) {
 	o.ConnectedClients = &v
 }
 

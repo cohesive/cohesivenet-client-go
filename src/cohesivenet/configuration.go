@@ -35,7 +35,7 @@ var (
 	// ContextBasicAuth takes BasicAuth as authentication for the request.
 	ContextBasicAuth = contextKey("basic")
 
-	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
+	// ContextAccessToken takes a string api access token as authentication for the request.
 	ContextAccessToken = contextKey("accesstoken")
 
 	// ContextAPIKeys takes a string apikey as authentication for the request
@@ -96,6 +96,8 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
+	AuthType		*contextKey
+	Auth			*interface{}
 }
 
 // NewConfiguration returns a new Configuration object
@@ -114,6 +116,15 @@ func NewConfiguration(host string) *Configuration {
 		},
 		OperationServers: map[string]ServerConfigurations{},
 	}
+	return cfg
+}
+
+
+// NewConfiguration returns a new Configuration object with auth set
+func NewConfigurationWithAuth(host string, authType contextKey, auth interface{}) *Configuration {
+	cfg := NewConfiguration(host)
+	cfg.AuthType = &authType
+	cfg.Auth = &auth
 	return cfg
 }
 

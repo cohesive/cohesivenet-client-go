@@ -31,7 +31,7 @@ type ApiDeletePeerRequest struct {
 }
 
 func (r ApiDeletePeerRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
-	return r.ApiService.DeletePeerExecute(r)
+	return r.ApiService.DeletePeer(r)
 }
 
 /*
@@ -44,7 +44,7 @@ Breaks a peering relationship from a controller to another controller.  The peer
  @param peerId Peer ID for controller peer
  @return ApiDeletePeerRequest
 */
-func (api *PeeringApiService) DeletePeer(ctx context.Context, peerId int32) ApiDeletePeerRequest {
+func (api *PeeringApiService) DeletePeerRequest(ctx context.Context, peerId int32) ApiDeletePeerRequest {
 	return ApiDeletePeerRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -54,7 +54,7 @@ func (api *PeeringApiService) DeletePeer(ctx context.Context, peerId int32) ApiD
 
 // Execute executes the request
 //  @return Object
-func (api *PeeringApiService) DeletePeerExecute(r ApiDeletePeerRequest) (*PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) DeletePeer(r ApiDeletePeerRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -144,7 +144,7 @@ type ApiGetPeeringStatusRequest struct {
 }
 
 func (r ApiGetPeeringStatusRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
-	return r.ApiService.GetPeeringStatusExecute(r)
+	return r.ApiService.GetPeeringStatus(r)
 }
 
 /*
@@ -155,7 +155,7 @@ Provides the status of whether a Controller is peered to other Controllers
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPeeringStatusRequest
 */
-func (api *PeeringApiService) GetPeeringStatus(ctx context.Context) ApiGetPeeringStatusRequest {
+func (api *PeeringApiService) GetPeeringStatusRequest(ctx context.Context) ApiGetPeeringStatusRequest {
 	return ApiGetPeeringStatusRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -164,7 +164,7 @@ func (api *PeeringApiService) GetPeeringStatus(ctx context.Context) ApiGetPeerin
 
 // Execute executes the request
 //  @return models.PeersDetailResponse
-func (api *PeeringApiService) GetPeeringStatusExecute(r ApiGetPeeringStatusRequest) (*PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) GetPeeringStatus(r ApiGetPeeringStatusRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -249,7 +249,7 @@ func (r ApiPostCreatePeerRequest) CreatePeerRequest(createPeerRequest CreatePeer
 }
 
 func (r ApiPostCreatePeerRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCreatePeerExecute(r)
+	return r.ApiService.PostCreatePeer(r)
 }
 
 /*
@@ -261,7 +261,7 @@ Creates a peering relationship from a controller to another controller.  The pee
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreatePeerRequest
 */
-func (api *PeeringApiService) PostCreatePeer(ctx context.Context) ApiPostCreatePeerRequest {
+func (api *PeeringApiService) PostCreatePeerRequest(ctx context.Context) ApiPostCreatePeerRequest {
 	return ApiPostCreatePeerRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -270,7 +270,7 @@ func (api *PeeringApiService) PostCreatePeer(ctx context.Context) ApiPostCreateP
 
 // Execute executes the request
 //  @return models.PeersDetailResponse
-func (api *PeeringApiService) PostCreatePeerExecute(r ApiPostCreatePeerRequest) (*PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) PostCreatePeer(r ApiPostCreatePeerRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -370,7 +370,7 @@ func (r ApiPutSelfPeeringIdRequest) PeerSelfRequest(peerSelfRequest PeerSelfRequ
 }
 
 func (r ApiPutSelfPeeringIdRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
-	return r.ApiService.PutSelfPeeringIdExecute(r)
+	return r.ApiService.PutSelfPeeringId(r)
 }
 
 /*
@@ -381,7 +381,7 @@ Sets the Controller ID of a controller so that it can be peered within a topolog
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutSelfPeeringIdRequest
 */
-func (api *PeeringApiService) PutSelfPeeringId(ctx context.Context) ApiPutSelfPeeringIdRequest {
+func (api *PeeringApiService) PutSelfPeeringIdRequest(ctx context.Context) ApiPutSelfPeeringIdRequest {
 	return ApiPutSelfPeeringIdRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -390,7 +390,7 @@ func (api *PeeringApiService) PutSelfPeeringId(ctx context.Context) ApiPutSelfPe
 
 // Execute executes the request
 //  @return models.PeersDetailResponse
-func (api *PeeringApiService) PutSelfPeeringIdExecute(r ApiPutSelfPeeringIdRequest) (*PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) PutSelfPeeringId(r ApiPutSelfPeeringIdRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -491,7 +491,7 @@ func (r ApiPutUpdatePeerRequest) UpdatePeerRequest(updatePeerRequest UpdatePeerR
 }
 
 func (r ApiPutUpdatePeerRequest) Execute() (*PeersDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdatePeerExecute(r)
+	return r.ApiService.PutUpdatePeer(r)
 }
 
 /*
@@ -504,7 +504,7 @@ Edits a peering relationship from a controller to another controller.  The peeri
  @param peerId Peer ID for controller peer
  @return ApiPutUpdatePeerRequest
 */
-func (api *PeeringApiService) PutUpdatePeer(ctx context.Context, peerId int32) ApiPutUpdatePeerRequest {
+func (api *PeeringApiService) PutUpdatePeerRequest(ctx context.Context, peerId int32) ApiPutUpdatePeerRequest {
 	return ApiPutUpdatePeerRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -514,7 +514,7 @@ func (api *PeeringApiService) PutUpdatePeer(ctx context.Context, peerId int32) A
 
 // Execute executes the request
 //  @return PeersDetailResponse
-func (api *PeeringApiService) PutUpdatePeerExecute(r ApiPutUpdatePeerRequest) (*PeersDetailResponse, *http.Response, error) {
+func (api *PeeringApiService) PutUpdatePeer(r ApiPutUpdatePeerRequest) (*PeersDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

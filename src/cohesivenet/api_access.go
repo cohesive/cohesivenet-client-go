@@ -36,7 +36,7 @@ func (r ApiCreateAccessURLRequest) CreateAccessURLRequest(createAccessUrlRequest
 }
 
 func (r ApiCreateAccessURLRequest) Execute() (*AccessUrlDetail, *http.Response, error) {
-	return r.ApiService.CreateAccessUrlExecute(r)
+	return r.ApiService.CreateAccessUrl(r)
 }
 
 /*
@@ -47,7 +47,7 @@ Create access Url
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessURLRequest
 */
-func (api *AccessApiService) CreateAccessUrl(ctx context.Context) ApiCreateAccessURLRequest {
+func (api *AccessApiService) CreateAccessUrlRequest(ctx context.Context) ApiCreateAccessURLRequest {
 	return ApiCreateAccessURLRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (api *AccessApiService) CreateAccessUrl(ctx context.Context) ApiCreateAcces
 
 // Execute executes the request
 //  @return AccessUrlDetail
-func (api *AccessApiService) CreateAccessUrlExecute(r ApiCreateAccessURLRequest) (*AccessUrlDetail, *http.Response, error) {
+func (api *AccessApiService) CreateAccessUrl(r ApiCreateAccessURLRequest) (*AccessUrlDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -153,7 +153,7 @@ func (r ApiCreateApiTokenRequest) CreateAPITokenRequest(createAPITokenRequest Cr
 }
 
 func (r ApiCreateApiTokenRequest) Execute() (*AccessTokenDetail, *http.Response, error) {
-	return r.ApiService.CreateApiTokenExecute(r)
+	return r.ApiService.CreateApiToken(r)
 }
 
 /*
@@ -164,7 +164,7 @@ Create api token
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateApiTokenRequest
 */
-func (api *AccessApiService) CreateApiToken(ctx context.Context) ApiCreateApiTokenRequest {
+func (api *AccessApiService) CreateApiTokenRequest(ctx context.Context) ApiCreateApiTokenRequest {
 	return ApiCreateApiTokenRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -173,7 +173,7 @@ func (api *AccessApiService) CreateApiToken(ctx context.Context) ApiCreateApiTok
 
 // Execute executes the request
 //  @return AccessTokenDetail
-func (api *AccessApiService) CreateApiTokenExecute(r ApiCreateApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
+func (api *AccessApiService) CreateApiToken(r ApiCreateApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -265,7 +265,7 @@ type ApiDeleteAccessUrlRequest struct {
 }
 
 func (r ApiDeleteAccessUrlRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.DeleteAccessUrlExecute(r)
+	return r.ApiService.DeleteAccessUrl(r)
 }
 
 /*
@@ -277,7 +277,7 @@ Delete access Url by ID
  @param accessUrlId Access Url ID
  @return ApiDeleteAccessUrlRequest
 */
-func (api *AccessApiService) DeleteAccessUrl(ctx context.Context, accessUrlId int32) ApiDeleteAccessUrlRequest {
+func (api *AccessApiService) DeleteAccessUrlRequest(ctx context.Context, accessUrlId int32) ApiDeleteAccessUrlRequest {
 	return ApiDeleteAccessUrlRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -287,7 +287,7 @@ func (api *AccessApiService) DeleteAccessUrl(ctx context.Context, accessUrlId in
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (api *AccessApiService) DeleteAccessUrlExecute(r ApiDeleteAccessUrlRequest) (*SimpleStringResponse, *http.Response, error) {
+func (api *AccessApiService) DeleteAccessUrl(r ApiDeleteAccessUrlRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -382,7 +382,7 @@ func (r ApiDeleteAccessUrlBySearchRequest) DeleteAccessUrlRequest(deleteAccessUr
 }
 
 func (r ApiDeleteAccessUrlBySearchRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.DeleteAccessUrlBySearchExecute(r)
+	return r.ApiService.DeleteAccessUrlBySearch(r)
 }
 
 /*
@@ -393,7 +393,7 @@ Delete access Url by ID or Url
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteAccessUrlBySearchRequest
 */
-func (api *AccessApiService) DeleteAccessUrlBySearch(ctx context.Context) ApiDeleteAccessUrlBySearchRequest {
+func (api *AccessApiService) DeleteAccessUrlBySearchRequest(ctx context.Context) ApiDeleteAccessUrlBySearchRequest {
 	return ApiDeleteAccessUrlBySearchRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -402,7 +402,7 @@ func (api *AccessApiService) DeleteAccessUrlBySearch(ctx context.Context) ApiDel
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (api *AccessApiService) DeleteAccessUrlBySearchExecute(r ApiDeleteAccessUrlBySearchRequest) (*SimpleStringResponse, *http.Response, error) {
+func (api *AccessApiService) DeleteAccessUrlBySearch(r ApiDeleteAccessUrlBySearchRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -493,7 +493,7 @@ type ApiDeleteApiTokenRequest struct {
 }
 
 func (r ApiDeleteApiTokenRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.DeleteApiTokenExecute(r)
+	return r.ApiService.DeleteApiToken(r)
 }
 
 /*
@@ -505,7 +505,7 @@ Delete API token by ID
  @param tokenId Token ID
  @return ApiDeleteApiTokenRequest
 */
-func (api *AccessApiService) DeleteApiToken(ctx context.Context, tokenId int32) ApiDeleteApiTokenRequest {
+func (api *AccessApiService) DeleteApiTokenRequest(ctx context.Context, tokenId int32) ApiDeleteApiTokenRequest {
 	return ApiDeleteApiTokenRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -515,7 +515,7 @@ func (api *AccessApiService) DeleteApiToken(ctx context.Context, tokenId int32) 
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (api *AccessApiService) DeleteApiTokenExecute(r ApiDeleteApiTokenRequest) (*SimpleStringResponse, *http.Response, error) {
+func (api *AccessApiService) DeleteApiToken(r ApiDeleteApiTokenRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -605,7 +605,7 @@ type ApiGetAccessUrlRequest struct {
 }
 
 func (r ApiGetAccessUrlRequest) Execute() (*AccessUrlDetail, *http.Response, error) {
-	return r.ApiService.GetAccessUrlExecute(r)
+	return r.ApiService.GetAccessUrl(r)
 }
 
 /*
@@ -617,7 +617,7 @@ Retrieve details for specific access url (including expired ones)
  @param accessUrlId Access Url ID
  @return ApiGetAccessUrlRequest
 */
-func (api *AccessApiService) GetAccessUrl(ctx context.Context, accessUrlId int32) ApiGetAccessUrlRequest {
+func (api *AccessApiService) GetAccessUrlRequest(ctx context.Context, accessUrlId int32) ApiGetAccessUrlRequest {
 	return ApiGetAccessUrlRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -627,7 +627,7 @@ func (api *AccessApiService) GetAccessUrl(ctx context.Context, accessUrlId int32
 
 // Execute executes the request
 //  @return AccessUrlDetail
-func (api *AccessApiService) GetAccessUrlExecute(r ApiGetAccessUrlRequest) (*AccessUrlDetail, *http.Response, error) {
+func (api *AccessApiService) GetAccessUrl(r ApiGetAccessUrlRequest) (*AccessUrlDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -716,7 +716,7 @@ type ApiGetAccessUrlsRequest struct {
 }
 
 func (r ApiGetAccessUrlsRequest) Execute() (*AccessUrlListResponse, *http.Response, error) {
-	return r.ApiService.GetAccessUrlsExecute(r)
+	return r.ApiService.GetAccessUrls(r)
 }
 
 /*
@@ -727,7 +727,7 @@ Retrieve list of users' access urls, including expired ones
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessUrlsRequest
 */
-func (api *AccessApiService) GetAccessUrls(ctx context.Context) ApiGetAccessUrlsRequest {
+func (api *AccessApiService) GetAccessUrlsRequest(ctx context.Context) ApiGetAccessUrlsRequest {
 	return ApiGetAccessUrlsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -736,7 +736,7 @@ func (api *AccessApiService) GetAccessUrls(ctx context.Context) ApiGetAccessUrls
 
 // Execute executes the request
 //  @return AccessUrlListResponse
-func (api *AccessApiService) GetAccessUrlsExecute(r ApiGetAccessUrlsRequest) (*AccessUrlListResponse, *http.Response, error) {
+func (api *AccessApiService) GetAccessUrls(r ApiGetAccessUrlsRequest) (*AccessUrlListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -816,7 +816,7 @@ type ApiGetApiTokenRequest struct {
 }
 
 func (r ApiGetApiTokenRequest) Execute() (*AccessTokenDetail, *http.Response, error) {
-	return r.ApiService.GetApiTokenExecute(r)
+	return r.ApiService.GetApiToken(r)
 }
 
 /*
@@ -828,7 +828,7 @@ Retrieve details for specific access token (including expired ones)
  @param tokenId Token ID
  @return ApiGetApiTokenRequest
 */
-func (api *AccessApiService) GetApiToken(ctx context.Context, tokenId int32) ApiGetApiTokenRequest {
+func (api *AccessApiService) GetApiTokenRequest(ctx context.Context, tokenId int32) ApiGetApiTokenRequest {
 	return ApiGetApiTokenRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -838,7 +838,7 @@ func (api *AccessApiService) GetApiToken(ctx context.Context, tokenId int32) Api
 
 // Execute executes the request
 //  @return AccessTokenDetail
-func (api *AccessApiService) GetApiTokenExecute(r ApiGetApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
+func (api *AccessApiService) GetApiToken(r ApiGetApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -927,7 +927,7 @@ type ApiGetApiTokensRequest struct {
 }
 
 func (r ApiGetApiTokensRequest) Execute() (*AccessTokenListResponse, *http.Response, error) {
-	return r.ApiService.GetApiTokensExecute(r)
+	return r.ApiService.GetApiTokens(r)
 }
 
 /*
@@ -938,7 +938,7 @@ Retrieve list of api tokens
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetApiTokensRequest
 */
-func (api *AccessApiService) GetApiTokens(ctx context.Context) ApiGetApiTokensRequest {
+func (api *AccessApiService) GetApiTokensRequest(ctx context.Context) ApiGetApiTokensRequest {
 	return ApiGetApiTokensRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -947,7 +947,7 @@ func (api *AccessApiService) GetApiTokens(ctx context.Context) ApiGetApiTokensRe
 
 // Execute executes the request
 //  @return AccessTokenListResponse
-func (api *AccessApiService) GetApiTokensExecute(r ApiGetApiTokensRequest) (*AccessTokenListResponse, *http.Response, error) {
+func (api *AccessApiService) GetApiTokens(r ApiGetApiTokensRequest) (*AccessTokenListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1031,7 +1031,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiGetIdentityControllerSettingsRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.GetIdentityControllerSettingsExecute(r)
+// 	return r.ApiService.GetIdentityControllerSettings(r)
 // }
 
 // /*
@@ -1042,7 +1042,7 @@ TODO Identity API endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiGetIdentityControllerSettingsRequest
 // */
-// func (api *AccessApiService) GetIdentityControllerSettings(ctx context.Context) ApiGetIdentityControllerSettingsRequest {
+// func (api *AccessApiService) GetIdentityControllerSettingsRequest(ctx context.Context) ApiGetIdentityControllerSettingsRequest {
 // 	return ApiGetIdentityControllerSettingsRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1051,7 +1051,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return Object
-// func (api *AccessApiService) GetIdentityControllerSettingsExecute(r ApiGetIdentityControllerSettingsRequest) (*Object, *http.Response, error) {
+// func (api *AccessApiService) GetIdentityControllerSettings(r ApiGetIdentityControllerSettingsRequest) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodGet
 // 		localVarPostBody     interface{}
@@ -1130,7 +1130,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiGetIdentityVPNSettingsRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.GetIdentityVPNSettingsExecute(r)
+// 	return r.ApiService.GetIdentityVPNSettings(r)
 // }
 
 // /*
@@ -1141,7 +1141,7 @@ TODO Identity API endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiGetIdentityVPNSettingsRequest
 // */
-// func (api *AccessApiService) GetIdentityVPNSettings(ctx context.Context) ApiGetIdentityVPNSettingsRequest {
+// func (api *AccessApiService) GetIdentityVPNSettingsRequest(ctx context.Context) ApiGetIdentityVPNSettingsRequest {
 // 	return ApiGetIdentityVPNSettingsRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1150,7 +1150,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return Object
-// func (api *AccessApiService) GetIdentityVPNSettingsExecute(r ApiGetIdentityVPNSettingsRequest) (*Object, *http.Response, error) {
+// func (api *AccessApiService) GetIdentityVPNSettings(r ApiGetIdentityVPNSettingsRequest) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodGet
 // 		localVarPostBody     interface{}
@@ -1235,7 +1235,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiPostTestIdentityControllerSettingsRequest) Execute() (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
-// 	return r.ApiService.PostTestIdentityControllerSettingsExecute(r)
+// 	return r.ApiService.PostTestIdentityControllerSettings(r)
 // }
 
 // /*
@@ -1246,7 +1246,7 @@ TODO Identity API endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostTestIdentityControllerSettingsRequest
 // */
-// func (api *AccessApiService) PostTestIdentityControllerSettings(ctx context.Context) ApiPostTestIdentityControllerSettingsRequest {
+// func (api *AccessApiService) PostTestIdentityControllerSettingsRequest(ctx context.Context) ApiPostTestIdentityControllerSettingsRequest {
 // 	return ApiPostTestIdentityControllerSettingsRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1255,7 +1255,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return PostTestIdentityVPNSettings200Response
-// func (api *AccessApiService) PostTestIdentityControllerSettingsExecute(r ApiPostTestIdentityControllerSettingsRequest) (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
+// func (api *AccessApiService) PostTestIdentityControllerSettings(r ApiPostTestIdentityControllerSettingsRequest) (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -1342,7 +1342,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiPostTestIdentityVPNSettingsRequest) Execute() (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
-// 	return r.ApiService.PostTestIdentityVPNSettingsExecute(r)
+// 	return r.ApiService.PostTestIdentityVPNSettings(r)
 // }
 
 // /*
@@ -1353,7 +1353,7 @@ TODO Identity API endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostTestIdentityVPNSettingsRequest
 // */
-// func (api *AccessApiService) PostTestIdentityVPNSettings(ctx context.Context) ApiPostTestIdentityVPNSettingsRequest {
+// func (api *AccessApiService) PostTestIdentityVPNSettingsRequest(ctx context.Context) ApiPostTestIdentityVPNSettingsRequest {
 // 	return ApiPostTestIdentityVPNSettingsRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1362,7 +1362,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return PostTestIdentityVPNSettings200Response
-// func (api *AccessApiService) PostTestIdentityVPNSettingsExecute(r ApiPostTestIdentityVPNSettingsRequest) (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
+// func (api *AccessApiService) PostTestIdentityVPNSettings(r ApiPostTestIdentityVPNSettingsRequest) (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -1450,7 +1450,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiPutExpireAccessUrlRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.PutExpireAccessUrlExecute(r)
+// 	return r.ApiService.PutExpireAccessUrl(r)
 // }
 
 // /*
@@ -1462,7 +1462,7 @@ TODO Identity API endpoints
 //  @param accessUrlId Access Url ID
 //  @return ApiPutExpireAccessUrlRequest
 // */
-// func (api *AccessApiService) PutExpireAccessUrl(ctx context.Context, accessUrlId int32) ApiPutExpireAccessUrlRequest {
+// func (api *AccessApiService) PutExpireAccessUrlRequest(ctx context.Context, accessUrlId int32) ApiPutExpireAccessUrlRequest {
 // 	return ApiPutExpireAccessUrlRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1472,7 +1472,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return Object
-// func (api *AccessApiService) PutExpireAccessUrlExecute(r ApiPutExpireAccessUrlRequest) (*Object, *http.Response, error) {
+// func (api *AccessApiService) PutExpireAccessUrl(r ApiPutExpireAccessUrlRequest) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -1570,7 +1570,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiPutExpireApiTokenRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.PutExpireApiTokenExecute(r)
+// 	return r.ApiService.PutExpireApiToken(r)
 // }
 
 // /*
@@ -1582,7 +1582,7 @@ TODO Identity API endpoints
 //  @param tokenId Token ID
 //  @return ApiPutExpireApiTokenRequest
 // */
-// func (api *AccessApiService) PutExpireApiToken(ctx context.Context, tokenId int32) ApiPutExpireApiTokenRequest {
+// func (api *AccessApiService) PutExpireApiTokenRequest(ctx context.Context, tokenId int32) ApiPutExpireApiTokenRequest {
 // 	return ApiPutExpireApiTokenRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1592,7 +1592,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return Object
-// func (api *AccessApiService) PutExpireApiTokenExecute(r ApiPutExpireApiTokenRequest) (*Object, *http.Response, error) {
+// func (api *AccessApiService) PutExpireApiToken(r ApiPutExpireApiTokenRequest) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -1689,7 +1689,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiPutIdentityControllerSettingsRequest) Execute() (*IdentitySettingsResponse1, *http.Response, error) {
-// 	return r.ApiService.PutIdentityControllerSettingsExecute(r)
+// 	return r.ApiService.PutIdentityControllerSettings(r)
 // }
 
 // /*
@@ -1700,7 +1700,7 @@ TODO Identity API endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutIdentityControllerSettingsRequest
 // */
-// func (api *AccessApiService) PutIdentityControllerSettings(ctx context.Context) ApiPutIdentityControllerSettingsRequest {
+// func (api *AccessApiService) PutIdentityControllerSettingsRequest(ctx context.Context) ApiPutIdentityControllerSettingsRequest {
 // 	return ApiPutIdentityControllerSettingsRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1709,7 +1709,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return IdentitySettingsResponse1
-// func (api *AccessApiService) PutIdentityControllerSettingsExecute(r ApiPutIdentityControllerSettingsRequest) (*IdentitySettingsResponse1, *http.Response, error) {
+// func (api *AccessApiService) PutIdentityControllerSettings(r ApiPutIdentityControllerSettingsRequest) (*IdentitySettingsResponse1, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -1796,7 +1796,7 @@ TODO Identity API endpoints
 // }
 
 // func (r ApiPutIdentityVPNSettingsRequest) Execute() (*IdentitySettingsResponse, *http.Response, error) {
-// 	return r.ApiService.PutIdentityVPNSettingsExecute(r)
+// 	return r.ApiService.PutIdentityVPNSettings(r)
 // }
 
 // /*
@@ -1807,7 +1807,7 @@ TODO Identity API endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutIdentityVPNSettingsRequest
 // */
-// func (api *AccessApiService) PutIdentityVPNSettings(ctx context.Context) ApiPutIdentityVPNSettingsRequest {
+// func (api *AccessApiService) PutIdentityVPNSettingsRequest(ctx context.Context) ApiPutIdentityVPNSettingsRequest {
 // 	return ApiPutIdentityVPNSettingsRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1816,7 +1816,7 @@ TODO Identity API endpoints
 
 // // Execute executes the request
 // //  @return IdentitySettingsResponse
-// func (api *AccessApiService) PutIdentityVPNSettingsExecute(r ApiPutIdentityVPNSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
+// func (api *AccessApiService) PutIdentityVPNSettings(r ApiPutIdentityVPNSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}

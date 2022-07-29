@@ -37,7 +37,7 @@ func (r ApiCreateFwsetEntryRequest) CreateFirewallEntryRequest(createFirewallEnt
 }
 
 func (r ApiCreateFwsetEntryRequest) Execute() (*FirewallFwsetDetailResponse, *http.Response, error) {
-	return r.ApiService.AddEntryToFwsetExecute(r)
+	return r.ApiService.AddEntryToFwset(r)
 }
 
 /*
@@ -49,7 +49,7 @@ Add entry to fwset
  @param name unique fwset name
  @return ApiCreateFwsetEntryRequest
 */
-func (api *FirewallApiService) AddEntryToFwset(ctx context.Context, name string) ApiCreateFwsetEntryRequest {
+func (api *FirewallApiService) AddEntryToFwsetRequest(ctx context.Context, name string) ApiCreateFwsetEntryRequest {
 	return ApiCreateFwsetEntryRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (api *FirewallApiService) AddEntryToFwset(ctx context.Context, name string)
 
 // Execute executes the request
 //  @return FirewallFwsetDetailResponse
-func (api *FirewallApiService) AddEntryToFwsetExecute(r ApiCreateFwsetEntryRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) AddEntryToFwset(r ApiCreateFwsetEntryRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -180,7 +180,7 @@ func (r ApiAddRuleToGroupRequest) AddFirewallRuleToGroupRequest(addRuleToGroupRe
 }
 
 func (r ApiAddRuleToGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
-	return r.ApiService.AddRuleToGroupExecute(r)
+	return r.ApiService.AddRuleToGroup(r)
 }
 
 /*
@@ -192,7 +192,7 @@ Add rule to group
  @param name unique rule group name
  @return ApiAddRuleToGroupRequest
 */
-func (api *FirewallApiService) AddRuleToGroup(ctx context.Context, name string) ApiAddRuleToGroupRequest {
+func (api *FirewallApiService) AddRuleToGroupRequest(ctx context.Context, name string) ApiAddRuleToGroupRequest {
 	return ApiAddRuleToGroupRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -202,7 +202,7 @@ func (api *FirewallApiService) AddRuleToGroup(ctx context.Context, name string) 
 
 // Execute executes the request
 //  @return Object
-func (api *FirewallApiService) AddRuleToGroupExecute(r ApiAddRuleToGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) AddRuleToGroup(r ApiAddRuleToGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -323,7 +323,7 @@ func (r ApiAddRuleToSubtableRequest) AddFirewallRuleToSubtableRequest(addFirewal
 }
 
 func (r ApiAddRuleToSubtableRequest) Execute() (*FirewallSubtableDetailResponse, *http.Response, error) {
-	return r.ApiService.AddRuleToSubtableExecute(r)
+	return r.ApiService.AddRuleToSubtable(r)
 }
 
 /*
@@ -335,7 +335,7 @@ Add rule to subtable
  @param name unique subtable name
  @return ApiAddRuleToSubtableRequest
 */
-func (api *FirewallApiService) AddRuleToSubtable(ctx context.Context, name string) ApiAddRuleToSubtableRequest {
+func (api *FirewallApiService) AddRuleToSubtableRequest(ctx context.Context, name string) ApiAddRuleToSubtableRequest {
 	return ApiAddRuleToSubtableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -345,7 +345,7 @@ func (api *FirewallApiService) AddRuleToSubtable(ctx context.Context, name strin
 
 // Execute executes the request
 //  @return FirewallSubtableDetailResponse
-func (api *FirewallApiService) AddRuleToSubtableExecute(r ApiAddRuleToSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) AddRuleToSubtable(r ApiAddRuleToSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -466,7 +466,7 @@ func (r ApiDeleteEntryFromFwsetRequest) DeleteFirewallEntryRequest(deleteFirewal
 }
 
 func (r ApiDeleteEntryFromFwsetRequest) Execute() (*FirewallFwsetDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteEntryFromFwsetExecute(r)
+	return r.ApiService.DeleteEntryFromFwset(r)
 }
 
 /*
@@ -478,7 +478,7 @@ Remove entry from fwset
  @param name unique fwset name
  @return ApiDeleteEntryFromFwsetRequest
 */
-func (api *FirewallApiService) DeleteEntryFromFwset(ctx context.Context, name string) ApiDeleteEntryFromFwsetRequest {
+func (api *FirewallApiService) DeleteEntryFromFwsetRequest(ctx context.Context, name string) ApiDeleteEntryFromFwsetRequest {
 	return ApiDeleteEntryFromFwsetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -488,7 +488,7 @@ func (api *FirewallApiService) DeleteEntryFromFwset(ctx context.Context, name st
 
 // Execute executes the request
 //  @return FirewallFwsetDetailResponse
-func (api *FirewallApiService) DeleteEntryFromFwsetExecute(r ApiDeleteEntryFromFwsetRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) DeleteEntryFromFwset(r ApiDeleteEntryFromFwsetRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -610,7 +610,7 @@ func (r ApiDeleteFirewallFwsetRequest) Force(force bool) ApiDeleteFirewallFwsetR
 }
 
 func (r ApiDeleteFirewallFwsetRequest) Execute() (*FirewallFwsetDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteFirewallFwsetExecute(r)
+	return r.ApiService.DeleteFirewallFwset(r)
 }
 
 /*
@@ -622,7 +622,7 @@ Delete firewall fwset
  @param name unique fwset name
  @return ApiDeleteFirewallFwsetRequest
 */
-func (api *FirewallApiService) DeleteFirewallFwset(ctx context.Context, name string) ApiDeleteFirewallFwsetRequest {
+func (api *FirewallApiService) DeleteFirewallFwsetRequest(ctx context.Context, name string) ApiDeleteFirewallFwsetRequest {
 	return ApiDeleteFirewallFwsetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -632,7 +632,7 @@ func (api *FirewallApiService) DeleteFirewallFwset(ctx context.Context, name str
 
 // Execute executes the request
 //  @return FirewallFwsetDetailResponse
-func (api *FirewallApiService) DeleteFirewallFwsetExecute(r ApiDeleteFirewallFwsetRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) DeleteFirewallFwset(r ApiDeleteFirewallFwsetRequest) (*FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -745,7 +745,7 @@ type ApiDeleteFirewallRuleRequest struct {
 }
 
 func (r ApiDeleteFirewallRuleRequest) Execute() (*FirewallRuleDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteFirewallRuleExecute(r)
+	return r.ApiService.DeleteFirewallRule(r)
 }
 
 /*
@@ -757,7 +757,7 @@ Delete firewall rule
  @param id Rule ID
  @return ApiDeleteFirewallRuleRequest
 */
-func (api *FirewallApiService) DeleteFirewallRule(ctx context.Context, id string) ApiDeleteFirewallRuleRequest {
+func (api *FirewallApiService) DeleteFirewallRuleRequest(ctx context.Context, id string) ApiDeleteFirewallRuleRequest {
 	return ApiDeleteFirewallRuleRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -767,7 +767,7 @@ func (api *FirewallApiService) DeleteFirewallRule(ctx context.Context, id string
 
 // Execute executes the request
 //  @return FirewallRuleDetailResponse
-func (api *FirewallApiService) DeleteFirewallRuleExecute(r ApiDeleteFirewallRuleRequest) (*FirewallRuleDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) DeleteFirewallRule(r ApiDeleteFirewallRuleRequest) (*FirewallRuleDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -884,7 +884,7 @@ func (r ApiDeleteFirewallRuleGroupRequest) Force(force bool) ApiDeleteFirewallRu
 }
 
 func (r ApiDeleteFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteFirewallRuleGroupExecute(r)
+	return r.ApiService.DeleteFirewallRuleGroup(r)
 }
 
 /*
@@ -896,7 +896,7 @@ Delete firewall rule group
  @param name unique rule group name
  @return ApiDeleteFirewallRuleGroupRequest
 */
-func (api *FirewallApiService) DeleteFirewallRuleGroup(ctx context.Context, name string) ApiDeleteFirewallRuleGroupRequest {
+func (api *FirewallApiService) DeleteFirewallRuleGroupRequest(ctx context.Context, name string) ApiDeleteFirewallRuleGroupRequest {
 	return ApiDeleteFirewallRuleGroupRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -906,7 +906,7 @@ func (api *FirewallApiService) DeleteFirewallRuleGroup(ctx context.Context, name
 
 // Execute executes the request
 //  @return RuleGroupDetailResponse
-func (api *FirewallApiService) DeleteFirewallRuleGroupExecute(r ApiDeleteFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) DeleteFirewallRuleGroup(r ApiDeleteFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1026,7 +1026,7 @@ func (r ApiDeleteFirewallSubtableRequest) Force(force bool) ApiDeleteFirewallSub
 }
 
 func (r ApiDeleteFirewallSubtableRequest) Execute() (*FirewallSubtableDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteFirewallSubtableExecute(r)
+	return r.ApiService.DeleteFirewallSubtable(r)
 }
 
 /*
@@ -1038,7 +1038,7 @@ Delete firewall subtable
  @param name unique subtable name
  @return ApiDeleteFirewallSubtableRequest
 */
-func (api *FirewallApiService) DeleteFirewallSubtable(ctx context.Context, name string) ApiDeleteFirewallSubtableRequest {
+func (api *FirewallApiService) DeleteFirewallSubtableRequest(ctx context.Context, name string) ApiDeleteFirewallSubtableRequest {
 	return ApiDeleteFirewallSubtableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1048,7 +1048,7 @@ func (api *FirewallApiService) DeleteFirewallSubtable(ctx context.Context, name 
 
 // Execute executes the request
 //  @return FirewallSubtableDetailResponse
-func (api *FirewallApiService) DeleteFirewallSubtableExecute(r ApiDeleteFirewallSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) DeleteFirewallSubtable(r ApiDeleteFirewallSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1168,7 +1168,7 @@ func (r ApiGetFirewallFwsetRequest) Osview(osview bool) ApiGetFirewallFwsetReque
 }
 
 func (r ApiGetFirewallFwsetRequest) Execute() (FirewallFwsetDetailResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallFwsetExecute(r)
+	return r.ApiService.GetFirewallFwset(r)
 }
 
 /*
@@ -1180,7 +1180,7 @@ Read firewall fwset data
  @param name unique fwset name
  @return ApiGetFirewallFwsetRequest
 */
-func (api *FirewallApiService) GetFirewallFwset(ctx context.Context, name string) ApiGetFirewallFwsetRequest {
+func (api *FirewallApiService) GetFirewallFwsetRequest(ctx context.Context, name string) ApiGetFirewallFwsetRequest {
 	return ApiGetFirewallFwsetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1190,7 +1190,7 @@ func (api *FirewallApiService) GetFirewallFwset(ctx context.Context, name string
 
 // Execute executes the request
 //  @return FirewallFwsetDetailResponse
-func (api *FirewallApiService) GetFirewallFwsetExecute(r ApiGetFirewallFwsetRequest) (FirewallFwsetDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallFwset(r ApiGetFirewallFwsetRequest) (FirewallFwsetDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1292,7 +1292,7 @@ type ApiGetFirewallFwsetsRequest struct {
 }
 
 func (r ApiGetFirewallFwsetsRequest) Execute() (FirewallFwsetListResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallFwsetsExecute(r)
+	return r.ApiService.GetFirewallFwsets(r)
 }
 
 /*
@@ -1303,7 +1303,7 @@ Get list of all firewall fwsets
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetFirewallFwsetsRequest
 */
-func (api *FirewallApiService) GetFirewallFwsets(ctx context.Context) ApiGetFirewallFwsetsRequest {
+func (api *FirewallApiService) GetFirewallFwsetsRequest(ctx context.Context) ApiGetFirewallFwsetsRequest {
 	return ApiGetFirewallFwsetsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1312,7 +1312,7 @@ func (api *FirewallApiService) GetFirewallFwsets(ctx context.Context) ApiGetFire
 
 // Execute executes the request
 //  @return FirewallFwsetListResponse
-func (api *FirewallApiService) GetFirewallFwsetsExecute(r ApiGetFirewallFwsetsRequest) (FirewallFwsetListResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallFwsets(r ApiGetFirewallFwsetsRequest) (FirewallFwsetListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1401,7 +1401,7 @@ type ApiGetFirewallRuleGroupRequest struct {
 }
 
 func (r ApiGetFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallRuleGroupExecute(r)
+	return r.ApiService.GetFirewallRuleGroup(r)
 }
 
 /*
@@ -1413,7 +1413,7 @@ Read rule group
  @param name unique rule group name
  @return ApiGetFirewallRuleGroupRequest
 */
-func (api *FirewallApiService) GetFirewallRuleGroup(ctx context.Context, name string) ApiGetFirewallRuleGroupRequest {
+func (api *FirewallApiService) GetFirewallRuleGroupRequest(ctx context.Context, name string) ApiGetFirewallRuleGroupRequest {
 	return ApiGetFirewallRuleGroupRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1423,7 +1423,7 @@ func (api *FirewallApiService) GetFirewallRuleGroup(ctx context.Context, name st
 
 // Execute executes the request
 //  @return RuleGroupDetailResponse
-func (api *FirewallApiService) GetFirewallRuleGroupExecute(r ApiGetFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallRuleGroup(r ApiGetFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1522,7 +1522,7 @@ type ApiGetFirewallRuleGroupsRequest struct {
 }
 
 func (r ApiGetFirewallRuleGroupsRequest) Execute() (*RuleGroupsListResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallRuleGroupsExecute(r)
+	return r.ApiService.GetFirewallRuleGroups(r)
 }
 
 /*
@@ -1533,7 +1533,7 @@ Get a list of firewall rule groups
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetFirewallRuleGroupsRequest
 */
-func (api *FirewallApiService) GetFirewallRuleGroups(ctx context.Context) ApiGetFirewallRuleGroupsRequest {
+func (api *FirewallApiService) GetFirewallRuleGroupsRequest(ctx context.Context) ApiGetFirewallRuleGroupsRequest {
 	return ApiGetFirewallRuleGroupsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1542,7 +1542,7 @@ func (api *FirewallApiService) GetFirewallRuleGroups(ctx context.Context) ApiGet
 
 // Execute executes the request
 //  @return RuleGroupsListResponse
-func (api *FirewallApiService) GetFirewallRuleGroupsExecute(r ApiGetFirewallRuleGroupsRequest) (*RuleGroupsListResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallRuleGroups(r ApiGetFirewallRuleGroupsRequest) (*RuleGroupsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1659,7 +1659,7 @@ func (r ApiGetFirewallRulesRequest) Tables(tables string) ApiGetFirewallRulesReq
 }
 
 func (r ApiGetFirewallRulesRequest) Execute() (*FirewallRuleListResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallRulesExecute(r)
+	return r.ApiService.GetFirewallRules(r)
 }
 
 /*
@@ -1670,7 +1670,7 @@ Get a list of firewall rules
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetFirewallRulesRequest
 */
-func (api *FirewallApiService) GetFirewallRules(ctx context.Context) ApiGetFirewallRulesRequest {
+func (api *FirewallApiService) GetFirewallRulesRequest(ctx context.Context) ApiGetFirewallRulesRequest {
 	return ApiGetFirewallRulesRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1679,7 +1679,7 @@ func (api *FirewallApiService) GetFirewallRules(ctx context.Context) ApiGetFirew
 
 // Execute executes the request
 //  @return FirewallRuleListResponse
-func (api *FirewallApiService) GetFirewallRulesExecute(r ApiGetFirewallRulesRequest) (*FirewallRuleListResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallRules(r ApiGetFirewallRulesRequest) (*FirewallRuleListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1787,7 +1787,7 @@ func (r ApiGetFirewallSubtableRequest) Osview(osview bool) ApiGetFirewallSubtabl
 }
 
 func (r ApiGetFirewallSubtableRequest) Execute() (*FirewallSubtableDetailResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallSubtableExecute(r)
+	return r.ApiService.GetFirewallSubtable(r)
 }
 
 /*
@@ -1799,7 +1799,7 @@ Read firewall subtable data
  @param name unique subtable name
  @return ApiGetFirewallSubtableRequest
 */
-func (api *FirewallApiService) GetFirewallSubtable(ctx context.Context, name string) ApiGetFirewallSubtableRequest {
+func (api *FirewallApiService) GetFirewallSubtableRequest(ctx context.Context, name string) ApiGetFirewallSubtableRequest {
 	return ApiGetFirewallSubtableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1809,7 +1809,7 @@ func (api *FirewallApiService) GetFirewallSubtable(ctx context.Context, name str
 
 // Execute executes the request
 //  @return FirewallSubtableDetailResponse
-func (api *FirewallApiService) GetFirewallSubtableExecute(r ApiGetFirewallSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallSubtable(r ApiGetFirewallSubtableRequest) (*FirewallSubtableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1911,7 +1911,7 @@ type ApiGetFirewallSubtablesRequest struct {
 }
 
 func (r ApiGetFirewallSubtablesRequest) Execute() (*FirewallSubtableListResponse, *http.Response, error) {
-	return r.ApiService.GetFirewallSubtablesExecute(r)
+	return r.ApiService.GetFirewallSubtables(r)
 }
 
 /*
@@ -1922,7 +1922,7 @@ Get list of all firewall subtables
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetFirewallSubtablesRequest
 */
-func (api *FirewallApiService) GetFirewallSubtables(ctx context.Context) ApiGetFirewallSubtablesRequest {
+func (api *FirewallApiService) GetFirewallSubtablesRequest(ctx context.Context) ApiGetFirewallSubtablesRequest {
 	return ApiGetFirewallSubtablesRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1931,7 +1931,7 @@ func (api *FirewallApiService) GetFirewallSubtables(ctx context.Context) ApiGetF
 
 // Execute executes the request
 //  @return FirewallSubtableListResponse
-func (api *FirewallApiService) GetFirewallSubtablesExecute(r ApiGetFirewallSubtablesRequest) (*FirewallSubtableListResponse, *http.Response, error) {
+func (api *FirewallApiService) GetFirewallSubtables(r ApiGetFirewallSubtablesRequest) (*FirewallSubtableListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2025,7 +2025,7 @@ func (r ApiImportFirewallRulesRequest) ImportFirewallRulesRequest(importFirewall
 }
 
 func (r ApiImportFirewallRulesRequest) Execute() (*FirewallRulesAndErrorsResponse, *http.Response, error) {
-	return r.ApiService.ImportFirewallRulesExecute(r)
+	return r.ApiService.ImportFirewallRules(r)
 }
 
 /*
@@ -2036,7 +2036,7 @@ Import list of firewall rules
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiImportFirewallRulesRequest
 */
-func (api *FirewallApiService) ImportFirewallRules(ctx context.Context) ApiImportFirewallRulesRequest {
+func (api *FirewallApiService) ImportFirewallRulesRequest(ctx context.Context) ApiImportFirewallRulesRequest {
 	return ApiImportFirewallRulesRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2045,7 +2045,7 @@ func (api *FirewallApiService) ImportFirewallRules(ctx context.Context) ApiImpor
 
 // Execute executes the request
 //  @return FirewallRulesAndErrorsResponse
-func (api *FirewallApiService) ImportFirewallRulesExecute(r ApiImportFirewallRulesRequest) (*FirewallRulesAndErrorsResponse, *http.Response, error) {
+func (api *FirewallApiService) ImportFirewallRules(r ApiImportFirewallRulesRequest) (*FirewallRulesAndErrorsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2154,7 +2154,7 @@ func (r ApiPostCreateFirewallFwsetRequest) CreateFirewallFwsetRequest(createFire
 }
 
 func (r ApiPostCreateFirewallFwsetRequest) Execute() (*FirewallFwsetSaveResponse, *http.Response, error) {
-	return r.ApiService.PostCreateFirewallFwsetExecute(r)
+	return r.ApiService.PostCreateFirewallFwset(r)
 }
 
 /*
@@ -2165,7 +2165,7 @@ Create firewall fwset
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateFirewallFwsetRequest
 */
-func (api *FirewallApiService) PostCreateFirewallFwset(ctx context.Context) ApiPostCreateFirewallFwsetRequest {
+func (api *FirewallApiService) PostCreateFirewallFwsetRequest(ctx context.Context) ApiPostCreateFirewallFwsetRequest {
 	return ApiPostCreateFirewallFwsetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2174,7 +2174,7 @@ func (api *FirewallApiService) PostCreateFirewallFwset(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return FirewallFwsetSaveResponse
-func (api *FirewallApiService) PostCreateFirewallFwsetExecute(r ApiPostCreateFirewallFwsetRequest) (*FirewallFwsetSaveResponse, *http.Response, error) {
+func (api *FirewallApiService) PostCreateFirewallFwset(r ApiPostCreateFirewallFwsetRequest) (*FirewallFwsetSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2283,7 +2283,7 @@ func (r ApiPostCreateFirewallRuleRequest) CreateFirewallRuleRequest(createFirewa
 }
 
 func (r ApiPostCreateFirewallRuleRequest) Execute() (*FirewallRuleSaveResponse, *http.Response, error) {
-	return r.ApiService.PostCreateFirewallRuleExecute(r)
+	return r.ApiService.PostCreateFirewallRule(r)
 }
 
 /*
@@ -2294,7 +2294,7 @@ Create a VNS3 firewall rule
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateFirewallRuleRequest
 */
-func (api *FirewallApiService) PostCreateFirewallRule(ctx context.Context) ApiPostCreateFirewallRuleRequest {
+func (api *FirewallApiService) PostCreateFirewallRuleRequest(ctx context.Context) ApiPostCreateFirewallRuleRequest {
 	return ApiPostCreateFirewallRuleRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2303,7 +2303,7 @@ func (api *FirewallApiService) PostCreateFirewallRule(ctx context.Context) ApiPo
 
 // Execute executes the request
 //  @return FirewallRuleSaveResponse
-func (api *FirewallApiService) PostCreateFirewallRuleExecute(r ApiPostCreateFirewallRuleRequest) (*FirewallRuleSaveResponse, *http.Response, error) {
+func (api *FirewallApiService) PostCreateFirewallRule(r ApiPostCreateFirewallRuleRequest) (*FirewallRuleSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2412,7 +2412,7 @@ func (r ApiPostCreateFirewallRuleGroupRequest) CreateFirewallRuleGroupRequest(cr
 }
 
 func (r ApiPostCreateFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCreateFirewallRuleGroupExecute(r)
+	return r.ApiService.PostCreateFirewallRuleGroup(r)
 }
 
 /*
@@ -2423,7 +2423,7 @@ Create a VNS3 firewall rule group
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateFirewallRuleGroupRequest
 */
-func (api *FirewallApiService) PostCreateFirewallRuleGroup(ctx context.Context) ApiPostCreateFirewallRuleGroupRequest {
+func (api *FirewallApiService) PostCreateFirewallRuleGroupRequest(ctx context.Context) ApiPostCreateFirewallRuleGroupRequest {
 	return ApiPostCreateFirewallRuleGroupRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2432,7 +2432,7 @@ func (api *FirewallApiService) PostCreateFirewallRuleGroup(ctx context.Context) 
 
 // Execute executes the request
 //  @return RuleGroupDetailResponse
-func (api *FirewallApiService) PostCreateFirewallRuleGroupExecute(r ApiPostCreateFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) PostCreateFirewallRuleGroup(r ApiPostCreateFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2541,7 +2541,7 @@ func (r ApiPostCreateFirewallSubtableRequest) CreateFirewallSubtableRequest(crea
 }
 
 func (r ApiPostCreateFirewallSubtableRequest) Execute() (*FirewallSubtableSaveResponse, *http.Response, error) {
-	return r.ApiService.PostCreateFirewallSubtableExecute(r)
+	return r.ApiService.PostCreateFirewallSubtable(r)
 }
 
 /*
@@ -2552,7 +2552,7 @@ Create firewall subtable
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateFirewallSubtableRequest
 */
-func (api *FirewallApiService) PostCreateFirewallSubtable(ctx context.Context) ApiPostCreateFirewallSubtableRequest {
+func (api *FirewallApiService) PostCreateFirewallSubtableRequest(ctx context.Context) ApiPostCreateFirewallSubtableRequest {
 	return ApiPostCreateFirewallSubtableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2561,7 +2561,7 @@ func (api *FirewallApiService) PostCreateFirewallSubtable(ctx context.Context) A
 
 // Execute executes the request
 //  @return FirewallSubtableSaveResponse
-func (api *FirewallApiService) PostCreateFirewallSubtableExecute(r ApiPostCreateFirewallSubtableRequest) (*FirewallSubtableSaveResponse, *http.Response, error) {
+func (api *FirewallApiService) PostCreateFirewallSubtable(r ApiPostCreateFirewallSubtableRequest) (*FirewallSubtableSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2670,7 +2670,7 @@ func (r ApiPutFirewallActionRequest) FirewallActionRequest(firewallActionRequest
 }
 
 func (r ApiPutFirewallActionRequest) Execute() (*SimpleStatusResponse, *http.Response, error) {
-	return r.ApiService.PutFirewallActionExecute(r)
+	return r.ApiService.PutFirewallAction(r)
 }
 
 /*
@@ -2681,7 +2681,7 @@ Take an action on the firewall
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutFirewallActionRequest
 */
-func (api *FirewallApiService) PutFirewallAction(ctx context.Context) ApiPutFirewallActionRequest {
+func (api *FirewallApiService) PutFirewallActionRequest(ctx context.Context) ApiPutFirewallActionRequest {
 	return ApiPutFirewallActionRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2690,7 +2690,7 @@ func (api *FirewallApiService) PutFirewallAction(ctx context.Context) ApiPutFire
 
 // Execute executes the request
 //  @return SimpleStatusResponse
-func (api *FirewallApiService) PutFirewallActionExecute(r ApiPutFirewallActionRequest) (*SimpleStatusResponse, *http.Response, error) {
+func (api *FirewallApiService) PutFirewallAction(r ApiPutFirewallActionRequest) (*SimpleStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2789,7 +2789,7 @@ func (r ApiPutOverwriteFirewallRequest) OverwriteRequest(overwriteRequest Firewa
 }
 
 func (r ApiPutOverwriteFirewallRequest) Execute() (*FirewallOverwriteResponse, *http.Response, error) {
-	return r.ApiService.PutOverwriteFirewallExecute(r)
+	return r.ApiService.PutOverwriteFirewall(r)
 }
 
 /*
@@ -2800,7 +2800,7 @@ Put/Overwrite entire firewall. Careful!
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutOverwriteFirewallRequest
 */
-func (api *FirewallApiService) PutOverwriteFirewall(ctx context.Context) ApiPutOverwriteFirewallRequest {
+func (api *FirewallApiService) PutOverwriteFirewallRequest(ctx context.Context) ApiPutOverwriteFirewallRequest {
 	return ApiPutOverwriteFirewallRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2809,7 +2809,7 @@ func (api *FirewallApiService) PutOverwriteFirewall(ctx context.Context) ApiPutO
 
 // Execute executes the request
 //  @return FirewallOverwriteResponse
-func (api *FirewallApiService) PutOverwriteFirewallExecute(r ApiPutOverwriteFirewallRequest) (*FirewallOverwriteResponse, *http.Response, error) {
+func (api *FirewallApiService) PutOverwriteFirewall(r ApiPutOverwriteFirewallRequest) (*FirewallOverwriteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2909,7 +2909,7 @@ func (r ApiPutUpdateFirewallFwsetRequest) UpdateFirewallFwsetRequest(updateFirew
 }
 
 func (r ApiPutUpdateFirewallFwsetRequest) Execute() (*FirewallFwsetSaveResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateFirewallFwsetExecute(r)
+	return r.ApiService.PutUpdateFirewallFwset(r)
 }
 
 /*
@@ -2921,7 +2921,7 @@ Update firewall fwset
  @param name unique fwset name
  @return ApiPutUpdateFirewallFwsetRequest
 */
-func (api *FirewallApiService) PutUpdateFirewallFwset(ctx context.Context, name string) ApiPutUpdateFirewallFwsetRequest {
+func (api *FirewallApiService) PutUpdateFirewallFwsetRequest(ctx context.Context, name string) ApiPutUpdateFirewallFwsetRequest {
 	return ApiPutUpdateFirewallFwsetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2931,7 +2931,7 @@ func (api *FirewallApiService) PutUpdateFirewallFwset(ctx context.Context, name 
 
 // Execute executes the request
 //  @return FirewallFwsetSaveResponse
-func (api *FirewallApiService) PutUpdateFirewallFwsetExecute(r ApiPutUpdateFirewallFwsetRequest) (*FirewallFwsetSaveResponse, *http.Response, error) {
+func (api *FirewallApiService) PutUpdateFirewallFwset(r ApiPutUpdateFirewallFwsetRequest) (*FirewallFwsetSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3052,7 +3052,7 @@ func (r ApiPutUpdateFirewallRuleRequest) UpdateFirewallRuleRequest(updateFirewal
 }
 
 func (r ApiPutUpdateFirewallRuleRequest) Execute() (*FirewallRuleDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateFirewallRuleExecute(r)
+	return r.ApiService.PutUpdateFirewallRule(r)
 }
 
 /*
@@ -3064,7 +3064,7 @@ Update firewall rule
  @param id Rule ID
  @return ApiPutUpdateFirewallRuleRequest
 */
-func (api *FirewallApiService) PutUpdateFirewallRule(ctx context.Context, id string) ApiPutUpdateFirewallRuleRequest {
+func (api *FirewallApiService) PutUpdateFirewallRuleRequest(ctx context.Context, id string) ApiPutUpdateFirewallRuleRequest {
 	return ApiPutUpdateFirewallRuleRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -3074,7 +3074,7 @@ func (api *FirewallApiService) PutUpdateFirewallRule(ctx context.Context, id str
 
 // Execute executes the request
 //  @return FirewallRuleDetailResponse
-func (api *FirewallApiService) PutUpdateFirewallRuleExecute(r ApiPutUpdateFirewallRuleRequest) (*FirewallRuleDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) PutUpdateFirewallRule(r ApiPutUpdateFirewallRuleRequest) (*FirewallRuleDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3195,7 +3195,7 @@ func (r ApiPutUpdateFirewallRuleGroupRequest) UpdateFirewallRuleGroupRequest(upd
 }
 
 func (r ApiPutUpdateFirewallRuleGroupRequest) Execute() (*RuleGroupDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateFirewallRuleGroupExecute(r)
+	return r.ApiService.PutUpdateFirewallRuleGroup(r)
 }
 
 /*
@@ -3207,7 +3207,7 @@ Update rule group data
  @param name unique rule group name
  @return ApiPutUpdateFirewallRuleGroupRequest
 */
-func (api *FirewallApiService) PutUpdateFirewallRuleGroup(ctx context.Context, name string) ApiPutUpdateFirewallRuleGroupRequest {
+func (api *FirewallApiService) PutUpdateFirewallRuleGroupRequest(ctx context.Context, name string) ApiPutUpdateFirewallRuleGroupRequest {
 	return ApiPutUpdateFirewallRuleGroupRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -3217,7 +3217,7 @@ func (api *FirewallApiService) PutUpdateFirewallRuleGroup(ctx context.Context, n
 
 // Execute executes the request
 //  @return RuleGroupDetailResponse
-func (api *FirewallApiService) PutUpdateFirewallRuleGroupExecute(r ApiPutUpdateFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
+func (api *FirewallApiService) PutUpdateFirewallRuleGroup(r ApiPutUpdateFirewallRuleGroupRequest) (*RuleGroupDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3338,7 +3338,7 @@ func (r ApiPutUpdateFirewallSubtableRequest) UpdateFirewallSubtableRequest(updat
 }
 
 func (r ApiPutUpdateFirewallSubtableRequest) Execute() (*FirewallSubtableSaveResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateFirewallSubtableExecute(r)
+	return r.ApiService.PutUpdateFirewallSubtable(r)
 }
 
 /*
@@ -3350,7 +3350,7 @@ Update firewall subtable
  @param name unique subtable name
  @return ApiPutUpdateFirewallSubtableRequest
 */
-func (api *FirewallApiService) PutUpdateFirewallSubtable(ctx context.Context, name string) ApiPutUpdateFirewallSubtableRequest {
+func (api *FirewallApiService) PutUpdateFirewallSubtableRequest(ctx context.Context, name string) ApiPutUpdateFirewallSubtableRequest {
 	return ApiPutUpdateFirewallSubtableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -3360,7 +3360,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtable(ctx context.Context, na
 
 // Execute executes the request
 //  @return FirewallSubtableSaveResponse
-func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFirewallSubtableRequest) (*FirewallSubtableSaveResponse, *http.Response, error) {
+func (api *FirewallApiService) PutUpdateFirewallSubtable(r ApiPutUpdateFirewallSubtableRequest) (*FirewallSubtableSaveResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3473,7 +3473,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiDeleteFirewallFwsetV1Request) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.DeleteFirewallFwsetV1Execute(r)
+// 	return r.ApiService.DeleteFirewallFwsetV1(r)
 // }
 
 // /*
@@ -3484,7 +3484,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiDeleteFirewallFwsetV1Request
 // */
-// func (api *FirewallApiService) DeleteFirewallFwsetV1(ctx context.Context) ApiDeleteFirewallFwsetV1Request {
+// func (api *FirewallApiService) DeleteFirewallFwsetV1Request(ctx context.Context) ApiDeleteFirewallFwsetV1Request {
 // 	return ApiDeleteFirewallFwsetV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -3493,7 +3493,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return Object
-// func (api *FirewallApiService) DeleteFirewallFwsetV1Execute(r ApiDeleteFirewallFwsetV1Request) (*Object, *http.Response, error) {
+// func (api *FirewallApiService) DeleteFirewallFwsetV1(r ApiDeleteFirewallFwsetV1Request) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodDelete
 // 		localVarPostBody     interface{}
@@ -3598,7 +3598,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiDeleteFirewallRuleByPositionV1Request) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.DeleteFirewallRuleByPositionV1Execute(r)
+// 	return r.ApiService.DeleteFirewallRuleByPositionV1(r)
 // }
 
 // /*
@@ -3611,7 +3611,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param position index position for firewall rule, 0 is first
 //  @return ApiDeleteFirewallRuleByPositionV1Request
 // */
-// func (api *FirewallApiService) DeleteFirewallRuleByPositionV1(ctx context.Context, position int32) ApiDeleteFirewallRuleByPositionV1Request {
+// func (api *FirewallApiService) DeleteFirewallRuleByPositionV1Request(ctx context.Context, position int32) ApiDeleteFirewallRuleByPositionV1Request {
 // 	return ApiDeleteFirewallRuleByPositionV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -3621,7 +3621,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return Object
-// func (api *FirewallApiService) DeleteFirewallRuleByPositionV1Execute(r ApiDeleteFirewallRuleByPositionV1Request) (*Object, *http.Response, error) {
+// func (api *FirewallApiService) DeleteFirewallRuleByPositionV1(r ApiDeleteFirewallRuleByPositionV1Request) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodDelete
 // 		localVarPostBody     interface{}
@@ -3726,7 +3726,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiDeleteFirewallRuleByRuleRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.DeleteFirewallRuleByRuleExecute(r)
+// 	return r.ApiService.DeleteFirewallRuleByRule(r)
 // }
 
 // /*
@@ -3738,7 +3738,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiDeleteFirewallRuleByRuleRequest
 // */
-// func (api *FirewallApiService) DeleteFirewallRuleByRule(ctx context.Context) ApiDeleteFirewallRuleByRuleRequest {
+// func (api *FirewallApiService) DeleteFirewallRuleByRuleRequest(ctx context.Context) ApiDeleteFirewallRuleByRuleRequest {
 // 	return ApiDeleteFirewallRuleByRuleRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -3747,7 +3747,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return Object
-// func (api *FirewallApiService) DeleteFirewallRuleByRuleExecute(r ApiDeleteFirewallRuleByRuleRequest) (*Object, *http.Response, error) {
+// func (api *FirewallApiService) DeleteFirewallRuleByRule(r ApiDeleteFirewallRuleByRuleRequest) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodDelete
 // 		localVarPostBody     interface{}
@@ -3857,7 +3857,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiDeleteFirewallSubgroupV1Request) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.DeleteFirewallSubgroupV1Execute(r)
+// 	return r.ApiService.DeleteFirewallSubgroupV1(r)
 // }
 
 // /*
@@ -3868,7 +3868,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiDeleteFirewallSubgroupV1Request
 // */
-// func (api *FirewallApiService) DeleteFirewallSubgroupV1(ctx context.Context) ApiDeleteFirewallSubgroupV1Request {
+// func (api *FirewallApiService) DeleteFirewallSubgroupV1Request(ctx context.Context) ApiDeleteFirewallSubgroupV1Request {
 // 	return ApiDeleteFirewallSubgroupV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -3877,7 +3877,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return Object
-// func (api *FirewallApiService) DeleteFirewallSubgroupV1Execute(r ApiDeleteFirewallSubgroupV1Request) (*Object, *http.Response, error) {
+// func (api *FirewallApiService) DeleteFirewallSubgroupV1(r ApiDeleteFirewallSubgroupV1Request) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodDelete
 // 		localVarPostBody     interface{}
@@ -4005,7 +4005,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiGetFirewallFwsetsV1Request) Execute() (*FirewallFwSetListResponse, *http.Response, error) {
-// 	return r.ApiService.GetFirewallFwsetsV1Execute(r)
+// 	return r.ApiService.GetFirewallFwsetsV1(r)
 // }
 
 // /*
@@ -4017,7 +4017,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiGetFirewallFwsetsV1Request
 // */
-// func (api *FirewallApiService) GetFirewallFwsetsV1(ctx context.Context) ApiGetFirewallFwsetsV1Request {
+// func (api *FirewallApiService) GetFirewallFwsetsV1Request(ctx context.Context) ApiGetFirewallFwsetsV1Request {
 // 	return ApiGetFirewallFwsetsV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4026,7 +4026,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return FirewallFwSetListResponse
-// func (api *FirewallApiService) GetFirewallFwsetsV1Execute(r ApiGetFirewallFwsetsV1Request) (*FirewallFwSetListResponse, *http.Response, error) {
+// func (api *FirewallApiService) GetFirewallFwsetsV1(r ApiGetFirewallFwsetsV1Request) (*FirewallFwSetListResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodGet
 // 		localVarPostBody     interface{}
@@ -4135,7 +4135,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiGetFirewallRuleSubgroupsV1Request) Execute() (*FirewallSubgroupListResponse, *http.Response, error) {
-// 	return r.ApiService.GetFirewallRuleSubgroupsV1Execute(r)
+// 	return r.ApiService.GetFirewallRuleSubgroupsV1(r)
 // }
 
 // /*
@@ -4147,7 +4147,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiGetFirewallRuleSubgroupsV1Request
 // */
-// func (api *FirewallApiService) GetFirewallRuleSubgroupsV1(ctx context.Context) ApiGetFirewallRuleSubgroupsV1Request {
+// func (api *FirewallApiService) GetFirewallRuleSubgroupsV1Request(ctx context.Context) ApiGetFirewallRuleSubgroupsV1Request {
 // 	return ApiGetFirewallRuleSubgroupsV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4156,7 +4156,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return FirewallSubgroupListResponse
-// func (api *FirewallApiService) GetFirewallRuleSubgroupsV1Execute(r ApiGetFirewallRuleSubgroupsV1Request) (*FirewallSubgroupListResponse, *http.Response, error) {
+// func (api *FirewallApiService) GetFirewallRuleSubgroupsV1(r ApiGetFirewallRuleSubgroupsV1Request) (*FirewallSubgroupListResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodGet
 // 		localVarPostBody     interface{}
@@ -4251,7 +4251,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiGetFirewallRulesV1Request) Execute() (*FirewallRuleListResponse, *http.Response, error) {
-// 	return r.ApiService.GetFirewallRulesV1Execute(r)
+// 	return r.ApiService.GetFirewallRulesV1(r)
 // }
 
 // /*
@@ -4262,7 +4262,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiGetFirewallRulesV1Request
 // */
-// func (api *FirewallApiService) GetFirewallRulesV1(ctx context.Context) ApiGetFirewallRulesV1Request {
+// func (api *FirewallApiService) GetFirewallRulesV1Request(ctx context.Context) ApiGetFirewallRulesV1Request {
 // 	return ApiGetFirewallRulesV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4271,7 +4271,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return FirewallRuleListResponse
-// func (api *FirewallApiService) GetFirewallRulesV1Execute(r ApiGetFirewallRulesV1Request) (*FirewallRuleListResponse, *http.Response, error) {
+// func (api *FirewallApiService) GetFirewallRulesV1(r ApiGetFirewallRulesV1Request) (*FirewallRuleListResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodGet
 // 		localVarPostBody     interface{}
@@ -4366,7 +4366,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPostCreateFirewallFwsetV1Request) Execute() (*PostCreateFirewallFwsetV1200Response, *http.Response, error) {
-// 	return r.ApiService.PostCreateFirewallFwsetV1Execute(r)
+// 	return r.ApiService.PostCreateFirewallFwsetV1(r)
 // }
 
 // /*
@@ -4377,7 +4377,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostCreateFirewallFwsetV1Request
 // */
-// func (api *FirewallApiService) PostCreateFirewallFwsetV1(ctx context.Context) ApiPostCreateFirewallFwsetV1Request {
+// func (api *FirewallApiService) PostCreateFirewallFwsetV1Request(ctx context.Context) ApiPostCreateFirewallFwsetV1Request {
 // 	return ApiPostCreateFirewallFwsetV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4386,7 +4386,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return PostCreateFirewallFwsetV1200Response
-// func (api *FirewallApiService) PostCreateFirewallFwsetV1Execute(r ApiPostCreateFirewallFwsetV1Request) (*PostCreateFirewallFwsetV1200Response, *http.Response, error) {
+// func (api *FirewallApiService) PostCreateFirewallFwsetV1(r ApiPostCreateFirewallFwsetV1Request) (*PostCreateFirewallFwsetV1200Response, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -4496,7 +4496,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPostCreateFirewallRuleV1Request) Execute() (*FirewallRuleOperationResponse, *http.Response, error) {
-// 	return r.ApiService.PostCreateFirewallRuleV1Execute(r)
+// 	return r.ApiService.PostCreateFirewallRuleV1(r)
 // }
 
 // /*
@@ -4507,7 +4507,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostCreateFirewallRuleV1Request
 // */
-// func (api *FirewallApiService) PostCreateFirewallRuleV1(ctx context.Context) ApiPostCreateFirewallRuleV1Request {
+// func (api *FirewallApiService) PostCreateFirewallRuleV1Request(ctx context.Context) ApiPostCreateFirewallRuleV1Request {
 // 	return ApiPostCreateFirewallRuleV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4516,7 +4516,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return FirewallRuleOperationResponse
-// func (api *FirewallApiService) PostCreateFirewallRuleV1Execute(r ApiPostCreateFirewallRuleV1Request) (*FirewallRuleOperationResponse, *http.Response, error) {
+// func (api *FirewallApiService) PostCreateFirewallRuleV1(r ApiPostCreateFirewallRuleV1Request) (*FirewallRuleOperationResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -4625,7 +4625,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPostCreateFirewallSubgroupV1Request) Execute() (*PostCreateFirewallSubgroupV1200Response, *http.Response, error) {
-// 	return r.ApiService.PostCreateFirewallSubgroupV1Execute(r)
+// 	return r.ApiService.PostCreateFirewallSubgroupV1(r)
 // }
 
 // /*
@@ -4637,7 +4637,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostCreateFirewallSubgroupV1Request
 // */
-// func (api *FirewallApiService) PostCreateFirewallSubgroupV1(ctx context.Context) ApiPostCreateFirewallSubgroupV1Request {
+// func (api *FirewallApiService) PostCreateFirewallSubgroupV1Request(ctx context.Context) ApiPostCreateFirewallSubgroupV1Request {
 // 	return ApiPostCreateFirewallSubgroupV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4646,7 +4646,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return PostCreateFirewallSubgroupV1200Response
-// func (api *FirewallApiService) PostCreateFirewallSubgroupV1Execute(r ApiPostCreateFirewallSubgroupV1Request) (*PostCreateFirewallSubgroupV1200Response, *http.Response, error) {
+// func (api *FirewallApiService) PostCreateFirewallSubgroupV1(r ApiPostCreateFirewallSubgroupV1Request) (*PostCreateFirewallSubgroupV1200Response, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -4756,7 +4756,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPutFirewallActionV1Request) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.PutFirewallActionV1Execute(r)
+// 	return r.ApiService.PutFirewallActionV1(r)
 // }
 
 // /*
@@ -4767,7 +4767,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutFirewallActionV1Request
 // */
-// func (api *FirewallApiService) PutFirewallActionV1(ctx context.Context) ApiPutFirewallActionV1Request {
+// func (api *FirewallApiService) PutFirewallActionV1Request(ctx context.Context) ApiPutFirewallActionV1Request {
 // 	return ApiPutFirewallActionV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4776,7 +4776,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return Object
-// func (api *FirewallApiService) PutFirewallActionV1Execute(r ApiPutFirewallActionV1Request) (*Object, *http.Response, error) {
+// func (api *FirewallApiService) PutFirewallActionV1(r ApiPutFirewallActionV1Request) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -4875,7 +4875,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPutOverwriteFirewallV1Request) Execute() (*TaskTokenResponse, *http.Response, error) {
-// 	return r.ApiService.PutOverwriteFirewallV1Execute(r)
+// 	return r.ApiService.PutOverwriteFirewallV1(r)
 // }
 
 // /*
@@ -4886,7 +4886,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutOverwriteFirewallV1Request
 // */
-// func (api *FirewallApiService) PutOverwriteFirewallV1(ctx context.Context) ApiPutOverwriteFirewallV1Request {
+// func (api *FirewallApiService) PutOverwriteFirewallV1Request(ctx context.Context) ApiPutOverwriteFirewallV1Request {
 // 	return ApiPutOverwriteFirewallV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -4895,7 +4895,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 
 // // Execute executes the request
 // //  @return TaskTokenResponse
-// func (api *FirewallApiService) PutOverwriteFirewallV1Execute(r ApiPutOverwriteFirewallV1Request) (*TaskTokenResponse, *http.Response, error) {
+// func (api *FirewallApiService) PutOverwriteFirewallV1(r ApiPutOverwriteFirewallV1Request) (*TaskTokenResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -4994,7 +4994,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPutReinitializeFirewallSubgroupsV1Request) Execute() (*http.Response, error) {
-// 	return r.ApiService.PutReinitializeFirewallSubgroupsV1Execute(r)
+// 	return r.ApiService.PutReinitializeFirewallSubgroupsV1(r)
 // }
 
 // /*
@@ -5005,7 +5005,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutReinitializeFirewallSubgroupsV1Request
 // */
-// func (api *FirewallApiService) PutReinitializeFirewallSubgroupsV1(ctx context.Context) ApiPutReinitializeFirewallSubgroupsV1Request {
+// func (api *FirewallApiService) PutReinitializeFirewallSubgroupsV1Request(ctx context.Context) ApiPutReinitializeFirewallSubgroupsV1Request {
 // 	return ApiPutReinitializeFirewallSubgroupsV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -5013,7 +5013,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // // Execute executes the request
-// func (api *FirewallApiService) PutReinitializeFirewallSubgroupsV1Execute(r ApiPutReinitializeFirewallSubgroupsV1Request) (*http.Response, error) {
+// func (api *FirewallApiService) PutReinitializeFirewallSubgroupsV1(r ApiPutReinitializeFirewallSubgroupsV1Request) (*http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -5102,7 +5102,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // func (r ApiPutReinitializeFwsetsV1Request) Execute() (*http.Response, error) {
-// 	return r.ApiService.PutReinitializeFwsetsV1Execute(r)
+// 	return r.ApiService.PutReinitializeFwsetsV1(r)
 // }
 
 // /*
@@ -5113,7 +5113,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutReinitializeFwsetsV1Request
 // */
-// func (api *FirewallApiService) PutReinitializeFwsetsV1(ctx context.Context) ApiPutReinitializeFwsetsV1Request {
+// func (api *FirewallApiService) PutReinitializeFwsetsV1Request(ctx context.Context) ApiPutReinitializeFwsetsV1Request {
 // 	return ApiPutReinitializeFwsetsV1Request{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -5121,7 +5121,7 @@ func (api *FirewallApiService) PutUpdateFirewallSubtableExecute(r ApiPutUpdateFi
 // }
 
 // // Execute executes the request
-// func (api *FirewallApiService) PutReinitializeFwsetsV1Execute(r ApiPutReinitializeFwsetsV1Request) (*http.Response, error) {
+// func (api *FirewallApiService) PutReinitializeFwsetsV1(r ApiPutReinitializeFwsetsV1Request) (*http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}

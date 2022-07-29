@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// SystemStatusDetail struct for SystemStatusDetail
-type SystemStatusDetail struct {
-	Response *SystemStatus `json:"response,omitempty"`
+// RuntimeStatusResponse struct for RuntimeStatusResponse
+type RuntimeStatusResponse struct {
+	Response *RuntimeStatus `json:"response,omitempty"`
 }
 
-// NewSystemStatusDetail instantiates a new SystemStatusDetail object
+// NewRuntimeStatusResponse instantiates a new RuntimeStatusResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemStatusDetail() *SystemStatusDetail {
-	this := SystemStatusDetail{}
+func NewRuntimeStatusResponse() *RuntimeStatusResponse {
+	this := RuntimeStatusResponse{}
 	return &this
 }
 
-// NewSystemStatusDetailWithDefaults instantiates a new SystemStatusDetail object
+// NewRuntimeStatusResponseWithDefaults instantiates a new RuntimeStatusResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSystemStatusDetailWithDefaults() *SystemStatusDetail {
-	this := SystemStatusDetail{}
+func NewRuntimeStatusResponseWithDefaults() *RuntimeStatusResponse {
+	this := RuntimeStatusResponse{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *SystemStatusDetail) GetResponse() SystemStatus {
+func (o *RuntimeStatusResponse) GetResponse() RuntimeStatus {
 	if o == nil || o.Response == nil {
-		var ret SystemStatus
+		var ret RuntimeStatus
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *SystemStatusDetail) GetResponse() SystemStatus {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SystemStatusDetail) GetResponseOk() (*SystemStatus, bool) {
+func (o *RuntimeStatusResponse) GetResponseOk() (*RuntimeStatus, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *SystemStatusDetail) GetResponseOk() (*SystemStatus, bool) {
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *SystemStatusDetail) HasResponse() bool {
+func (o *RuntimeStatusResponse) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *SystemStatusDetail) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given SystemStatus and assigns it to the Response field.
-func (o *SystemStatusDetail) SetResponse(v SystemStatus) {
+// SetResponse gets a reference to the given RuntimeStatus and assigns it to the Response field.
+func (o *RuntimeStatusResponse) SetResponse(v RuntimeStatus) {
 	o.Response = &v
 }
 
-func (o SystemStatusDetail) MarshalJSON() ([]byte, error) {
+func (o RuntimeStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o SystemStatusDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableSystemStatusDetail struct {
-	value *SystemStatusDetail
+type NullableRuntimeStatusResponse struct {
+	value *RuntimeStatusResponse
 	isSet bool
 }
 
-func (v NullableSystemStatusDetail) Get() *SystemStatusDetail {
+func (v NullableRuntimeStatusResponse) Get() *RuntimeStatusResponse {
 	return v.value
 }
 
-func (v *NullableSystemStatusDetail) Set(val *SystemStatusDetail) {
+func (v *NullableRuntimeStatusResponse) Set(val *RuntimeStatusResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSystemStatusDetail) IsSet() bool {
+func (v NullableRuntimeStatusResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSystemStatusDetail) Unset() {
+func (v *NullableRuntimeStatusResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSystemStatusDetail(val *SystemStatusDetail) *NullableSystemStatusDetail {
-	return &NullableSystemStatusDetail{value: val, isSet: true}
+func NewNullableRuntimeStatusResponse(val *RuntimeStatusResponse) *NullableRuntimeStatusResponse {
+	return &NullableRuntimeStatusResponse{value: val, isSet: true}
 }
 
-func (v NullableSystemStatusDetail) MarshalJSON() ([]byte, error) {
+func (v NullableRuntimeStatusResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSystemStatusDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableRuntimeStatusResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

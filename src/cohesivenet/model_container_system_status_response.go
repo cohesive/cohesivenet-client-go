@@ -15,30 +15,30 @@ import (
 	"encoding/json"
 )
 
-// ContainerSystemStatusDetailResponse struct for ContainerSystemStatusDetailResponse
-type ContainerSystemStatusDetailResponse struct {
+// ContainerSystemStatusResponse struct for ContainerSystemStatusResponse
+type ContainerSystemStatusResponse struct {
 	Response *ContainerSystemStatus `json:"response,omitempty"`
 }
 
-// NewContainerSystemStatusDetailResponse instantiates a new ContainerSystemStatusDetailResponse object
+// NewContainerSystemStatusResponse instantiates a new ContainerSystemStatusResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerSystemStatusDetailResponse() *ContainerSystemStatusDetailResponse {
-	this := ContainerSystemStatusDetailResponse{}
+func NewContainerSystemStatusResponse() *ContainerSystemStatusResponse {
+	this := ContainerSystemStatusResponse{}
 	return &this
 }
 
-// NewContainerSystemStatusDetailResponseWithDefaults instantiates a new ContainerSystemStatusDetailResponse object
+// NewContainerSystemStatusResponseWithDefaults instantiates a new ContainerSystemStatusResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewContainerSystemStatusDetailResponseWithDefaults() *ContainerSystemStatusDetailResponse {
-	this := ContainerSystemStatusDetailResponse{}
+func NewContainerSystemStatusResponseWithDefaults() *ContainerSystemStatusResponse {
+	this := ContainerSystemStatusResponse{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *ContainerSystemStatusDetailResponse) GetResponse() ContainerSystemStatus {
+func (o *ContainerSystemStatusResponse) GetResponse() ContainerSystemStatus {
 	if o == nil || o.Response == nil {
 		var ret ContainerSystemStatus
 		return ret
@@ -48,7 +48,7 @@ func (o *ContainerSystemStatusDetailResponse) GetResponse() ContainerSystemStatu
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerSystemStatusDetailResponse) GetResponseOk() (*ContainerSystemStatus, bool) {
+func (o *ContainerSystemStatusResponse) GetResponseOk() (*ContainerSystemStatus, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *ContainerSystemStatusDetailResponse) GetResponseOk() (*ContainerSystemS
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *ContainerSystemStatusDetailResponse) HasResponse() bool {
+func (o *ContainerSystemStatusResponse) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -65,11 +65,11 @@ func (o *ContainerSystemStatusDetailResponse) HasResponse() bool {
 }
 
 // SetResponse gets a reference to the given ContainerSystemStatus and assigns it to the Response field.
-func (o *ContainerSystemStatusDetailResponse) SetResponse(v ContainerSystemStatus) {
+func (o *ContainerSystemStatusResponse) SetResponse(v ContainerSystemStatus) {
 	o.Response = &v
 }
 
-func (o ContainerSystemStatusDetailResponse) MarshalJSON() ([]byte, error) {
+func (o ContainerSystemStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o ContainerSystemStatusDetailResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableContainerSystemStatusDetailResponse struct {
-	value *ContainerSystemStatusDetailResponse
+type NullableContainerSystemStatusResponse struct {
+	value *ContainerSystemStatusResponse
 	isSet bool
 }
 
-func (v NullableContainerSystemStatusDetailResponse) Get() *ContainerSystemStatusDetailResponse {
+func (v NullableContainerSystemStatusResponse) Get() *ContainerSystemStatusResponse {
 	return v.value
 }
 
-func (v *NullableContainerSystemStatusDetailResponse) Set(val *ContainerSystemStatusDetailResponse) {
+func (v *NullableContainerSystemStatusResponse) Set(val *ContainerSystemStatusResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableContainerSystemStatusDetailResponse) IsSet() bool {
+func (v NullableContainerSystemStatusResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableContainerSystemStatusDetailResponse) Unset() {
+func (v *NullableContainerSystemStatusResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableContainerSystemStatusDetailResponse(val *ContainerSystemStatusDetailResponse) *NullableContainerSystemStatusDetailResponse {
-	return &NullableContainerSystemStatusDetailResponse{value: val, isSet: true}
+func NewNullableContainerSystemStatusResponse(val *ContainerSystemStatusResponse) *NullableContainerSystemStatusResponse {
+	return &NullableContainerSystemStatusResponse{value: val, isSet: true}
 }
 
-func (v NullableContainerSystemStatusDetailResponse) MarshalJSON() ([]byte, error) {
+func (v NullableContainerSystemStatusResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableContainerSystemStatusDetailResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableContainerSystemStatusResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

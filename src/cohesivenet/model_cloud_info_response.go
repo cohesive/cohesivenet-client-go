@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// RuntimeStatusDetail struct for RuntimeStatusDetail
-type RuntimeStatusDetail struct {
-	Response *RuntimeStatus `json:"response,omitempty"`
+// CloudInfoResponse struct for CloudInfoResponse
+type CloudInfoResponse struct {
+	Response *CloudInfo `json:"response,omitempty"`
 }
 
-// NewRuntimeStatusDetail instantiates a new RuntimeStatusDetail object
+// NewCloudInfoResponse instantiates a new CloudInfoResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRuntimeStatusDetail() *RuntimeStatusDetail {
-	this := RuntimeStatusDetail{}
+func NewCloudInfoResponse() *CloudInfoResponse {
+	this := CloudInfoResponse{}
 	return &this
 }
 
-// NewRuntimeStatusDetailWithDefaults instantiates a new RuntimeStatusDetail object
+// NewCloudInfoResponseWithDefaults instantiates a new CloudInfoResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRuntimeStatusDetailWithDefaults() *RuntimeStatusDetail {
-	this := RuntimeStatusDetail{}
+func NewCloudInfoResponseWithDefaults() *CloudInfoResponse {
+	this := CloudInfoResponse{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *RuntimeStatusDetail) GetResponse() RuntimeStatus {
+func (o *CloudInfoResponse) GetResponse() CloudInfo {
 	if o == nil || o.Response == nil {
-		var ret RuntimeStatus
+		var ret CloudInfo
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *RuntimeStatusDetail) GetResponse() RuntimeStatus {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuntimeStatusDetail) GetResponseOk() (*RuntimeStatus, bool) {
+func (o *CloudInfoResponse) GetResponseOk() (*CloudInfo, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *RuntimeStatusDetail) GetResponseOk() (*RuntimeStatus, bool) {
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *RuntimeStatusDetail) HasResponse() bool {
+func (o *CloudInfoResponse) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *RuntimeStatusDetail) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given RuntimeStatus and assigns it to the Response field.
-func (o *RuntimeStatusDetail) SetResponse(v RuntimeStatus) {
+// SetResponse gets a reference to the given CloudInfo and assigns it to the Response field.
+func (o *CloudInfoResponse) SetResponse(v CloudInfo) {
 	o.Response = &v
 }
 
-func (o RuntimeStatusDetail) MarshalJSON() ([]byte, error) {
+func (o CloudInfoResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o RuntimeStatusDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableRuntimeStatusDetail struct {
-	value *RuntimeStatusDetail
+type NullableCloudInfoResponse struct {
+	value *CloudInfoResponse
 	isSet bool
 }
 
-func (v NullableRuntimeStatusDetail) Get() *RuntimeStatusDetail {
+func (v NullableCloudInfoResponse) Get() *CloudInfoResponse {
 	return v.value
 }
 
-func (v *NullableRuntimeStatusDetail) Set(val *RuntimeStatusDetail) {
+func (v *NullableCloudInfoResponse) Set(val *CloudInfoResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRuntimeStatusDetail) IsSet() bool {
+func (v NullableCloudInfoResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRuntimeStatusDetail) Unset() {
+func (v *NullableCloudInfoResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRuntimeStatusDetail(val *RuntimeStatusDetail) *NullableRuntimeStatusDetail {
-	return &NullableRuntimeStatusDetail{value: val, isSet: true}
+func NewNullableCloudInfoResponse(val *CloudInfoResponse) *NullableCloudInfoResponse {
+	return &NullableCloudInfoResponse{value: val, isSet: true}
 }
 
-func (v NullableRuntimeStatusDetail) MarshalJSON() ([]byte, error) {
+func (v NullableCloudInfoResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRuntimeStatusDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableCloudInfoResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

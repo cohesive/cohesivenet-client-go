@@ -75,7 +75,7 @@ type VNS3Client struct {
 
 	// SnapshotsApi *SnapshotsApiService
 
-	// SystemAdministrationApi *SystemAdministrationApiService
+	SystemAdministrationApi *SystemAdministrationApiService
 }
 
 type service struct {
@@ -126,7 +126,7 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 	c.PeeringApi = (*PeeringApiService)(&c.common)
 	c.RoutingApi = (*RoutingApiService)(&c.common)
 	// c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
-	// c.SystemAdministrationApi = (*SystemAdministrationApiService)(&c.common)
+	c.SystemAdministrationApi = (*SystemAdministrationApiService)(&c.common)
 
 	return c
 }
@@ -380,13 +380,15 @@ func (c *VNS3Client) prepareRequest(
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
 
+	authIsSet := false
+
 	if ctx != nil {
 		// add context to the request
 		localVarRequest = localVarRequest.WithContext(ctx)
 
 		// Walk through any authentication.
 
-		// OAuth2 authentication
+		// OAuth2 authentication - NOT supported
 		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
 			// We were able to grab an oauth2 token from the context
 			var latestToken *oauth2.Token
@@ -395,18 +397,32 @@ func (c *VNS3Client) prepareRequest(
 			}
 
 			latestToken.SetAuthHeader(localVarRequest)
+			authIsSet = true
 		}
 
 		// Basic HTTP Authentication
 		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
+			authIsSet = true
 		}
 
 		// AccessToken Authentication
 		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
 			localVarRequest.Header.Add("Api-Token", auth)
+			authIsSet = true
 		}
+	}
 
+	if !authIsSet && c.cfg.AuthType != nil {
+		if *c.cfg.AuthType == ContextBasicAuth {
+			if auth, ok := (*c.cfg.Auth).(BasicAuth); ok {
+				localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
+			}
+		} else if *c.cfg.AuthType == ContextAccessToken {
+			if auth, ok := (*c.cfg.Auth).(string); ok {
+				localVarRequest.Header.Add("Api-Token", auth)
+			}
+		}
 	}
 
 	for header, value := range c.cfg.DefaultHeader {

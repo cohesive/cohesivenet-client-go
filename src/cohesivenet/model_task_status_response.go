@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// CloudInfoDetail struct for CloudInfoDetail
-type CloudInfoDetail struct {
-	Response *CloudInfo `json:"response,omitempty"`
+// TaskStatusResponse struct for TaskStatusResponse
+type TaskStatusResponse struct {
+	Response *TaskStatus `json:"response,omitempty"`
 }
 
-// NewCloudInfoDetail instantiates a new CloudInfoDetail object
+// NewTaskStatusResponse instantiates a new TaskStatusResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudInfoDetail() *CloudInfoDetail {
-	this := CloudInfoDetail{}
+func NewTaskStatusResponse() *TaskStatusResponse {
+	this := TaskStatusResponse{}
 	return &this
 }
 
-// NewCloudInfoDetailWithDefaults instantiates a new CloudInfoDetail object
+// NewTaskStatusResponseWithDefaults instantiates a new TaskStatusResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloudInfoDetailWithDefaults() *CloudInfoDetail {
-	this := CloudInfoDetail{}
+func NewTaskStatusResponseWithDefaults() *TaskStatusResponse {
+	this := TaskStatusResponse{}
 	return &this
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *CloudInfoDetail) GetResponse() CloudInfo {
+func (o *TaskStatusResponse) GetResponse() TaskStatus {
 	if o == nil || o.Response == nil {
-		var ret CloudInfo
+		var ret TaskStatus
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *CloudInfoDetail) GetResponse() CloudInfo {
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudInfoDetail) GetResponseOk() (*CloudInfo, bool) {
+func (o *TaskStatusResponse) GetResponseOk() (*TaskStatus, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -56,7 +56,7 @@ func (o *CloudInfoDetail) GetResponseOk() (*CloudInfo, bool) {
 }
 
 // HasResponse returns a boolean if a field has been set.
-func (o *CloudInfoDetail) HasResponse() bool {
+func (o *TaskStatusResponse) HasResponse() bool {
 	if o != nil && o.Response != nil {
 		return true
 	}
@@ -64,12 +64,12 @@ func (o *CloudInfoDetail) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given CloudInfo and assigns it to the Response field.
-func (o *CloudInfoDetail) SetResponse(v CloudInfo) {
+// SetResponse gets a reference to the given TaskStatus and assigns it to the Response field.
+func (o *TaskStatusResponse) SetResponse(v TaskStatus) {
 	o.Response = &v
 }
 
-func (o CloudInfoDetail) MarshalJSON() ([]byte, error) {
+func (o TaskStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Response != nil {
 		toSerialize["response"] = o.Response
@@ -77,38 +77,38 @@ func (o CloudInfoDetail) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCloudInfoDetail struct {
-	value *CloudInfoDetail
+type NullableTaskStatusResponse struct {
+	value *TaskStatusResponse
 	isSet bool
 }
 
-func (v NullableCloudInfoDetail) Get() *CloudInfoDetail {
+func (v NullableTaskStatusResponse) Get() *TaskStatusResponse {
 	return v.value
 }
 
-func (v *NullableCloudInfoDetail) Set(val *CloudInfoDetail) {
+func (v *NullableTaskStatusResponse) Set(val *TaskStatusResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCloudInfoDetail) IsSet() bool {
+func (v NullableTaskStatusResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCloudInfoDetail) Unset() {
+func (v *NullableTaskStatusResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCloudInfoDetail(val *CloudInfoDetail) *NullableCloudInfoDetail {
-	return &NullableCloudInfoDetail{value: val, isSet: true}
+func NewNullableTaskStatusResponse(val *TaskStatusResponse) *NullableTaskStatusResponse {
+	return &NullableTaskStatusResponse{value: val, isSet: true}
 }
 
-func (v NullableCloudInfoDetail) MarshalJSON() ([]byte, error) {
+func (v NullableTaskStatusResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCloudInfoDetail) UnmarshalJSON(src []byte) error {
+func (v *NullableTaskStatusResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

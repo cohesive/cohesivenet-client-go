@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// EC2CloudInfo Metadata returned from AWS instance metadata call. 
-type EC2CloudInfo struct {
+// CloudInfoEC2 Metadata returned from AWS instance metadata call. 
+type CloudInfoEC2 struct {
 	AccountId *string `json:"accountId,omitempty"`
 	AvailabilityZone *string `json:"availabilityZone,omitempty"`
 	RamdiskId NullableString `json:"ramdiskId,omitempty"`
@@ -35,27 +35,27 @@ type EC2CloudInfo struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _EC2CloudInfo EC2CloudInfo
+type _CloudInfoEC2 CloudInfoEC2
 
-// NewEC2CloudInfo instantiates a new EC2CloudInfo object
+// NewCloudInfoEC2 instantiates a new CloudInfoEC2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEC2CloudInfo() *EC2CloudInfo {
-	this := EC2CloudInfo{}
+func NewCloudInfoEC2() *CloudInfoEC2 {
+	this := CloudInfoEC2{}
 	return &this
 }
 
-// NewEC2CloudInfoWithDefaults instantiates a new EC2CloudInfo object
+// NewCloudInfoEC2WithDefaults instantiates a new CloudInfoEC2 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEC2CloudInfoWithDefaults() *EC2CloudInfo {
-	this := EC2CloudInfo{}
+func NewCloudInfoEC2WithDefaults() *CloudInfoEC2 {
+	this := CloudInfoEC2{}
 	return &this
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetAccountId() string {
+func (o *CloudInfoEC2) GetAccountId() string {
 	if o == nil || o.AccountId == nil {
 		var ret string
 		return ret
@@ -65,7 +65,7 @@ func (o *EC2CloudInfo) GetAccountId() string {
 
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetAccountIdOk() (*string, bool) {
+func (o *CloudInfoEC2) GetAccountIdOk() (*string, bool) {
 	if o == nil || o.AccountId == nil {
 		return nil, false
 	}
@@ -73,7 +73,7 @@ func (o *EC2CloudInfo) GetAccountIdOk() (*string, bool) {
 }
 
 // HasAccountId returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasAccountId() bool {
+func (o *CloudInfoEC2) HasAccountId() bool {
 	if o != nil && o.AccountId != nil {
 		return true
 	}
@@ -82,12 +82,12 @@ func (o *EC2CloudInfo) HasAccountId() bool {
 }
 
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
-func (o *EC2CloudInfo) SetAccountId(v string) {
+func (o *CloudInfoEC2) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
 // GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetAvailabilityZone() string {
+func (o *CloudInfoEC2) GetAvailabilityZone() string {
 	if o == nil || o.AvailabilityZone == nil {
 		var ret string
 		return ret
@@ -97,7 +97,7 @@ func (o *EC2CloudInfo) GetAvailabilityZone() string {
 
 // GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetAvailabilityZoneOk() (*string, bool) {
+func (o *CloudInfoEC2) GetAvailabilityZoneOk() (*string, bool) {
 	if o == nil || o.AvailabilityZone == nil {
 		return nil, false
 	}
@@ -105,7 +105,7 @@ func (o *EC2CloudInfo) GetAvailabilityZoneOk() (*string, bool) {
 }
 
 // HasAvailabilityZone returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasAvailabilityZone() bool {
+func (o *CloudInfoEC2) HasAvailabilityZone() bool {
 	if o != nil && o.AvailabilityZone != nil {
 		return true
 	}
@@ -114,12 +114,12 @@ func (o *EC2CloudInfo) HasAvailabilityZone() bool {
 }
 
 // SetAvailabilityZone gets a reference to the given string and assigns it to the AvailabilityZone field.
-func (o *EC2CloudInfo) SetAvailabilityZone(v string) {
+func (o *CloudInfoEC2) SetAvailabilityZone(v string) {
 	o.AvailabilityZone = &v
 }
 
 // GetRamdiskId returns the RamdiskId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EC2CloudInfo) GetRamdiskId() string {
+func (o *CloudInfoEC2) GetRamdiskId() string {
 	if o == nil || o.RamdiskId.Get() == nil {
 		var ret string
 		return ret
@@ -130,7 +130,7 @@ func (o *EC2CloudInfo) GetRamdiskId() string {
 // GetRamdiskIdOk returns a tuple with the RamdiskId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EC2CloudInfo) GetRamdiskIdOk() (*string, bool) {
+func (o *CloudInfoEC2) GetRamdiskIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *EC2CloudInfo) GetRamdiskIdOk() (*string, bool) {
 }
 
 // HasRamdiskId returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasRamdiskId() bool {
+func (o *CloudInfoEC2) HasRamdiskId() bool {
 	if o != nil && o.RamdiskId.IsSet() {
 		return true
 	}
@@ -147,21 +147,21 @@ func (o *EC2CloudInfo) HasRamdiskId() bool {
 }
 
 // SetRamdiskId gets a reference to the given NullableString and assigns it to the RamdiskId field.
-func (o *EC2CloudInfo) SetRamdiskId(v string) {
+func (o *CloudInfoEC2) SetRamdiskId(v string) {
 	o.RamdiskId.Set(&v)
 }
 // SetRamdiskIdNil sets the value for RamdiskId to be an explicit nil
-func (o *EC2CloudInfo) SetRamdiskIdNil() {
+func (o *CloudInfoEC2) SetRamdiskIdNil() {
 	o.RamdiskId.Set(nil)
 }
 
 // UnsetRamdiskId ensures that no value is present for RamdiskId, not even an explicit nil
-func (o *EC2CloudInfo) UnsetRamdiskId() {
+func (o *CloudInfoEC2) UnsetRamdiskId() {
 	o.RamdiskId.Unset()
 }
 
 // GetKernelId returns the KernelId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EC2CloudInfo) GetKernelId() string {
+func (o *CloudInfoEC2) GetKernelId() string {
 	if o == nil || o.KernelId.Get() == nil {
 		var ret string
 		return ret
@@ -172,7 +172,7 @@ func (o *EC2CloudInfo) GetKernelId() string {
 // GetKernelIdOk returns a tuple with the KernelId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EC2CloudInfo) GetKernelIdOk() (*string, bool) {
+func (o *CloudInfoEC2) GetKernelIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -180,7 +180,7 @@ func (o *EC2CloudInfo) GetKernelIdOk() (*string, bool) {
 }
 
 // HasKernelId returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasKernelId() bool {
+func (o *CloudInfoEC2) HasKernelId() bool {
 	if o != nil && o.KernelId.IsSet() {
 		return true
 	}
@@ -189,21 +189,21 @@ func (o *EC2CloudInfo) HasKernelId() bool {
 }
 
 // SetKernelId gets a reference to the given NullableString and assigns it to the KernelId field.
-func (o *EC2CloudInfo) SetKernelId(v string) {
+func (o *CloudInfoEC2) SetKernelId(v string) {
 	o.KernelId.Set(&v)
 }
 // SetKernelIdNil sets the value for KernelId to be an explicit nil
-func (o *EC2CloudInfo) SetKernelIdNil() {
+func (o *CloudInfoEC2) SetKernelIdNil() {
 	o.KernelId.Set(nil)
 }
 
 // UnsetKernelId ensures that no value is present for KernelId, not even an explicit nil
-func (o *EC2CloudInfo) UnsetKernelId() {
+func (o *CloudInfoEC2) UnsetKernelId() {
 	o.KernelId.Unset()
 }
 
 // GetPendingTime returns the PendingTime field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetPendingTime() string {
+func (o *CloudInfoEC2) GetPendingTime() string {
 	if o == nil || o.PendingTime == nil {
 		var ret string
 		return ret
@@ -213,7 +213,7 @@ func (o *EC2CloudInfo) GetPendingTime() string {
 
 // GetPendingTimeOk returns a tuple with the PendingTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetPendingTimeOk() (*string, bool) {
+func (o *CloudInfoEC2) GetPendingTimeOk() (*string, bool) {
 	if o == nil || o.PendingTime == nil {
 		return nil, false
 	}
@@ -221,7 +221,7 @@ func (o *EC2CloudInfo) GetPendingTimeOk() (*string, bool) {
 }
 
 // HasPendingTime returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasPendingTime() bool {
+func (o *CloudInfoEC2) HasPendingTime() bool {
 	if o != nil && o.PendingTime != nil {
 		return true
 	}
@@ -230,12 +230,12 @@ func (o *EC2CloudInfo) HasPendingTime() bool {
 }
 
 // SetPendingTime gets a reference to the given string and assigns it to the PendingTime field.
-func (o *EC2CloudInfo) SetPendingTime(v string) {
+func (o *CloudInfoEC2) SetPendingTime(v string) {
 	o.PendingTime = &v
 }
 
 // GetArchitecture returns the Architecture field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetArchitecture() string {
+func (o *CloudInfoEC2) GetArchitecture() string {
 	if o == nil || o.Architecture == nil {
 		var ret string
 		return ret
@@ -245,7 +245,7 @@ func (o *EC2CloudInfo) GetArchitecture() string {
 
 // GetArchitectureOk returns a tuple with the Architecture field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetArchitectureOk() (*string, bool) {
+func (o *CloudInfoEC2) GetArchitectureOk() (*string, bool) {
 	if o == nil || o.Architecture == nil {
 		return nil, false
 	}
@@ -253,7 +253,7 @@ func (o *EC2CloudInfo) GetArchitectureOk() (*string, bool) {
 }
 
 // HasArchitecture returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasArchitecture() bool {
+func (o *CloudInfoEC2) HasArchitecture() bool {
 	if o != nil && o.Architecture != nil {
 		return true
 	}
@@ -262,12 +262,12 @@ func (o *EC2CloudInfo) HasArchitecture() bool {
 }
 
 // SetArchitecture gets a reference to the given string and assigns it to the Architecture field.
-func (o *EC2CloudInfo) SetArchitecture(v string) {
+func (o *CloudInfoEC2) SetArchitecture(v string) {
 	o.Architecture = &v
 }
 
 // GetPrivateIp returns the PrivateIp field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetPrivateIp() string {
+func (o *CloudInfoEC2) GetPrivateIp() string {
 	if o == nil || o.PrivateIp == nil {
 		var ret string
 		return ret
@@ -277,7 +277,7 @@ func (o *EC2CloudInfo) GetPrivateIp() string {
 
 // GetPrivateIpOk returns a tuple with the PrivateIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetPrivateIpOk() (*string, bool) {
+func (o *CloudInfoEC2) GetPrivateIpOk() (*string, bool) {
 	if o == nil || o.PrivateIp == nil {
 		return nil, false
 	}
@@ -285,7 +285,7 @@ func (o *EC2CloudInfo) GetPrivateIpOk() (*string, bool) {
 }
 
 // HasPrivateIp returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasPrivateIp() bool {
+func (o *CloudInfoEC2) HasPrivateIp() bool {
 	if o != nil && o.PrivateIp != nil {
 		return true
 	}
@@ -294,12 +294,12 @@ func (o *EC2CloudInfo) HasPrivateIp() bool {
 }
 
 // SetPrivateIp gets a reference to the given string and assigns it to the PrivateIp field.
-func (o *EC2CloudInfo) SetPrivateIp(v string) {
+func (o *CloudInfoEC2) SetPrivateIp(v string) {
 	o.PrivateIp = &v
 }
 
 // GetDevpayProductCodes returns the DevpayProductCodes field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EC2CloudInfo) GetDevpayProductCodes() string {
+func (o *CloudInfoEC2) GetDevpayProductCodes() string {
 	if o == nil || o.DevpayProductCodes.Get() == nil {
 		var ret string
 		return ret
@@ -310,7 +310,7 @@ func (o *EC2CloudInfo) GetDevpayProductCodes() string {
 // GetDevpayProductCodesOk returns a tuple with the DevpayProductCodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EC2CloudInfo) GetDevpayProductCodesOk() (*string, bool) {
+func (o *CloudInfoEC2) GetDevpayProductCodesOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -318,7 +318,7 @@ func (o *EC2CloudInfo) GetDevpayProductCodesOk() (*string, bool) {
 }
 
 // HasDevpayProductCodes returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasDevpayProductCodes() bool {
+func (o *CloudInfoEC2) HasDevpayProductCodes() bool {
 	if o != nil && o.DevpayProductCodes.IsSet() {
 		return true
 	}
@@ -327,21 +327,21 @@ func (o *EC2CloudInfo) HasDevpayProductCodes() bool {
 }
 
 // SetDevpayProductCodes gets a reference to the given NullableString and assigns it to the DevpayProductCodes field.
-func (o *EC2CloudInfo) SetDevpayProductCodes(v string) {
+func (o *CloudInfoEC2) SetDevpayProductCodes(v string) {
 	o.DevpayProductCodes.Set(&v)
 }
 // SetDevpayProductCodesNil sets the value for DevpayProductCodes to be an explicit nil
-func (o *EC2CloudInfo) SetDevpayProductCodesNil() {
+func (o *CloudInfoEC2) SetDevpayProductCodesNil() {
 	o.DevpayProductCodes.Set(nil)
 }
 
 // UnsetDevpayProductCodes ensures that no value is present for DevpayProductCodes, not even an explicit nil
-func (o *EC2CloudInfo) UnsetDevpayProductCodes() {
+func (o *CloudInfoEC2) UnsetDevpayProductCodes() {
 	o.DevpayProductCodes.Unset()
 }
 
 // GetMarketplaceProductCodes returns the MarketplaceProductCodes field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EC2CloudInfo) GetMarketplaceProductCodes() string {
+func (o *CloudInfoEC2) GetMarketplaceProductCodes() string {
 	if o == nil || o.MarketplaceProductCodes.Get() == nil {
 		var ret string
 		return ret
@@ -352,7 +352,7 @@ func (o *EC2CloudInfo) GetMarketplaceProductCodes() string {
 // GetMarketplaceProductCodesOk returns a tuple with the MarketplaceProductCodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EC2CloudInfo) GetMarketplaceProductCodesOk() (*string, bool) {
+func (o *CloudInfoEC2) GetMarketplaceProductCodesOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -360,7 +360,7 @@ func (o *EC2CloudInfo) GetMarketplaceProductCodesOk() (*string, bool) {
 }
 
 // HasMarketplaceProductCodes returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasMarketplaceProductCodes() bool {
+func (o *CloudInfoEC2) HasMarketplaceProductCodes() bool {
 	if o != nil && o.MarketplaceProductCodes.IsSet() {
 		return true
 	}
@@ -369,21 +369,21 @@ func (o *EC2CloudInfo) HasMarketplaceProductCodes() bool {
 }
 
 // SetMarketplaceProductCodes gets a reference to the given NullableString and assigns it to the MarketplaceProductCodes field.
-func (o *EC2CloudInfo) SetMarketplaceProductCodes(v string) {
+func (o *CloudInfoEC2) SetMarketplaceProductCodes(v string) {
 	o.MarketplaceProductCodes.Set(&v)
 }
 // SetMarketplaceProductCodesNil sets the value for MarketplaceProductCodes to be an explicit nil
-func (o *EC2CloudInfo) SetMarketplaceProductCodesNil() {
+func (o *CloudInfoEC2) SetMarketplaceProductCodesNil() {
 	o.MarketplaceProductCodes.Set(nil)
 }
 
 // UnsetMarketplaceProductCodes ensures that no value is present for MarketplaceProductCodes, not even an explicit nil
-func (o *EC2CloudInfo) UnsetMarketplaceProductCodes() {
+func (o *CloudInfoEC2) UnsetMarketplaceProductCodes() {
 	o.MarketplaceProductCodes.Unset()
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetVersion() string {
+func (o *CloudInfoEC2) GetVersion() string {
 	if o == nil || o.Version == nil {
 		var ret string
 		return ret
@@ -393,7 +393,7 @@ func (o *EC2CloudInfo) GetVersion() string {
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetVersionOk() (*string, bool) {
+func (o *CloudInfoEC2) GetVersionOk() (*string, bool) {
 	if o == nil || o.Version == nil {
 		return nil, false
 	}
@@ -401,7 +401,7 @@ func (o *EC2CloudInfo) GetVersionOk() (*string, bool) {
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasVersion() bool {
+func (o *CloudInfoEC2) HasVersion() bool {
 	if o != nil && o.Version != nil {
 		return true
 	}
@@ -410,12 +410,12 @@ func (o *EC2CloudInfo) HasVersion() bool {
 }
 
 // SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *EC2CloudInfo) SetVersion(v string) {
+func (o *CloudInfoEC2) SetVersion(v string) {
 	o.Version = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetRegion() string {
+func (o *CloudInfoEC2) GetRegion() string {
 	if o == nil || o.Region == nil {
 		var ret string
 		return ret
@@ -425,7 +425,7 @@ func (o *EC2CloudInfo) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetRegionOk() (*string, bool) {
+func (o *CloudInfoEC2) GetRegionOk() (*string, bool) {
 	if o == nil || o.Region == nil {
 		return nil, false
 	}
@@ -433,7 +433,7 @@ func (o *EC2CloudInfo) GetRegionOk() (*string, bool) {
 }
 
 // HasRegion returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasRegion() bool {
+func (o *CloudInfoEC2) HasRegion() bool {
 	if o != nil && o.Region != nil {
 		return true
 	}
@@ -442,12 +442,12 @@ func (o *EC2CloudInfo) HasRegion() bool {
 }
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *EC2CloudInfo) SetRegion(v string) {
+func (o *CloudInfoEC2) SetRegion(v string) {
 	o.Region = &v
 }
 
 // GetImageId returns the ImageId field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetImageId() string {
+func (o *CloudInfoEC2) GetImageId() string {
 	if o == nil || o.ImageId == nil {
 		var ret string
 		return ret
@@ -457,7 +457,7 @@ func (o *EC2CloudInfo) GetImageId() string {
 
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetImageIdOk() (*string, bool) {
+func (o *CloudInfoEC2) GetImageIdOk() (*string, bool) {
 	if o == nil || o.ImageId == nil {
 		return nil, false
 	}
@@ -465,7 +465,7 @@ func (o *EC2CloudInfo) GetImageIdOk() (*string, bool) {
 }
 
 // HasImageId returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasImageId() bool {
+func (o *CloudInfoEC2) HasImageId() bool {
 	if o != nil && o.ImageId != nil {
 		return true
 	}
@@ -474,12 +474,12 @@ func (o *EC2CloudInfo) HasImageId() bool {
 }
 
 // SetImageId gets a reference to the given string and assigns it to the ImageId field.
-func (o *EC2CloudInfo) SetImageId(v string) {
+func (o *CloudInfoEC2) SetImageId(v string) {
 	o.ImageId = &v
 }
 
 // GetBillingProducts returns the BillingProducts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EC2CloudInfo) GetBillingProducts() string {
+func (o *CloudInfoEC2) GetBillingProducts() string {
 	if o == nil || o.BillingProducts.Get() == nil {
 		var ret string
 		return ret
@@ -490,7 +490,7 @@ func (o *EC2CloudInfo) GetBillingProducts() string {
 // GetBillingProductsOk returns a tuple with the BillingProducts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EC2CloudInfo) GetBillingProductsOk() (*string, bool) {
+func (o *CloudInfoEC2) GetBillingProductsOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -498,7 +498,7 @@ func (o *EC2CloudInfo) GetBillingProductsOk() (*string, bool) {
 }
 
 // HasBillingProducts returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasBillingProducts() bool {
+func (o *CloudInfoEC2) HasBillingProducts() bool {
 	if o != nil && o.BillingProducts.IsSet() {
 		return true
 	}
@@ -507,21 +507,21 @@ func (o *EC2CloudInfo) HasBillingProducts() bool {
 }
 
 // SetBillingProducts gets a reference to the given NullableString and assigns it to the BillingProducts field.
-func (o *EC2CloudInfo) SetBillingProducts(v string) {
+func (o *CloudInfoEC2) SetBillingProducts(v string) {
 	o.BillingProducts.Set(&v)
 }
 // SetBillingProductsNil sets the value for BillingProducts to be an explicit nil
-func (o *EC2CloudInfo) SetBillingProductsNil() {
+func (o *CloudInfoEC2) SetBillingProductsNil() {
 	o.BillingProducts.Set(nil)
 }
 
 // UnsetBillingProducts ensures that no value is present for BillingProducts, not even an explicit nil
-func (o *EC2CloudInfo) UnsetBillingProducts() {
+func (o *CloudInfoEC2) UnsetBillingProducts() {
 	o.BillingProducts.Unset()
 }
 
 // GetInstanceId returns the InstanceId field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetInstanceId() string {
+func (o *CloudInfoEC2) GetInstanceId() string {
 	if o == nil || o.InstanceId == nil {
 		var ret string
 		return ret
@@ -531,7 +531,7 @@ func (o *EC2CloudInfo) GetInstanceId() string {
 
 // GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetInstanceIdOk() (*string, bool) {
+func (o *CloudInfoEC2) GetInstanceIdOk() (*string, bool) {
 	if o == nil || o.InstanceId == nil {
 		return nil, false
 	}
@@ -539,7 +539,7 @@ func (o *EC2CloudInfo) GetInstanceIdOk() (*string, bool) {
 }
 
 // HasInstanceId returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasInstanceId() bool {
+func (o *CloudInfoEC2) HasInstanceId() bool {
 	if o != nil && o.InstanceId != nil {
 		return true
 	}
@@ -548,12 +548,12 @@ func (o *EC2CloudInfo) HasInstanceId() bool {
 }
 
 // SetInstanceId gets a reference to the given string and assigns it to the InstanceId field.
-func (o *EC2CloudInfo) SetInstanceId(v string) {
+func (o *CloudInfoEC2) SetInstanceId(v string) {
 	o.InstanceId = &v
 }
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
-func (o *EC2CloudInfo) GetInstanceType() string {
+func (o *CloudInfoEC2) GetInstanceType() string {
 	if o == nil || o.InstanceType == nil {
 		var ret string
 		return ret
@@ -563,7 +563,7 @@ func (o *EC2CloudInfo) GetInstanceType() string {
 
 // GetInstanceTypeOk returns a tuple with the InstanceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EC2CloudInfo) GetInstanceTypeOk() (*string, bool) {
+func (o *CloudInfoEC2) GetInstanceTypeOk() (*string, bool) {
 	if o == nil || o.InstanceType == nil {
 		return nil, false
 	}
@@ -571,7 +571,7 @@ func (o *EC2CloudInfo) GetInstanceTypeOk() (*string, bool) {
 }
 
 // HasInstanceType returns a boolean if a field has been set.
-func (o *EC2CloudInfo) HasInstanceType() bool {
+func (o *CloudInfoEC2) HasInstanceType() bool {
 	if o != nil && o.InstanceType != nil {
 		return true
 	}
@@ -580,11 +580,11 @@ func (o *EC2CloudInfo) HasInstanceType() bool {
 }
 
 // SetInstanceType gets a reference to the given string and assigns it to the InstanceType field.
-func (o *EC2CloudInfo) SetInstanceType(v string) {
+func (o *CloudInfoEC2) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
-func (o EC2CloudInfo) MarshalJSON() ([]byte, error) {
+func (o CloudInfoEC2) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AccountId != nil {
 		toSerialize["accountId"] = o.AccountId
@@ -639,11 +639,11 @@ func (o EC2CloudInfo) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o *EC2CloudInfo) UnmarshalJSON(bytes []byte) (err error) {
-	varEC2CloudInfo := _EC2CloudInfo{}
+func (o *CloudInfoEC2) UnmarshalJSON(bytes []byte) (err error) {
+	varCloudInfoEC2 := _CloudInfoEC2{}
 
-	if err = json.Unmarshal(bytes, &varEC2CloudInfo); err == nil {
-		*o = EC2CloudInfo(varEC2CloudInfo)
+	if err = json.Unmarshal(bytes, &varCloudInfoEC2); err == nil {
+		*o = CloudInfoEC2(varCloudInfoEC2)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -670,38 +670,38 @@ func (o *EC2CloudInfo) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableEC2CloudInfo struct {
-	value *EC2CloudInfo
+type NullableCloudInfoEC2 struct {
+	value *CloudInfoEC2
 	isSet bool
 }
 
-func (v NullableEC2CloudInfo) Get() *EC2CloudInfo {
+func (v NullableCloudInfoEC2) Get() *CloudInfoEC2 {
 	return v.value
 }
 
-func (v *NullableEC2CloudInfo) Set(val *EC2CloudInfo) {
+func (v *NullableCloudInfoEC2) Set(val *CloudInfoEC2) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEC2CloudInfo) IsSet() bool {
+func (v NullableCloudInfoEC2) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEC2CloudInfo) Unset() {
+func (v *NullableCloudInfoEC2) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEC2CloudInfo(val *EC2CloudInfo) *NullableEC2CloudInfo {
-	return &NullableEC2CloudInfo{value: val, isSet: true}
+func NewNullableCloudInfoEC2(val *CloudInfoEC2) *NullableCloudInfoEC2 {
+	return &NullableCloudInfoEC2{value: val, isSet: true}
 }
 
-func (v NullableEC2CloudInfo) MarshalJSON() ([]byte, error) {
+func (v NullableCloudInfoEC2) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEC2CloudInfo) UnmarshalJSON(src []byte) error {
+func (v *NullableCloudInfoEC2) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

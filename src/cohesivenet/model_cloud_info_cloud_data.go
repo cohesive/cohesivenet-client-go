@@ -18,21 +18,21 @@ import (
 
 // CloudInfoCloudData - struct for CloudInfoCloudData
 type CloudInfoCloudData struct {
-	EC2CloudInfo *EC2CloudInfo
-	GCECloudInfo *GCECloudInfo
+	CloudInfoEC2 *CloudInfoEC2
+	CloudInfoGCE *CloudInfoGCE
 }
 
-// EC2CloudInfoAsCloudInfoCloudData is a convenience function that returns EC2CloudInfo wrapped in CloudInfoCloudData
-func EC2CloudInfoAsCloudInfoCloudData(v *EC2CloudInfo) CloudInfoCloudData {
+// CloudInfoEC2AsCloudInfoCloudData is a convenience function that returns CloudInfoEC2 wrapped in CloudInfoCloudData
+func CloudInfoEC2AsCloudInfoCloudData(v *CloudInfoEC2) CloudInfoCloudData {
 	return CloudInfoCloudData{
-		EC2CloudInfo: v,
+		CloudInfoEC2: v,
 	}
 }
 
-// GCECloudInfoAsCloudInfoCloudData is a convenience function that returns GCECloudInfo wrapped in CloudInfoCloudData
-func GCECloudInfoAsCloudInfoCloudData(v *GCECloudInfo) CloudInfoCloudData {
+// CloudInfoGCEAsCloudInfoCloudData is a convenience function that returns CloudInfoGCE wrapped in CloudInfoCloudData
+func CloudInfoGCEAsCloudInfoCloudData(v *CloudInfoGCE) CloudInfoCloudData {
 	return CloudInfoCloudData{
-		GCECloudInfo: v,
+		CloudInfoGCE: v,
 	}
 }
 
@@ -41,36 +41,36 @@ func GCECloudInfoAsCloudInfoCloudData(v *GCECloudInfo) CloudInfoCloudData {
 func (dst *CloudInfoCloudData) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
-	// try to unmarshal data into EC2CloudInfo
-	err = newStrictDecoder(data).Decode(&dst.EC2CloudInfo)
+	// try to unmarshal data into CloudInfoEC2
+	err = newStrictDecoder(data).Decode(&dst.CloudInfoEC2)
 	if err == nil {
-		jsonEC2CloudInfo, _ := json.Marshal(dst.EC2CloudInfo)
-		if string(jsonEC2CloudInfo) == "{}" { // empty struct
-			dst.EC2CloudInfo = nil
+		jsonCloudInfoEC2, _ := json.Marshal(dst.CloudInfoEC2)
+		if string(jsonCloudInfoEC2) == "{}" { // empty struct
+			dst.CloudInfoEC2 = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.EC2CloudInfo = nil
+		dst.CloudInfoEC2 = nil
 	}
 
-	// try to unmarshal data into GCECloudInfo
-	err = newStrictDecoder(data).Decode(&dst.GCECloudInfo)
+	// try to unmarshal data into CloudInfoGCE
+	err = newStrictDecoder(data).Decode(&dst.CloudInfoGCE)
 	if err == nil {
-		jsonGCECloudInfo, _ := json.Marshal(dst.GCECloudInfo)
-		if string(jsonGCECloudInfo) == "{}" { // empty struct
-			dst.GCECloudInfo = nil
+		jsonCloudInfoGCE, _ := json.Marshal(dst.CloudInfoGCE)
+		if string(jsonCloudInfoGCE) == "{}" { // empty struct
+			dst.CloudInfoGCE = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.GCECloudInfo = nil
+		dst.CloudInfoGCE = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.EC2CloudInfo = nil
-		dst.GCECloudInfo = nil
+		dst.CloudInfoEC2 = nil
+		dst.CloudInfoGCE = nil
 
 		return fmt.Errorf("Data matches more than one schema in oneOf(CloudInfoCloudData)")
 	} else if match == 1 {
@@ -82,12 +82,12 @@ func (dst *CloudInfoCloudData) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src CloudInfoCloudData) MarshalJSON() ([]byte, error) {
-	if src.EC2CloudInfo != nil {
-		return json.Marshal(&src.EC2CloudInfo)
+	if src.CloudInfoEC2 != nil {
+		return json.Marshal(&src.CloudInfoEC2)
 	}
 
-	if src.GCECloudInfo != nil {
-		return json.Marshal(&src.GCECloudInfo)
+	if src.CloudInfoGCE != nil {
+		return json.Marshal(&src.CloudInfoGCE)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -98,12 +98,12 @@ func (obj *CloudInfoCloudData) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.EC2CloudInfo != nil {
-		return obj.EC2CloudInfo
+	if obj.CloudInfoEC2 != nil {
+		return obj.CloudInfoEC2
 	}
 
-	if obj.GCECloudInfo != nil {
-		return obj.GCECloudInfo
+	if obj.CloudInfoGCE != nil {
+		return obj.CloudInfoGCE
 	}
 
 	// all schemas are nil

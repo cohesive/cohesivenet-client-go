@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// GCECloudInfo Metadata returned from GCE metadata call.
-type GCECloudInfo struct {
+// CloudInfoGCE Metadata returned from GCE metadata call.
+type CloudInfoGCE struct {
 	ProjectId *string `json:"projectId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _GCECloudInfo GCECloudInfo
+type _CloudInfoGCE CloudInfoGCE
 
-// NewGCECloudInfo instantiates a new GCECloudInfo object
+// NewCloudInfoGCE instantiates a new CloudInfoGCE object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGCECloudInfo() *GCECloudInfo {
-	this := GCECloudInfo{}
+func NewCloudInfoGCE() *CloudInfoGCE {
+	this := CloudInfoGCE{}
 	return &this
 }
 
-// NewGCECloudInfoWithDefaults instantiates a new GCECloudInfo object
+// NewCloudInfoGCEWithDefaults instantiates a new CloudInfoGCE object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGCECloudInfoWithDefaults() *GCECloudInfo {
-	this := GCECloudInfo{}
+func NewCloudInfoGCEWithDefaults() *CloudInfoGCE {
+	this := CloudInfoGCE{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *GCECloudInfo) GetProjectId() string {
+func (o *CloudInfoGCE) GetProjectId() string {
 	if o == nil || o.ProjectId == nil {
 		var ret string
 		return ret
@@ -51,7 +51,7 @@ func (o *GCECloudInfo) GetProjectId() string {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GCECloudInfo) GetProjectIdOk() (*string, bool) {
+func (o *CloudInfoGCE) GetProjectIdOk() (*string, bool) {
 	if o == nil || o.ProjectId == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *GCECloudInfo) GetProjectIdOk() (*string, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *GCECloudInfo) HasProjectId() bool {
+func (o *CloudInfoGCE) HasProjectId() bool {
 	if o != nil && o.ProjectId != nil {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *GCECloudInfo) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
-func (o *GCECloudInfo) SetProjectId(v string) {
+func (o *CloudInfoGCE) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
-func (o GCECloudInfo) MarshalJSON() ([]byte, error) {
+func (o CloudInfoGCE) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ProjectId != nil {
 		toSerialize["projectId"] = o.ProjectId
@@ -85,11 +85,11 @@ func (o GCECloudInfo) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o *GCECloudInfo) UnmarshalJSON(bytes []byte) (err error) {
-	varGCECloudInfo := _GCECloudInfo{}
+func (o *CloudInfoGCE) UnmarshalJSON(bytes []byte) (err error) {
+	varCloudInfoGCE := _CloudInfoGCE{}
 
-	if err = json.Unmarshal(bytes, &varGCECloudInfo); err == nil {
-		*o = GCECloudInfo(varGCECloudInfo)
+	if err = json.Unmarshal(bytes, &varCloudInfoGCE); err == nil {
+		*o = CloudInfoGCE(varCloudInfoGCE)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -102,38 +102,38 @@ func (o *GCECloudInfo) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableGCECloudInfo struct {
-	value *GCECloudInfo
+type NullableCloudInfoGCE struct {
+	value *CloudInfoGCE
 	isSet bool
 }
 
-func (v NullableGCECloudInfo) Get() *GCECloudInfo {
+func (v NullableCloudInfoGCE) Get() *CloudInfoGCE {
 	return v.value
 }
 
-func (v *NullableGCECloudInfo) Set(val *GCECloudInfo) {
+func (v *NullableCloudInfoGCE) Set(val *CloudInfoGCE) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGCECloudInfo) IsSet() bool {
+func (v NullableCloudInfoGCE) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGCECloudInfo) Unset() {
+func (v *NullableCloudInfoGCE) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGCECloudInfo(val *GCECloudInfo) *NullableGCECloudInfo {
-	return &NullableGCECloudInfo{value: val, isSet: true}
+func NewNullableCloudInfoGCE(val *CloudInfoGCE) *NullableCloudInfoGCE {
+	return &NullableCloudInfoGCE{value: val, isSet: true}
 }
 
-func (v NullableGCECloudInfo) MarshalJSON() ([]byte, error) {
+func (v NullableCloudInfoGCE) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGCECloudInfo) UnmarshalJSON(src []byte) error {
+func (v *NullableCloudInfoGCE) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

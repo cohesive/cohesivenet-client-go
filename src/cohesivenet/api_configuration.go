@@ -32,7 +32,7 @@ type ApiDeleteCustomVariableRequest struct {
 }
 
 func (r ApiDeleteCustomVariableRequest) Execute() (*VariablesListResponse, *http.Response, error) {
-	return r.ApiService.DeleteCustomVariableExecute(r)
+	return r.ApiService.DeleteCustomVariable(r)
 }
 
 /*
@@ -44,7 +44,7 @@ Delete custom variable
  @param name name of variable
  @return ApiDeleteCustomVariableRequest
 */
-func (api *ConfigurationApiService) DeleteCustomVariable(ctx context.Context, name string) ApiDeleteCustomVariableRequest {
+func (api *ConfigurationApiService) DeleteCustomVariableRequest(ctx context.Context, name string) ApiDeleteCustomVariableRequest {
 	return ApiDeleteCustomVariableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -54,7 +54,7 @@ func (api *ConfigurationApiService) DeleteCustomVariable(ctx context.Context, na
 
 // Execute executes the request
 //  @return Object
-func (api *ConfigurationApiService) DeleteCustomVariableExecute(r ApiDeleteCustomVariableRequest) (*VariablesListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) DeleteCustomVariable(r ApiDeleteCustomVariableRequest) (*VariablesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -151,7 +151,7 @@ func (r ApiGetVariableCollectionsRequest) Collections(collections string) ApiGet
 }
 
 func (r ApiGetVariableCollectionsRequest) Execute() (*VariableCollectionsListResponse, *http.Response, error) {
-	return r.ApiService.GetVariableCollectionsExecute(r)
+	return r.ApiService.GetVariableCollections(r)
 }
 
 /*
@@ -162,7 +162,7 @@ Get system variable collections
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetVariableCollectionsRequest
 */
-func (api *ConfigurationApiService) GetVariableCollections(ctx context.Context) ApiGetVariableCollectionsRequest {
+func (api *ConfigurationApiService) GetVariableCollectionsRequest(ctx context.Context) ApiGetVariableCollectionsRequest {
 	return ApiGetVariableCollectionsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -171,7 +171,7 @@ func (api *ConfigurationApiService) GetVariableCollections(ctx context.Context) 
 
 // Execute executes the request
 //  @return VariableCollectionsListResponse
-func (api *ConfigurationApiService) GetVariableCollectionsExecute(r ApiGetVariableCollectionsRequest) (*VariableCollectionsListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetVariableCollections(r ApiGetVariableCollectionsRequest) (*VariableCollectionsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -253,7 +253,7 @@ type ApiGetVariablesRequest struct {
 }
 
 func (r ApiGetVariablesRequest) Execute() (*VariablesListResponse, *http.Response, error) {
-	return r.ApiService.GetVariablesExecute(r)
+	return r.ApiService.GetVariables(r)
 }
 
 /*
@@ -264,7 +264,7 @@ Get system variables
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetVariablesRequest
 */
-func (api *ConfigurationApiService) GetVariables(ctx context.Context) ApiGetVariablesRequest {
+func (api *ConfigurationApiService) GetVariablesRequest(ctx context.Context) ApiGetVariablesRequest {
 	return ApiGetVariablesRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -273,7 +273,7 @@ func (api *ConfigurationApiService) GetVariables(ctx context.Context) ApiGetVari
 
 // Execute executes the request
 //  @return VariablesListResponse
-func (api *ConfigurationApiService) GetVariablesExecute(r ApiGetVariablesRequest) (*VariablesListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetVariables(r ApiGetVariablesRequest) (*VariablesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -358,7 +358,7 @@ func (r ApiPostCreateCustomVariableRequest) CreateCustomVariableRequest(createCu
 }
 
 func (r ApiPostCreateCustomVariableRequest) Execute() (*VariablesListResponse, *http.Response, error) {
-	return r.ApiService.PostCreateCustomVariableExecute(r)
+	return r.ApiService.PostCreateCustomVariable(r)
 }
 
 /*
@@ -369,7 +369,7 @@ create custom variable
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateCustomVariableRequest
 */
-func (api *ConfigurationApiService) PostCreateCustomVariable(ctx context.Context) ApiPostCreateCustomVariableRequest {
+func (api *ConfigurationApiService) PostCreateCustomVariableRequest(ctx context.Context) ApiPostCreateCustomVariableRequest {
 	return ApiPostCreateCustomVariableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -378,7 +378,7 @@ func (api *ConfigurationApiService) PostCreateCustomVariable(ctx context.Context
 
 // Execute executes the request
 //  @return Object
-func (api *ConfigurationApiService) PostCreateCustomVariableExecute(r ApiPostCreateCustomVariableRequest) (*VariablesListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PostCreateCustomVariable(r ApiPostCreateCustomVariableRequest) (*VariablesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -472,7 +472,7 @@ type ApiGetConfigRequest struct {
 }
 
 func (r ApiGetConfigRequest) Execute() (*ConfigDetail, *http.Response, error) {
-	return r.ApiService.GetConfigExecute(r)
+	return r.ApiService.GetConfig(r)
 }
 
 /*
@@ -483,7 +483,7 @@ Describe Runtime Configuration for VNS3 Controller
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConfigRequest
 */
-func (api *ConfigurationApiService) GetConfig(ctx context.Context) ApiGetConfigRequest {
+func (api *ConfigurationApiService) GetConfigRequest(ctx context.Context) ApiGetConfigRequest {
 	return ApiGetConfigRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -492,7 +492,7 @@ func (api *ConfigurationApiService) GetConfig(ctx context.Context) ApiGetConfigR
 
 // Execute executes the request
 //  @return ConfigDetail
-func (api *ConfigurationApiService) GetConfigExecute(r ApiGetConfigRequest) (*ConfigDetail, *http.Response, error) {
+func (api *ConfigurationApiService) GetConfig(r ApiGetConfigRequest) (*ConfigDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -571,7 +571,7 @@ type ApiGetKeysetRequest struct {
 }
 
 func (r ApiGetKeysetRequest) Execute() (*KeysetDetail, *http.Response, error) {
-	return r.ApiService.GetKeysetExecute(r)
+	return r.ApiService.GetKeyset(r)
 }
 
 /*
@@ -583,7 +583,7 @@ Returns keyset details. The keyset is a set of cryptographic credentials  used f
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetKeysetRequest
 */
-func (api *ConfigurationApiService) GetKeyset(ctx context.Context) ApiGetKeysetRequest {
+func (api *ConfigurationApiService) GetKeysetRequest(ctx context.Context) ApiGetKeysetRequest {
 	return ApiGetKeysetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -592,7 +592,7 @@ func (api *ConfigurationApiService) GetKeyset(ctx context.Context) ApiGetKeysetR
 
 // Execute executes the request
 //  @return KeysetDetail
-func (api *ConfigurationApiService) GetKeysetExecute(r ApiGetKeysetRequest) (*KeysetDetail, *http.Response, error) {
+func (api *ConfigurationApiService) GetKeyset(r ApiGetKeysetRequest) (*KeysetDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -680,7 +680,7 @@ type ApiGetLicenseRequest struct {
 }
 
 func (r ApiGetLicenseRequest) Execute() (*LicenseDetail, *http.Response, error) {
-	return r.ApiService.GetLicenseExecute(r)
+	return r.ApiService.GetLicense(r)
 }
 
 /*
@@ -691,7 +691,7 @@ Get license details
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetLicenseRequest
 */
-func (api *ConfigurationApiService) GetLicense(ctx context.Context) ApiGetLicenseRequest {
+func (api *ConfigurationApiService) GetLicenseRequest(ctx context.Context) ApiGetLicenseRequest {
 	return ApiGetLicenseRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -700,7 +700,7 @@ func (api *ConfigurationApiService) GetLicense(ctx context.Context) ApiGetLicens
 
 // Execute executes the request
 //  @return LicenseDetail
-func (api *ConfigurationApiService) GetLicenseExecute(r ApiGetLicenseRequest) (*LicenseDetail, *http.Response, error) {
+func (api *ConfigurationApiService) GetLicense(r ApiGetLicenseRequest) (*LicenseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -795,7 +795,7 @@ func (r ApiGetMsConfigRequest) Ip(ip string) ApiGetMsConfigRequest {
 }
 
 func (r ApiGetMsConfigRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
-	return r.ApiService.GetMsConfigExecute(r)
+	return r.ApiService.GetMsConfig(r)
 }
 
 /*
@@ -806,7 +806,7 @@ Get MS configuration
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMsConfigRequest
 */
-func (api *ConfigurationApiService) GetMsConfig(ctx context.Context) ApiGetMsConfigRequest {
+func (api *ConfigurationApiService) GetMsConfigRequest(ctx context.Context) ApiGetMsConfigRequest {
 	return ApiGetMsConfigRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -815,7 +815,7 @@ func (api *ConfigurationApiService) GetMsConfig(ctx context.Context) ApiGetMsCon
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (api *ConfigurationApiService) GetMsConfigExecute(r ApiGetMsConfigRequest) (*AlertDetailResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetMsConfig(r ApiGetMsConfigRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -897,7 +897,7 @@ type ApiGetSSLCertsRequest struct {
 }
 
 func (r ApiGetSSLCertsRequest) Execute() (*SSLCertsListResponse, *http.Response, error) {
-	return r.ApiService.GetSSLCertsExecute(r)
+	return r.ApiService.GetSSLCerts(r)
 }
 
 /*
@@ -908,7 +908,7 @@ Get SSL Certificates
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSSLCertsRequest
 */
-func (api *ConfigurationApiService) GetSSLCerts(ctx context.Context) ApiGetSSLCertsRequest {
+func (api *ConfigurationApiService) GetSSLCertsRequest(ctx context.Context) ApiGetSSLCertsRequest {
 	return ApiGetSSLCertsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -917,7 +917,7 @@ func (api *ConfigurationApiService) GetSSLCerts(ctx context.Context) ApiGetSSLCe
 
 // Execute executes the request
 //  @return SSLCertsListResponse
-func (api *ConfigurationApiService) GetSSLCertsExecute(r ApiGetSSLCertsRequest) (*SSLCertsListResponse, *http.Response, error) {
+func (api *ConfigurationApiService) GetSSLCerts(r ApiGetSSLCertsRequest) (*SSLCertsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1002,7 +1002,7 @@ TODO SSL Endpoints
 // }
 
 // func (r ApiGetSslInstallStatusRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.GetSslInstallStatusExecute(r)
+// 	return r.ApiService.GetSslInstallStatus(r)
 // }
 
 // /*
@@ -1014,7 +1014,7 @@ TODO SSL Endpoints
 //  @param uuid uuid of resource
 //  @return ApiGetSslInstallStatusRequest
 // */
-// func (api *ConfigurationApiService) GetSslInstallStatus(ctx context.Context, uuid string) ApiGetSslInstallStatusRequest {
+// func (api *ConfigurationApiService) GetSslInstallStatusRequest(ctx context.Context, uuid string) ApiGetSslInstallStatusRequest {
 // 	return ApiGetSslInstallStatusRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1024,7 +1024,7 @@ TODO SSL Endpoints
 
 // // Execute executes the request
 // //  @return Object
-// func (api *ConfigurationApiService) GetSslInstallStatusExecute(r ApiGetSslInstallStatusRequest) (*Object, *http.Response, error) {
+// func (api *ConfigurationApiService) GetSslInstallStatus(r ApiGetSslInstallStatusRequest) (*Object, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodGet
 // 		localVarPostBody     interface{}
@@ -1114,7 +1114,7 @@ TODO SSL Endpoints
 // }
 
 // func (r ApiPutInstallSslKeypairRequest) Execute() (*ServerSSLDetailResponse, *http.Response, error) {
-// 	return r.ApiService.PutInstallSslKeypairExecute(r)
+// 	return r.ApiService.PutInstallSslKeypair(r)
 // }
 
 // /*
@@ -1125,7 +1125,7 @@ TODO SSL Endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPutInstallSslKeypairRequest
 // */
-// func (api *ConfigurationApiService) PutInstallSslKeypair(ctx context.Context) ApiPutInstallSslKeypairRequest {
+// func (api *ConfigurationApiService) PutInstallSslKeypairRequest(ctx context.Context) ApiPutInstallSslKeypairRequest {
 // 	return ApiPutInstallSslKeypairRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1134,7 +1134,7 @@ TODO SSL Endpoints
 
 // // Execute executes the request
 // //  @return ServerSSLDetailResponse
-// func (api *ConfigurationApiService) PutInstallSslKeypairExecute(r ApiPutInstallSslKeypairRequest) (*ServerSSLDetailResponse, *http.Response, error) {
+// func (api *ConfigurationApiService) PutInstallSslKeypair(r ApiPutInstallSslKeypairRequest) (*ServerSSLDetailResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPut
 // 		localVarPostBody     interface{}
@@ -1229,7 +1229,7 @@ TODO MS config Endpoints
 // }
 
 // func (r ApiPostSendTestMsAlertRequest) Execute() (*SimpleBooleanResponse, *http.Response, error) {
-// 	return r.ApiService.PostSendTestMsAlertExecute(r)
+// 	return r.ApiService.PostSendTestMsAlert(r)
 // }
 
 // /*
@@ -1240,7 +1240,7 @@ TODO MS config Endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostSendTestMsAlertRequest
 // */
-// func (api *ConfigurationApiService) PostSendTestMsAlert(ctx context.Context) ApiPostSendTestMsAlertRequest {
+// func (api *ConfigurationApiService) PostSendTestMsAlertRequest(ctx context.Context) ApiPostSendTestMsAlertRequest {
 // 	return ApiPostSendTestMsAlertRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1249,7 +1249,7 @@ TODO MS config Endpoints
 
 // // Execute executes the request
 // //  @return SimpleBooleanResponse
-// func (api *ConfigurationApiService) PostSendTestMsAlertExecute(r ApiPostSendTestMsAlertRequest) (*SimpleBooleanResponse, *http.Response, error) {
+// func (api *ConfigurationApiService) PostSendTestMsAlert(r ApiPostSendTestMsAlertRequest) (*SimpleBooleanResponse, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -1344,7 +1344,7 @@ TODO MS config Endpoints
 // }
 
 // func (r ApiPostSetMsConfigRequest) Execute() (*MSConfig, *http.Response, error) {
-// 	return r.ApiService.PostSetMsConfigExecute(r)
+// 	return r.ApiService.PostSetMsConfig(r)
 // }
 
 // /*
@@ -1355,7 +1355,7 @@ TODO MS config Endpoints
 //  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 //  @return ApiPostSetMsConfigRequest
 // */
-// func (api *ConfigurationApiService) PostSetMsConfig(ctx context.Context) ApiPostSetMsConfigRequest {
+// func (api *ConfigurationApiService) PostSetMsConfigRequest(ctx context.Context) ApiPostSetMsConfigRequest {
 // 	return ApiPostSetMsConfigRequest{
 // 		ApiService: api,
 // 		ctx: ctx,
@@ -1364,7 +1364,7 @@ TODO MS config Endpoints
 
 // // Execute executes the request
 // //  @return MSConfig
-// func (api *ConfigurationApiService) PostSetMsConfigExecute(r ApiPostSetMsConfigRequest) (*MSConfig, *http.Response, error) {
+// func (api *ConfigurationApiService) PostSetMsConfig(r ApiPostSetMsConfigRequest) (*MSConfig, *http.Response, error) {
 // 	var (
 // 		localVarHTTPMethod   = http.MethodPost
 // 		localVarPostBody     interface{}
@@ -1464,7 +1464,7 @@ func (r ApiPutConfigRequest) UpdateConfigRequest(updateConfigRequest UpdateConfi
 }
 
 func (r ApiPutConfigRequest) Execute() (*ConfigDetail, *http.Response, error) {
-	return r.ApiService.PutConfigExecute(r)
+	return r.ApiService.PutConfig(r)
 }
 
 /*
@@ -1476,7 +1476,7 @@ Provides general information about the manager's topology, license state and  ch
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutConfigRequest
 */
-func (api *ConfigurationApiService) PutConfig(ctx context.Context) ApiPutConfigRequest {
+func (api *ConfigurationApiService) PutConfigRequest(ctx context.Context) ApiPutConfigRequest {
 	return ApiPutConfigRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1485,7 +1485,7 @@ func (api *ConfigurationApiService) PutConfig(ctx context.Context) ApiPutConfigR
 
 // Execute executes the request
 //  @return ConfigDetail
-func (api *ConfigurationApiService) PutConfigExecute(r ApiPutConfigRequest) (*ConfigDetail, *http.Response, error) {
+func (api *ConfigurationApiService) PutConfig(r ApiPutConfigRequest) (*ConfigDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1585,7 +1585,7 @@ func (r ApiPutKeysetRequest) UpdateKeysetRequest(updateKeysetRequest UpdateKeyse
 }
 
 func (r ApiPutKeysetRequest) Execute() (*KeysetDetail, *http.Response, error) {
-	return r.ApiService.PutKeysetExecute(r)
+	return r.ApiService.PutKeyset(r)
 }
 
 /*
@@ -1597,7 +1597,7 @@ Generate keyset The keyset is a set of cryptographic credentials used for encryp
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutKeysetRequest
 */
-func (api *ConfigurationApiService) PutKeyset(ctx context.Context) ApiPutKeysetRequest {
+func (api *ConfigurationApiService) PutKeysetRequest(ctx context.Context) ApiPutKeysetRequest {
 	return ApiPutKeysetRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1606,7 +1606,7 @@ func (api *ConfigurationApiService) PutKeyset(ctx context.Context) ApiPutKeysetR
 
 // Execute executes the request
 //  @return KeysetDetail
-func (api *ConfigurationApiService) PutKeysetExecute(r ApiPutKeysetRequest) (*KeysetDetail, *http.Response, error) {
+func (api *ConfigurationApiService) PutKeyset(r ApiPutKeysetRequest) (*KeysetDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1707,7 +1707,7 @@ func (r ApiPutLicenseUpgradeRequest) Body(body *os.File) ApiPutLicenseUpgradeReq
 }
 
 func (r ApiPutLicenseUpgradeRequest) Execute() (*UpgradeLicenseResponse, *http.Response, error) {
-	return r.ApiService.PutLicenseUpgradeExecute(r)
+	return r.ApiService.PutLicenseUpgrade(r)
 }
 
 /*
@@ -1718,7 +1718,7 @@ Upload new license to controller
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutLicenseUpgradeRequest
 */
-func (api *ConfigurationApiService) PutLicenseUpgrade(ctx context.Context) ApiPutLicenseUpgradeRequest {
+func (api *ConfigurationApiService) PutLicenseUpgradeRequest(ctx context.Context) ApiPutLicenseUpgradeRequest {
 	return ApiPutLicenseUpgradeRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1727,7 +1727,7 @@ func (api *ConfigurationApiService) PutLicenseUpgrade(ctx context.Context) ApiPu
 
 // Execute executes the request
 //  @return UpgradeLicenseResponse
-func (api *ConfigurationApiService) PutLicenseUpgradeExecute(r ApiPutLicenseUpgradeRequest) (*UpgradeLicenseResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutLicenseUpgrade(r ApiPutLicenseUpgradeRequest) (*UpgradeLicenseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1817,7 +1817,7 @@ func (r ApiPutSetLicenseParametersRequest) PutLicenseParametersRequest(putLicens
 }
 
 func (r ApiPutSetLicenseParametersRequest) Execute() (*LicenseParametersDetail, *http.Response, error) {
-	return r.ApiService.PutSetLicenseParametersExecute(r)
+	return r.ApiService.PutSetLicenseParameters(r)
 }
 
 /*
@@ -1828,7 +1828,7 @@ Set and accept license parameters. Triggers reboot. Irreversible operation.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutSetLicenseParametersRequest
 */
-func (api *ConfigurationApiService) PutSetLicenseParameters(ctx context.Context) ApiPutSetLicenseParametersRequest {
+func (api *ConfigurationApiService) PutSetLicenseParametersRequest(ctx context.Context) ApiPutSetLicenseParametersRequest {
 	return ApiPutSetLicenseParametersRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1837,7 +1837,7 @@ func (api *ConfigurationApiService) PutSetLicenseParameters(ctx context.Context)
 
 // Execute executes the request
 //  @return LicenseParametersDetail
-func (api *ConfigurationApiService) PutSetLicenseParametersExecute(r ApiPutSetLicenseParametersRequest) (*LicenseParametersDetail, *http.Response, error) {
+func (api *ConfigurationApiService) PutSetLicenseParameters(r ApiPutSetLicenseParametersRequest) (*LicenseParametersDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1937,7 +1937,7 @@ func (r ApiPutUpdateAdminUiRequest) UpdateAdminUISettingsRequest(updateAdminUISe
 }
 
 func (r ApiPutUpdateAdminUiRequest) Execute() (*AdminUISettingsResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateAdminUiExecute(r)
+	return r.ApiService.PutUpdateAdminUi(r)
 }
 
 /*
@@ -1949,7 +1949,7 @@ Update Admin UI settings. Enable/Disable and set credentials.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUpdateAdminUiRequest
 */
-func (api *ConfigurationApiService) PutUpdateAdminUi(ctx context.Context) ApiPutUpdateAdminUiRequest {
+func (api *ConfigurationApiService) PutUpdateAdminUiRequest(ctx context.Context) ApiPutUpdateAdminUiRequest {
 	return ApiPutUpdateAdminUiRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1958,7 +1958,7 @@ func (api *ConfigurationApiService) PutUpdateAdminUi(ctx context.Context) ApiPut
 
 // Execute executes the request
 //  @return AdminUISettingsResponse
-func (api *ConfigurationApiService) PutUpdateAdminUiExecute(r ApiPutUpdateAdminUiRequest) (*AdminUISettingsResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUpdateAdminUi(r ApiPutUpdateAdminUiRequest) (*AdminUISettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2058,7 +2058,7 @@ func (r ApiPutUpdateApiPasswordRequest) UpdatePasswordRequest(updatePasswordRequ
 }
 
 func (r ApiPutUpdateApiPasswordRequest) Execute() (*PasswordResetResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateApiPasswordExecute(r)
+	return r.ApiService.PutUpdateApiPassword(r)
 }
 
 /*
@@ -2070,7 +2070,7 @@ Allows you to change the API password/secret key.  To change the Web UI password
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUpdateApiPasswordRequest
 */
-func (api *ConfigurationApiService) PutUpdateApiPassword(ctx context.Context) ApiPutUpdateApiPasswordRequest {
+func (api *ConfigurationApiService) PutUpdateApiPasswordRequest(ctx context.Context) ApiPutUpdateApiPasswordRequest {
 	return ApiPutUpdateApiPasswordRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2079,7 +2079,7 @@ func (api *ConfigurationApiService) PutUpdateApiPassword(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return PasswordResetResponse
-func (api *ConfigurationApiService) PutUpdateApiPasswordExecute(r ApiPutUpdateApiPasswordRequest) (*PasswordResetResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUpdateApiPassword(r ApiPutUpdateApiPasswordRequest) (*PasswordResetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2180,7 +2180,7 @@ func (r ApiPutUpdateCustomVariableRequest) UpdateCustomVariableRequest(updateCus
 }
 
 func (r ApiPutUpdateCustomVariableRequest) Execute() (*VariableDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateCustomVariableExecute(r)
+	return r.ApiService.PutUpdateCustomVariable(r)
 }
 
 /*
@@ -2192,7 +2192,7 @@ Update custom variable
  @param name name of variable
  @return ApiPutUpdateCustomVariableRequest
 */
-func (api *ConfigurationApiService) PutUpdateCustomVariable(ctx context.Context, name string) ApiPutUpdateCustomVariableRequest {
+func (api *ConfigurationApiService) PutUpdateCustomVariableRequest(ctx context.Context, name string) ApiPutUpdateCustomVariableRequest {
 	return ApiPutUpdateCustomVariableRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2202,7 +2202,7 @@ func (api *ConfigurationApiService) PutUpdateCustomVariable(ctx context.Context,
 
 // Execute executes the request
 //  @return VariableDetailResponse
-func (api *ConfigurationApiService) PutUpdateCustomVariableExecute(r ApiPutUpdateCustomVariableRequest) (*VariableDetailResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUpdateCustomVariable(r ApiPutUpdateCustomVariableRequest) (*VariableDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2302,7 +2302,7 @@ func (r ApiPutUploadSslKeypairRequest) UpdateServerSSLRequest(updateServerSSLReq
 }
 
 func (r ApiPutUploadSslKeypairRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.PutUploadSslKeypairExecute(r)
+	return r.ApiService.PutUploadSslKeypair(r)
 }
 
 /*
@@ -2313,7 +2313,7 @@ Upload new SSL cert and key pair
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUploadSslKeypairRequest
 */
-func (api *ConfigurationApiService) PutUploadSslKeypair(ctx context.Context) ApiPutUploadSslKeypairRequest {
+func (api *ConfigurationApiService) PutUploadSslKeypairRequest(ctx context.Context) ApiPutUploadSslKeypairRequest {
 	return ApiPutUploadSslKeypairRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2322,7 +2322,7 @@ func (api *ConfigurationApiService) PutUploadSslKeypair(ctx context.Context) Api
 
 // Execute executes the request
 //  @return Object
-func (api *ConfigurationApiService) PutUploadSslKeypairExecute(r ApiPutUploadSslKeypairRequest) (*SimpleStringResponse, *http.Response, error) {
+func (api *ConfigurationApiService) PutUploadSslKeypair(r ApiPutUploadSslKeypairRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2422,7 +2422,7 @@ func (r ApiUpdateMsConfigRequest) UpdateMSRequest(updateMSRequest UpdateMSReques
 }
 
 func (r ApiUpdateMsConfigRequest) Execute() (*MSConfigResponse, *http.Response, error) {
-	return r.ApiService.UpdateMsConfigExecute(r)
+	return r.ApiService.UpdateMsConfig(r)
 }
 
 /*
@@ -2433,7 +2433,7 @@ Update VNS3 Management System integration
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateMsConfigRequest
 */
-func (api *ConfigurationApiService) UpdateMsConfig(ctx context.Context) ApiUpdateMsConfigRequest {
+func (api *ConfigurationApiService) UpdateMsConfigRequest(ctx context.Context) ApiUpdateMsConfigRequest {
 	return ApiUpdateMsConfigRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2442,7 +2442,7 @@ func (api *ConfigurationApiService) UpdateMsConfig(ctx context.Context) ApiUpdat
 
 // Execute executes the request
 //  @return MSConfigResponse
-func (api *ConfigurationApiService) UpdateMsConfigExecute(r ApiUpdateMsConfigRequest) (*MSConfigResponse, *http.Response, error) {
+func (api *ConfigurationApiService) UpdateMsConfig(r ApiUpdateMsConfigRequest) (*MSConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2543,7 +2543,7 @@ func (r ApiUploadLicenseRequest) Body(body *os.File) ApiUploadLicenseRequest {
 }
 
 func (r ApiUploadLicenseRequest) Execute() (*InitLicenseDetail, *http.Response, error) {
-	return r.ApiService.UploadLicenseExecute(r)
+	return r.ApiService.UploadLicense(r)
 }
 
 /*
@@ -2554,7 +2554,7 @@ License a VNS3 Controller to be a part of a specific topology. Must not be licen
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUploadLicenseRequest
 */
-func (api *ConfigurationApiService) UploadLicense(ctx context.Context) ApiUploadLicenseRequest {
+func (api *ConfigurationApiService) UploadLicenseRequest(ctx context.Context) ApiUploadLicenseRequest {
 	return ApiUploadLicenseRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2563,7 +2563,7 @@ func (api *ConfigurationApiService) UploadLicense(ctx context.Context) ApiUpload
 
 // Execute executes the request
 //  @return InitLicenseDetail
-func (api *ConfigurationApiService) UploadLicenseExecute(r ApiUploadLicenseRequest) (*InitLicenseDetail, *http.Response, error) {
+func (api *ConfigurationApiService) UploadLicense(r ApiUploadLicenseRequest) (*InitLicenseDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

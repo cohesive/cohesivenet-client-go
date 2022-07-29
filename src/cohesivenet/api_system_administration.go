@@ -29,8 +29,8 @@ type ApiGetCloudDataRequest struct {
 	ApiService *SystemAdministrationApiService
 }
 
-func (r ApiGetCloudDataRequest) Execute() (*CloudInfoDetail, *http.Response, error) {
-	return r.ApiService.GetCloudDataExecute(r)
+func (r ApiGetCloudDataRequest) Execute() (*CloudInfoResponse, *http.Response, error) {
+	return r.ApiService.GetCloudData(r)
 }
 
 /*
@@ -41,24 +41,24 @@ Returns cloud-specific data depending upon cloud type. Supports EC2 and GCE. Mor
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCloudDataRequest
 */
-func (a *SystemAdministrationApiService) GetCloudData(ctx context.Context) ApiGetCloudDataRequest {
+func (api *SystemAdministrationApiService) GetCloudDataRequest(ctx context.Context) ApiGetCloudDataRequest {
 	return ApiGetCloudDataRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return CloudInfoDetail
-func (a *SystemAdministrationApiService) GetCloudDataExecute(r ApiGetCloudDataRequest) (*CloudInfoDetail, *http.Response, error) {
+//  @return CloudInfoResponse
+func (api *SystemAdministrationApiService) GetCloudData(r ApiGetCloudDataRequest) (*CloudInfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CloudInfoDetail
+		localVarReturnValue  *CloudInfoResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetCloudData")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetCloudData")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -86,12 +86,12 @@ func (a *SystemAdministrationApiService) GetCloudDataExecute(r ApiGetCloudDataRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -111,7 +111,7 @@ func (a *SystemAdministrationApiService) GetCloudDataExecute(r ApiGetCloudDataRe
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -129,7 +129,7 @@ type ApiGetRemoteSupportDetailsRequest struct {
 }
 
 func (r ApiGetRemoteSupportDetailsRequest) Execute() (*RemoteSupportConfigResponse, *http.Response, error) {
-	return r.ApiService.GetRemoteSupportDetailsExecute(r)
+	return r.ApiService.GetRemoteSupportDetails(r)
 }
 
 /*
@@ -140,16 +140,16 @@ Get remote support configuration details
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRemoteSupportDetailsRequest
 */
-func (a *SystemAdministrationApiService) GetRemoteSupportDetails(ctx context.Context) ApiGetRemoteSupportDetailsRequest {
+func (api *SystemAdministrationApiService) GetRemoteSupportDetailsRequest(ctx context.Context) ApiGetRemoteSupportDetailsRequest {
 	return ApiGetRemoteSupportDetailsRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 //  @return RemoteSupportConfigResponse
-func (a *SystemAdministrationApiService) GetRemoteSupportDetailsExecute(r ApiGetRemoteSupportDetailsRequest) (*RemoteSupportConfigResponse, *http.Response, error) {
+func (api *SystemAdministrationApiService) GetRemoteSupportDetails(r ApiGetRemoteSupportDetailsRequest) (*RemoteSupportConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -157,7 +157,7 @@ func (a *SystemAdministrationApiService) GetRemoteSupportDetailsExecute(r ApiGet
 		localVarReturnValue  *RemoteSupportConfigResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetRemoteSupportDetails")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetRemoteSupportDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -185,12 +185,12 @@ func (a *SystemAdministrationApiService) GetRemoteSupportDetailsExecute(r ApiGet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -209,7 +209,7 @@ func (a *SystemAdministrationApiService) GetRemoteSupportDetailsExecute(r ApiGet
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v interface{}
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -219,7 +219,7 @@ func (a *SystemAdministrationApiService) GetRemoteSupportDetailsExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -236,8 +236,8 @@ type ApiGetRuntimeStatusRequest struct {
 	ApiService *SystemAdministrationApiService
 }
 
-func (r ApiGetRuntimeStatusRequest) Execute() (*RuntimeStatusDetail, *http.Response, error) {
-	return r.ApiService.GetRuntimeStatusExecute(r)
+func (r ApiGetRuntimeStatusRequest) Execute() (*RuntimeStatusResponse, *http.Response, error) {
+	return r.ApiService.GetRuntimeStatus(r)
 }
 
 /*
@@ -248,24 +248,24 @@ Describe Runtime status details
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRuntimeStatusRequest
 */
-func (a *SystemAdministrationApiService) GetRuntimeStatus(ctx context.Context) ApiGetRuntimeStatusRequest {
+func (api *SystemAdministrationApiService) GetRuntimeStatusRequest(ctx context.Context) ApiGetRuntimeStatusRequest {
 	return ApiGetRuntimeStatusRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return RuntimeStatusDetail
-func (a *SystemAdministrationApiService) GetRuntimeStatusExecute(r ApiGetRuntimeStatusRequest) (*RuntimeStatusDetail, *http.Response, error) {
+//  @return RuntimeStatusResponse
+func (api *SystemAdministrationApiService) GetRuntimeStatus(r ApiGetRuntimeStatusRequest) (*RuntimeStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RuntimeStatusDetail
+		localVarReturnValue  *RuntimeStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetRuntimeStatus")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetRuntimeStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -293,12 +293,12 @@ func (a *SystemAdministrationApiService) GetRuntimeStatusExecute(r ApiGetRuntime
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -316,8 +316,8 @@ func (a *SystemAdministrationApiService) GetRuntimeStatusExecute(r ApiGetRuntime
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -327,7 +327,7 @@ func (a *SystemAdministrationApiService) GetRuntimeStatusExecute(r ApiGetRuntime
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -351,8 +351,8 @@ func (r ApiGetSystemStatusRequest) Timestamp(timestamp int32) ApiGetSystemStatus
 	return r
 }
 
-func (r ApiGetSystemStatusRequest) Execute() (*SystemStatusDetail, *http.Response, error) {
-	return r.ApiService.GetSystemStatusExecute(r)
+func (r ApiGetSystemStatusRequest) Execute() (*SystemStatusResponse, *http.Response, error) {
+	return r.ApiService.GetSystemStatus(r)
 }
 
 /*
@@ -363,24 +363,24 @@ Provides information about the underlying appliance; memory, cpu, disk space, et
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSystemStatusRequest
 */
-func (a *SystemAdministrationApiService) GetSystemStatus(ctx context.Context) ApiGetSystemStatusRequest {
+func (api *SystemAdministrationApiService) GetSystemStatusRequest(ctx context.Context) ApiGetSystemStatusRequest {
 	return ApiGetSystemStatusRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return SystemStatusDetail
-func (a *SystemAdministrationApiService) GetSystemStatusExecute(r ApiGetSystemStatusRequest) (*SystemStatusDetail, *http.Response, error) {
+//  @return SystemStatusResponse
+func (api *SystemAdministrationApiService) GetSystemStatus(r ApiGetSystemStatusRequest) (*SystemStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SystemStatusDetail
+		localVarReturnValue  *SystemStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetSystemStatus")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetSystemStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -411,12 +411,12 @@ func (a *SystemAdministrationApiService) GetSystemStatusExecute(r ApiGetSystemSt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -436,7 +436,7 @@ func (a *SystemAdministrationApiService) GetSystemStatusExecute(r ApiGetSystemSt
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -459,8 +459,8 @@ func (r ApiGetTaskStatusRequest) GetTaskTokenRequest(getTaskTokenRequest GetTask
 	return r
 }
 
-func (r ApiGetTaskStatusRequest) Execute() (*TaskStatusDetail, *http.Response, error) {
-	return r.ApiService.GetTaskStatusExecute(r)
+func (r ApiGetTaskStatusRequest) Execute() (*TaskStatusResponse, *http.Response, error) {
+	return r.ApiService.GetTaskStatus(r)
 }
 
 /*
@@ -471,24 +471,24 @@ Describe task status details
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTaskStatusRequest
 */
-func (a *SystemAdministrationApiService) GetTaskStatus(ctx context.Context) ApiGetTaskStatusRequest {
+func (api *SystemAdministrationApiService) GetTaskStatusRequest(ctx context.Context) ApiGetTaskStatusRequest {
 	return ApiGetTaskStatusRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TaskStatusDetail
-func (a *SystemAdministrationApiService) GetTaskStatusExecute(r ApiGetTaskStatusRequest) (*TaskStatusDetail, *http.Response, error) {
+//  @return TaskStatusResponse
+func (api *SystemAdministrationApiService) GetTaskStatus(r ApiGetTaskStatusRequest) (*TaskStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TaskStatusDetail
+		localVarReturnValue  *TaskStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetTaskStatus")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetTaskStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -521,12 +521,12 @@ func (a *SystemAdministrationApiService) GetTaskStatusExecute(r ApiGetTaskStatus
 	}
 	// body params
 	localVarPostBody = r.getTaskTokenRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -544,8 +544,8 @@ func (a *SystemAdministrationApiService) GetTaskStatusExecute(r ApiGetTaskStatus
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -556,7 +556,7 @@ func (a *SystemAdministrationApiService) GetTaskStatusExecute(r ApiGetTaskStatus
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -581,7 +581,7 @@ func (r ApiPostGenerateSupportKeypairRequest) Body(body *os.File) ApiPostGenerat
 }
 
 func (r ApiPostGenerateSupportKeypairRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.PostGenerateSupportKeypairExecute(r)
+	return r.ApiService.PostGenerateSupportKeypair(r)
 }
 
 /*
@@ -593,16 +593,16 @@ Generating a remote support key which can be shared with Cohesive to provide  ac
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostGenerateSupportKeypairRequest
 */
-func (a *SystemAdministrationApiService) PostGenerateSupportKeypair(ctx context.Context) ApiPostGenerateSupportKeypairRequest {
+func (api *SystemAdministrationApiService) PostGenerateSupportKeypairRequest(ctx context.Context) ApiPostGenerateSupportKeypairRequest {
 	return ApiPostGenerateSupportKeypairRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 //  @return *os.File
-func (a *SystemAdministrationApiService) PostGenerateSupportKeypairExecute(r ApiPostGenerateSupportKeypairRequest) (**os.File, *http.Response, error) {
+func (api *SystemAdministrationApiService) PostGenerateSupportKeypair(r ApiPostGenerateSupportKeypairRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -610,7 +610,7 @@ func (a *SystemAdministrationApiService) PostGenerateSupportKeypairExecute(r Api
 		localVarReturnValue  **os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PostGenerateSupportKeypair")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PostGenerateSupportKeypair")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -643,12 +643,12 @@ func (a *SystemAdministrationApiService) PostGenerateSupportKeypairExecute(r Api
 	}
 	// body params
 	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -666,8 +666,8 @@ func (a *SystemAdministrationApiService) PostGenerateSupportKeypairExecute(r Api
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -678,7 +678,7 @@ func (a *SystemAdministrationApiService) PostGenerateSupportKeypairExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -702,7 +702,7 @@ func (r ApiPutServerActionRequest) RebootRequest(rebootRequest RebootRequest) Ap
 }
 
 func (r ApiPutServerActionRequest) Execute() (*SimpleStatusResponse, *http.Response, error) {
-	return r.ApiService.PutServerActionExecute(r)
+	return r.ApiService.PutServerAction(r)
 }
 
 /*
@@ -713,16 +713,16 @@ Server action for VNS3 controller. Currently only reboot supported.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutServerActionRequest
 */
-func (a *SystemAdministrationApiService) PutServerAction(ctx context.Context) ApiPutServerActionRequest {
+func (api *SystemAdministrationApiService) PutServerActionRequest(ctx context.Context) ApiPutServerActionRequest {
 	return ApiPutServerActionRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 //  @return SimpleStatusResponse
-func (a *SystemAdministrationApiService) PutServerActionExecute(r ApiPutServerActionRequest) (*SimpleStatusResponse, *http.Response, error) {
+func (api *SystemAdministrationApiService) PutServerAction(r ApiPutServerActionRequest) (*SimpleStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -730,7 +730,7 @@ func (a *SystemAdministrationApiService) PutServerActionExecute(r ApiPutServerAc
 		localVarReturnValue  *SimpleStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PutServerAction")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PutServerAction")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -760,12 +760,12 @@ func (a *SystemAdministrationApiService) PutServerActionExecute(r ApiPutServerAc
 	}
 	// body params
 	localVarPostBody = r.rebootRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -783,8 +783,8 @@ func (a *SystemAdministrationApiService) PutServerActionExecute(r ApiPutServerAc
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Object
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -795,7 +795,7 @@ func (a *SystemAdministrationApiService) PutServerActionExecute(r ApiPutServerAc
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
@@ -819,7 +819,7 @@ func (r ApiPutUpdateRemoteSupportRequest) UpdateRemoteSupportConfigRequest(updat
 }
 
 func (r ApiPutUpdateRemoteSupportRequest) Execute() (*RemoteSupportStatusResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateRemoteSupportExecute(r)
+	return r.ApiService.PutUpdateRemoteSupport(r)
 }
 
 /*
@@ -831,16 +831,16 @@ Enables and disables remote support. Revokes the validity of current  remote sup
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUpdateRemoteSupportRequest
 */
-func (a *SystemAdministrationApiService) PutUpdateRemoteSupport(ctx context.Context) ApiPutUpdateRemoteSupportRequest {
+func (api *SystemAdministrationApiService) PutUpdateRemoteSupportRequest(ctx context.Context) ApiPutUpdateRemoteSupportRequest {
 	return ApiPutUpdateRemoteSupportRequest{
-		ApiService: a,
+		ApiService: api,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 //  @return RemoteSupportStatusResponse
-func (a *SystemAdministrationApiService) PutUpdateRemoteSupportExecute(r ApiPutUpdateRemoteSupportRequest) (*RemoteSupportStatusResponse, *http.Response, error) {
+func (api *SystemAdministrationApiService) PutUpdateRemoteSupport(r ApiPutUpdateRemoteSupportRequest) (*RemoteSupportStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -848,7 +848,7 @@ func (a *SystemAdministrationApiService) PutUpdateRemoteSupportExecute(r ApiPutU
 		localVarReturnValue  *RemoteSupportStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PutUpdateRemoteSupport")
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PutUpdateRemoteSupport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -878,12 +878,12 @@ func (a *SystemAdministrationApiService) PutUpdateRemoteSupportExecute(r ApiPutU
 	}
 	// body params
 	localVarPostBody = r.updateRemoteSupportConfigRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
 
-	localVarHTTPResponse, err := a.client.callAPI(req)
+	localVarHTTPResponse, err := api.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -902,7 +902,7 @@ func (a *SystemAdministrationApiService) PutUpdateRemoteSupportExecute(r ApiPutU
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v Error
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
@@ -913,7 +913,7 @@ func (a *SystemAdministrationApiService) PutUpdateRemoteSupportExecute(r ApiPutU
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,

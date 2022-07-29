@@ -31,7 +31,7 @@ type ApiDeleteIpsecEndpointRequest struct {
 }
 
 func (r ApiDeleteIpsecEndpointRequest) Execute() (*IpsecSystemDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteIpsecEndpointExecute(r)
+	return r.ApiService.DeleteIpsecEndpoint(r)
 }
 
 /*
@@ -43,7 +43,7 @@ Delete IPsec endpoint
  @param endpointId ID for IPsec endpoint
  @return ApiDeleteIpsecEndpointRequest
 */
-func (api *IpsecApiService) DeleteIpsecEndpoint(ctx context.Context, endpointId int32) ApiDeleteIpsecEndpointRequest {
+func (api *IpsecApiService) DeleteIpsecEndpointRequest(ctx context.Context, endpointId int32) ApiDeleteIpsecEndpointRequest {
 	return ApiDeleteIpsecEndpointRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -53,7 +53,7 @@ func (api *IpsecApiService) DeleteIpsecEndpoint(ctx context.Context, endpointId 
 
 // Execute executes the request
 //  @return IpsecSystemDetailResponse
-func (api *IpsecApiService) DeleteIpsecEndpointExecute(r ApiDeleteIpsecEndpointRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
+func (api *IpsecApiService) DeleteIpsecEndpoint(r ApiDeleteIpsecEndpointRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -148,7 +148,7 @@ type ApiDeleteIpsecEndpointTunnelRequest struct {
 }
 
 func (r ApiDeleteIpsecEndpointTunnelRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.DeleteIpsecEndpointTunnelExecute(r)
+	return r.ApiService.DeleteIpsecEndpointTunnel(r)
 }
 
 /*
@@ -161,7 +161,7 @@ Delete IPsec tunnel
  @param tunnelId ID for tunnel
  @return ApiDeleteIpsecEndpointTunnelRequest
 */
-func (api *IpsecApiService) DeleteIpsecEndpointTunnel(ctx context.Context, endpointId int32, tunnelId int32) ApiDeleteIpsecEndpointTunnelRequest {
+func (api *IpsecApiService) DeleteIpsecEndpointTunnelRequest(ctx context.Context, endpointId int32, tunnelId int32) ApiDeleteIpsecEndpointTunnelRequest {
 	return ApiDeleteIpsecEndpointTunnelRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -172,7 +172,7 @@ func (api *IpsecApiService) DeleteIpsecEndpointTunnel(ctx context.Context, endpo
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (api *IpsecApiService) DeleteIpsecEndpointTunnelExecute(r ApiDeleteIpsecEndpointTunnelRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (api *IpsecApiService) DeleteIpsecEndpointTunnel(r ApiDeleteIpsecEndpointTunnelRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -268,7 +268,7 @@ type ApiDeleteIpsecTrafficPairRequest struct {
 }
 
 func (r ApiDeleteIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
-	return r.ApiService.DeleteIpsecTrafficPairExecute(r)
+	return r.ApiService.DeleteIpsecTrafficPair(r)
 }
 
 /*
@@ -281,7 +281,7 @@ Delete IPsec traffic pair
  @param pairId ID for traffic pair
  @return ApiDeleteIpsecTrafficPairRequest
 */
-func (api *IpsecApiService) DeleteIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiDeleteIpsecTrafficPairRequest {
+func (api *IpsecApiService) DeleteIpsecTrafficPairRequest(ctx context.Context, endpointId int32, pairId int32) ApiDeleteIpsecTrafficPairRequest {
 	return ApiDeleteIpsecTrafficPairRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -292,7 +292,7 @@ func (api *IpsecApiService) DeleteIpsecTrafficPair(ctx context.Context, endpoint
 
 // Execute executes the request
 //  @return IpsecTrafficPairResponse
-func (api *IpsecApiService) DeleteIpsecTrafficPairExecute(r ApiDeleteIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
+func (api *IpsecApiService) DeleteIpsecTrafficPair(r ApiDeleteIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -388,7 +388,7 @@ type ApiDisableIpsecTrafficPairRequest struct {
 }
 
 func (r ApiDisableIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
-	return r.ApiService.DisableIpsecTrafficPairExecute(r)
+	return r.ApiService.DisableIpsecTrafficPair(r)
 }
 
 /*
@@ -401,7 +401,7 @@ Disable Ipsec Traffic Pair
  @param pairId ID for traffic pair
  @return ApiDisableIpsecTrafficPairRequest
 */
-func (api *IpsecApiService) DisableIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiDisableIpsecTrafficPairRequest {
+func (api *IpsecApiService) DisableIpsecTrafficPairRequest(ctx context.Context, endpointId int32, pairId int32) ApiDisableIpsecTrafficPairRequest {
 	return ApiDisableIpsecTrafficPairRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -412,7 +412,7 @@ func (api *IpsecApiService) DisableIpsecTrafficPair(ctx context.Context, endpoin
 
 // Execute executes the request
 //  @return IpsecTrafficPairResponse
-func (api *IpsecApiService) DisableIpsecTrafficPairExecute(r ApiDisableIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
+func (api *IpsecApiService) DisableIpsecTrafficPair(r ApiDisableIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -517,7 +517,7 @@ type ApiEnableIpsecTrafficPairRequest struct {
 }
 
 func (r ApiEnableIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
-	return r.ApiService.EnableIpsecTrafficPairExecute(r)
+	return r.ApiService.EnableIpsecTrafficPair(r)
 }
 
 /*
@@ -530,7 +530,7 @@ Enable Ipsec Traffic Pair
  @param pairId ID for traffic pair
  @return ApiEnableIpsecTrafficPairRequest
 */
-func (api *IpsecApiService) EnableIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiEnableIpsecTrafficPairRequest {
+func (api *IpsecApiService) EnableIpsecTrafficPairRequest(ctx context.Context, endpointId int32, pairId int32) ApiEnableIpsecTrafficPairRequest {
 	return ApiEnableIpsecTrafficPairRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -541,7 +541,7 @@ func (api *IpsecApiService) EnableIpsecTrafficPair(ctx context.Context, endpoint
 
 // Execute executes the request
 //  @return IpsecTrafficPairResponse
-func (api *IpsecApiService) EnableIpsecTrafficPairExecute(r ApiEnableIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
+func (api *IpsecApiService) EnableIpsecTrafficPair(r ApiEnableIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -651,7 +651,7 @@ func (r ApiGetConnectedSubnetsRequest) ExtendedOutput(extendedOutput bool) ApiGe
 }
 
 func (r ApiGetConnectedSubnetsRequest) Execute() (*ConnectedSubnetsDetailResponse, *http.Response, error) {
-	return r.ApiService.GetConnectedSubnetsExecute(r)
+	return r.ApiService.GetConnectedSubnets(r)
 }
 
 /*
@@ -662,7 +662,7 @@ Provides information about any connected subnets.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectedSubnetsRequest
 */
-func (api *IpsecApiService) GetConnectedSubnets(ctx context.Context) ApiGetConnectedSubnetsRequest {
+func (api *IpsecApiService) GetConnectedSubnetsRequest(ctx context.Context) ApiGetConnectedSubnetsRequest {
 	return ApiGetConnectedSubnetsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -671,7 +671,7 @@ func (api *IpsecApiService) GetConnectedSubnets(ctx context.Context) ApiGetConne
 
 // Execute executes the request
 //  @return ConnectedSubnetsDetailResponse
-func (api *IpsecApiService) GetConnectedSubnetsExecute(r ApiGetConnectedSubnetsRequest) (*ConnectedSubnetsDetailResponse, *http.Response, error) {
+func (api *IpsecApiService) GetConnectedSubnets(r ApiGetConnectedSubnetsRequest) (*ConnectedSubnetsDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -753,7 +753,7 @@ type ApiGetIpsecDetailsRequest struct {
 }
 
 func (r ApiGetIpsecDetailsRequest) Execute() (*IpsecSystemDetailResponse, *http.Response, error) {
-	return r.ApiService.GetIpsecDetailsExecute(r)
+	return r.ApiService.GetIpsecDetails(r)
 }
 
 /*
@@ -764,7 +764,7 @@ Get details for all IPsec endpoints/subnets
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIpsecDetailsRequest
 */
-func (api *IpsecApiService) GetIpsecDetails(ctx context.Context) ApiGetIpsecDetailsRequest {
+func (api *IpsecApiService) GetIpsecDetailsRequest(ctx context.Context) ApiGetIpsecDetailsRequest {
 	return ApiGetIpsecDetailsRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -773,7 +773,7 @@ func (api *IpsecApiService) GetIpsecDetails(ctx context.Context) ApiGetIpsecDeta
 
 // Execute executes the request
 //  @return IpsecSystemDetailResponse
-func (api *IpsecApiService) GetIpsecDetailsExecute(r ApiGetIpsecDetailsRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
+func (api *IpsecApiService) GetIpsecDetails(r ApiGetIpsecDetailsRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -853,7 +853,7 @@ type ApiGetIpsecEndpointRequest struct {
 }
 
 func (r ApiGetIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.GetIpsecEndpointExecute(r)
+	return r.ApiService.GetIpsecEndpoint(r)
 }
 
 /*
@@ -865,7 +865,7 @@ Get IPsec endpoint information
  @param endpointId ID for IPsec endpoint
  @return ApiGetIpsecEndpointRequest
 */
-func (api *IpsecApiService) GetIpsecEndpoint(ctx context.Context, endpointId int32) ApiGetIpsecEndpointRequest {
+func (api *IpsecApiService) GetIpsecEndpointRequest(ctx context.Context, endpointId int32) ApiGetIpsecEndpointRequest {
 	return ApiGetIpsecEndpointRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -875,7 +875,7 @@ func (api *IpsecApiService) GetIpsecEndpoint(ctx context.Context, endpointId int
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (api *IpsecApiService) GetIpsecEndpointExecute(r ApiGetIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (api *IpsecApiService) GetIpsecEndpoint(r ApiGetIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -979,7 +979,7 @@ func (r ApiGetIpsecLinkHistoryRequest) Tunnelid(tunnelid int32) ApiGetIpsecLinkH
 }
 
 func (r ApiGetIpsecLinkHistoryRequest) Execute() (*LinkHistoryDetail, *http.Response, error) {
-	return r.ApiService.GetIpsecLinkHistoryExecute(r)
+	return r.ApiService.GetIpsecLinkHistory(r)
 }
 
 /*
@@ -990,7 +990,7 @@ Provides information about the connection history of the subnet or tunnel
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIpsecLinkHistoryRequest
 */
-func (api *IpsecApiService) GetIpsecLinkHistory(ctx context.Context) ApiGetIpsecLinkHistoryRequest {
+func (api *IpsecApiService) GetIpsecLinkHistoryRequest(ctx context.Context) ApiGetIpsecLinkHistoryRequest {
 	return ApiGetIpsecLinkHistoryRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -999,7 +999,7 @@ func (api *IpsecApiService) GetIpsecLinkHistory(ctx context.Context) ApiGetIpsec
 
 // Execute executes the request
 //  @return LinkHistoryDetail
-func (api *IpsecApiService) GetIpsecLinkHistoryExecute(r ApiGetIpsecLinkHistoryRequest) (*LinkHistoryDetail, *http.Response, error) {
+func (api *IpsecApiService) GetIpsecLinkHistory(r ApiGetIpsecLinkHistoryRequest) (*LinkHistoryDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1104,7 +1104,7 @@ func (r ApiGetIpsecStatusRequest) UpDownStatusOnly(upDownStatusOnly bool) ApiGet
 }
 
 func (r ApiGetIpsecStatusRequest) Execute() (*IpsecTunnelListResponseAsObject, *http.Response, error) {
-	return r.ApiService.GetIpsecStatusExecute(r)
+	return r.ApiService.GetIpsecStatus(r)
 }
 
 /*
@@ -1115,7 +1115,7 @@ Describe ipsec tunnels status
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIpsecStatusRequest
 */
-func (api *IpsecApiService) GetIpsecStatus(ctx context.Context) ApiGetIpsecStatusRequest {
+func (api *IpsecApiService) GetIpsecStatusRequest(ctx context.Context) ApiGetIpsecStatusRequest {
 	return ApiGetIpsecStatusRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1124,7 +1124,7 @@ func (api *IpsecApiService) GetIpsecStatus(ctx context.Context) ApiGetIpsecStatu
 
 // Execute executes the request
 //  @return IpsecTunnelListResponseAsObject
-func (api *IpsecApiService) GetIpsecStatusExecute(r ApiGetIpsecStatusRequest) (*IpsecTunnelListResponseAsObject, *http.Response, error) {
+func (api *IpsecApiService) GetIpsecStatus(r ApiGetIpsecStatusRequest) (*IpsecTunnelListResponseAsObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1212,7 +1212,7 @@ func (r ApiPostCreateIpsecEndpointRequest) CreateIpsecEndpointRequest(createIpse
 }
 
 func (r ApiPostCreateIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.PostCreateIpsecEndpointExecute(r)
+	return r.ApiService.PostCreateIpsecEndpoint(r)
 }
 
 /*
@@ -1223,7 +1223,7 @@ Create IPsec connection to the defined remote gateway
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateIpsecEndpointRequest
 */
-func (api *IpsecApiService) PostCreateIpsecEndpoint(ctx context.Context) ApiPostCreateIpsecEndpointRequest {
+func (api *IpsecApiService) PostCreateIpsecEndpointRequest(ctx context.Context) ApiPostCreateIpsecEndpointRequest {
 	return ApiPostCreateIpsecEndpointRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1232,7 +1232,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpoint(ctx context.Context) ApiPost
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (api *IpsecApiService) PostCreateIpsecEndpointExecute(r ApiPostCreateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (api *IpsecApiService) PostCreateIpsecEndpoint(r ApiPostCreateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1333,7 +1333,7 @@ func (r ApiPostCreateIpsecEndpointTunnelRequest) CreateIpsecTunnelRequest(create
 }
 
 func (r ApiPostCreateIpsecEndpointTunnelRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.PostCreateIpsecEndpointTunnelExecute(r)
+	return r.ApiService.PostCreateIpsecEndpointTunnel(r)
 }
 
 /*
@@ -1345,7 +1345,7 @@ Create IPsec endpoint tunnel
  @param endpointId ID for IPsec endpoint
  @return ApiPostCreateIpsecEndpointTunnelRequest
 */
-func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(ctx context.Context, endpointId int32) ApiPostCreateIpsecEndpointTunnelRequest {
+func (api *IpsecApiService) PostCreateIpsecEndpointTunnelRequest(ctx context.Context, endpointId int32) ApiPostCreateIpsecEndpointTunnelRequest {
 	return ApiPostCreateIpsecEndpointTunnelRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1355,7 +1355,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(ctx context.Context, e
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (api *IpsecApiService) PostCreateIpsecEndpointTunnelExecute(r ApiPostCreateIpsecEndpointTunnelRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(r ApiPostCreateIpsecEndpointTunnelRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1469,7 +1469,7 @@ func (r ApiPostCreateIpsecTrafficPairRequest) CreateIpsecTrafficPairRequest(crea
 }
 
 func (r ApiPostCreateIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
-	return r.ApiService.PostCreateIpsecTrafficPairExecute(r)
+	return r.ApiService.PostCreateIpsecTrafficPair(r)
 }
 
 /*
@@ -1481,7 +1481,7 @@ Create IPsec endpoint traffic pair
  @param endpointId ID for IPsec endpoint
  @return ApiPostCreateIpsecTrafficPairRequest
 */
-func (api *IpsecApiService) PostCreateIpsecTrafficPair(ctx context.Context, endpointId int32) ApiPostCreateIpsecTrafficPairRequest {
+func (api *IpsecApiService) PostCreateIpsecTrafficPairRequest(ctx context.Context, endpointId int32) ApiPostCreateIpsecTrafficPairRequest {
 	return ApiPostCreateIpsecTrafficPairRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1491,7 +1491,7 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPair(ctx context.Context, endp
 
 // Execute executes the request
 //  @return IpsecTrafficPairResponse
-func (api *IpsecApiService) PostCreateIpsecTrafficPairExecute(r ApiPostCreateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
+func (api *IpsecApiService) PostCreateIpsecTrafficPair(r ApiPostCreateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1604,7 +1604,7 @@ func (r ApiPostRestartIpsecActionRequest) RestartRequest(restartRequest RestartR
 }
 
 func (r ApiPostRestartIpsecActionRequest) Execute() (*RestartStatusResponse, *http.Response, error) {
-	return r.ApiService.PostRestartIpsecActionExecute(r)
+	return r.ApiService.PostRestartIpsecAction(r)
 }
 
 /*
@@ -1615,7 +1615,7 @@ Restart ipsec subystem
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostRestartIpsecActionRequest
 */
-func (api *IpsecApiService) PostRestartIpsecAction(ctx context.Context) ApiPostRestartIpsecActionRequest {
+func (api *IpsecApiService) PostRestartIpsecActionRequest(ctx context.Context) ApiPostRestartIpsecActionRequest {
 	return ApiPostRestartIpsecActionRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1624,7 +1624,7 @@ func (api *IpsecApiService) PostRestartIpsecAction(ctx context.Context) ApiPostR
 
 // Execute executes the request
 //  @return RestartStatusResponse
-func (api *IpsecApiService) PostRestartIpsecActionExecute(r ApiPostRestartIpsecActionRequest) (*RestartStatusResponse, *http.Response, error) {
+func (api *IpsecApiService) PostRestartIpsecAction(r ApiPostRestartIpsecActionRequest) (*RestartStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1724,7 +1724,7 @@ func (r ApiPutUpdateIpsecConfigRequest) UpdateIpsecAddressRequest(updateIpsecAdd
 }
 
 func (r ApiPutUpdateIpsecConfigRequest) Execute() (*IpsecSystemDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateIpsecConfigExecute(r)
+	return r.ApiService.PutUpdateIpsecConfig(r)
 }
 
 /*
@@ -1736,7 +1736,7 @@ Edit Ipsec Configuration on device. Note, This is device wide and must be set be
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUpdateIpsecConfigRequest
 */
-func (api *IpsecApiService) PutUpdateIpsecConfig(ctx context.Context) ApiPutUpdateIpsecConfigRequest {
+func (api *IpsecApiService) PutUpdateIpsecConfigRequest(ctx context.Context) ApiPutUpdateIpsecConfigRequest {
 	return ApiPutUpdateIpsecConfigRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1745,7 +1745,7 @@ func (api *IpsecApiService) PutUpdateIpsecConfig(ctx context.Context) ApiPutUpda
 
 // Execute executes the request
 //  @return IpsecSystemDetailResponse
-func (api *IpsecApiService) PutUpdateIpsecConfigExecute(r ApiPutUpdateIpsecConfigRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
+func (api *IpsecApiService) PutUpdateIpsecConfig(r ApiPutUpdateIpsecConfigRequest) (*IpsecSystemDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1846,7 +1846,7 @@ func (r ApiPutUpdateIpsecEndpointRequest) UpdateIpsecEndpointRequest(updateIpsec
 }
 
 func (r ApiPutUpdateIpsecEndpointRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.PutUpdateIpsecEndpointExecute(r)
+	return r.ApiService.PutUpdateIpsecEndpoint(r)
 }
 
 /*
@@ -1858,7 +1858,7 @@ Edit IPsec endpoint connection configuration parameters
  @param endpointId ID for IPsec endpoint
  @return ApiPutUpdateIpsecEndpointRequest
 */
-func (api *IpsecApiService) PutUpdateIpsecEndpoint(ctx context.Context, endpointId int32) ApiPutUpdateIpsecEndpointRequest {
+func (api *IpsecApiService) PutUpdateIpsecEndpointRequest(ctx context.Context, endpointId int32) ApiPutUpdateIpsecEndpointRequest {
 	return ApiPutUpdateIpsecEndpointRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1868,7 +1868,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpoint(ctx context.Context, endpoint
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (api *IpsecApiService) PutUpdateIpsecEndpointExecute(r ApiPutUpdateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (api *IpsecApiService) PutUpdateIpsecEndpoint(r ApiPutUpdateIpsecEndpointRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1974,7 +1974,7 @@ func (r ApiPutUpdateIpsecEndpointTunnelRequest) UpdateIpsecTunnelRequest(updateI
 }
 
 func (r ApiPutUpdateIpsecEndpointTunnelRequest) Execute() (*IpsecTunnelDetail, *http.Response, error) {
-	return r.ApiService.PutUpdateIpsecEndpointTunnelExecute(r)
+	return r.ApiService.PutUpdateIpsecEndpointTunnel(r)
 }
 
 /*
@@ -1987,7 +1987,7 @@ Edit IPsec endpoint tunnel configuration
  @param tunnelId ID for tunnel
  @return ApiPutUpdateIpsecEndpointTunnelRequest
 */
-func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(ctx context.Context, endpointId int32, tunnelId int32) ApiPutUpdateIpsecEndpointTunnelRequest {
+func (api *IpsecApiService) PutUpdateIpsecEndpointTunnelRequest(ctx context.Context, endpointId int32, tunnelId int32) ApiPutUpdateIpsecEndpointTunnelRequest {
 	return ApiPutUpdateIpsecEndpointTunnelRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -1998,7 +1998,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(ctx context.Context, en
 
 // Execute executes the request
 //  @return IpsecTunnelDetail
-func (api *IpsecApiService) PutUpdateIpsecEndpointTunnelExecute(r ApiPutUpdateIpsecEndpointTunnelRequest) (*IpsecTunnelDetail, *http.Response, error) {
+func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(r ApiPutUpdateIpsecEndpointTunnelRequest) (*IpsecTunnelDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2105,7 +2105,7 @@ func (r ApiPutUpdateIpsecTrafficPairRequest) UpdateIpsecTrafficPairRequest(updat
 }
 
 func (r ApiPutUpdateIpsecTrafficPairRequest) Execute() (*IpsecTrafficPairResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateIpsecTrafficPairExecute(r)
+	return r.ApiService.PutUpdateIpsecTrafficPair(r)
 }
 
 /*
@@ -2118,7 +2118,7 @@ Edit IPsec endpoint traffic pair
  @param pairId ID for traffic pair
  @return ApiPutUpdateIpsecTrafficPairRequest
 */
-func (api *IpsecApiService) PutUpdateIpsecTrafficPair(ctx context.Context, endpointId int32, pairId int32) ApiPutUpdateIpsecTrafficPairRequest {
+func (api *IpsecApiService) PutUpdateIpsecTrafficPairRequest(ctx context.Context, endpointId int32, pairId int32) ApiPutUpdateIpsecTrafficPairRequest {
 	return ApiPutUpdateIpsecTrafficPairRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -2129,7 +2129,7 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPair(ctx context.Context, endpo
 
 // Execute executes the request
 //  @return IpsecTrafficPairResponse
-func (api *IpsecApiService) PutUpdateIpsecTrafficPairExecute(r ApiPutUpdateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
+func (api *IpsecApiService) PutUpdateIpsecTrafficPair(r ApiPutUpdateIpsecTrafficPairRequest) (*IpsecTrafficPairResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -31,7 +31,7 @@ type ApiDeleteRouteRequest struct {
 }
 
 func (r ApiDeleteRouteRequest) Execute() (*RoutesListResponse, *http.Response, error) {
-	return r.ApiService.DeleteRouteExecute(r)
+	return r.ApiService.DeleteRoute(r)
 }
 
 /*
@@ -43,7 +43,7 @@ Delete route
  @param routeId ID for Route
  @return ApiDeleteRouteRequest
 */
-func (api *RoutingApiService) DeleteRoute(ctx context.Context, routeId int32) ApiDeleteRouteRequest {
+func (api *RoutingApiService) DeleteRouteRequest(ctx context.Context, routeId int32) ApiDeleteRouteRequest {
 	return ApiDeleteRouteRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -53,7 +53,7 @@ func (api *RoutingApiService) DeleteRoute(ctx context.Context, routeId int32) Ap
 
 // Execute executes the request
 //  @return RoutesListResponse
-func (api *RoutingApiService) DeleteRouteExecute(r ApiDeleteRouteRequest) (*RoutesListResponse, *http.Response, error) {
+func (api *RoutingApiService) DeleteRoute(r ApiDeleteRouteRequest) (*RoutesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -147,7 +147,7 @@ type ApiDisableRouteRequest struct {
 }
 
 func (r ApiDisableRouteRequest) Execute() (*RouteDetailResponse, *http.Response, error) {
-	return r.ApiService.DisableRouteExecute(r)
+	return r.ApiService.DisableRoute(r)
 }
 
 /*
@@ -159,7 +159,7 @@ Disable route
  @param routeId ID for Route
  @return ApiDisableRouteRequest
 */
-func (api *RoutingApiService) DisableRoute(ctx context.Context, routeId int32) ApiDisableRouteRequest {
+func (api *RoutingApiService) DisableRouteRequest(ctx context.Context, routeId int32) ApiDisableRouteRequest {
 	return ApiDisableRouteRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -169,7 +169,7 @@ func (api *RoutingApiService) DisableRoute(ctx context.Context, routeId int32) A
 
 // Execute executes the request
 //  @return RouteDetailResponse
-func (api *RoutingApiService) DisableRouteExecute(r ApiDisableRouteRequest) (*RouteDetailResponse, *http.Response, error) {
+func (api *RoutingApiService) DisableRoute(r ApiDisableRouteRequest) (*RouteDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -263,7 +263,7 @@ type ApiEnableRouteRequest struct {
 }
 
 func (r ApiEnableRouteRequest) Execute() (*RouteDetailResponse, *http.Response, error) {
-	return r.ApiService.EnableRouteExecute(r)
+	return r.ApiService.EnableRoute(r)
 }
 
 /*
@@ -275,7 +275,7 @@ Enable route
  @param routeId ID for Route
  @return ApiEnableRouteRequest
 */
-func (api *RoutingApiService) EnableRoute(ctx context.Context, routeId int32) ApiEnableRouteRequest {
+func (api *RoutingApiService) EnableRouteRequest(ctx context.Context, routeId int32) ApiEnableRouteRequest {
 	return ApiEnableRouteRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -285,7 +285,7 @@ func (api *RoutingApiService) EnableRoute(ctx context.Context, routeId int32) Ap
 
 // Execute executes the request
 //  @return RouteDetailResponse
-func (api *RoutingApiService) EnableRouteExecute(r ApiEnableRouteRequest) (*RouteDetailResponse, *http.Response, error) {
+func (api *RoutingApiService) EnableRoute(r ApiEnableRouteRequest) (*RouteDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -385,7 +385,7 @@ func (r ApiGetRoutesRequest) Table(table string) ApiGetRoutesRequest {
 }
 
 func (r ApiGetRoutesRequest) Execute() (*RoutesListResponse, *http.Response, error) {
-	return r.ApiService.GetRoutesExecute(r)
+	return r.ApiService.GetRoutes(r)
 }
 
 /*
@@ -397,16 +397,19 @@ Describes routes that this manager has access to via its network interfaces (vir
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRoutesRequest
 */
-func (api *RoutingApiService) GetRoutes(ctx context.Context) ApiGetRoutesRequest {
+func (api *RoutingApiService) GetRoutesRequest(ctx context.Context) ApiGetRoutesRequest {
 	return ApiGetRoutesRequest{
 		ApiService: api,
 		ctx: ctx,
 	}
 }
 
+
+// func (api *RoutingApiService) GetRoutes(ctx Context req ApiGetRoutesRequest) (*RoutesListResponse, *http.Response, error) {
+
 // Execute executes the request
 //  @return RoutesListResponse
-func (api *RoutingApiService) GetRoutesExecute(r ApiGetRoutesRequest) (*RoutesListResponse, *http.Response, error) {
+func (api *RoutingApiService) GetRoutes(r ApiGetRoutesRequest) (*RoutesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -494,7 +497,7 @@ func (r ApiPostCreateRouteRequest) CreateRouteRequest(createRouteRequest CreateR
 }
 
 func (r ApiPostCreateRouteRequest) Execute() (*RoutesListResponse, *http.Response, error) {
-	return r.ApiService.PostCreateRouteExecute(r)
+	return r.ApiService.PostCreateRoute(r)
 }
 
 /*
@@ -506,7 +509,7 @@ Pushes routes that this manager has access to via its network interfaces (virtua
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateRouteRequest
 */
-func (api *RoutingApiService) PostCreateRoute(ctx context.Context) ApiPostCreateRouteRequest {
+func (api *RoutingApiService) PostCreateRouteRequest(ctx context.Context) ApiPostCreateRouteRequest {
 	return ApiPostCreateRouteRequest{
 		ApiService: api,
 		ctx: ctx,
@@ -515,7 +518,7 @@ func (api *RoutingApiService) PostCreateRoute(ctx context.Context) ApiPostCreate
 
 // Execute executes the request
 //  @return RoutesListResponse
-func (api *RoutingApiService) PostCreateRouteExecute(r ApiPostCreateRouteRequest) (*RoutesListResponse, *http.Response, error) {
+func (api *RoutingApiService) PostCreateRoute(r ApiPostCreateRouteRequest) (*RoutesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
