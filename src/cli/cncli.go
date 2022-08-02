@@ -6,6 +6,7 @@ import (
 	"os"
 	"context"
 	"cohesivenet"
+	"cohesivenet/macros"
 )
 
 
@@ -148,7 +149,22 @@ func main() {
         os.Exit(1)
     }
 
-    configDetail, setupErr := setupController(vns3, ctx)
+    setupReq := macros.SetupRequest{
+        TopologyName: "Terraform",
+        ControllerName: "Ctrl 1",
+        LicenseParams: cohesivenet.SetLicenseParametersRequest{
+            Default: true
+        },
+        LicenseFile: "/Users/benplatta/code/cohesive/vns3-functional-testing/test-assets/license.txt",
+        PeerId: 1,
+        KeysetParams: cohesivenet.SetKeysetParamsRequest{
+            Token: "token",
+        },
+        WaitTimeout: 60*5,
+        KeysetTimeout: 60*5,
+    }
+
+    configDetail, setupErr := macros.SetupController(vns3, setupReq)
 
     if setupErr != nil {
         log.Printf("VNS3 Setup error: %+v", setupErr)
