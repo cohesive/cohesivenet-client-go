@@ -1314,7 +1314,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateKeysetRequest'
+              $ref: '#/components/schemas/SetKeysetParamsRequest'
         required: true
       responses:
         "200":
@@ -15324,7 +15324,7 @@ components:
           type: string
       title: FirewallSubgroupDeleteRequest
       type: object
-    UpdateKeysetRequest:
+    SetKeysetParamsRequest:
       example:
         source: source
         topology_name: topology_name
@@ -15342,7 +15342,7 @@ components:
           type: string
       required:
       - token
-      title: UpdateKeysetRequest
+      title: SetKeysetParamsRequest
       type: object
     IpsecTunnelParams:
       example:

@@ -14,6 +14,10 @@ package cohesivenet
 import (
 	"encoding/json"
 	"time"
+	// "log"
+	"net"
+    "net/url"
+	"strings"
 )
 
 // PtrBool is a helper routine that returns a pointer to given boolean value.
@@ -326,4 +330,29 @@ func (v NullableTime) MarshalJSON() ([]byte, error) {
 func (v *NullableTime) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
+}
+
+
+func checkHttpError(err error) (bool, string) {
+    switch errT := err.(type) {
+    case net.Error:
+        if errT.Timeout() {
+            return false, "timeout"
+        } else if (strings.Contains(err.Error(), "certificate is not standards compliant")) {
+            return true, "ssl"
+        }
+    case *url.Error:
+        if errT, ok := errT.Err.(net.Error); ok && errT.Timeout() {
+            // log.Println("and it was because of a timeout")
+            return false, "timeout"
+        }
+    default:
+        errMessage := err.Error()
+        if strings.Contains(errMessage, "connection refused") {
+            return false, "connrefused"
+        }
+        return true, errMessage
+    }
+
+    return true, ""
 }

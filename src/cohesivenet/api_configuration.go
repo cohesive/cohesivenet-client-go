@@ -12,6 +12,7 @@ Contact: support@cohesive.net
 package cohesivenet
 
 import (
+	"fmt"
 	"bytes"
 	"context"
 	"io/ioutil"
@@ -19,6 +20,7 @@ import (
 	"net/url"
 	"strings"
 	"os"
+	"time"
 )
 
 
@@ -1576,11 +1578,11 @@ func (api *ConfigurationApiService) PutConfig(r ApiPutConfigRequest) (*ConfigDet
 type ApiPutKeysetRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
-	updateKeysetRequest *UpdateKeysetRequest
+	setKeysetRequest *SetKeysetParamsRequest
 }
 
-func (r ApiPutKeysetRequest) UpdateKeysetRequest(updateKeysetRequest UpdateKeysetRequest) ApiPutKeysetRequest {
-	r.updateKeysetRequest = &updateKeysetRequest
+func (r ApiPutKeysetRequest) SetKeysetParamsRequest(setKeysetRequest SetKeysetParamsRequest) ApiPutKeysetRequest {
+	r.setKeysetRequest = &setKeysetRequest
 	return r
 }
 
@@ -1624,8 +1626,8 @@ func (api *ConfigurationApiService) PutKeyset(r ApiPutKeysetRequest) (*KeysetDet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateKeysetRequest == nil {
-		return localVarReturnValue, nil, reportError("updateKeysetRequest is required and must be specified")
+	if r.setKeysetRequest == nil {
+		return localVarReturnValue, nil, reportError("setKeysetRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1646,7 +1648,7 @@ func (api *ConfigurationApiService) PutKeyset(r ApiPutKeysetRequest) (*KeysetDet
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateKeysetRequest
+	localVarPostBody = r.setKeysetRequest
 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2649,4 +2651,140 @@ func (api *ConfigurationApiService) UploadLicense(r ApiUploadLicenseRequest) (*I
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+/*
+WaitForDown Wait for VNS3 server to go down during a reboot
+
+VNS3 will reboot after setting license params. This method allows waiting for down. Can use with WaitForApi to wait for reboot.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param timeout total length of time (seconds) to wait for down
+ @param sleep time (seconds) to wait between checks
+ @return (bool, error)
+*/
+func (api *ConfigurationApiService) WaitForDown(ctx *context.Context, timeout int, sleep int) (bool, error) {
+	var reqCtx context.Context
+	if ctx == nil {
+		reqCtx = context.Background()
+	} else {
+		reqCtx = *ctx
+	}
+
+	req := api.GetConfigRequest(reqCtx)
+	start := time.Now()
+	elapsed := time.Now().Sub(start).Seconds()
+	for elapsed < float64(timeout) {
+		api.client.log.Debug(fmt.Sprintf("Waitin VNS3 Down. Elapsed %v.\n", int(elapsed)))
+		_, _, err := api.GetConfig(req)
+
+		if err != nil {
+			if fatal, _ := checkHttpError(err); !fatal {
+				return true, nil
+			} else {
+				return false, err
+			}
+		}
+
+		time.Sleep(time.Duration(sleep) * time.Second)
+		elapsed = time.Now().Sub(start).Seconds()
+	}
+
+	return false, fmt.Errorf("Failed to go down")
+}
+
+/*
+WaitForApi Wait for VNS3 server API availability
+
+When configuring, we often need to wait for VNS3 server to come up completely
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param timeout total length of time (seconds) to wait for API
+ @param sleep time (seconds) to wait between checks
+ @param healthThreshold number of (non-consecutive) successful pings required to conclude healthy
+ @return (bool, error)
+*/
+func (api *ConfigurationApiService) WaitForApi(ctx *context.Context, timeout int, sleep int, healthThreshold int) (*ConfigDetail, error) {
+	var reqCtx context.Context
+	if ctx == nil {
+		reqCtx = context.Background()
+	} else {
+		reqCtx = *ctx
+	}
+
+    req := api.GetConfigRequest(reqCtx)
+    pingSuccess := 0
+
+	start := time.Now()
+    elapsed := time.Now().Sub(start).Seconds()
+    for elapsed < float64(timeout) {
+		api.client.log.Debug(fmt.Sprintf("Polling VNS3. Elapsed %v. Success=%v\n", int(elapsed), pingSuccess))
+        resp, _, err := api.GetConfig(req)
+
+        if err != nil {
+            if fatal, _ := checkHttpError(err); fatal {
+                return nil, err
+            }
+
+            time.Sleep(time.Duration(sleep) * time.Second)
+        } else {
+            pingSuccess = pingSuccess + 1
+            if pingSuccess >= healthThreshold {
+                return resp, nil
+            }
+        }
+        elapsed = time.Now().Sub(start).Seconds()
+    }
+
+    return nil, fmt.Errorf("Polling timeout for VNS3")
+}
+
+
+/*
+WaitForKeyset Wait for VNS3 keyset
+
+Query keyset generation status
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param timeout total length of time (seconds) to wait for keyset
+ @param sleep time (seconds) to wait between checks
+ @param keysetPresent true/false if true, will wait for keyset to be present
+ @return (bool, error)
+*/
+func (api *ConfigurationApiService) WaitForKeyset(ctx *context.Context, timeout int, sleep int, keysetPresent bool) (*KeysetStatus, error) {
+	var reqCtx context.Context
+	if ctx == nil {
+		reqCtx = context.Background()
+	} else {
+		reqCtx = *ctx
+	}
+
+    start := time.Now()
+    req := api.GetKeysetRequest(reqCtx)
+
+    elapsed := time.Now().Sub(start).Seconds()
+    for elapsed < float64(timeout) {
+        api.client.log.Debug(fmt.Sprintf("Polling keyset VNS3. Elapsed %v\n", int(elapsed)))
+        resp, _, err := api.GetKeyset(req)
+
+        if err != nil {
+            if fatal, _ := checkHttpError(err); fatal {
+                return nil, fmt.Errorf("GetKeyset failed: %+v", err)
+            }
+            time.Sleep(time.Duration(sleep) * time.Second)
+        } else if keysetPresent {
+            inProgress := resp.Response.GetInProgress()
+            keysetPresent := resp.Response.GetKeysetPresent()
+            if !inProgress && keysetPresent {
+                return resp.Response, nil
+            }
+            time.Sleep(time.Duration(sleep) * time.Second)
+        } else {
+            return resp.Response, nil
+        }
+
+        elapsed = time.Now().Sub(start).Seconds()
+    }
+
+    return nil, fmt.Errorf("Keyset timeout for VNS3")
 }
