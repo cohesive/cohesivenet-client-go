@@ -49,10 +49,7 @@ type ConfigResponse struct {
 }
 
 type FirewallResponse struct {
-	FirewallRules []struct {
-		ID   string `json:"id"`
-		Rule string `json:"rule"`
-	} `json:"response"`
+	FirewallRules []FirewallRule `json:"response"`
 }
 
 type EndpointResponse struct {
@@ -113,27 +110,20 @@ type NewEndpoint struct {
 }
 
 type Route struct {
-	Cidr        string `json:"cidr,omitempty"`
+	ID          string `json:"id,omitempty"`
 	Description string `json:"description,omitempty"`
-	Interface   string `json:"interface,omitempty"`
-	Gateway     string `json:"gateway,omitempty"`
-	Tunnel      int    `json:"tunnel,omitempty"`
 	Advertise   bool   `json:"advertise,omitempty"`
+	Enabled     bool   `json:"enabled,omitempty"`
+	Editable    bool   `json:"editable,omitempty"`
+	Cidr        string `json:"cidr,omitempty"`
+	Gateway     string `json:"gateway,omitempty"`
+	Netmask     string `json:"netmask,omitempty"`
+	Table       string `json:"table,omitempty"`
+	Interface   string `json:"interface,omitempty"`
 	Metric      int    `json:"metric,omitempty"`
+	Tunnel      int    `json:"tunnel,omitempty"`
 }
 
 type RouteResponse struct {
-	Routes []struct {
-		ID          string `json:"id,omitempty"`
-		Description string `json:"description,omitempty"`
-		Advertise   bool   `json:"advertise,omitempty"`
-		Enabled     bool   `json:"enabled,omitempty"`
-		Editable    bool   `json:"editable,omitempty"`
-		Cidr        string `json:"cidr,omitempty"`
-		Gateway     string `json:"gateway,omitempty"`
-		Netmask     string `json:"netmask,omitempty"`
-		Table       string `json:"table,omitempty"`
-		Interface   string `json:"interface,omitempty"`
-		Metric      int    `json:"metric,omitempty"`
-	} `json:"response"`
+	Routes []Route `json:"response"`
 }

@@ -9,6 +9,34 @@ import (
 	"strings"
 )
 
+func (c *Client) GetRoute(routeId string) (RouteResponse, error) {
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
+	if err != nil {
+		log.Println(err)
+	}
+	body, err := c.doRequest(req)
+	if err != nil {
+		log.Println(err)
+	}
+
+	simpleJson := SimplifyJson(string(body))
+	routeResponse := RouteResponse{}
+	errUnmarshal := json.Unmarshal([]byte(simpleJson), &routeResponse)
+	if err != nil {
+		log.Println(errUnmarshal)
+	}
+
+	returnRoutes := RouteResponse{}
+	for _, r := range returnRoutes.Routes {
+		if r.ID == routeId {
+			routeResponse.Routes = []Route{r}
+
+		}
+	}
+
+	return routeResponse, nil
+}
+
 func (c *Client) GetRoutes() (RouteResponse, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
 	if err != nil {
