@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"context"
 	"os"
-    cn "cohesivenet"
+    cn "github.com/cohesive/cohesivenet-client-go/cohesivenet"
 )
 
 type SetupRequest struct {
