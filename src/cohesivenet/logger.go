@@ -10,9 +10,18 @@ var DEBUGLEVEL int = 10
 var INFOLEVEL int = 20
 var WARNLEVEL int = 30
 var ERRORLEVEL int = 40
+var LOGSOFF int = 100
 
 type Logger struct {
 	Level int
+}
+
+type CanLog interface {
+	DisableLogs()
+	Debug(m string)
+	Info(m string)
+	Warn(m string)
+	Error(m string)
 }
 
 // func getLevelString(level int) string {
@@ -51,6 +60,10 @@ func NewLogger(logLevel int) Logger {
 
 func (logger Logger) SetLevel(logLevel int) {
 	logger.Level = logLevel
+}
+
+func (logger Logger) DisableLogs() {
+	logger.Level = LOGSOFF
 }
 
 func (logger Logger) Debug(message string) {
