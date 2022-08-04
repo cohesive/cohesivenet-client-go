@@ -1,4 +1,4 @@
-package cohesivenet
+package cohesivenetv1
 
 import (
 	"crypto/tls"

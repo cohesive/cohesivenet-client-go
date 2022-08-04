@@ -1,4 +1,4 @@
-package cohesivenet
+package cohesivenetv1
 
 type Idobject struct {
 	Local_subnet  string `json:"local_subnet"`

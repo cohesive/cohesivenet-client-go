@@ -1,4 +1,4 @@
-package cohesivenet
+package cohesivenetv1
 
 /*
 // Sign up - Create new user, return user token upon successful creation
