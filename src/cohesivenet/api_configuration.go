@@ -2675,7 +2675,7 @@ func (api *ConfigurationApiService) WaitForDown(ctx *context.Context, timeout in
 	start := time.Now()
 	elapsed := time.Now().Sub(start).Seconds()
 	for elapsed < float64(timeout) {
-		api.client.log.Debug(fmt.Sprintf("Waitin VNS3 Down. Elapsed %v.\n", int(elapsed)))
+		api.client.Log.Debug(fmt.Sprintf("Waiting VNS3 Down. Elapsed %v.", int(elapsed)))
 		_, _, err := api.GetConfig(req)
 
 		if err != nil {
@@ -2718,7 +2718,7 @@ func (api *ConfigurationApiService) WaitForApi(ctx *context.Context, timeout int
 	start := time.Now()
     elapsed := time.Now().Sub(start).Seconds()
     for elapsed < float64(timeout) {
-		api.client.log.Debug(fmt.Sprintf("Polling VNS3. Elapsed %v. Success=%v\n", int(elapsed), pingSuccess))
+		api.client.Log.Debug(fmt.Sprintf("Polling VNS3. Elapsed %v. Success=%v", int(elapsed), pingSuccess))
         resp, _, err := api.GetConfig(req)
 
         if err != nil {
@@ -2764,7 +2764,7 @@ func (api *ConfigurationApiService) WaitForKeyset(ctx *context.Context, timeout 
 
     elapsed := time.Now().Sub(start).Seconds()
     for elapsed < float64(timeout) {
-        api.client.log.Debug(fmt.Sprintf("Polling keyset VNS3. Elapsed %v\n", int(elapsed)))
+        api.client.Log.Debug(fmt.Sprintf("Polling keyset VNS3. Elapsed %v", int(elapsed)))
         resp, _, err := api.GetKeyset(req)
 
         if err != nil {

@@ -35,9 +35,9 @@ type SetLicenseParametersRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetLicenseParametersRequest() *SetLicenseParametersRequest {
+func NewSetLicenseParametersRequest(isDefault bool) *SetLicenseParametersRequest {
 	this := SetLicenseParametersRequest{}
-	var default_ bool = false
+	var default_ bool = isDefault
 	this.Default = &default_
 	return &this
 }

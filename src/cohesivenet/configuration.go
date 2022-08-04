@@ -119,7 +119,6 @@ func NewConfiguration(host string) *Configuration {
 	return cfg
 }
 
-
 // NewConfiguration returns a new Configuration object with auth set
 func NewConfigurationWithAuth(host string, authType contextKey, auth interface{}) *Configuration {
 	cfg := NewConfiguration(host)
@@ -131,6 +130,16 @@ func NewConfigurationWithAuth(host string, authType contextKey, auth interface{}
 // AddDefaultHeader adds a new HTTP header to the default header in the request
 func (c *Configuration) AddDefaultHeader(key string, value string) {
 	c.DefaultHeader[key] = value
+}
+
+func (c *Configuration) SetHost(host string) {
+	var serverurl string = fmt.Sprintf("https://%s:8000/api", host)
+	c.Servers = ServerConfigurations{
+		{
+			URL: serverurl,
+			Description: "",
+		},
+	}
 }
 
 // URL formats template on a index using given variables

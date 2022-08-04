@@ -48,7 +48,7 @@ var (
 type VNS3Client struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
-	log Logger
+	Log Logger
 
 	// API Services
 
@@ -111,7 +111,7 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 	c := &VNS3Client{}
 	c.cfg = cfg
 	c.common.client = c
-	c.log = NewLogger(getLogLevel(os.Getenv("COHESIVE_LOG_LEVEL")))
+	c.Log = NewLogger(getLogLevel(os.Getenv("COHESIVE_LOG_LEVEL")))
 
 	// API Services
 	// For golang newbies (like me): this is casting c.common pointer (which is type service) as 
@@ -247,6 +247,15 @@ func (c *VNS3Client) callAPI(request *http.Request) (*http.Response, error) {
 // Caution: modifying the configuration while live can cause data races and potentially unwanted behavior
 func (c *VNS3Client) GetConfig() *Configuration {
 	return c.cfg
+}
+
+func (c *VNS3Client) SetAuth(authType contextKey, auth interface{}) {
+	c.cfg.AuthType = &authType
+	c.cfg.Auth = &auth
+}
+
+func (c *VNS3Client) SetHost(host string) {
+	c.cfg.SetHost(host)
 }
 
 type formFile struct {

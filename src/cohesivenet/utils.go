@@ -14,7 +14,6 @@ package cohesivenet
 import (
 	"encoding/json"
 	"time"
-	// "log"
 	"net"
     "net/url"
 	"strings"
@@ -336,14 +335,18 @@ func (v *NullableTime) UnmarshalJSON(src []byte) error {
 func checkHttpError(err error) (bool, string) {
     switch errT := err.(type) {
     case net.Error:
+        errMessage := err.Error()
         if errT.Timeout() {
             return false, "timeout"
-        } else if (strings.Contains(err.Error(), "certificate is not standards compliant")) {
+        } else if strings.Contains(errMessage, "certificate is not standards compliant") {
             return true, "ssl"
-        }
+        } else if strings.Contains(errMessage, "connection refused") {
+			return false, "connrefused"
+		} else if strings.Contains(errMessage, "EOF") {
+			return false, "eof"
+		}
     case *url.Error:
         if errT, ok := errT.Err.(net.Error); ok && errT.Timeout() {
-            // log.Println("and it was because of a timeout")
             return false, "timeout"
         }
     default:
@@ -354,5 +357,5 @@ func checkHttpError(err error) (bool, string) {
         return true, errMessage
     }
 
-    return true, ""
+    return true, err.Error()
 }
