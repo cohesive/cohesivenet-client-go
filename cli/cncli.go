@@ -4,8 +4,9 @@ import (
     "log"
     "os"
     "context"
-	"cohesivenet"
-	"cohesivenet/macros"
+    "github.com/cohesive/cohesivenet-client-go/cohesivenet"
+	"github.com/cohesive/cohesivenet-client-go/cohesivenet/macros"
+    // clientv1 "github.com/cohesive/cohesivenet-client-go/cohesivenet/v1"
 )
 
 
