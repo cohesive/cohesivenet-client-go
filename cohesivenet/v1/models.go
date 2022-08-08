@@ -127,3 +127,14 @@ type Route struct {
 type RouteResponse struct {
 	Routes []Route `json:"response"`
 }
+
+type EbgpPeer struct {
+	Ipaddress                   string `json:"ipaddress,omitempty"`
+	Asn                         int    `json:"asn,omitempty"`
+	LocalAsnAlias               int    `json:"local_asn_alias,omitempty"`
+	AccessList                  string `json:"access_list,omitempty"`
+	AddNetworkDistanceHops      int    `json:"add_network_distance_hops,omitempty"`
+	BgpPassword                 string `json:"bgp_password,omitempty"`
+	AddNetworkDistance          bool   `json:"add_network_distance,omitempty"`
+	AddNetworkDistanceDirection string `json:"add_network_distance_direction,omitempty"`
+}
