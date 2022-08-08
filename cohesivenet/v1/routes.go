@@ -30,7 +30,6 @@ func (c *Client) GetRoute(routeId string) (RouteResponse, error) {
 	for _, r := range returnRoutes.Routes {
 		if r.ID == routeId {
 			routeResponse.Routes = []Route{r}
-
 		}
 	}
 
@@ -113,23 +112,30 @@ func SimplifyJson(input string) string {
 	for _, route := range routes {
 		list += "{ "
 		values := route.(map[string]interface{})
-		id := strconv.Itoa(int(values["id"].(float64)))
-		metric := strconv.Itoa(int(values["metric"].(float64)))
-		list += "\"id\":\"" + id + "\","
-		list += "\"description\":\"" + values["description"].(string) + "\","
+		list += "\"id\":\"" + strconv.Itoa(int(values["id"].(float64))) + "\","
+		list += "\"description\":\"" + unmarshalString(values, "description") + "\","
 		list += "\"advertise\": " + strconv.FormatBool(values["advertise"].(bool)) + ","
 		list += "\"enabled\":" + strconv.FormatBool(values["enabled"].(bool)) + ","
 		list += "\"editable\":" + strconv.FormatBool(values["editable"].(bool)) + ","
-		list += "\"cidr\":\"" + values["cidr"].(string) + "\","
-		list += "\"gateway\":\"" + values["gateway"].(string) + "\","
-		list += "\"netmask\":\"" + values["netmask"].(string) + "\","
-		list += "\"table\":\"" + values["table"].(string) + "\","
-		list += "\"interface\":\"" + values["interface"].(string) + "\","
-		list += "\"metric\":" + metric + ""
+		list += "\"cidr\":\"" + unmarshalString(values, "cidr") + "\","
+		list += "\"gateway\":\"" + unmarshalString(values, "gateway") + "\","
+		list += "\"netmask\":\"" + unmarshalString(values, "netmask") + "\","
+		list += "\"table\":\"" + unmarshalString(values, "table") + "\","
+		list += "\"interface\":\"" + unmarshalString(values, "interface") + "\","
+		list += "\"metric\":" + strconv.Itoa(int(values["metric"].(float64))) + ""
 		list += " },"
 	}
-	list = list[:len(list)-1]
+	list = strings.TrimSuffix(list, ",") //remove last comma
 	list += "]}"
-
 	return list
+}
+
+// handles missing properties and null values for strings
+func unmarshalString(values map[string]interface{}, name string) string {
+	if val, ok := values[name]; ok {
+		if val != nil {
+			return fmt.Sprintf("%v", val)
+		}
+	}
+	return ""
 }
