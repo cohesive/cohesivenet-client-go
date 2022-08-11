@@ -139,3 +139,32 @@ type EbgpPeer struct {
 	AddNetworkDistance          bool   `json:"add_network_distance,omitempty"`
 	AddNetworkDistanceDirection string `json:"add_network_distance_direction,omitempty"`
 }
+type PluginImage struct {
+	Name        string `json:"name,omitempty"`
+	URL         string `json:"url,omitempty"`
+	Buildurl    string `json:"buildurl,omitempty"`
+	Localbuild  string `json:"localbuild,omitempty"`
+	Localimage  string `json:"localimage,omitempty"`
+	Imagefile   string `json:"imagefile,omitempty"`
+	Buildfile   string `json:"buildfile,omitempty"`
+	Description string `json:"description,omitempty"`
+	Import_uuid string `json:"import_uuid,omitempty"`
+}
+
+type CreateImageResponse struct {
+	Status      string `json:"status,omitempty"`
+	Import_uuid string `json:"import_uuid,omitempty"`
+}
+
+type ImageResponse struct {
+	ID          string `json:"id,omitempty"`
+	Name        string `json:"name,omitempty"`
+	URL         string `json:"url,omitempty"`
+	Buildurl    string `json:"buildurl,omitempty"`
+	Localbuild  string `json:"localbuild,omitempty"`
+	Localimage  string `json:"localimage,omitempty"`
+	Imagefile   string `json:"imagefile,omitempty"`
+	Buildfile   string `json:"buildfile,omitempty"`
+	Description string `json:"description,omitempty"`
+	Import_uuid string `json:"import_uuid,omitempty"`
+}
