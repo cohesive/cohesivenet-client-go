@@ -683,11 +683,10 @@ func (e GenericAPIError) GetErrorLog() string {
 }
 
 func ParseApiError(err error) *ErrorResponse {
-	openapiError, isApiError := err.(GenericAPIError)
+	openapiError, isApiError := err.(*GenericAPIError)
 	if !isApiError {
 		return nil
 	}
 
-	errResponse := openapiError.model.(ErrorResponse)
-	return &errResponse
+	return openapiError.model.(*ErrorResponse)
 }
