@@ -63,7 +63,7 @@ func (api *RoutingApiService) DeleteRoute(r ApiDeleteRouteRequest) (*RoutesListR
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.DeleteRoute")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/routes/{route_id}"
@@ -111,11 +111,11 @@ func (api *RoutingApiService) DeleteRoute(r ApiDeleteRouteRequest) (*RoutesListR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -130,7 +130,7 @@ func (api *RoutingApiService) DeleteRoute(r ApiDeleteRouteRequest) (*RoutesListR
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -179,7 +179,7 @@ func (api *RoutingApiService) DisableRoute(r ApiDisableRouteRequest) (*RouteDeta
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.DisableRoute")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/routes/{route_id}/disable"
@@ -227,11 +227,11 @@ func (api *RoutingApiService) DisableRoute(r ApiDisableRouteRequest) (*RouteDeta
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -246,7 +246,7 @@ func (api *RoutingApiService) DisableRoute(r ApiDisableRouteRequest) (*RouteDeta
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -295,7 +295,7 @@ func (api *RoutingApiService) EnableRoute(r ApiEnableRouteRequest) (*RouteDetail
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.EnableRoute")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/routes/{route_id}/enable"
@@ -343,11 +343,11 @@ func (api *RoutingApiService) EnableRoute(r ApiEnableRouteRequest) (*RouteDetail
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -362,7 +362,7 @@ func (api *RoutingApiService) EnableRoute(r ApiEnableRouteRequest) (*RouteDetail
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -419,7 +419,7 @@ func (api *RoutingApiService) GetRoutes(r ApiGetRoutesRequest) (*RoutesListRespo
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.GetRoutes")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/routes"
@@ -466,7 +466,7 @@ func (api *RoutingApiService) GetRoutes(r ApiGetRoutesRequest) (*RoutesListRespo
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -475,7 +475,7 @@ func (api *RoutingApiService) GetRoutes(r ApiGetRoutesRequest) (*RoutesListRespo
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -528,7 +528,7 @@ func (api *RoutingApiService) PostCreateRoute(r ApiPostCreateRouteRequest) (*Rou
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "RoutingApiService.PostCreateRoute")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/routes"
@@ -577,11 +577,11 @@ func (api *RoutingApiService) PostCreateRoute(r ApiPostCreateRouteRequest) (*Rou
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -596,7 +596,7 @@ func (api *RoutingApiService) PostCreateRoute(r ApiPostCreateRouteRequest) (*Rou
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

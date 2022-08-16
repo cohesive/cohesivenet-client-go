@@ -66,7 +66,7 @@ func (api *AccessApiService) CreateAccessUrl(r ApiCreateAccessURLRequest) (*Acce
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.CreateAccessUrl")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/url"
@@ -112,11 +112,11 @@ func (api *AccessApiService) CreateAccessUrl(r ApiCreateAccessURLRequest) (*Acce
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -131,7 +131,7 @@ func (api *AccessApiService) CreateAccessUrl(r ApiCreateAccessURLRequest) (*Acce
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -183,7 +183,7 @@ func (api *AccessApiService) CreateApiToken(r ApiCreateApiTokenRequest) (*Access
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.CreateApiToken")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/token"
@@ -229,11 +229,11 @@ func (api *AccessApiService) CreateApiToken(r ApiCreateApiTokenRequest) (*Access
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -248,7 +248,7 @@ func (api *AccessApiService) CreateApiToken(r ApiCreateApiTokenRequest) (*Access
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -297,7 +297,7 @@ func (api *AccessApiService) DeleteAccessUrl(r ApiDeleteAccessUrlRequest) (*Simp
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.DeleteAccessUrl")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/url/{access_url_id}"
@@ -342,11 +342,11 @@ func (api *AccessApiService) DeleteAccessUrl(r ApiDeleteAccessUrlRequest) (*Simp
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -360,7 +360,7 @@ func (api *AccessApiService) DeleteAccessUrl(r ApiDeleteAccessUrlRequest) (*Simp
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -412,7 +412,7 @@ func (api *AccessApiService) DeleteAccessUrlBySearch(r ApiDeleteAccessUrlBySearc
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.DeleteAccessUrlBySearch")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/url"
@@ -458,11 +458,11 @@ func (api *AccessApiService) DeleteAccessUrlBySearch(r ApiDeleteAccessUrlBySearc
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -476,7 +476,7 @@ func (api *AccessApiService) DeleteAccessUrlBySearch(r ApiDeleteAccessUrlBySearc
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -525,7 +525,7 @@ func (api *AccessApiService) DeleteApiToken(r ApiDeleteApiTokenRequest) (*Simple
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.DeleteApiToken")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/token/{token_id}"
@@ -570,11 +570,11 @@ func (api *AccessApiService) DeleteApiToken(r ApiDeleteApiTokenRequest) (*Simple
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -588,7 +588,7 @@ func (api *AccessApiService) DeleteApiToken(r ApiDeleteApiTokenRequest) (*Simple
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -637,7 +637,7 @@ func (api *AccessApiService) GetAccessUrl(r ApiGetAccessUrlRequest) (*AccessUrlD
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetAccessUrl")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/url/{access_url_id}"
@@ -682,11 +682,11 @@ func (api *AccessApiService) GetAccessUrl(r ApiGetAccessUrlRequest) (*AccessUrlD
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -700,7 +700,7 @@ func (api *AccessApiService) GetAccessUrl(r ApiGetAccessUrlRequest) (*AccessUrlD
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -746,7 +746,7 @@ func (api *AccessApiService) GetAccessUrls(r ApiGetAccessUrlsRequest) (*AccessUr
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetAccessUrls")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/urls"
@@ -790,7 +790,7 @@ func (api *AccessApiService) GetAccessUrls(r ApiGetAccessUrlsRequest) (*AccessUr
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -799,7 +799,7 @@ func (api *AccessApiService) GetAccessUrls(r ApiGetAccessUrlsRequest) (*AccessUr
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -848,7 +848,7 @@ func (api *AccessApiService) GetApiToken(r ApiGetApiTokenRequest) (*AccessTokenD
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetApiToken")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/token/{token_id}"
@@ -893,11 +893,11 @@ func (api *AccessApiService) GetApiToken(r ApiGetApiTokenRequest) (*AccessTokenD
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -911,7 +911,7 @@ func (api *AccessApiService) GetApiToken(r ApiGetApiTokenRequest) (*AccessTokenD
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -957,7 +957,7 @@ func (api *AccessApiService) GetApiTokens(r ApiGetApiTokensRequest) (*AccessToke
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetApiTokens")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/access/tokens"
@@ -1001,7 +1001,7 @@ func (api *AccessApiService) GetApiTokens(r ApiGetApiTokensRequest) (*AccessToke
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1010,7 +1010,7 @@ func (api *AccessApiService) GetApiTokens(r ApiGetApiTokensRequest) (*AccessToke
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1061,7 +1061,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetIdentityControllerSettings")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/identity/controller"
@@ -1105,7 +1105,7 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
@@ -1114,7 +1114,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1160,7 +1160,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetIdentityVPNSettings")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/identity/vpn"
@@ -1204,7 +1204,7 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
@@ -1213,7 +1213,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1265,7 +1265,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PostTestIdentityControllerSettings")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/identity/controller/test"
@@ -1311,7 +1311,7 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
@@ -1320,7 +1320,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1372,7 +1372,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PostTestIdentityVPNSettings")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/identity/vpn/test"
@@ -1418,7 +1418,7 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
@@ -1427,7 +1427,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1482,7 +1482,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutExpireAccessUrl")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/access/url/{access_url_id}"
@@ -1529,11 +1529,11 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
-// 		if localVarHTTPResponse.StatusCode == 404 {
+// 		if localVarHTTPResponse.StatusCode >= 400 {
 // 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
@@ -1547,7 +1547,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1602,7 +1602,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutExpireApiToken")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/access/token/{token_id}"
@@ -1649,11 +1649,11 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
-// 		if localVarHTTPResponse.StatusCode == 404 {
+// 		if localVarHTTPResponse.StatusCode >= 400 {
 // 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
@@ -1667,7 +1667,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1719,7 +1719,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutIdentityControllerSettings")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/identity/controller"
@@ -1765,7 +1765,7 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
@@ -1774,7 +1774,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1826,7 +1826,7 @@ TODO Identity API endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutIdentityVPNSettings")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/identity/vpn"
@@ -1872,7 +1872,7 @@ TODO Identity API endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
@@ -1881,7 +1881,7 @@ TODO Identity API endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}

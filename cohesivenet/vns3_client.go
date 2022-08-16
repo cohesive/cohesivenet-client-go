@@ -625,24 +625,59 @@ func strlen(s string) int {
 	return utf8.RuneCountInString(s)
 }
 
-// GenericOpenAPIError Provides access to the body, error and model on returned errors.
-type GenericOpenAPIError struct {
+// GenericAPIError Provides access to the body, error and model on returned errors.
+type GenericAPIError struct {
 	body  []byte
 	error string
 	model interface{}
 }
 
 // Error returns non-empty string if there was an error.
-func (e GenericOpenAPIError) Error() string {
+func (e GenericAPIError) Error() string {
 	return e.error
 }
 
 // Body returns the raw bytes of the response
-func (e GenericOpenAPIError) Body() []byte {
+func (e GenericAPIError) Body() []byte {
 	return e.body
 }
 
 // Model returns the unpacked model of the error
-func (e GenericOpenAPIError) Model() interface{} {
+func (e GenericAPIError) Model() interface{} {
 	return e.model
+}
+
+// Model returns the unpacked model of the error
+func (e GenericAPIError) HasApiError() bool {
+	_, isValid := e.model.(ErrorResponse)
+	return isValid
+}
+
+func (e GenericAPIError) GetMessage() string {
+	errResponse, isValid := e.model.(ErrorResponse)
+	if isValid {
+		return (&errResponse).GetErrorMessage()
+	} else {
+		return e.Error()
+	}
+}
+
+// Model returns the unpacked model of the error
+func (e GenericAPIError) GetErrorMessage() string {
+	errResponse := e.model.(ErrorResponse)
+	return (&errResponse).GetErrorMessage()
+}
+
+// Model returns the unpacked model of the error
+func (e GenericAPIError) GetErrorName() string {
+	errResponse := e.model.(ErrorResponse)
+	errObject := (&errResponse).GetApiError()
+	return errObject.GetName()
+}
+
+// Model returns the unpacked model of the error
+func (e GenericAPIError) GetErrorLog() string {
+	errResponse := e.model.(ErrorResponse)
+	errObject := (&errResponse).GetApiError()
+	return errObject.GetLog()
 }

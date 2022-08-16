@@ -63,7 +63,7 @@ func (api *IpsecApiService) DeleteIpsecEndpoint(r ApiDeleteIpsecEndpointRequest)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpoint")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}"
@@ -111,11 +111,11 @@ func (api *IpsecApiService) DeleteIpsecEndpoint(r ApiDeleteIpsecEndpointRequest)
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -130,7 +130,7 @@ func (api *IpsecApiService) DeleteIpsecEndpoint(r ApiDeleteIpsecEndpointRequest)
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -182,7 +182,7 @@ func (api *IpsecApiService) DeleteIpsecEndpointTunnel(r ApiDeleteIpsecEndpointTu
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecEndpointTunnel")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/tunnels/{tunnel_id}"
@@ -231,11 +231,11 @@ func (api *IpsecApiService) DeleteIpsecEndpointTunnel(r ApiDeleteIpsecEndpointTu
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -250,7 +250,7 @@ func (api *IpsecApiService) DeleteIpsecEndpointTunnel(r ApiDeleteIpsecEndpointTu
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -302,7 +302,7 @@ func (api *IpsecApiService) DeleteIpsecTrafficPair(r ApiDeleteIpsecTrafficPairRe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DeleteIpsecTrafficPair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/traffic_pairs/{pair_id}"
@@ -351,11 +351,11 @@ func (api *IpsecApiService) DeleteIpsecTrafficPair(r ApiDeleteIpsecTrafficPairRe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -370,7 +370,7 @@ func (api *IpsecApiService) DeleteIpsecTrafficPair(r ApiDeleteIpsecTrafficPairRe
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -422,7 +422,7 @@ func (api *IpsecApiService) DisableIpsecTrafficPair(r ApiDisableIpsecTrafficPair
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.DisableIpsecTrafficPair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/traffic_pairs/{pair_id}/disable"
@@ -471,11 +471,11 @@ func (api *IpsecApiService) DisableIpsecTrafficPair(r ApiDisableIpsecTrafficPair
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -485,21 +485,12 @@ func (api *IpsecApiService) DisableIpsecTrafficPair(r ApiDisableIpsecTrafficPair
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponse
-			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -551,7 +542,7 @@ func (api *IpsecApiService) EnableIpsecTrafficPair(r ApiEnableIpsecTrafficPairRe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.EnableIpsecTrafficPair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/traffic_pairs/{pair_id}/enable"
@@ -600,11 +591,11 @@ func (api *IpsecApiService) EnableIpsecTrafficPair(r ApiEnableIpsecTrafficPairRe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -614,21 +605,12 @@ func (api *IpsecApiService) EnableIpsecTrafficPair(r ApiEnableIpsecTrafficPairRe
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponse
-			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -681,7 +663,7 @@ func (api *IpsecApiService) GetConnectedSubnets(r ApiGetConnectedSubnetsRequest)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetConnectedSubnets")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/status/connected_subnets"
@@ -728,7 +710,7 @@ func (api *IpsecApiService) GetConnectedSubnets(r ApiGetConnectedSubnetsRequest)
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -737,7 +719,7 @@ func (api *IpsecApiService) GetConnectedSubnets(r ApiGetConnectedSubnetsRequest)
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -783,7 +765,7 @@ func (api *IpsecApiService) GetIpsecDetails(r ApiGetIpsecDetailsRequest) (*Ipsec
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecDetails")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec"
@@ -827,7 +809,7 @@ func (api *IpsecApiService) GetIpsecDetails(r ApiGetIpsecDetailsRequest) (*Ipsec
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -836,7 +818,7 @@ func (api *IpsecApiService) GetIpsecDetails(r ApiGetIpsecDetailsRequest) (*Ipsec
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -885,7 +867,7 @@ func (api *IpsecApiService) GetIpsecEndpoint(r ApiGetIpsecEndpointRequest) (*Ips
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecEndpoint")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}"
@@ -933,7 +915,7 @@ func (api *IpsecApiService) GetIpsecEndpoint(r ApiGetIpsecEndpointRequest) (*Ips
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -942,7 +924,7 @@ func (api *IpsecApiService) GetIpsecEndpoint(r ApiGetIpsecEndpointRequest) (*Ips
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1009,7 +991,7 @@ func (api *IpsecApiService) GetIpsecLinkHistory(r ApiGetIpsecLinkHistoryRequest)
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecLinkHistory")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/status/link_history"
@@ -1062,11 +1044,11 @@ func (api *IpsecApiService) GetIpsecLinkHistory(r ApiGetIpsecLinkHistoryRequest)
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1081,7 +1063,7 @@ func (api *IpsecApiService) GetIpsecLinkHistory(r ApiGetIpsecLinkHistoryRequest)
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1134,7 +1116,7 @@ func (api *IpsecApiService) GetIpsecStatus(r ApiGetIpsecStatusRequest) (*IpsecTu
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.GetIpsecStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/status/ipsec"
@@ -1181,7 +1163,7 @@ func (api *IpsecApiService) GetIpsecStatus(r ApiGetIpsecStatusRequest) (*IpsecTu
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1190,7 +1172,7 @@ func (api *IpsecApiService) GetIpsecStatus(r ApiGetIpsecStatusRequest) (*IpsecTu
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1242,7 +1224,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpoint(r ApiPostCreateIpsecEndpoint
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpoint")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints"
@@ -1291,11 +1273,11 @@ func (api *IpsecApiService) PostCreateIpsecEndpoint(r ApiPostCreateIpsecEndpoint
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1310,7 +1292,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpoint(r ApiPostCreateIpsecEndpoint
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1365,7 +1347,7 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(r ApiPostCreateIpsecEn
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecEndpointTunnel")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/tunnels"
@@ -1418,11 +1400,11 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(r ApiPostCreateIpsecEn
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1432,21 +1414,12 @@ func (api *IpsecApiService) PostCreateIpsecEndpointTunnel(r ApiPostCreateIpsecEn
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponse
-			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1501,7 +1474,7 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPair(r ApiPostCreateIpsecTraff
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostCreateIpsecTrafficPair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/traffic_pairs"
@@ -1554,11 +1527,11 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPair(r ApiPostCreateIpsecTraff
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1568,21 +1541,12 @@ func (api *IpsecApiService) PostCreateIpsecTrafficPair(r ApiPostCreateIpsecTraff
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponse
-			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1634,7 +1598,7 @@ func (api *IpsecApiService) PostRestartIpsecAction(r ApiPostRestartIpsecActionRe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PostRestartIpsecAction")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec"
@@ -1683,11 +1647,11 @@ func (api *IpsecApiService) PostRestartIpsecAction(r ApiPostRestartIpsecActionRe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1702,7 +1666,7 @@ func (api *IpsecApiService) PostRestartIpsecAction(r ApiPostRestartIpsecActionRe
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1755,7 +1719,7 @@ func (api *IpsecApiService) PutUpdateIpsecConfig(r ApiPutUpdateIpsecConfigReques
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecConfig")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec"
@@ -1804,11 +1768,11 @@ func (api *IpsecApiService) PutUpdateIpsecConfig(r ApiPutUpdateIpsecConfigReques
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1823,7 +1787,7 @@ func (api *IpsecApiService) PutUpdateIpsecConfig(r ApiPutUpdateIpsecConfigReques
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1878,7 +1842,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpoint(r ApiPutUpdateIpsecEndpointRe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpoint")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}"
@@ -1931,11 +1895,11 @@ func (api *IpsecApiService) PutUpdateIpsecEndpoint(r ApiPutUpdateIpsecEndpointRe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1950,7 +1914,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpoint(r ApiPutUpdateIpsecEndpointRe
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2008,7 +1972,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(r ApiPutUpdateIpsecEndp
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecEndpointTunnel")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/tunnels/{tunnel_id}"
@@ -2062,11 +2026,11 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(r ApiPutUpdateIpsecEndp
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2081,7 +2045,7 @@ func (api *IpsecApiService) PutUpdateIpsecEndpointTunnel(r ApiPutUpdateIpsecEndp
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2139,7 +2103,7 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPair(r ApiPutUpdateIpsecTraffic
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "IpsecApiService.PutUpdateIpsecTrafficPair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ipsec/endpoints/{endpoint_id}/traffic_pairs/{pair_id}"
@@ -2193,11 +2157,11 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPair(r ApiPutUpdateIpsecTraffic
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2207,21 +2171,12 @@ func (api *IpsecApiService) PutUpdateIpsecTrafficPair(r ApiPutUpdateIpsecTraffic
 			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponse
-			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

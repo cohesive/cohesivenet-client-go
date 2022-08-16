@@ -60,7 +60,7 @@ func (api *SystemAdministrationApiService) GetCloudData(r ApiGetCloudDataRequest
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetCloudData")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/cloud_data"
@@ -104,7 +104,7 @@ func (api *SystemAdministrationApiService) GetCloudData(r ApiGetCloudDataRequest
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -113,7 +113,7 @@ func (api *SystemAdministrationApiService) GetCloudData(r ApiGetCloudDataRequest
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -159,7 +159,7 @@ func (api *SystemAdministrationApiService) GetRemoteSupportDetails(r ApiGetRemot
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetRemoteSupportDetails")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/remote_support"
@@ -203,11 +203,11 @@ func (api *SystemAdministrationApiService) GetRemoteSupportDetails(r ApiGetRemot
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 401 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v interface{}
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -221,7 +221,7 @@ func (api *SystemAdministrationApiService) GetRemoteSupportDetails(r ApiGetRemot
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -267,7 +267,7 @@ func (api *SystemAdministrationApiService) GetRuntimeStatus(r ApiGetRuntimeStatu
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetRuntimeStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/status"
@@ -311,11 +311,11 @@ func (api *SystemAdministrationApiService) GetRuntimeStatus(r ApiGetRuntimeStatu
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -329,7 +329,7 @@ func (api *SystemAdministrationApiService) GetRuntimeStatus(r ApiGetRuntimeStatu
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -382,7 +382,7 @@ func (api *SystemAdministrationApiService) GetSystemStatus(r ApiGetSystemStatusR
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetSystemStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/status/system"
@@ -429,7 +429,7 @@ func (api *SystemAdministrationApiService) GetSystemStatus(r ApiGetSystemStatusR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -438,7 +438,7 @@ func (api *SystemAdministrationApiService) GetSystemStatus(r ApiGetSystemStatusR
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -490,7 +490,7 @@ func (api *SystemAdministrationApiService) GetTaskStatus(r ApiGetTaskStatusReque
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.GetTaskStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/status/task"
@@ -539,11 +539,11 @@ func (api *SystemAdministrationApiService) GetTaskStatus(r ApiGetTaskStatusReque
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -558,7 +558,7 @@ func (api *SystemAdministrationApiService) GetTaskStatus(r ApiGetTaskStatusReque
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -612,7 +612,7 @@ func (api *SystemAdministrationApiService) PostGenerateSupportKeypair(r ApiPostG
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PostGenerateSupportKeypair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/remote_support/keypair"
@@ -661,11 +661,11 @@ func (api *SystemAdministrationApiService) PostGenerateSupportKeypair(r ApiPostG
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -680,7 +680,7 @@ func (api *SystemAdministrationApiService) PostGenerateSupportKeypair(r ApiPostG
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -732,7 +732,7 @@ func (api *SystemAdministrationApiService) PutServerAction(r ApiPutServerActionR
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PutServerAction")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/server"
@@ -778,11 +778,11 @@ func (api *SystemAdministrationApiService) PutServerAction(r ApiPutServerActionR
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -797,7 +797,7 @@ func (api *SystemAdministrationApiService) PutServerAction(r ApiPutServerActionR
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -850,7 +850,7 @@ func (api *SystemAdministrationApiService) PutUpdateRemoteSupport(r ApiPutUpdate
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "SystemAdministrationApiService.PutUpdateRemoteSupport")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/remote_support"
@@ -896,12 +896,12 @@ func (api *SystemAdministrationApiService) PutUpdateRemoteSupport(r ApiPutUpdate
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -915,7 +915,7 @@ func (api *SystemAdministrationApiService) PutUpdateRemoteSupport(r ApiPutUpdate
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

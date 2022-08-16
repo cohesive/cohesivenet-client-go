@@ -332,29 +332,38 @@ func (v *NullableTime) UnmarshalJSON(src []byte) error {
 }
 
 
-func checkHttpError(err error) (bool, string) {
+/*
+	CheckHttpErrorUnavailable
+
+	Check if error is an http error that indicates the server is unavailable
+	and therefore can be retried. Return bool indicating whether error suggests server unavailable
+
+	@return (bool, string)
+*/
+func CheckHttpErrorUnavailable(err error) (bool, string) {
+	// 
     switch errT := err.(type) {
     case net.Error:
         errMessage := err.Error()
         if errT.Timeout() {
-            return false, "timeout"
+            return true, "timeout"
         } else if strings.Contains(errMessage, "certificate is not standards compliant") {
-            return true, "ssl"
+            return false, "ssl"
         } else if strings.Contains(errMessage, "connection refused") {
-			return false, "connrefused"
+			return true, "connrefused"
 		} else if strings.Contains(errMessage, "EOF") {
-			return false, "eof"
+			return true, "eof"
 		}
     case *url.Error:
         if errT, ok := errT.Err.(net.Error); ok && errT.Timeout() {
-            return false, "timeout"
+            return true, "timeout"
         }
     default:
         errMessage := err.Error()
         if strings.Contains(errMessage, "connection refused") {
-            return false, "connrefused"
+            return true, "connrefused"
         }
-        return true, errMessage
+        return false, errMessage
     }
 
     return true, err.Error()

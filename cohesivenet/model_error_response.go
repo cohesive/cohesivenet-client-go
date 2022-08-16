@@ -17,7 +17,7 @@ import (
 
 // Error struct for Error
 type ErrorResponse struct {
-	Error *Error `json:"error,omitempty"`
+	Error *ApiError `json:"error,omitempty"`
 }
 
 // NewErrorResponse instantiates a new ErrorResponse object
@@ -38,17 +38,27 @@ func NewErrorResponseWithDefaults() *ErrorResponse {
 }
 
 // GetErrorResponse returns the ErrorResponse field value if set, zero value otherwise.
-func (o *ErrorResponse) GetError() Error {
+func (o *ErrorResponse) GetApiError() ApiError {
 	if o == nil || o.Error == nil {
-		var ret Error
+		var ret ApiError
 		return ret
 	}
 	return *o.Error
 }
 
+// GetErrorMessage returns the Error objects message, zero value otherwise.
+func (o *ErrorResponse) GetErrorMessage() string {
+	if o == nil || o.Error == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Error.GetMessage()
+}
+
 // GetErrorResponseOk returns a tuple with the ErrorResponse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetErrorOk() (*Error, bool) {
+func (o *ErrorResponse) GetErrorOk() (*ApiError, bool) {
 	if o == nil || o.Error == nil {
 		return nil, false
 	}
@@ -65,7 +75,7 @@ func (o *ErrorResponse) HasError() bool {
 }
 
 // SetError gets a reference to the given Error and assigns it to the Error field.
-func (o *ErrorResponse) SetError(v Error) {
+func (o *ErrorResponse) SetError(v ApiError) {
 	o.Error = &v
 }
 

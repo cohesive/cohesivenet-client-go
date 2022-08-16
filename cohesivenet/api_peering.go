@@ -64,7 +64,7 @@ func (api *PeeringApiService) DeletePeer(r ApiDeletePeerRequest) (*PeersDetailRe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.DeletePeer")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/peering/peers/{peer_id}"
@@ -109,11 +109,11 @@ func (api *PeeringApiService) DeletePeer(r ApiDeletePeerRequest) (*PeersDetailRe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -128,7 +128,7 @@ func (api *PeeringApiService) DeletePeer(r ApiDeletePeerRequest) (*PeersDetailRe
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -174,7 +174,7 @@ func (api *PeeringApiService) GetPeeringStatus(r ApiGetPeeringStatusRequest) (*P
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.GetPeeringStatus")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/peering"
@@ -218,7 +218,7 @@ func (api *PeeringApiService) GetPeeringStatus(r ApiGetPeeringStatusRequest) (*P
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -227,7 +227,7 @@ func (api *PeeringApiService) GetPeeringStatus(r ApiGetPeeringStatusRequest) (*P
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -280,7 +280,7 @@ func (api *PeeringApiService) PostCreatePeer(r ApiPostCreatePeerRequest) (*Peers
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.PostCreatePeer")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/peering/peers"
@@ -329,11 +329,11 @@ func (api *PeeringApiService) PostCreatePeer(r ApiPostCreatePeerRequest) (*Peers
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -348,7 +348,7 @@ func (api *PeeringApiService) PostCreatePeer(r ApiPostCreatePeerRequest) (*Peers
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -400,7 +400,7 @@ func (api *PeeringApiService) PutSelfPeeringId(r ApiPutSelfPeeringIdRequest) (*P
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.PutSelfPeeringId")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/peering/self"
@@ -449,11 +449,11 @@ func (api *PeeringApiService) PutSelfPeeringId(r ApiPutSelfPeeringIdRequest) (*P
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -468,7 +468,7 @@ func (api *PeeringApiService) PutSelfPeeringId(r ApiPutSelfPeeringIdRequest) (*P
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -524,7 +524,7 @@ func (api *PeeringApiService) PutUpdatePeer(r ApiPutUpdatePeerRequest) (*PeersDe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "PeeringApiService.PutUpdatePeer")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/peering/peers/{peer_id}"
@@ -574,11 +574,11 @@ func (api *PeeringApiService) PutUpdatePeer(r ApiPutUpdatePeerRequest) (*PeersDe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -593,7 +593,7 @@ func (api *PeeringApiService) PutUpdatePeer(r ApiPutUpdatePeerRequest) (*PeersDe
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}

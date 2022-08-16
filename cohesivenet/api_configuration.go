@@ -66,7 +66,7 @@ func (api *ConfigurationApiService) DeleteCustomVariable(r ApiDeleteCustomVariab
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.DeleteCustomVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/variables/{name}"
@@ -111,11 +111,11 @@ func (api *ConfigurationApiService) DeleteCustomVariable(r ApiDeleteCustomVariab
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -129,7 +129,7 @@ func (api *ConfigurationApiService) DeleteCustomVariable(r ApiDeleteCustomVariab
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -183,7 +183,7 @@ func (api *ConfigurationApiService) GetVariableCollections(r ApiGetVariableColle
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetVariableCollections")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/variable-collections"
@@ -230,7 +230,7 @@ func (api *ConfigurationApiService) GetVariableCollections(r ApiGetVariableColle
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -239,7 +239,7 @@ func (api *ConfigurationApiService) GetVariableCollections(r ApiGetVariableColle
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -285,7 +285,7 @@ func (api *ConfigurationApiService) GetVariables(r ApiGetVariablesRequest) (*Var
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetVariables")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/variables"
@@ -329,7 +329,7 @@ func (api *ConfigurationApiService) GetVariables(r ApiGetVariablesRequest) (*Var
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -338,7 +338,7 @@ func (api *ConfigurationApiService) GetVariables(r ApiGetVariablesRequest) (*Var
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -390,7 +390,7 @@ func (api *ConfigurationApiService) PostCreateCustomVariable(r ApiPostCreateCust
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostCreateCustomVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/variables"
@@ -439,11 +439,11 @@ func (api *ConfigurationApiService) PostCreateCustomVariable(r ApiPostCreateCust
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -458,7 +458,7 @@ func (api *ConfigurationApiService) PostCreateCustomVariable(r ApiPostCreateCust
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -504,7 +504,7 @@ func (api *ConfigurationApiService) GetConfig(r ApiGetConfigRequest) (*ConfigDet
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetConfig")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/config"
@@ -548,7 +548,7 @@ func (api *ConfigurationApiService) GetConfig(r ApiGetConfigRequest) (*ConfigDet
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -557,7 +557,7 @@ func (api *ConfigurationApiService) GetConfig(r ApiGetConfigRequest) (*ConfigDet
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -604,7 +604,7 @@ func (api *ConfigurationApiService) GetKeyset(r ApiGetKeysetRequest) (*KeysetDet
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetKeyset")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/keyset"
@@ -648,11 +648,11 @@ func (api *ConfigurationApiService) GetKeyset(r ApiGetKeysetRequest) (*KeysetDet
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -666,7 +666,7 @@ func (api *ConfigurationApiService) GetKeyset(r ApiGetKeysetRequest) (*KeysetDet
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -712,7 +712,7 @@ func (api *ConfigurationApiService) GetLicense(r ApiGetLicenseRequest) (*License
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetLicense")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/license"
@@ -756,11 +756,11 @@ func (api *ConfigurationApiService) GetLicense(r ApiGetLicenseRequest) (*License
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 403 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -774,7 +774,7 @@ func (api *ConfigurationApiService) GetLicense(r ApiGetLicenseRequest) (*License
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -827,7 +827,7 @@ func (api *ConfigurationApiService) GetMsConfig(r ApiGetMsConfigRequest) (*Alert
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetMsConfig")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ms"
@@ -874,7 +874,7 @@ func (api *ConfigurationApiService) GetMsConfig(r ApiGetMsConfigRequest) (*Alert
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -883,7 +883,7 @@ func (api *ConfigurationApiService) GetMsConfig(r ApiGetMsConfigRequest) (*Alert
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -929,7 +929,7 @@ func (api *ConfigurationApiService) GetSSLCerts(r ApiGetSSLCertsRequest) (*SSLCe
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetSSLCerts")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/ssl"
@@ -973,7 +973,7 @@ func (api *ConfigurationApiService) GetSSLCerts(r ApiGetSSLCertsRequest) (*SSLCe
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -982,7 +982,7 @@ func (api *ConfigurationApiService) GetSSLCerts(r ApiGetSSLCertsRequest) (*SSLCe
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1036,7 +1036,7 @@ TODO SSL Endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetSslInstallStatus")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/system/ssl/install/{uuid}"
@@ -1081,11 +1081,11 @@ TODO SSL Endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
-// 		if localVarHTTPResponse.StatusCode == 404 {
+// 		if localVarHTTPResponse.StatusCode >= 400 {
 // 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
@@ -1099,7 +1099,7 @@ TODO SSL Endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1146,7 +1146,7 @@ TODO SSL Endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutInstallSslKeypair")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/system/ssl/install"
@@ -1190,11 +1190,11 @@ TODO SSL Endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
-// 		if localVarHTTPResponse.StatusCode == 400 {
+// 		if localVarHTTPResponse.StatusCode >= 400 {
 // 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
@@ -1209,7 +1209,7 @@ TODO SSL Endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1261,7 +1261,7 @@ TODO MS config Endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostSendTestMsAlert")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/ms/alert/test"
@@ -1305,11 +1305,11 @@ TODO MS config Endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
-// 		if localVarHTTPResponse.StatusCode == 400 {
+// 		if localVarHTTPResponse.StatusCode >= 400 {
 // 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
@@ -1324,7 +1324,7 @@ TODO MS config Endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1376,7 +1376,7 @@ TODO MS config Endpoints
 
 // 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostSetMsConfig")
 // 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 // 	}
 
 // 	localVarPath := localBasePath + "/ms"
@@ -1425,11 +1425,11 @@ TODO MS config Endpoints
 // 	}
 
 // 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: localVarHTTPResponse.Status,
 // 		}
-// 		if localVarHTTPResponse.StatusCode == 400 {
+// 		if localVarHTTPResponse.StatusCode >= 400 {
 // 			var v ErrorResponse
 // 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 			if err != nil {
@@ -1444,7 +1444,7 @@ TODO MS config Endpoints
 
 // 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 // 	if err != nil {
-// 		newErr := &GenericOpenAPIError{
+// 		newErr := &GenericAPIError{
 // 			body:  localVarBody,
 // 			error: err.Error(),
 // 		}
@@ -1497,7 +1497,7 @@ func (api *ConfigurationApiService) PutConfig(r ApiPutConfigRequest) (*ConfigDet
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutConfig")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/config"
@@ -1546,11 +1546,11 @@ func (api *ConfigurationApiService) PutConfig(r ApiPutConfigRequest) (*ConfigDet
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1565,7 +1565,7 @@ func (api *ConfigurationApiService) PutConfig(r ApiPutConfigRequest) (*ConfigDet
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1618,7 +1618,7 @@ func (api *ConfigurationApiService) PutKeyset(r ApiPutKeysetRequest) (*KeysetDet
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutKeyset")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/keyset"
@@ -1667,11 +1667,11 @@ func (api *ConfigurationApiService) PutKeyset(r ApiPutKeysetRequest) (*KeysetDet
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1686,7 +1686,7 @@ func (api *ConfigurationApiService) PutKeyset(r ApiPutKeysetRequest) (*KeysetDet
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1739,7 +1739,7 @@ func (api *ConfigurationApiService) PutLicenseUpgrade(r ApiPutLicenseUpgradeRequ
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutLicenseUpgrade")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/license/upgrade"
@@ -1788,7 +1788,7 @@ func (api *ConfigurationApiService) PutLicenseUpgrade(r ApiPutLicenseUpgradeRequ
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
@@ -1797,7 +1797,7 @@ func (api *ConfigurationApiService) PutLicenseUpgrade(r ApiPutLicenseUpgradeRequ
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1849,7 +1849,7 @@ func (api *ConfigurationApiService) PutSetLicenseParameters(r ApiPutSetLicensePa
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutSetLicenseParameters")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/license/parameters"
@@ -1898,11 +1898,11 @@ func (api *ConfigurationApiService) PutSetLicenseParameters(r ApiPutSetLicensePa
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -1917,7 +1917,7 @@ func (api *ConfigurationApiService) PutSetLicenseParameters(r ApiPutSetLicensePa
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -1970,7 +1970,7 @@ func (api *ConfigurationApiService) PutUpdateAdminUi(r ApiPutUpdateAdminUiReques
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUpdateAdminUi")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/admin_ui"
@@ -2019,11 +2019,11 @@ func (api *ConfigurationApiService) PutUpdateAdminUi(r ApiPutUpdateAdminUiReques
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2038,7 +2038,7 @@ func (api *ConfigurationApiService) PutUpdateAdminUi(r ApiPutUpdateAdminUiReques
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2091,7 +2091,7 @@ func (api *ConfigurationApiService) PutUpdateApiPassword(r ApiPutUpdateApiPasswo
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUpdateApiPassword")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api_password"
@@ -2140,11 +2140,11 @@ func (api *ConfigurationApiService) PutUpdateApiPassword(r ApiPutUpdateApiPasswo
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2159,7 +2159,7 @@ func (api *ConfigurationApiService) PutUpdateApiPassword(r ApiPutUpdateApiPasswo
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2214,7 +2214,7 @@ func (api *ConfigurationApiService) PutUpdateCustomVariable(r ApiPutUpdateCustom
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUpdateCustomVariable")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/variables/{name}"
@@ -2264,11 +2264,11 @@ func (api *ConfigurationApiService) PutUpdateCustomVariable(r ApiPutUpdateCustom
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2282,7 +2282,7 @@ func (api *ConfigurationApiService) PutUpdateCustomVariable(r ApiPutUpdateCustom
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2334,7 +2334,7 @@ func (api *ConfigurationApiService) PutUploadSslKeypair(r ApiPutUploadSslKeypair
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutUploadSslKeypair")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/system/ssl/keypair"
@@ -2383,11 +2383,11 @@ func (api *ConfigurationApiService) PutUploadSslKeypair(r ApiPutUploadSslKeypair
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2402,7 +2402,7 @@ func (api *ConfigurationApiService) PutUploadSslKeypair(r ApiPutUploadSslKeypair
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2454,7 +2454,7 @@ func (api *ConfigurationApiService) UpdateMsConfig(r ApiUpdateMsConfigRequest) (
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.UpdateMsConfig")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ms"
@@ -2503,11 +2503,11 @@ func (api *ConfigurationApiService) UpdateMsConfig(r ApiUpdateMsConfigRequest) (
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2522,7 +2522,7 @@ func (api *ConfigurationApiService) UpdateMsConfig(r ApiUpdateMsConfigRequest) (
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2575,7 +2575,7 @@ func (api *ConfigurationApiService) UploadLicense(r ApiUploadLicenseRequest) (*I
 
 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.UploadLicense")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/license"
@@ -2624,11 +2624,11 @@ func (api *ConfigurationApiService) UploadLicense(r ApiUploadLicenseRequest) (*I
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
+		if localVarHTTPResponse.StatusCode >= 400 {
 			var v ErrorResponse
 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -2643,7 +2643,7 @@ func (api *ConfigurationApiService) UploadLicense(r ApiUploadLicenseRequest) (*I
 
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
-		newErr := &GenericOpenAPIError{
+		newErr := &GenericAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
@@ -2675,11 +2675,11 @@ func (api *ConfigurationApiService) WaitForDown(ctx *context.Context, timeout in
 	start := time.Now()
 	elapsed := time.Now().Sub(start).Seconds()
 	for elapsed < float64(timeout) {
-		api.client.Log.Debug(fmt.Sprintf("Waiting VNS3 Down. Elapsed %v.", int(elapsed)))
+		api.client.Log.Debug(fmt.Sprintf("Waiting VNS3 Down. Elapsed %vs", int(elapsed)))
 		_, _, err := api.GetConfig(req)
 
 		if err != nil {
-			if fatal, _ := checkHttpError(err); !fatal {
+			if unavailable, _ := CheckHttpErrorUnavailable(err); unavailable {
 				return true, nil
 			} else {
 				return false, err
@@ -2718,11 +2718,11 @@ func (api *ConfigurationApiService) WaitForApi(ctx *context.Context, timeout int
 	start := time.Now()
     elapsed := time.Now().Sub(start).Seconds()
     for elapsed < float64(timeout) {
-		api.client.Log.Debug(fmt.Sprintf("Polling VNS3. Elapsed %v. Success=%v", int(elapsed), pingSuccess))
+		api.client.Log.Debug(fmt.Sprintf("Polling VNS3. Elapsed %vs. Success=%v", int(elapsed), pingSuccess))
         resp, _, err := api.GetConfig(req)
 
         if err != nil {
-            if fatal, _ := checkHttpError(err); fatal {
+            if unavailable, _ := CheckHttpErrorUnavailable(err); !unavailable {
                 return nil, err
             }
 
@@ -2751,7 +2751,7 @@ Query keyset generation status
  @param keysetPresent true/false if true, will wait for keyset to be present
  @return (bool, error)
 */
-func (api *ConfigurationApiService) WaitForKeyset(ctx *context.Context, timeout int, sleep int, keysetPresent bool) (*KeysetStatus, error) {
+func (api *ConfigurationApiService) WaitForKeyset(ctx *context.Context, timeout int, sleep int, waitkeysetPresent bool) (*KeysetStatus, error) {
 	var reqCtx context.Context
 	if ctx == nil {
 		reqCtx = context.Background()
@@ -2764,18 +2764,19 @@ func (api *ConfigurationApiService) WaitForKeyset(ctx *context.Context, timeout 
 
     elapsed := time.Now().Sub(start).Seconds()
     for elapsed < float64(timeout) {
-        api.client.Log.Debug(fmt.Sprintf("Polling keyset VNS3. Elapsed %v", int(elapsed)))
+        api.client.Log.Debug(fmt.Sprintf("Polling keyset VNS3. Elapsed %vs", int(elapsed)))
         resp, _, err := api.GetKeyset(req)
 
         if err != nil {
-            if fatal, _ := checkHttpError(err); fatal {
+            if unavailable, _ := CheckHttpErrorUnavailable(err); !unavailable {
                 return nil, fmt.Errorf("GetKeyset failed: %+v", err)
             }
             time.Sleep(time.Duration(sleep) * time.Second)
-        } else if keysetPresent {
+        } else if waitkeysetPresent {
             inProgress := resp.Response.GetInProgress()
-            keysetPresent := resp.Response.GetKeysetPresent()
-            if !inProgress && keysetPresent {
+            isKeysetPresent := resp.Response.GetKeysetPresent()
+            if !inProgress && isKeysetPresent {
+				api.client.Log.Debug("Keyset present")
                 return resp.Response, nil
             }
             time.Sleep(time.Duration(sleep) * time.Second)

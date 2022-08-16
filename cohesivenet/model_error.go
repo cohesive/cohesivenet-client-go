@@ -15,32 +15,32 @@ import (
 	"encoding/json"
 )
 
-// Error struct for Error
-type Error struct {
+// ApiError struct for ApiError
+type ApiError struct {
 	Name *string `json:"name,omitempty"`
 	Log *string `json:"log,omitempty"`
 	Message *string `json:"message,omitempty"`
 }
 
-// NewError instantiates a new Error object
+// NewApiError instantiates a new ApiError object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewError() *Error {
-	this := Error{}
+func NewApiError() *ApiError {
+	this := ApiError{}
 	return &this
 }
 
-// NewErrorWithDefaults instantiates a new Error object
+// NewApiErrorWithDefaults instantiates a new ApiError object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewErrorWithDefaults() *Error {
-	this := Error{}
+func NewApiErrorWithDefaults() *ApiError {
+	this := ApiError{}
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *Error) GetName() string {
+func (o *ApiError) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *Error) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetNameOk() (*string, bool) {
+func (o *ApiError) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *Error) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *Error) HasName() bool {
+func (o *ApiError) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *Error) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Error) SetName(v string) {
+func (o *ApiError) SetName(v string) {
 	o.Name = &v
 }
 
 // GetLog returns the Log field value if set, zero value otherwise.
-func (o *Error) GetLog() string {
+func (o *ApiError) GetLog() string {
 	if o == nil || o.Log == nil {
 		var ret string
 		return ret
@@ -82,7 +82,7 @@ func (o *Error) GetLog() string {
 
 // GetLogOk returns a tuple with the Log field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetLogOk() (*string, bool) {
+func (o *ApiError) GetLogOk() (*string, bool) {
 	if o == nil || o.Log == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *Error) GetLogOk() (*string, bool) {
 }
 
 // HasLog returns a boolean if a field has been set.
-func (o *Error) HasLog() bool {
+func (o *ApiError) HasLog() bool {
 	if o != nil && o.Log != nil {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *Error) HasLog() bool {
 }
 
 // SetLog gets a reference to the given string and assigns it to the Log field.
-func (o *Error) SetLog(v string) {
+func (o *ApiError) SetLog(v string) {
 	o.Log = &v
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
-func (o *Error) GetMessage() string {
+func (o *ApiError) GetMessage() string {
 	if o == nil || o.Message == nil {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *Error) GetMessage() string {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetMessageOk() (*string, bool) {
+func (o *ApiError) GetMessageOk() (*string, bool) {
 	if o == nil || o.Message == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *Error) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *Error) HasMessage() bool {
+func (o *ApiError) HasMessage() bool {
 	if o != nil && o.Message != nil {
 		return true
 	}
@@ -131,11 +131,11 @@ func (o *Error) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given string and assigns it to the Message field.
-func (o *Error) SetMessage(v string) {
+func (o *ApiError) SetMessage(v string) {
 	o.Message = &v
 }
 
-func (o Error) MarshalJSON() ([]byte, error) {
+func (o ApiError) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
@@ -149,38 +149,38 @@ func (o Error) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableError struct {
-	value *Error
+type NullableApiError struct {
+	value *ApiError
 	isSet bool
 }
 
-func (v NullableError) Get() *Error {
+func (v NullableApiError) Get() *ApiError {
 	return v.value
 }
 
-func (v *NullableError) Set(val *Error) {
+func (v *NullableApiError) Set(val *ApiError) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableError) IsSet() bool {
+func (v NullableApiError) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableError) Unset() {
+func (v *NullableApiError) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableError(val *Error) *NullableError {
-	return &NullableError{value: val, isSet: true}
+func NewNullableApiError(val *ApiError) *NullableApiError {
+	return &NullableApiError{value: val, isSet: true}
 }
 
-func (v NullableError) MarshalJSON() ([]byte, error) {
+func (v NullableApiError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableError) UnmarshalJSON(src []byte) error {
+func (v *NullableApiError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
