@@ -681,3 +681,13 @@ func (e GenericAPIError) GetErrorLog() string {
 	errObject := (&errResponse).GetApiError()
 	return errObject.GetLog()
 }
+
+func ParseApiError(err error) *ErrorResponse {
+	openapiError, isApiError := err.(GenericAPIError)
+	if !isApiError {
+		return nil
+	}
+
+	errResponse := openapiError.model.(ErrorResponse)
+	return &errResponse
+}
