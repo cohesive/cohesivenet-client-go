@@ -22,7 +22,7 @@ type CreatePeerRequest struct {
 	// IP address or host name of the one you are peering with.
 	Name string `json:"name"`
 	// link MTU between 500 and 4800. Defaults to 1500
-	OverlayMtu *string `json:"overlay_mtu,omitempty"`
+	OverlayMtu *int `json:"overlay_mtu,omitempty"`
 	// Setting false will NOT finalize the peering operation.  A peer \"reconfigure\" call would then be required. Default is true 
 	Force *bool `json:"force,omitempty"`
 }
@@ -95,9 +95,9 @@ func (o *CreatePeerRequest) SetName(v string) {
 }
 
 // GetOverlayMtu returns the OverlayMtu field value if set, zero value otherwise.
-func (o *CreatePeerRequest) GetOverlayMtu() string {
+func (o *CreatePeerRequest) GetOverlayMtu() int {
 	if o == nil || o.OverlayMtu == nil {
-		var ret string
+		var ret int
 		return ret
 	}
 	return *o.OverlayMtu
@@ -105,7 +105,7 @@ func (o *CreatePeerRequest) GetOverlayMtu() string {
 
 // GetOverlayMtuOk returns a tuple with the OverlayMtu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreatePeerRequest) GetOverlayMtuOk() (*string, bool) {
+func (o *CreatePeerRequest) GetOverlayMtuOk() (*int, bool) {
 	if o == nil || o.OverlayMtu == nil {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *CreatePeerRequest) HasOverlayMtu() bool {
 }
 
 // SetOverlayMtu gets a reference to the given string and assigns it to the OverlayMtu field.
-func (o *CreatePeerRequest) SetOverlayMtu(v string) {
+func (o *CreatePeerRequest) SetOverlayMtu(v int) {
 	o.OverlayMtu = &v
 }
 
