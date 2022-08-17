@@ -2157,6 +2157,17 @@ func (api *ConfigurationApiService) PutUpdateApiPassword(r ApiPutUpdateApiPasswo
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
+	// if the current client is using basic auth with root api password then we need
+	// to update the client or else future calls will fail
+	currentClientConfig := api.client.GetConfig()
+	currentAuthType := *(currentClientConfig.AuthType)
+	if currentAuthType == ContextBasicAuth {
+		api.client.SetAuth(ContextBasicAuth, BasicAuth{
+			UserName: "api", // will change if we support different API users
+			Password: *(r.updatePasswordRequest.Password),
+		})
+	}
+
 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericAPIError{
