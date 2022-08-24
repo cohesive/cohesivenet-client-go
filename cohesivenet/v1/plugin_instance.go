@@ -8,7 +8,6 @@ import (
 	"strings"
 )
 
-/*
 func (c *Client) GetInstance(instanceUuid string) (InstanceResponse, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/container_system/containers", c.HostURL), nil)
 	if err != nil {
@@ -28,16 +27,17 @@ func (c *Client) GetInstance(instanceUuid string) (InstanceResponse, error) {
 	}
 
 	pluginInstance := InstanceResponse{}
-	for _, i := range instanceResponse.Instances.Containers {
-		//	if i.ID == instanceUuid {
-		pluginInstance.Instances.Containers = []Container{i}
-		//	}
+	for _, i := range instanceResponse.Instances {
+		if i.ID == instanceUuid {
+			pluginInstance.Instances = []Instance{i}
+		}
 	}
 
 	return pluginInstance, nil
 }
-*/
+
 /*
+reverted to "container_system/containers" api, need to revist
 func (c *Client) CreateInstance(instance *CreatePluginInstance) (CreatePluginInstanceResponse, error) {
 
 	rb, err := json.Marshal(instance)
@@ -131,16 +131,13 @@ func SimplifyInstanceJson(input string, import_uuid string) string {
 	for _, instance := range instances {
 		list += "{ "
 		values := instance.(map[string]interface{})
-		list += "\"id\":\"" + unmarshalInstanceString(values, "Id") + "\","
-		list += "\"image\":\"" + unmarshalInstanceString(values, "Image") + "\","
-		list += "\"hostname\":\"" + unmarshalInstanceString(values, "Hostname") + "\","
-		list += "\"ipaddress\":\"" + unmarshalInstanceString(values, "IPAddress") + "\","
-		list += "\"path\":\"" + unmarshalInstanceString(values, "Path") + "\","
-		//list += "\"import_id\":\"" + unmarshalImageString(values, "import_id") + "\","
-		//list += "\"created\":\"" + unmarshalImageString(values, "created") + "\"," // date
-		//list += "\"description\":\"" + unmarshalImageString(values, "description") + "\","
-		//list += "\"comment\":\"" + unmarshalImageString(values, "comment") + "\","
-		//list += "\"import_uuid\":\"" + import_uuid + "\","
+		list += "\"Id\":\"" + unmarshalInstanceString(values, "Id") + "\","
+		list += "\"Image\":\"" + unmarshalInstanceString(values, "Image") + "\","
+		list += "\"Hostname\":\"" + unmarshalInstanceString(values, "Hostname") + "\","
+		list += "\"Ipaddress\":\"" + unmarshalInstanceString(values, "IPAddress") + "\","
+		list += "\"Path\":\"" + unmarshalInstanceString(values, "Path") + "\","
+		list += "\"Hostname\":\"" + values["Config"].(map[string]interface{})["Hostname"].(string) + "\","
+		list += "\"Ipaddress\":\"" + values["NetworkSettings"].(map[string]interface{})["Networks"].(map[string]interface{})["cohesive.net"].(map[string]interface{})["IPAddress"].(string) + "\","
 		list = strings.TrimSuffix(list, ",") //remove last comma
 		list += " },"
 
