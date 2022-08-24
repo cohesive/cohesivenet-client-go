@@ -1,4 +1,4 @@
-# Golang Cohesivenet Client Library
+# Golang Cohesivenet Client Library - Work In Progress!!
 
 Cohesive networks VNS3 provides complete control of your network's addressing, routes, rules and edge enabling a secure, connected and reactive cloud network.
 
