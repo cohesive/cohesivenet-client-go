@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 	"strings"
+	"time"
 )
 
 func (c *Client) GetImage(imageId string) (ImageResponse, error) {
@@ -27,7 +30,7 @@ func (c *Client) GetImage(imageId string) (ImageResponse, error) {
 
 	pluginImage := ImageResponse{}
 	for _, i := range imageResponse.Images {
-		if i.ImportID == imageId {
+		if i.ID == imageId {
 			pluginImage.Images = []Image{i}
 		}
 	}
@@ -35,7 +38,7 @@ func (c *Client) GetImage(imageId string) (ImageResponse, error) {
 	return pluginImage, nil
 }
 
-func (c *Client) CreateImage(image *PluginImage) (CreateImageResponse, error) {
+func (c *Client) CreateImage(image *PluginImage) (ImageResponse, error) {
 
 	rb, err := json.Marshal(image)
 	if err != nil {
@@ -50,13 +53,69 @@ func (c *Client) CreateImage(image *PluginImage) (CreateImageResponse, error) {
 	if err2 != nil {
 		log.Println(err2)
 	}
-
 	newImage := CreateImageResponse{}
 	errUnmarshal := json.Unmarshal([]byte(body), &newImage)
 	if err != nil {
 		log.Println(errUnmarshal)
 	}
-	return newImage, err
+
+	// at this point, we have to poll for the image
+	// until it is created and returns an id
+	// we will poll by default for 300 seconds, every 5 seconds
+	// default can be overridden with VNS3_IMAGE_POLLING_MAX env variable
+	var response ImageResponse
+	polling_max_in_seconds := ImagePollingMax()
+	polling_interval := 5 //in seconds i.e. 5 seconds
+	counter_limit := polling_max_in_seconds / polling_interval
+	counter := 0
+
+	timer := time.Tick(5 * time.Second)
+	for _ = range timer {
+		req, err := http.NewRequest("GET", fmt.Sprintf("%s/container_system/images", c.HostURL), nil)
+		if err != nil {
+			log.Println(err)
+		}
+		body, err := c.doRequest(req)
+		if err != nil {
+			log.Println(err)
+		}
+
+		simpleJson := SimplifyImageJson(string(body), newImage.NewImage.Import_uuid)
+		imageResponse := ImageResponse{}
+		errUnmarshal := json.Unmarshal([]byte(simpleJson), &imageResponse)
+		if err != nil {
+			log.Println(errUnmarshal)
+		}
+
+		for _, i := range imageResponse.Images {
+			if i.ImportID == newImage.NewImage.Import_uuid && len(i.ID) != 0 {
+				response.Images = []Image{i}
+				break
+			}
+		}
+		if len(response.Images) != 0 {
+			break
+		}
+		counter++
+		// can't poll forever, jump out after limit_counter
+		if counter > counter_limit {
+			return response, fmt.Errorf("Timeout error while polling for image after creation."+
+				" Increase current polling seconds (%v) by setting VNS3_IMAGE_POLLING_MAX env variable", polling_max_in_seconds)
+		}
+	}
+	return response, err
+}
+
+func ImagePollingMax() int {
+	val := os.Getenv("VNS3_IMAGE_POLLING_MAX")
+	if val == "" {
+		val = "300"
+	}
+	polling, err := strconv.Atoi(val)
+	if err != nil {
+		return 300
+	}
+	return polling
 }
 
 func (c *Client) DeleteImage(imageId string) error {
