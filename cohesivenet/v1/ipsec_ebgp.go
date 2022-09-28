@@ -31,27 +31,6 @@ func (c *Client) GetEbgpPeer(endpointId string, ebgpPeerId string) (EbgpPeer, er
 	return ebgPeer, nil
 }
 
-/*
-func (c *Client) GetEbgpPeers() (EndpointResponse, error) {
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/status/ipsec", c.HostURL), nil)
-	if err != nil {
-		log.Println(err)
-	}
-
-	body, err := c.doRequest(req)
-	if err != nil {
-		log.Println(err)
-	}
-
-	endpoints := EndpointResponse{}
-	err = json.Unmarshal(body, &endpoints)
-	if err != nil {
-		log.Println(err)
-	}
-
-	return endpoints, nil
-}
-*/
 func (c *Client) CreateEbgpPeer(endpointId string, ebgp_peer *EbgpPeer) (*EbgpPeer, error) {
 
 	rb, err := json.Marshal(ebgp_peer)
@@ -82,38 +61,10 @@ func (c *Client) CreateEbgpPeer(endpointId string, ebgp_peer *EbgpPeer) (*EbgpPe
 
 func (c *Client) UpdateEbgpPeer(endpointId string, ebgpPeerId string, ebgp_peer *EbgpPeer) (*EbgpPeer, error) {
 
-	rb, err := json.Marshal(ebgp_peer)
-	if err != nil {
-		return nil, err
-	}
+	c.DeleteEbgpPeer(endpointId, ebgpPeerId)
+	ebgPeer, _ := c.CreateEbgpPeer(endpointId, ebgp_peer)
 
-	req, err := http.NewRequest("PUT", fmt.Sprintf("%s/ipsec/endpoints/%s/ebgp_peers/%s", c.HostURL, endpointId, ebgpPeerId), strings.NewReader(string(rb)))
-	if err != nil {
-		return nil, err
-	}
-
-	_, err2 := c.doRequest(req)
-	if err2 != nil {
-		log.Println(err2)
-	}
-
-	getReq, err := http.NewRequest("GET", fmt.Sprintf("%s/ipsec/endpoints/%s/ebgp_peers/%s", c.HostURL, endpointId, ebgpPeerId), nil)
-	if err != nil {
-		log.Println(err)
-	}
-
-	body, err := c.doRequest(getReq)
-	if err != nil {
-		log.Println(err)
-	}
-
-	ebgPeer := EbgpPeer{}
-	err = json.Unmarshal(body, &ebgPeer)
-	if err != nil {
-		log.Println(err)
-	}
-
-	return &ebgPeer, nil
+	return ebgPeer, nil
 }
 
 func (c *Client) DeleteEbgpPeer(endpointId string, ebgpPeerId string) error {
@@ -134,10 +85,10 @@ func (c *Client) DeleteEbgpPeer(endpointId string, ebgpPeerId string) error {
 	return nil
 }
 
-func SimplifyEbpgJson(input string) string {
+func SimplifyEbpgJson(jsonInput string) string {
+	input := strings.ReplaceAll(jsonInput, "\\n", ",")
 	var result map[string]interface{}
 	json.Unmarshal([]byte(input), &result)
-
 	var response = result["response"].(map[string]interface{})
 	var peers = response["bgp_peers"].(map[string]interface{})
 	var list string = " { "
@@ -167,14 +118,12 @@ func SimplifyEbpgJson(input string) string {
 	return list
 }
 
-func SimplifyGetEbpgJson(input string) string {
+func SimplifyGetEbpgJson(jsonInput string) string {
+	input := strings.ReplaceAll(jsonInput, "\\n", ",")
 	var result map[string]interface{}
 	json.Unmarshal([]byte(input), &result)
-
 	var values = result["response"].(map[string]interface{})
-	//var peers = response["bgp_peers"].(map[string]interface{})
 	var list string = " { "
-
 	list += "\"id\":\"" + strconv.Itoa(int(values["id"].(float64))) + "\","
 	list += "\"ipaddress\":\"" + UnmarshalString(values, "ipaddress") + "\","
 	list += "\"asn\": " + strconv.Itoa(int(values["asn"].(float64))) + ","
