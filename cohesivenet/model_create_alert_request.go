@@ -187,9 +187,9 @@ func (o *CreateAlertRequest) SetWebhookName(v string) {
 }
 
 // GetCustomProperties returns the CustomProperties field value if set, zero value otherwise.
-func (o *CreateAlertRequest) GetCustomProperties() []CreateAlertRequestCustomPropertiesInner {
+func (o *CreateAlertRequest) GetCustomProperties() []AlertCustomPropertyRequest {
 	if o == nil || o.CustomProperties == nil {
-		var ret []CreateAlertRequestCustomPropertiesInner
+		var ret []AlertCustomPropertyRequest
 		return ret
 	}
 	return o.CustomProperties
@@ -197,7 +197,7 @@ func (o *CreateAlertRequest) GetCustomProperties() []CreateAlertRequestCustomPro
 
 // GetCustomPropertiesOk returns a tuple with the CustomProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAlertRequest) GetCustomPropertiesOk() ([]CreateAlertRequestCustomPropertiesInner, bool) {
+func (o *CreateAlertRequest) GetCustomPropertiesOk() ([]AlertCustomPropertyRequest, bool) {
 	if o == nil || o.CustomProperties == nil {
 		return nil, false
 	}
@@ -213,8 +213,8 @@ func (o *CreateAlertRequest) HasCustomProperties() bool {
 	return false
 }
 
-// SetCustomProperties gets a reference to the given []CreateAlertRequestCustomPropertiesInner and assigns it to the CustomProperties field.
-func (o *CreateAlertRequest) SetCustomProperties(v []CreateAlertRequestCustomPropertiesInner) {
+// SetCustomProperties gets a reference to the given []AlertCustomPropertyRequest and assigns it to the CustomProperties field.
+func (o *CreateAlertRequest) SetCustomProperties(v []AlertCustomPropertyRequest) {
 	o.CustomProperties = v
 }
 

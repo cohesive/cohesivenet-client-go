@@ -92,17 +92,21 @@ func (o *AllocateContainerRequest) GetUuidOk() (*string, bool) {
 	return &o.Uuid, true
 }
 
+// HasUuid returns a boolean if a field has been set.
+func (o *AllocateContainerRequest) HasUuid() bool {
+	if o != nil && o.Uuid != nil {
+		return true
+	}
+
+	return false
+}
+
 // SetUuid sets field value
 func (o *AllocateContainerRequest) SetUuid(v string) {
 	o.Uuid = v
 }
 
 // ImageUuid
-
-// SetImageUuid sets field value
-func (o *AllocateContainerRequest) SetImageUuid(v string) {
-	o.ImageUuid = v
-}
 
 // GetImageUuid returns the ImageUuid field value
 func (o *AllocateContainerRequest) GetImageUuid() string {
@@ -121,6 +125,15 @@ func (o *AllocateContainerRequest) GetImageUuidOk() (*string, bool) {
 		return nil, false
 	}
 	return &o.ImageUuid, true
+}
+
+// HasImageUuid returns a boolean if a field has been set.
+func (o *AllocateContainerRequest) HasImageUuid() bool {
+	if o != nil && o.ImageUuid != nil {
+		return true
+	}
+
+	return false
 }
 
 // SetImageUuid sets field value

@@ -1021,872 +1021,876 @@ func (api *AccessApiService) GetApiTokens(r ApiGetApiTokensRequest) (*AccessToke
 }
 
 
+type ApiGetIdentityControllerSettingsRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+}
+
+func (r ApiGetIdentityControllerSettingsRequest) Execute() (*IdentitySettingsResponse, *http.Response, error) {
+	return r.ApiService.GetIdentityControllerSettings(r)
+}
+
 /*
-TODO Identity API endpoints
+GetIdentityControllerSettings Get identity Settings for VPN Users
+
+get Identity VPN settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetIdentityControllerSettingsRequest
 */
-
-// type ApiGetIdentityControllerSettingsRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// }
-
-// func (r ApiGetIdentityControllerSettingsRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.GetIdentityControllerSettings(r)
-// }
-
-// /*
-// GetIdentityControllerSettings Get identity Settings for VPN Users
-
-// get Identity VPN settings
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiGetIdentityControllerSettingsRequest
-// */
-// func (api *AccessApiService) GetIdentityControllerSettingsRequest(ctx context.Context) ApiGetIdentityControllerSettingsRequest {
-// 	return ApiGetIdentityControllerSettingsRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return Object
-// func (api *AccessApiService) GetIdentityControllerSettings(r ApiGetIdentityControllerSettingsRequest) (*Object, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodGet
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *Object
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetIdentityControllerSettings")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/identity/controller"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiGetIdentityVPNSettingsRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// }
-
-// func (r ApiGetIdentityVPNSettingsRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.GetIdentityVPNSettings(r)
-// }
-
-// /*
-// GetIdentityVPNSettings Get identity Settings for VPN Users
-
-// get Identity VPN settings
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiGetIdentityVPNSettingsRequest
-// */
-// func (api *AccessApiService) GetIdentityVPNSettingsRequest(ctx context.Context) ApiGetIdentityVPNSettingsRequest {
-// 	return ApiGetIdentityVPNSettingsRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return Object
-// func (api *AccessApiService) GetIdentityVPNSettings(r ApiGetIdentityVPNSettingsRequest) (*Object, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodGet
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *Object
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetIdentityVPNSettings")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/identity/vpn"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiPostTestIdentityControllerSettingsRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// 	postTestIdentityControllerSettingsRequest *PostTestIdentityControllerSettingsRequest
-// }
-
-// func (r ApiPostTestIdentityControllerSettingsRequest) PostTestIdentityControllerSettingsRequest(postTestIdentityControllerSettingsRequest PostTestIdentityControllerSettingsRequest) ApiPostTestIdentityControllerSettingsRequest {
-// 	r.postTestIdentityControllerSettingsRequest = &postTestIdentityControllerSettingsRequest
-// 	return r
-// }
-
-// func (r ApiPostTestIdentityControllerSettingsRequest) Execute() (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
-// 	return r.ApiService.PostTestIdentityControllerSettings(r)
-// }
-
-// /*
-// PostTestIdentityControllerSettings Test Controller Identity Settings. Currently only LDAP testing is supported.
-
-// Test Controller Identity settings
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPostTestIdentityControllerSettingsRequest
-// */
-// func (api *AccessApiService) PostTestIdentityControllerSettingsRequest(ctx context.Context) ApiPostTestIdentityControllerSettingsRequest {
-// 	return ApiPostTestIdentityControllerSettingsRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return PostTestIdentityVPNSettings200Response
-// func (api *AccessApiService) PostTestIdentityControllerSettings(r ApiPostTestIdentityControllerSettingsRequest) (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPost
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *PostTestIdentityVPNSettings200Response
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PostTestIdentityControllerSettings")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/identity/controller/test"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.postTestIdentityControllerSettingsRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiPostTestIdentityVPNSettingsRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// 	postTestLdapSettingsRequest *PostTestLdapSettingsRequest
-// }
-
-// func (r ApiPostTestIdentityVPNSettingsRequest) PostTestLdapSettingsRequest(postTestLdapSettingsRequest PostTestLdapSettingsRequest) ApiPostTestIdentityVPNSettingsRequest {
-// 	r.postTestLdapSettingsRequest = &postTestLdapSettingsRequest
-// 	return r
-// }
-
-// func (r ApiPostTestIdentityVPNSettingsRequest) Execute() (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
-// 	return r.ApiService.PostTestIdentityVPNSettings(r)
-// }
-
-// /*
-// PostTestIdentityVPNSettings Test VPN Identity Settings
-
-// Test VPN Identity settings
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPostTestIdentityVPNSettingsRequest
-// */
-// func (api *AccessApiService) PostTestIdentityVPNSettingsRequest(ctx context.Context) ApiPostTestIdentityVPNSettingsRequest {
-// 	return ApiPostTestIdentityVPNSettingsRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return PostTestIdentityVPNSettings200Response
-// func (api *AccessApiService) PostTestIdentityVPNSettings(r ApiPostTestIdentityVPNSettingsRequest) (*PostTestIdentityVPNSettings200Response, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPost
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *PostTestIdentityVPNSettings200Response
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PostTestIdentityVPNSettings")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/identity/vpn/test"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.postTestLdapSettingsRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiPutExpireAccessUrlRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// 	accessUrlId int32
-// 	expireRequest *ExpireRequest
-// }
-
-// func (r ApiPutExpireAccessUrlRequest) ExpireRequest(expireRequest ExpireRequest) ApiPutExpireAccessUrlRequest {
-// 	r.expireRequest = &expireRequest
-// 	return r
-// }
-
-// func (r ApiPutExpireAccessUrlRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.PutExpireAccessUrl(r)
-// }
-
-// /*
-// PutExpireAccessUrl Expire access Url
-
-// Expire access Url
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @param accessUrlId Access Url ID
-//  @return ApiPutExpireAccessUrlRequest
-// */
-// func (api *AccessApiService) PutExpireAccessUrlRequest(ctx context.Context, accessUrlId int32) ApiPutExpireAccessUrlRequest {
-// 	return ApiPutExpireAccessUrlRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 		accessUrlId: accessUrlId,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return Object
-// func (api *AccessApiService) PutExpireAccessUrl(r ApiPutExpireAccessUrlRequest) (*Object, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPut
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *Object
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutExpireAccessUrl")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/access/url/{access_url_id}"
-// 	localVarPath = strings.Replace(localVarPath, "{"+"access_url_id"+"}", url.PathEscape(parameterToString(r.accessUrlId, "")), -1)
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.expireRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		if localVarHTTPResponse.StatusCode >= 400 {
-// 			var v ErrorResponse
-// 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 			if err != nil {
-// 				newErr.error = err.Error()
-// 				return localVarReturnValue, localVarHTTPResponse, newErr
-// 			}
-// 			newErr.model = v
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiPutExpireApiTokenRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// 	tokenId int32
-// 	expireRequest *ExpireRequest
-// }
-
-// func (r ApiPutExpireApiTokenRequest) ExpireRequest(expireRequest ExpireRequest) ApiPutExpireApiTokenRequest {
-// 	r.expireRequest = &expireRequest
-// 	return r
-// }
-
-// func (r ApiPutExpireApiTokenRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.PutExpireApiToken(r)
-// }
-
-// /*
-// PutExpireApiToken Expire API token
-
-// Expire API token
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @param tokenId Token ID
-//  @return ApiPutExpireApiTokenRequest
-// */
-// func (api *AccessApiService) PutExpireApiTokenRequest(ctx context.Context, tokenId int32) ApiPutExpireApiTokenRequest {
-// 	return ApiPutExpireApiTokenRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 		tokenId: tokenId,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return Object
-// func (api *AccessApiService) PutExpireApiToken(r ApiPutExpireApiTokenRequest) (*Object, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPut
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *Object
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutExpireApiToken")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/access/token/{token_id}"
-// 	localVarPath = strings.Replace(localVarPath, "{"+"token_id"+"}", url.PathEscape(parameterToString(r.tokenId, "")), -1)
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.expireRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		if localVarHTTPResponse.StatusCode >= 400 {
-// 			var v ErrorResponse
-// 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 			if err != nil {
-// 				newErr.error = err.Error()
-// 				return localVarReturnValue, localVarHTTPResponse, newErr
-// 			}
-// 			newErr.model = v
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiPutIdentityControllerSettingsRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// 	putIdentityControllerSettingsRequest *PutIdentityControllerSettingsRequest
-// }
-
-// func (r ApiPutIdentityControllerSettingsRequest) PutIdentityControllerSettingsRequest(putIdentityControllerSettingsRequest PutIdentityControllerSettingsRequest) ApiPutIdentityControllerSettingsRequest {
-// 	r.putIdentityControllerSettingsRequest = &putIdentityControllerSettingsRequest
-// 	return r
-// }
-
-// func (r ApiPutIdentityControllerSettingsRequest) Execute() (*IdentitySettingsResponse1, *http.Response, error) {
-// 	return r.ApiService.PutIdentityControllerSettings(r)
-// }
-
-// /*
-// PutIdentityControllerSettings Update Controller Identity settings
-
-// Put Controller Identity settings
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPutIdentityControllerSettingsRequest
-// */
-// func (api *AccessApiService) PutIdentityControllerSettingsRequest(ctx context.Context) ApiPutIdentityControllerSettingsRequest {
-// 	return ApiPutIdentityControllerSettingsRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return IdentitySettingsResponse1
-// func (api *AccessApiService) PutIdentityControllerSettings(r ApiPutIdentityControllerSettingsRequest) (*IdentitySettingsResponse1, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPut
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *IdentitySettingsResponse1
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutIdentityControllerSettings")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/identity/controller"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.putIdentityControllerSettingsRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-// type ApiPutIdentityVPNSettingsRequest struct {
-// 	ctx context.Context
-// 	ApiService *AccessApiService
-// 	putIdentityVPNSettingsRequest *PutIdentityVPNSettingsRequest
-// }
-
-// func (r ApiPutIdentityVPNSettingsRequest) PutIdentityVPNSettingsRequest(putIdentityVPNSettingsRequest PutIdentityVPNSettingsRequest) ApiPutIdentityVPNSettingsRequest {
-// 	r.putIdentityVPNSettingsRequest = &putIdentityVPNSettingsRequest
-// 	return r
-// }
-
-// func (r ApiPutIdentityVPNSettingsRequest) Execute() (*IdentitySettingsResponse, *http.Response, error) {
-// 	return r.ApiService.PutIdentityVPNSettings(r)
-// }
-
-// /*
-// PutIdentityVPNSettings Update VPN Identity settings
-
-// Put VPN Identity settings
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPutIdentityVPNSettingsRequest
-// */
-// func (api *AccessApiService) PutIdentityVPNSettingsRequest(ctx context.Context) ApiPutIdentityVPNSettingsRequest {
-// 	return ApiPutIdentityVPNSettingsRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return IdentitySettingsResponse
-// func (api *AccessApiService) PutIdentityVPNSettings(r ApiPutIdentityVPNSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPut
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *IdentitySettingsResponse
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutIdentityVPNSettings")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/identity/vpn"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.putIdentityVPNSettingsRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
+func (api *AccessApiService) GetIdentityControllerSettingsRequest(ctx context.Context) ApiGetIdentityControllerSettingsRequest {
+	return ApiGetIdentityControllerSettingsRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return IdentitySettingsResponse
+func (api *AccessApiService) GetIdentityControllerSettings(r ApiGetIdentityControllerSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentitySettingsResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetIdentityControllerSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/identity/controller"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetIdentityVPNSettingsRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+}
+
+func (r ApiGetIdentityVPNSettingsRequest) Execute() (*IdentitySettingsResponse, *http.Response, error) {
+	return r.ApiService.GetIdentityVPNSettings(r)
+}
+
+/*
+GetIdentityVPNSettings Get identity Settings for VPN Users
+
+get Identity VPN settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetIdentityVPNSettingsRequest
+*/
+func (api *AccessApiService) GetIdentityVPNSettingsRequest(ctx context.Context) ApiGetIdentityVPNSettingsRequest {
+	return ApiGetIdentityVPNSettingsRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return IdentitySettingsResponse
+func (api *AccessApiService) GetIdentityVPNSettings(r ApiGetIdentityVPNSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentitySettingsResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.GetIdentityVPNSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/identity/vpn"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTestIdentityControllerSettingsRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+	testIdentityControllerSettingsRequest *TestIdentitySettingsRequest
+}
+
+func (r ApiTestIdentityControllerSettingsRequest) PostTestIdentityControllerSettingsRequest(testIdentityControllerSettingsRequest TestIdentitySettingsRequest) ApiTestIdentityControllerSettingsRequest {
+	r.testIdentityControllerSettingsRequest = &testIdentityControllerSettingsRequest
+	return r
+}
+
+func (r ApiTestIdentityControllerSettingsRequest) Execute() (*TestIdentitySettingsDetailsResponse, *http.Response, error) {
+	return r.ApiService.PostTestIdentityControllerSettings(r)
+}
+
+/*
+PostTestIdentityControllerSettings Test Controller Identity Settings. Currently only LDAP testing is supported.
+
+Test Controller Identity settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTestIdentityControllerSettingsRequest
+*/
+func (api *AccessApiService) PostTestIdentityControllerSettingsRequest(ctx context.Context) ApiTestIdentityControllerSettingsRequest {
+	return ApiTestIdentityControllerSettingsRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TestIdentitySettingsDetailsResponse
+func (api *AccessApiService) PostTestIdentityControllerSettings(r ApiTestIdentityControllerSettingsRequest) (*TestIdentitySettingsDetailsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TestIdentitySettingsDetailsResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PostTestIdentityControllerSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/identity/controller/test"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.testIdentityControllerSettingsRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTestIdentityVPNSettingsRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+	testIdentityVPNSettingsRequest *TestIdentitySettingsRequest
+}
+
+func (r ApiTestIdentityVPNSettingsRequest) TestIdentitySettingsRequest(testIdentityVPNSettingsRequest TestIdentitySettingsRequest) ApiTestIdentityVPNSettingsRequest {
+	r.testIdentityVPNSettingsRequest = &testIdentityVPNSettingsRequest
+	return r
+}
+
+func (r ApiTestIdentityVPNSettingsRequest) Execute() (*TestIdentitySettingsDetailsResponse, *http.Response, error) {
+	return r.ApiService.PostTestIdentityVPNSettings(r)
+}
+
+/*
+PostTestIdentityVPNSettings Test VPN Identity Settings
+
+Test VPN Identity settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTestIdentityVPNSettingsRequest
+*/
+func (api *AccessApiService) PostTestIdentityVPNSettingsRequest(ctx context.Context) ApiTestIdentityVPNSettingsRequest {
+	return ApiTestIdentityVPNSettingsRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TestIdentitySettingsDetailsResponse
+func (api *AccessApiService) PostTestIdentityVPNSettings(r ApiTestIdentityVPNSettingsRequest) (*TestIdentitySettingsDetailsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TestIdentitySettingsDetailsResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PostTestIdentityVPNSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/identity/vpn/test"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.testIdentityVPNSettingsRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPutExpireAccessUrlRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+	accessUrlId int32
+	expireRequest *ExpireRequest
+}
+
+func (r ApiPutExpireAccessUrlRequest) ExpireRequest(expireRequest ExpireRequest) ApiPutExpireAccessUrlRequest {
+	r.expireRequest = &expireRequest
+	return r
+}
+
+func (r ApiPutExpireAccessUrlRequest) Execute() (*AccessUrlDetail, *http.Response, error) {
+	return r.ApiService.PutExpireAccessUrl(r)
+}
+
+/*
+PutExpireAccessUrl Expire access Url
+
+Expire access Url
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accessUrlId Access Url ID
+ @return ApiPutExpireAccessUrlRequest
+*/
+func (api *AccessApiService) PutExpireAccessUrlRequest(ctx context.Context, accessUrlId int32) ApiPutExpireAccessUrlRequest {
+	return ApiPutExpireAccessUrlRequest{
+		ApiService: api,
+		ctx: ctx,
+		accessUrlId: accessUrlId,
+	}
+}
+
+// Execute executes the request
+//  @return AccessUrlDetail
+func (api *AccessApiService) PutExpireAccessUrl(r ApiPutExpireAccessUrlRequest) (*AccessUrlDetail, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccessUrlDetail
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutExpireAccessUrl")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/access/url/{access_url_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"access_url_id"+"}", url.PathEscape(parameterToString(r.accessUrlId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.expireRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPutExpireApiTokenRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+	tokenId int32
+	expireRequest *ExpireRequest
+}
+
+func (r ApiPutExpireApiTokenRequest) ExpireRequest(expireRequest ExpireRequest) ApiPutExpireApiTokenRequest {
+	r.expireRequest = &expireRequest
+	return r
+}
+
+func (r ApiPutExpireApiTokenRequest) Execute() (*AccessTokenDetail, *http.Response, error) {
+	return r.ApiService.PutExpireApiToken(r)
+}
+
+/*
+PutExpireApiToken Expire API token
+
+Expire API token
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tokenId Token ID
+ @return ApiPutExpireApiTokenRequest
+*/
+func (api *AccessApiService) PutExpireApiTokenRequest(ctx context.Context, tokenId int32) ApiPutExpireApiTokenRequest {
+	return ApiPutExpireApiTokenRequest{
+		ApiService: api,
+		ctx: ctx,
+		tokenId: tokenId,
+	}
+}
+
+// Execute executes the request
+//  @return AccessTokenDetail
+func (api *AccessApiService) PutExpireApiToken(r ApiPutExpireApiTokenRequest) (*AccessTokenDetail, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccessTokenDetail
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutExpireApiToken")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/access/token/{token_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"token_id"+"}", url.PathEscape(parameterToString(r.tokenId, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.expireRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPutIdentityControllerSettingsRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+	putIdentityControllerSettingsRequest *IdentitySettingsRequest
+}
+
+func (r ApiPutIdentityControllerSettingsRequest) PutIdentityControllerSettingsRequest(putIdentityControllerSettingsRequest IdentitySettingsRequest) ApiPutIdentityControllerSettingsRequest {
+	r.putIdentityControllerSettingsRequest = &putIdentityControllerSettingsRequest
+	return r
+}
+
+func (r ApiPutIdentityControllerSettingsRequest) Execute() (*IdentitySettingsResponse, *http.Response, error) {
+	return r.ApiService.PutIdentityControllerSettings(r)
+}
+
+/*
+PutIdentityControllerSettings Update Controller Identity settings
+
+Put Controller Identity settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPutIdentityControllerSettingsRequest
+*/
+func (api *AccessApiService) PutIdentityControllerSettingsRequest(ctx context.Context) ApiPutIdentityControllerSettingsRequest {
+	return ApiPutIdentityControllerSettingsRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return IdentitySettingsResponse
+func (api *AccessApiService) PutIdentityControllerSettings(r ApiPutIdentityControllerSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentitySettingsResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutIdentityControllerSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/identity/controller"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.putIdentityControllerSettingsRequest == nil {
+		return localVarReturnValue, nil, reportError("putIdentityControllerSettingsRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.putIdentityControllerSettingsRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPutIdentityVPNSettingsRequest struct {
+	ctx context.Context
+	ApiService *AccessApiService
+	putIdentityVPNSettingsRequest *IdentitySettingsRequest
+}
+
+func (r ApiPutIdentityVPNSettingsRequest) PutIdentityVPNSettingsRequest(putIdentityVPNSettingsRequest IdentitySettingsRequest) ApiPutIdentityVPNSettingsRequest {
+	r.putIdentityVPNSettingsRequest = &putIdentityVPNSettingsRequest
+	return r
+}
+
+func (r ApiPutIdentityVPNSettingsRequest) Execute() (*IdentitySettingsResponse, *http.Response, error) {
+	return r.ApiService.PutIdentityVPNSettings(r)
+}
+
+/*
+PutIdentityVPNSettings Update VPN Identity settings
+
+Put VPN Identity settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPutIdentityVPNSettingsRequest
+*/
+func (api *AccessApiService) PutIdentityVPNSettingsRequest(ctx context.Context) ApiPutIdentityVPNSettingsRequest {
+	return ApiPutIdentityVPNSettingsRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return IdentitySettingsResponse
+func (api *AccessApiService) PutIdentityVPNSettings(r ApiPutIdentityVPNSettingsRequest) (*IdentitySettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentitySettingsResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "AccessApiService.PutIdentityVPNSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/identity/vpn"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.putIdentityVPNSettingsRequest == nil {
+		return localVarReturnValue, nil, reportError("putIdentityVPNSettingsRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.putIdentityVPNSettingsRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
