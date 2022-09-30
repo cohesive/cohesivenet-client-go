@@ -993,10 +993,6 @@ func (api *ConfigurationApiService) GetSSLCerts(r ApiGetSSLCertsRequest) (*SSLCe
 }
 
 
-/*
-TODO SSL Endpoints
-*/
-
 type ApiGetSslInstallStatusRequest struct {
 	ctx context.Context
 	ApiService *ConfigurationApiService
@@ -1218,11 +1214,6 @@ func (api *ConfigurationApiService) PutInstallSslKeypair(r ApiPutInstallSslKeypa
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
-
-
-/*
-TODO MS config Endpoints
-*/
 
 
 type ApiPostSendTestMsAlertRequest struct {
