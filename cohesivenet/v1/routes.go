@@ -105,6 +105,14 @@ func (c *Client) CreateRoute(routeList []*Route) ([]*RouteResponse, error) {
 
 }
 
+func (c *Client) UpdateRoute(routeList []*Route) ([]*RouteResponse, error) {
+
+	c.DeleteRoute()
+	newRoute, err := c.CreateRoute(routeList)
+
+	return newRoute, err
+}
+
 func (c *Client) DeleteRoute() error {
 
 	req1, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
