@@ -206,9 +206,9 @@ func (o *UpdateWebhookRequest) SetValidateCert(v bool) {
 }
 
 // GetCustomProperties returns the CustomProperties field value if set, zero value otherwise.
-func (o *UpdateWebhookRequest) GetCustomProperties() []CreateWebookRequestCustomPropertiesInner {
+func (o *UpdateWebhookRequest) GetCustomProperties() []WebhookCustomProperty {
 	if o == nil || o.CustomProperties == nil {
-		var ret []CreateWebookRequestCustomPropertiesInner
+		var ret []WebhookCustomProperty
 		return ret
 	}
 	return o.CustomProperties
@@ -216,7 +216,7 @@ func (o *UpdateWebhookRequest) GetCustomProperties() []CreateWebookRequestCustom
 
 // GetCustomPropertiesOk returns a tuple with the CustomProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateWebhookRequest) GetCustomPropertiesOk() ([]CreateWebookRequestCustomPropertiesInner, bool) {
+func (o *UpdateWebhookRequest) GetCustomPropertiesOk() ([]WebhookCustomProperty, bool) {
 	if o == nil || o.CustomProperties == nil {
 		return nil, false
 	}
@@ -233,14 +233,14 @@ func (o *UpdateWebhookRequest) HasCustomProperties() bool {
 }
 
 // SetCustomProperties gets a reference to the given []CreateWebookRequestCustomPropertiesInner and assigns it to the CustomProperties field.
-func (o *UpdateWebhookRequest) SetCustomProperties(v []CreateWebookRequestCustomPropertiesInner) {
+func (o *UpdateWebhookRequest) SetCustomProperties(v []WebhookCustomProperty) {
 	o.CustomProperties = v
 }
 
 // GetHeaders returns the Headers field value if set, zero value otherwise.
-func (o *UpdateWebhookRequest) GetHeaders() []CreateWebookRequestHeadersInner {
+func (o *UpdateWebhookRequest) GetHeaders() []WebhookHeader {
 	if o == nil || o.Headers == nil {
-		var ret []CreateWebookRequestHeadersInner
+		var ret []WebhookHeader
 		return ret
 	}
 	return o.Headers
@@ -248,7 +248,7 @@ func (o *UpdateWebhookRequest) GetHeaders() []CreateWebookRequestHeadersInner {
 
 // GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateWebhookRequest) GetHeadersOk() ([]CreateWebookRequestHeadersInner, bool) {
+func (o *UpdateWebhookRequest) GetHeadersOk() ([]WebhookHeader, bool) {
 	if o == nil || o.Headers == nil {
 		return nil, false
 	}
@@ -264,15 +264,15 @@ func (o *UpdateWebhookRequest) HasHeaders() bool {
 	return false
 }
 
-// SetHeaders gets a reference to the given []CreateWebookRequestHeadersInner and assigns it to the Headers field.
-func (o *UpdateWebhookRequest) SetHeaders(v []CreateWebookRequestHeadersInner) {
+// SetHeaders gets a reference to the given []WebhookHeader and assigns it to the Headers field.
+func (o *UpdateWebhookRequest) SetHeaders(v []WebhookHeader) {
 	o.Headers = v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *UpdateWebhookRequest) GetParameters() []CreateWebookRequestHeadersInner {
+func (o *UpdateWebhookRequest) GetParameters() []WebhookParameter {
 	if o == nil || o.Parameters == nil {
-		var ret []CreateWebookRequestHeadersInner
+		var ret []WebhookParameter
 		return ret
 	}
 	return o.Parameters
@@ -280,7 +280,7 @@ func (o *UpdateWebhookRequest) GetParameters() []CreateWebookRequestHeadersInner
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateWebhookRequest) GetParametersOk() ([]CreateWebookRequestHeadersInner, bool) {
+func (o *UpdateWebhookRequest) GetParametersOk() ([]WebhookParameter, bool) {
 	if o == nil || o.Parameters == nil {
 		return nil, false
 	}
@@ -296,8 +296,8 @@ func (o *UpdateWebhookRequest) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given []CreateWebookRequestHeadersInner and assigns it to the Parameters field.
-func (o *UpdateWebhookRequest) SetParameters(v []CreateWebookRequestHeadersInner) {
+// SetParameters gets a reference to the given []WebhookParameter and assigns it to the Parameters field.
+func (o *UpdateWebhookRequest) SetParameters(v []WebhookParameter) {
 	o.Parameters = v
 }
 

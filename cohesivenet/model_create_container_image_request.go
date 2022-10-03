@@ -71,27 +71,27 @@ func (o *CreateContainerImageRequest) SetName(v string) {
 }
 
 // GetUrl returns the Url field value
-func (o *CreateContainerImageRequest) GetUrl() int32 {
+func (o *CreateContainerImageRequest) GetUrl() string {
 	if o == nil {
-		var ret int32
+		var ret string
 		return ret
 	}
 
-	return o.Url
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
-func (o *CreateContainerImageRequest) GetUrlOk() (*int32, bool) {
+func (o *CreateContainerImageRequest) GetUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
 // SetUrl sets field value
-func (o *CreateContainerImageRequest) SetUrl(v int32) {
-	o.Url = v
+func (o *CreateContainerImageRequest) SetUrl(v string) {
+	o.Url = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.

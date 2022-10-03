@@ -38,9 +38,9 @@ func NewFirewallV1RuleOperationResponseWithDefaults() *FirewallV1RuleOperationRe
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *FirewallV1RuleOperationResponse) GetResponse() FirewallRuleOperationData {
+func (o *FirewallV1RuleOperationResponse) GetResponse() FirewallV1RuleOperationData {
 	if o == nil || o.Response == nil {
-		var ret FirewallRuleOperationData
+		var ret FirewallV1RuleOperationData
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *FirewallV1RuleOperationResponse) GetResponse() FirewallRuleOperationDat
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FirewallV1RuleOperationResponse) GetResponseOk() (*FirewallRuleOperationData, bool) {
+func (o *FirewallV1RuleOperationResponse) GetResponseOk() (*FirewallV1RuleOperationData, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *FirewallV1RuleOperationResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given FirewallRuleOperationData and assigns it to the Response field.
-func (o *FirewallV1RuleOperationResponse) SetResponse(v FirewallRuleOperationData) {
+// SetResponse gets a reference to the given FirewallV1RuleOperationData and assigns it to the Response field.
+func (o *FirewallV1RuleOperationResponse) SetResponse(v FirewallV1RuleOperationData) {
 	o.Response = &v
 }
 

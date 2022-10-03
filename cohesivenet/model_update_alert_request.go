@@ -175,9 +175,9 @@ func (o *UpdateAlertRequest) SetEvents(v []string) {
 }
 
 // GetCustomProperties returns the CustomProperties field value if set, zero value otherwise.
-func (o *UpdateAlertRequest) GetCustomProperties() []CreateWebookRequestHeadersInner {
+func (o *UpdateAlertRequest) GetCustomProperties() []AlertCustomProperty {
 	if o == nil || o.CustomProperties == nil {
-		var ret []CreateWebookRequestHeadersInner
+		var ret []AlertCustomProperty
 		return ret
 	}
 	return o.CustomProperties
@@ -185,7 +185,7 @@ func (o *UpdateAlertRequest) GetCustomProperties() []CreateWebookRequestHeadersI
 
 // GetCustomPropertiesOk returns a tuple with the CustomProperties field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateAlertRequest) GetCustomPropertiesOk() ([]CreateWebookRequestHeadersInner, bool) {
+func (o *UpdateAlertRequest) GetCustomPropertiesOk() ([]AlertCustomProperty, bool) {
 	if o == nil || o.CustomProperties == nil {
 		return nil, false
 	}
@@ -201,8 +201,8 @@ func (o *UpdateAlertRequest) HasCustomProperties() bool {
 	return false
 }
 
-// SetCustomProperties gets a reference to the given []CreateWebookRequestHeadersInner and assigns it to the CustomProperties field.
-func (o *UpdateAlertRequest) SetCustomProperties(v []CreateWebookRequestHeadersInner) {
+// SetCustomProperties gets a reference to the given []AlertCustomProperty and assigns it to the CustomProperties field.
+func (o *UpdateAlertRequest) SetCustomProperties(v []AlertCustomProperty) {
 	o.CustomProperties = v
 }
 

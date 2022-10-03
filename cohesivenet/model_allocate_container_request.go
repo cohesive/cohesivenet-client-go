@@ -13,7 +13,6 @@ package cohesivenet
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // AllocateContainerRequest - struct for AllocateContainerRequest
@@ -56,7 +55,7 @@ func (o *AllocateContainerRequest) GetName() string {
 		return ret
 	}
 
-	return o.Name
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value
@@ -65,12 +64,12 @@ func (o *AllocateContainerRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return o.Name, true
 }
 
 // SetName sets field value
 func (o *AllocateContainerRequest) SetName(v string) {
-	o.Name = v
+	o.Name = &v
 }
 
 // GetUuid returns the Uuid field value
@@ -80,7 +79,7 @@ func (o *AllocateContainerRequest) GetUuid() string {
 		return ret
 	}
 
-	return o.Uuid
+	return *o.Uuid
 }
 
 // GetUuidOk returns a tuple with the Uuid field value
@@ -89,7 +88,7 @@ func (o *AllocateContainerRequest) GetUuidOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Uuid, true
+	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
@@ -103,7 +102,7 @@ func (o *AllocateContainerRequest) HasUuid() bool {
 
 // SetUuid sets field value
 func (o *AllocateContainerRequest) SetUuid(v string) {
-	o.Uuid = v
+	o.Uuid = &v
 }
 
 // ImageUuid
@@ -115,7 +114,7 @@ func (o *AllocateContainerRequest) GetImageUuid() string {
 		return ret
 	}
 
-	return o.ImageUuid
+	return *o.ImageUuid
 }
 
 // GetUuidOk returns a tuple with the ImageUuid field value
@@ -124,7 +123,7 @@ func (o *AllocateContainerRequest) GetImageUuidOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ImageUuid, true
+	return o.ImageUuid, true
 }
 
 // HasImageUuid returns a boolean if a field has been set.
@@ -138,7 +137,7 @@ func (o *AllocateContainerRequest) HasImageUuid() bool {
 
 // SetImageUuid sets field value
 func (o *AllocateContainerRequest) SetImageUuid(v string) {
-	o.ImageUuid = v
+	o.ImageUuid = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.

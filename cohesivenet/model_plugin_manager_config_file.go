@@ -204,9 +204,9 @@ func (o *PluginManagerConfigFile) SetCreatedAt(v time.Time) {
 }
 
 // GetPreviousVersions returns the PreviousVersions field value if set, zero value otherwise.
-func (o *PluginManagerConfigFile) GetPreviousVersions() []PluginManagerConfigFilePreviousVersionsInner {
+func (o *PluginManagerConfigFile) GetPreviousVersions() []PluginManagerConfigFileVersion {
 	if o == nil || o.PreviousVersions == nil {
-		var ret []PluginManagerConfigFilePreviousVersionsInner
+		var ret []PluginManagerConfigFileVersion
 		return ret
 	}
 	return o.PreviousVersions
@@ -214,7 +214,7 @@ func (o *PluginManagerConfigFile) GetPreviousVersions() []PluginManagerConfigFil
 
 // GetPreviousVersionsOk returns a tuple with the PreviousVersions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConfigFile) GetPreviousVersionsOk() ([]PluginManagerConfigFilePreviousVersionsInner, bool) {
+func (o *PluginManagerConfigFile) GetPreviousVersionsOk() ([]PluginManagerConfigFileVersion, bool) {
 	if o == nil || o.PreviousVersions == nil {
 		return nil, false
 	}
@@ -230,8 +230,8 @@ func (o *PluginManagerConfigFile) HasPreviousVersions() bool {
 	return false
 }
 
-// SetPreviousVersions gets a reference to the given []PluginManagerConfigFilePreviousVersionsInner and assigns it to the PreviousVersions field.
-func (o *PluginManagerConfigFile) SetPreviousVersions(v []PluginManagerConfigFilePreviousVersionsInner) {
+// SetPreviousVersions gets a reference to the given []PluginManagerConfigFileVersion and assigns it to the PreviousVersions field.
+func (o *PluginManagerConfigFile) SetPreviousVersions(v []PluginManagerConfigFileVersion) {
 	o.PreviousVersions = v
 }
 

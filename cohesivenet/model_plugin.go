@@ -21,6 +21,7 @@ type Plugin struct {
 	Uuid NullableString `json:"uuid,omitempty"`
 	Name *string `json:"name,omitempty"`
 	TagName *string `json:"tag_name,omitempty"`
+	Version *string `json:"version,omitempty"`
 	Status *string `json:"status,omitempty"`
 	StatusMsg *string `json:"status_msg,omitempty"`
 	StatusMessage *string `json:"status_message,omitempty"`
@@ -35,7 +36,6 @@ type Plugin struct {
 	RunningContainers *int32 `json:"running_containers,omitempty"`
 	DocumentationUrl *string `json:"documentation_url,omitempty"`
 	SupportUrl *string `json:"support_url,omitempty"`
-	Url *string `json:"url,omitempty"`
 	Data *PluginData `json:"data,omitempty"`
 }
 
@@ -192,6 +192,41 @@ func (o *Plugin) HasTagName() bool {
 // SetTagName gets a reference to the given string and assigns it to the TagName field.
 func (o *Plugin) SetTagName(v string) {
 	o.TagName = &v
+}
+
+// Version
+
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *Plugin) GetVersion() string {
+	if o == nil || o.Version == nil {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Plugin) GetVersionOk() (*string, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *Plugin) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *Plugin) SetVersion(v string) {
+	o.Version = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -450,36 +485,36 @@ func (o *Plugin) SetCatalogId(v string) {
 	o.CatalogId = &v
 }
 
-// GetContainers returns the Containers field value if set, zero value otherwise.
-func (o *Plugin) GetContainers() []PluginContainersInner {
-	if o == nil || o.Containers == nil {
-		var ret []PluginContainersInner
+// GetInstances GetInstances the Instances field value if set, zero value otherwise.
+func (o *Plugin) GetInstances() []int32 {
+	if o == nil || o.Instances == nil {
+		var ret []int32
 		return ret
 	}
-	return o.Containers
+	return o.Instances
 }
 
-// GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
+// GetInstancesOk returns a tuple with the Instances field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Plugin) GetContainersOk() ([]PluginContainersInner, bool) {
-	if o == nil || o.Containers == nil {
+func (o *Plugin) GetInstancesOk() ([]int32, bool) {
+	if o == nil || o.Instances == nil {
 		return nil, false
 	}
-	return o.Containers, true
+	return o.Instances, true
 }
 
-// HasContainers returns a boolean if a field has been set.
-func (o *Plugin) HasContainers() bool {
-	if o != nil && o.Containers != nil {
+// HasInstances returns a boolean if a field has been set.
+func (o *Plugin) HasInstances() bool {
+	if o != nil && o.Instances != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetContainers gets a reference to the given []PluginContainersInner and assigns it to the Containers field.
-func (o *Plugin) SetContainers(v []PluginContainersInner) {
-	o.Containers = v
+// SetInstances gets a reference to the given []int32 and assigns it to the Instances field.
+func (o *Plugin) SetInstances(v []int32) {
+	o.Instances = v
 }
 
 // GetRunningContainers returns the RunningContainers field value if set, zero value otherwise.
@@ -583,9 +618,6 @@ func (o Plugin) MarshalJSON() ([]byte, error) {
 	}
 	if o.CatalogId != nil {
 		toSerialize["catalog_id"] = o.CatalogId
-	}
-	if o.Containers != nil {
-		toSerialize["containers"] = o.Containers
 	}
 	if o.RunningContainers != nil {
 		toSerialize["running_containers"] = o.RunningContainers

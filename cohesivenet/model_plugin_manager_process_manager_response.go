@@ -38,9 +38,9 @@ func NewPluginManagerProcessManagerResponseWithDefaults() *PluginManagerProcessM
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *PluginManagerProcessManagerResponse) GetResponse() PluginManagerConfigProcessManager {
+func (o *PluginManagerProcessManagerResponse) GetResponse() PluginManagerProcessManager {
 	if o == nil || o.Response == nil {
-		var ret PluginManagerConfigProcessManager
+		var ret PluginManagerProcessManager
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *PluginManagerProcessManagerResponse) GetResponse() PluginManagerConfigP
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerProcessManagerResponse) GetResponseOk() (*PluginManagerConfigProcessManager, bool) {
+func (o *PluginManagerProcessManagerResponse) GetResponseOk() (*PluginManagerProcessManager, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *PluginManagerProcessManagerResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given PluginManagerConfigProcessManager and assigns it to the Response field.
-func (o *PluginManagerProcessManagerResponse) SetResponse(v PluginManagerConfigProcessManager) {
+// SetResponse gets a reference to the given PluginManagerProcessManager and assigns it to the Response field.
+func (o *PluginManagerProcessManagerResponse) SetResponse(v PluginManagerProcessManager) {
 	o.Response = &v
 }
 

@@ -26,7 +26,7 @@ type StartPluginInstanceRequest struct {
 	IpAddress *string `json:"ip_address,omitempty"`
 	// Optionally override the plugins command. Required if plugin command not defined.
 	Command *string `json:"command,omitempty"`
-	ManagerConfig *PluginManagerConfig `json:"manager_config,omitempty"`
+	ManagerConfig *PluginManagerConf `json:"manager_config,omitempty"`
 	Environment []StartPluginInstanceRequestEnvironmentInner `json:"environment,omitempty"`
 }
 
@@ -194,9 +194,9 @@ func (o *StartPluginInstanceRequest) SetCommand(v string) {
 }
 
 // GetManagerConfig returns the ManagerConfig field value if set, zero value otherwise.
-func (o *StartPluginInstanceRequest) GetManagerConfig() PluginManagerConfig {
+func (o *StartPluginInstanceRequest) GetManagerConfig() PluginManagerConf {
 	if o == nil || o.ManagerConfig == nil {
-		var ret PluginManagerConfig
+		var ret PluginManagerConf
 		return ret
 	}
 	return *o.ManagerConfig
@@ -204,7 +204,7 @@ func (o *StartPluginInstanceRequest) GetManagerConfig() PluginManagerConfig {
 
 // GetManagerConfigOk returns a tuple with the ManagerConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StartPluginInstanceRequest) GetManagerConfigOk() (*PluginManagerConfig, bool) {
+func (o *StartPluginInstanceRequest) GetManagerConfigOk() (*PluginManagerConf, bool) {
 	if o == nil || o.ManagerConfig == nil {
 		return nil, false
 	}
@@ -220,8 +220,8 @@ func (o *StartPluginInstanceRequest) HasManagerConfig() bool {
 	return false
 }
 
-// SetManagerConfig gets a reference to the given PluginManagerConfig and assigns it to the ManagerConfig field.
-func (o *StartPluginInstanceRequest) SetManagerConfig(v PluginManagerConfig) {
+// SetManagerConfig gets a reference to the given PluginManagerConf and assigns it to the ManagerConfig field.
+func (o *StartPluginInstanceRequest) SetManagerConfig(v PluginManagerConf) {
 	o.ManagerConfig = &v
 }
 

@@ -38,9 +38,9 @@ func NewPluginManagerConfigFilesResponseWithDefaults() *PluginManagerConfigFiles
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *PluginManagerConfigFilesResponse) GetResponse() []PluginManagerConfigConfigFile {
+func (o *PluginManagerConfigFilesResponse) GetResponse() []PluginManagerConfigFile {
 	if o == nil || o.Response == nil {
-		var ret []PluginManagerConfigConfigFile
+		var ret []PluginManagerConfigFile
 		return ret
 	}
 	return o.Response
@@ -48,7 +48,7 @@ func (o *PluginManagerConfigFilesResponse) GetResponse() []PluginManagerConfigCo
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConfigFilesResponse) GetResponseOk() ([]PluginManagerConfigConfigFile, bool) {
+func (o *PluginManagerConfigFilesResponse) GetResponseOk() ([]PluginManagerConfigFile, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *PluginManagerConfigFilesResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given []PluginManagerConfigConfigFile and assigns it to the Response field.
-func (o *PluginManagerConfigFilesResponse) SetResponse(v []PluginManagerConfigConfigFile) {
+// SetResponse gets a reference to the given []PluginManagerConfigFile and assigns it to the Response field.
+func (o *PluginManagerConfigFilesResponse) SetResponse(v []PluginManagerConfigFile) {
 	o.Response = v
 }
 

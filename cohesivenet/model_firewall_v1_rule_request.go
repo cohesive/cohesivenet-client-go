@@ -31,8 +31,6 @@ func NewFirewallV1RuleRequest(rule string) *FirewallV1RuleRequest {
 	this.Rule = rule
 	var position int32 = -1
 	this.Position = &position
-	var disabled bool = false
-	this.Disabled = &disabled
 	return &this
 }
 
@@ -43,8 +41,6 @@ func NewFirewallV1RuleRequestWithDefaults() *FirewallV1RuleRequest {
 	this := FirewallV1RuleRequest{}
 	var position int32 = -1
 	this.Position = &position
-	var disabled bool = false
-	this.Disabled = &disabled
 	return &this
 }
 

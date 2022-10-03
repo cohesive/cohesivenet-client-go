@@ -45,9 +45,9 @@ func NewPluginManagerConfWithDefaults() *PluginManagerConf {
 }
 
 // GetLogFiles returns the LogFiles field value if set, zero value otherwise.
-func (o *PluginManagerConf) GetLogFiles() []PluginManagerConfLogFilesInner {
+func (o *PluginManagerConf) GetLogFiles() []PluginManagerLogFile {
 	if o == nil || o.LogFiles == nil {
-		var ret []PluginManagerConfLogFilesInner
+		var ret []PluginManagerLogFile
 		return ret
 	}
 	return o.LogFiles
@@ -55,7 +55,7 @@ func (o *PluginManagerConf) GetLogFiles() []PluginManagerConfLogFilesInner {
 
 // GetLogFilesOk returns a tuple with the LogFiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConf) GetLogFilesOk() ([]PluginManagerConfLogFilesInner, bool) {
+func (o *PluginManagerConf) GetLogFilesOk() ([]PluginManagerLogFile, bool) {
 	if o == nil || o.LogFiles == nil {
 		return nil, false
 	}
@@ -72,14 +72,14 @@ func (o *PluginManagerConf) HasLogFiles() bool {
 }
 
 // SetLogFiles gets a reference to the given []PluginManagerConfLogFilesInner and assigns it to the LogFiles field.
-func (o *PluginManagerConf) SetLogFiles(v []PluginManagerConfLogFilesInner) {
+func (o *PluginManagerConf) SetLogFiles(v []PluginManagerLogFile) {
 	o.LogFiles = v
 }
 
 // GetConfigurationFiles returns the ConfigurationFiles field value if set, zero value otherwise.
-func (o *PluginManagerConf) GetConfigurationFiles() []PluginManagerConfConfigFile {
+func (o *PluginManagerConf) GetConfigurationFiles() []PluginManagerConfigFile {
 	if o == nil || o.ConfigurationFiles == nil {
-		var ret []PluginManagerConfConfigFile
+		var ret []PluginManagerConfigFile
 		return ret
 	}
 	return o.ConfigurationFiles
@@ -87,7 +87,7 @@ func (o *PluginManagerConf) GetConfigurationFiles() []PluginManagerConfConfigFil
 
 // GetConfigurationFilesOk returns a tuple with the ConfigurationFiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConf) GetConfigurationFilesOk() ([]PluginManagerConfConfigFile, bool) {
+func (o *PluginManagerConf) GetConfigurationFilesOk() ([]PluginManagerConfigFile, bool) {
 	if o == nil || o.ConfigurationFiles == nil {
 		return nil, false
 	}
@@ -103,15 +103,15 @@ func (o *PluginManagerConf) HasConfigurationFiles() bool {
 	return false
 }
 
-// SetConfigurationFiles gets a reference to the given []PluginManagerConfConfigFile and assigns it to the ConfigurationFiles field.
-func (o *PluginManagerConf) SetConfigurationFiles(v []PluginManagerConfConfigFile) {
+// SetConfigurationFiles gets a reference to the given []PluginManagerConfigFile and assigns it to the ConfigurationFiles field.
+func (o *PluginManagerConf) SetConfigurationFiles(v []PluginManagerConfigFile) {
 	o.ConfigurationFiles = v
 }
 
 // GetPorts returns the Ports field value if set, zero value otherwise.
-func (o *PluginManagerConf) GetPorts() []PluginManagerConfPort {
+func (o *PluginManagerConf) GetPorts() []PluginManagerPort {
 	if o == nil || o.Ports == nil {
-		var ret []PluginManagerConfPort
+		var ret []PluginManagerPort
 		return ret
 	}
 	return o.Ports
@@ -119,7 +119,7 @@ func (o *PluginManagerConf) GetPorts() []PluginManagerConfPort {
 
 // GetPortsOk returns a tuple with the Ports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConf) GetPortsOk() ([]PluginManagerConfPort, bool) {
+func (o *PluginManagerConf) GetPortsOk() ([]PluginManagerPort, bool) {
 	if o == nil || o.Ports == nil {
 		return nil, false
 	}
@@ -135,15 +135,15 @@ func (o *PluginManagerConf) HasPorts() bool {
 	return false
 }
 
-// SetPorts gets a reference to the given []PluginManagerConfPort and assigns it to the Ports field.
-func (o *PluginManagerConf) SetPorts(v []PluginManagerConfPort) {
+// SetPorts gets a reference to the given []PluginManagerPort and assigns it to the Ports field.
+func (o *PluginManagerConf) SetPorts(v []PluginManagerPort) {
 	o.Ports = v
 }
 
 // GetProcessManager returns the ProcessManager field value if set, zero value otherwise.
-func (o *PluginManagerConf) GetProcessManager() PluginManagerConfProcessManager {
+func (o *PluginManagerConf) GetProcessManager() PluginManagerProcessManager {
 	if o == nil || o.ProcessManager == nil {
-		var ret PluginManagerConfProcessManager
+		var ret PluginManagerProcessManager
 		return ret
 	}
 	return *o.ProcessManager
@@ -151,7 +151,7 @@ func (o *PluginManagerConf) GetProcessManager() PluginManagerConfProcessManager 
 
 // GetProcessManagerOk returns a tuple with the ProcessManager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConf) GetProcessManagerOk() (*PluginManagerConfProcessManager, bool) {
+func (o *PluginManagerConf) GetProcessManagerOk() (*PluginManagerProcessManager, bool) {
 	if o == nil || o.ProcessManager == nil {
 		return nil, false
 	}
@@ -167,15 +167,15 @@ func (o *PluginManagerConf) HasProcessManager() bool {
 	return false
 }
 
-// SetProcessManager gets a reference to the given PluginManagerConfProcessManager and assigns it to the ProcessManager field.
-func (o *PluginManagerConf) SetProcessManager(v PluginManagerConfProcessManager) {
+// SetProcessManager gets a reference to the given PluginManagerProcessManager and assigns it to the ProcessManager field.
+func (o *PluginManagerConf) SetProcessManager(v PluginManagerProcessManager) {
 	o.ProcessManager = &v
 }
 
 // GetExecutables returns the Executables field value if set, zero value otherwise.
-func (o *PluginManagerConf) GetExecutables() []PluginManagerConfExecutable {
+func (o *PluginManagerConf) GetExecutables() []PluginManagerExecutable {
 	if o == nil || o.Executables == nil {
-		var ret []PluginManagerConfExecutable
+		var ret []PluginManagerExecutable
 		return ret
 	}
 	return o.Executables
@@ -183,7 +183,7 @@ func (o *PluginManagerConf) GetExecutables() []PluginManagerConfExecutable {
 
 // GetExecutablesOk returns a tuple with the Executables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginManagerConf) GetExecutablesOk() ([]PluginManagerConfExecutable, bool) {
+func (o *PluginManagerConf) GetExecutablesOk() ([]PluginManagerExecutable, bool) {
 	if o == nil || o.Executables == nil {
 		return nil, false
 	}
@@ -199,8 +199,8 @@ func (o *PluginManagerConf) HasExecutables() bool {
 	return false
 }
 
-// SetExecutables gets a reference to the given []PluginManagerConfExecutable and assigns it to the Executables field.
-func (o *PluginManagerConf) SetExecutables(v []PluginManagerConfExecutable) {
+// SetExecutables gets a reference to the given []PluginManagerExecutable and assigns it to the Executables field.
+func (o *PluginManagerConf) SetExecutables(v []PluginManagerExecutable) {
 	o.Executables = v
 }
 

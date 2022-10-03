@@ -38,9 +38,9 @@ func NewStatusCodeMessageResponseWithDefaults() *StatusCodeMessageResponse {
 }
 
 // GetResponse returns the Response field value if set, zero value otherwise.
-func (o *StatusCodeMessageResponse) GetResponse() StatusCodeMessageResponseResponse {
+func (o *StatusCodeMessageResponse) GetResponse() StatusCodeMessage {
 	if o == nil || o.Response == nil {
-		var ret StatusCodeMessageResponseResponse
+		var ret StatusCodeMessage
 		return ret
 	}
 	return *o.Response
@@ -48,7 +48,7 @@ func (o *StatusCodeMessageResponse) GetResponse() StatusCodeMessageResponseRespo
 
 // GetResponseOk returns a tuple with the Response field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StatusCodeMessageResponse) GetResponseOk() (*StatusCodeMessageResponseResponse, bool) {
+func (o *StatusCodeMessageResponse) GetResponseOk() (*StatusCodeMessage, bool) {
 	if o == nil || o.Response == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *StatusCodeMessageResponse) HasResponse() bool {
 	return false
 }
 
-// SetResponse gets a reference to the given StatusCodeMessageResponseResponse and assigns it to the Response field.
-func (o *StatusCodeMessageResponse) SetResponse(v StatusCodeMessageResponseResponse) {
+// SetResponse gets a reference to the given StatusCodeMessage and assigns it to the Response field.
+func (o *StatusCodeMessageResponse) SetResponse(v StatusCodeMessage) {
 	o.Response = &v
 }
 

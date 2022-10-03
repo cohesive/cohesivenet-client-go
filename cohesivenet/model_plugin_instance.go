@@ -34,7 +34,7 @@ type PluginInstance struct {
 	Firewall []PluginInstanceFirewallRule `json:"firewall,omitempty"`
 	// Map of plugin ports -> VNS3 ports
 	PortMaps *map[string]int32 `json:"port_maps,omitempty"`
-	Manager *PluginManagerConfig `json:"manager,omitempty"`
+	Manager *PluginManagerConf `json:"manager,omitempty"`
 	Data *Container `json:"data,omitempty"`
 }
 
@@ -568,9 +568,9 @@ func (o *PluginInstance) SetPortMaps(v map[string]int32) {
 }
 
 // GetManager returns the Manager field value if set, zero value otherwise.
-func (o *PluginInstance) GetManager() PluginManagerConfig {
+func (o *PluginInstance) GetManager() PluginManagerConf {
 	if o == nil || o.Manager == nil {
-		var ret PluginManagerConfig
+		var ret PluginManagerConf
 		return ret
 	}
 	return *o.Manager
@@ -578,7 +578,7 @@ func (o *PluginInstance) GetManager() PluginManagerConfig {
 
 // GetManagerOk returns a tuple with the Manager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PluginInstance) GetManagerOk() (*PluginManagerConfig, bool) {
+func (o *PluginInstance) GetManagerOk() (*PluginManagerConf, bool) {
 	if o == nil || o.Manager == nil {
 		return nil, false
 	}
@@ -594,8 +594,8 @@ func (o *PluginInstance) HasManager() bool {
 	return false
 }
 
-// SetManager gets a reference to the given PluginManagerConfig and assigns it to the Manager field.
-func (o *PluginInstance) SetManager(v PluginManagerConfig) {
+// SetManager gets a reference to the given PluginManagerConf and assigns it to the Manager field.
+func (o *PluginInstance) SetManager(v PluginManagerConf) {
 	o.Manager = &v
 }
 
