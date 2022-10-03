@@ -993,466 +993,457 @@ func (api *ConfigurationApiService) GetSSLCerts(r ApiGetSSLCertsRequest) (*SSLCe
 }
 
 
-/*
-TODO SSL Endpoints
-*/
+type ApiGetSslInstallStatusRequest struct {
+	ctx context.Context
+	ApiService *ConfigurationApiService
+	uuid string
+}
 
-// type ApiGetSslInstallStatusRequest struct {
-// 	ctx context.Context
-// 	ApiService *ConfigurationApiService
-// 	uuid string
-// }
-
-// func (r ApiGetSslInstallStatusRequest) Execute() (*Object, *http.Response, error) {
-// 	return r.ApiService.GetSslInstallStatus(r)
-// }
-
-// /*
-// GetSslInstallStatus Get SSL installation status
-
-// Get status for ssl installation task
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @param uuid uuid of resource
-//  @return ApiGetSslInstallStatusRequest
-// */
-// func (api *ConfigurationApiService) GetSslInstallStatusRequest(ctx context.Context, uuid string) ApiGetSslInstallStatusRequest {
-// 	return ApiGetSslInstallStatusRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 		uuid: uuid,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return Object
-// func (api *ConfigurationApiService) GetSslInstallStatus(r ApiGetSslInstallStatusRequest) (*Object, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodGet
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *Object
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetSslInstallStatus")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/system/ssl/install/{uuid}"
-// 	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		if localVarHTTPResponse.StatusCode >= 400 {
-// 			var v ErrorResponse
-// 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 			if err != nil {
-// 				newErr.error = err.Error()
-// 				return localVarReturnValue, localVarHTTPResponse, newErr
-// 			}
-// 			newErr.model = v
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
-
-// type ApiPutInstallSslKeypairRequest struct {
-// 	ctx context.Context
-// 	ApiService *ConfigurationApiService
-// }
-
-// func (r ApiPutInstallSslKeypairRequest) Execute() (*ServerSSLDetailResponse, *http.Response, error) {
-// 	return r.ApiService.PutInstallSslKeypair(r)
-// }
-
-// /*
-// PutInstallSslKeypair Install SSL cert and key pair
-
-// Install SSL cert and key pair
-
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPutInstallSslKeypairRequest
-// */
-// func (api *ConfigurationApiService) PutInstallSslKeypairRequest(ctx context.Context) ApiPutInstallSslKeypairRequest {
-// 	return ApiPutInstallSslKeypairRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
-
-// // Execute executes the request
-// //  @return ServerSSLDetailResponse
-// func (api *ConfigurationApiService) PutInstallSslKeypair(r ApiPutInstallSslKeypairRequest) (*ServerSSLDetailResponse, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPut
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *ServerSSLDetailResponse
-// 	)
-
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutInstallSslKeypair")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
-
-// 	localVarPath := localBasePath + "/system/ssl/install"
-
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{}
-
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
-
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
-
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
-
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		if localVarHTTPResponse.StatusCode >= 400 {
-// 			var v ErrorResponse
-// 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 			if err != nil {
-// 				newErr.error = err.Error()
-// 				return localVarReturnValue, localVarHTTPResponse, newErr
-// 			}
-// 			newErr.model = v
-// 			return localVarReturnValue, localVarHTTPResponse, newErr
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
-
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
-
+func (r ApiGetSslInstallStatusRequest) Execute() (*ServerSSLDetailResponse, *http.Response, error) {
+	return r.ApiService.GetSslInstallStatus(r)
+}
 
 /*
-TODO MS config Endpoints
+GetSslInstallStatus Get SSL installation status
+
+Get status for ssl installation task
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid uuid of resource
+ @return ApiGetSslInstallStatusRequest
 */
+func (api *ConfigurationApiService) GetSslInstallStatusRequest(ctx context.Context, uuid string) ApiGetSslInstallStatusRequest {
+	return ApiGetSslInstallStatusRequest{
+		ApiService: api,
+		ctx: ctx,
+		uuid: uuid,
+	}
+}
+
+// Execute executes the request
+//  @return ServerSSLDetailResponse
+func (api *ConfigurationApiService) GetSslInstallStatus(r ApiGetSslInstallStatusRequest) (*ServerSSLDetailResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ServerSSLDetailResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.GetSslInstallStatus")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/system/ssl/install/{uuid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterToString(r.uuid, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 
-// type ApiPostSendTestMsAlertRequest struct {
-// 	ctx context.Context
-// 	ApiService *ConfigurationApiService
-// }
+type ApiPutInstallSslKeypairRequest struct {
+	ctx context.Context
+	ApiService *ConfigurationApiService
+}
 
-// func (r ApiPostSendTestMsAlertRequest) Execute() (*SimpleBooleanResponse, *http.Response, error) {
-// 	return r.ApiService.PostSendTestMsAlert(r)
-// }
+func (r ApiPutInstallSslKeypairRequest) Execute() (*ServerSSLDetailResponse, *http.Response, error) {
+	return r.ApiService.PutInstallSslKeypair(r)
+}
 
-// /*
-// PostSendTestMsAlert Send test VNS3:ms alert
+/*
+PutInstallSslKeypair Install SSL cert and key pair
 
-// Send test alert to VNS3:ms
+Install SSL cert and key pair
 
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPostSendTestMsAlertRequest
-// */
-// func (api *ConfigurationApiService) PostSendTestMsAlertRequest(ctx context.Context) ApiPostSendTestMsAlertRequest {
-// 	return ApiPostSendTestMsAlertRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPutInstallSslKeypairRequest
+*/
+func (api *ConfigurationApiService) PutInstallSslKeypairRequest(ctx context.Context) ApiPutInstallSslKeypairRequest {
+	return ApiPutInstallSslKeypairRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
 
-// // Execute executes the request
-// //  @return SimpleBooleanResponse
-// func (api *ConfigurationApiService) PostSendTestMsAlert(r ApiPostSendTestMsAlertRequest) (*SimpleBooleanResponse, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPost
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *SimpleBooleanResponse
-// 	)
+// Execute executes the request
+//  @return ServerSSLDetailResponse
+func (api *ConfigurationApiService) PutInstallSslKeypair(r ApiPutInstallSslKeypairRequest) (*ServerSSLDetailResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ServerSSLDetailResponse
+	)
 
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostSendTestMsAlert")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PutInstallSslKeypair")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
 
-// 	localVarPath := localBasePath + "/ms/alert/test"
+	localVarPath := localBasePath + "/system/ssl/install"
 
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
 
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
 
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
 
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
 
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
 
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		if localVarHTTPResponse.StatusCode >= 400 {
-// 			var v ErrorResponse
-// 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 			if err != nil {
-// 				newErr.error = err.Error()
-// 				return localVarReturnValue, localVarHTTPResponse, newErr
-// 			}
-// 			newErr.model = v
-// 			return localVarReturnValue, localVarHTTPResponse, newErr
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
 
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
 
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
-// type ApiPostSetMsConfigRequest struct {
-// 	ctx context.Context
-// 	ApiService *ConfigurationApiService
-// 	msConfigRequest *MSConfigRequest
-// }
 
-// func (r ApiPostSetMsConfigRequest) MSConfigRequest(msConfigRequest MSConfigRequest) ApiPostSetMsConfigRequest {
-// 	r.msConfigRequest = &msConfigRequest
-// 	return r
-// }
+type ApiPostSendTestMsAlertRequest struct {
+	ctx context.Context
+	ApiService *ConfigurationApiService
+}
 
-// func (r ApiPostSetMsConfigRequest) Execute() (*MSConfig, *http.Response, error) {
-// 	return r.ApiService.PostSetMsConfig(r)
-// }
+func (r ApiPostSendTestMsAlertRequest) Execute() (*SimpleBooleanResponse, *http.Response, error) {
+	return r.ApiService.PostSendTestMsAlert(r)
+}
 
-// /*
-// PostSetMsConfig Set MS for controller
+/*
+PostSendTestMsAlert Send test VNS3:ms alert
 
-// Set VNS3 Management System endpoint
+Send test alert to VNS3:ms
 
-//  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-//  @return ApiPostSetMsConfigRequest
-// */
-// func (api *ConfigurationApiService) PostSetMsConfigRequest(ctx context.Context) ApiPostSetMsConfigRequest {
-// 	return ApiPostSetMsConfigRequest{
-// 		ApiService: api,
-// 		ctx: ctx,
-// 	}
-// }
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostSendTestMsAlertRequest
+*/
+func (api *ConfigurationApiService) PostSendTestMsAlertRequest(ctx context.Context) ApiPostSendTestMsAlertRequest {
+	return ApiPostSendTestMsAlertRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
 
-// // Execute executes the request
-// //  @return MSConfig
-// func (api *ConfigurationApiService) PostSetMsConfig(r ApiPostSetMsConfigRequest) (*MSConfig, *http.Response, error) {
-// 	var (
-// 		localVarHTTPMethod   = http.MethodPost
-// 		localVarPostBody     interface{}
-// 		formFiles            []formFile
-// 		localVarReturnValue  *MSConfig
-// 	)
+// Execute executes the request
+//  @return SimpleBooleanResponse
+func (api *ConfigurationApiService) PostSendTestMsAlert(r ApiPostSendTestMsAlertRequest) (*SimpleBooleanResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SimpleBooleanResponse
+	)
 
-// 	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostSetMsConfig")
-// 	if err != nil {
-// 		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
-// 	}
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostSendTestMsAlert")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
 
-// 	localVarPath := localBasePath + "/ms"
+	localVarPath := localBasePath + "/ms/alert/test"
 
-// 	localVarHeaderParams := make(map[string]string)
-// 	localVarQueryParams := url.Values{}
-// 	localVarFormParams := url.Values{}
-// 	if r.msConfigRequest == nil {
-// 		return localVarReturnValue, nil, reportError("msConfigRequest is required and must be specified")
-// 	}
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
 
-// 	// to determine the Content-Type header
-// 	localVarHTTPContentTypes := []string{"application/json"}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
 
-// 	// set Content-Type header
-// 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-// 	if localVarHTTPContentType != "" {
-// 		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-// 	}
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
 
-// 	// to determine the Accept header
-// 	localVarHTTPHeaderAccepts := []string{"application/json"}
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
-// 	// set Accept header
-// 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-// 	if localVarHTTPHeaderAccept != "" {
-// 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-// 	}
-// 	// body params
-// 	localVarPostBody = r.msConfigRequest
-// 	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-// 	if err != nil {
-// 		return localVarReturnValue, nil, err
-// 	}
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
 
-// 	localVarHTTPResponse, err := api.client.callAPI(req)
-// 	if err != nil || localVarHTTPResponse == nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
 
-// 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-// 	localVarHTTPResponse.Body.Close()
-// 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-// 	if err != nil {
-// 		return localVarReturnValue, localVarHTTPResponse, err
-// 	}
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
 
-// 	if localVarHTTPResponse.StatusCode >= 300 {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: localVarHTTPResponse.Status,
-// 		}
-// 		if localVarHTTPResponse.StatusCode >= 400 {
-// 			var v ErrorResponse
-// 			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 			if err != nil {
-// 				newErr.error = err.Error()
-// 				return localVarReturnValue, localVarHTTPResponse, newErr
-// 			}
-// 			newErr.model = v
-// 			return localVarReturnValue, localVarHTTPResponse, newErr
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
 
-// 	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-// 	if err != nil {
-// 		newErr := &GenericAPIError{
-// 			body:  localVarBody,
-// 			error: err.Error(),
-// 		}
-// 		return localVarReturnValue, localVarHTTPResponse, newErr
-// 	}
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
 
-// 	return localVarReturnValue, localVarHTTPResponse, nil
-// }
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPostSetMsConfigRequest struct {
+	ctx context.Context
+	ApiService *ConfigurationApiService
+	msConfigRequest *MSConfigRequest
+}
+
+func (r ApiPostSetMsConfigRequest) MSConfigRequest(msConfigRequest MSConfigRequest) ApiPostSetMsConfigRequest {
+	r.msConfigRequest = &msConfigRequest
+	return r
+}
+
+func (r ApiPostSetMsConfigRequest) Execute() (*MSConfigResponse, *http.Response, error) {
+	return r.ApiService.PostSetMsConfig(r)
+}
+
+/*
+PostSetMsConfig Set MS for controller
+
+Set VNS3 Management System endpoint
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostSetMsConfigRequest
+*/
+func (api *ConfigurationApiService) PostSetMsConfigRequest(ctx context.Context) ApiPostSetMsConfigRequest {
+	return ApiPostSetMsConfigRequest{
+		ApiService: api,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MSConfigResponse
+func (api *ConfigurationApiService) PostSetMsConfig(r ApiPostSetMsConfigRequest) (*MSConfigResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MSConfigResponse
+	)
+
+	localBasePath, err := api.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationApiService.PostSetMsConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ms"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.msConfigRequest == nil {
+		return localVarReturnValue, nil, reportError("msConfigRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.msConfigRequest
+	req, err := api.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := api.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode >= 400 {
+			var v ErrorResponse
+			err = api.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = api.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiPutConfigRequest struct {
 	ctx context.Context
