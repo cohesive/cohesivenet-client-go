@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func (c *Client) UpdateSslCerts(cert, key string) (SSLCertResponse, error) {
+func (c *Client) UpdateHttpsCerts(cert, key string) (SSLCertResponse, error) {
 
 	certFile, err := ioutil.ReadFile(cert)
 	if err != nil {
