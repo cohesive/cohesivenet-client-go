@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func (c *Client) UpdateHttpsCerts(cert, key string) (SSLCertResponse, error) {
+func (c *Client) UpdateHttpsCerts(cert, key string) (HttpsCertResponse, error) {
 
 	certFile, err := ioutil.ReadFile(cert)
 	if err != nil {
@@ -24,12 +24,12 @@ func (c *Client) UpdateHttpsCerts(cert, key string) (SSLCertResponse, error) {
 	cf := string(certFile)
 	kf := string(keyFile)
 
-	ssl := SSLCert{
+	https := HttpsCert{
 		Cert: cf,
 		Key:  kf,
 	}
 
-	rb, err := json.Marshal(ssl)
+	rb, err := json.Marshal(https)
 	if err != nil {
 		log.Println(err)
 	}
@@ -53,11 +53,11 @@ func (c *Client) UpdateHttpsCerts(cert, key string) (SSLCertResponse, error) {
 		log.Println(err)
 	}
 
-	sslResponse := SSLCertResponse{}
-	errUnmarshal := json.Unmarshal([]byte(body2), &sslResponse)
+	httpsResponse := HttpsCertResponse{}
+	errUnmarshal := json.Unmarshal([]byte(body2), &httpsResponse)
 	if err != nil {
 		log.Println(errUnmarshal)
 	}
 
-	return sslResponse, nil
+	return httpsResponse, nil
 }

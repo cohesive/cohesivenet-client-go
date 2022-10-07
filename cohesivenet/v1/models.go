@@ -394,12 +394,12 @@ type Instance struct {
 	Path      string `json:"Path,omitempty"`
 }
 
-type SSLCert struct {
+type HttpsCert struct {
 	Cert string `json:"cert,omitempty"`
 	Key  string `json:"key,omitempty"`
 }
 
-type SSLCertResponse struct {
+type HttpsCertResponse struct {
 	Response struct {
 		Status string `json:"status"`
 		UUID   string `json:"uuid"`
