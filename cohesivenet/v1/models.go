@@ -393,3 +393,15 @@ type Instance struct {
 	IPAddress string `json:"IPAddress,omitempty"`
 	Path      string `json:"Path,omitempty"`
 }
+
+type SSLCert struct {
+	Cert string `json:"cert,omitempty"`
+	Key  string `json:"key,omitempty"`
+}
+
+type SSLCertResponse struct {
+	Response struct {
+		Status string `json:"status"`
+		UUID   string `json:"uuid"`
+	} `json:"response"`
+}
