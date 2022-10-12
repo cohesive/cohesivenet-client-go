@@ -3,7 +3,6 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -12,12 +11,12 @@ import (
 func (c *Client) GetEbgpPeer(endpointId string, ebgpPeerId string) (EbgpPeer, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/ipsec/endpoints/%s/ebgp_peers/%s", c.HostURL, endpointId, ebgpPeerId), nil)
 	if err != nil {
-		log.Println(err)
+		return EbgpPeer{}, err
 	}
 
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return EbgpPeer{}, err
 	}
 
 	simplePeer := SimplifyGetEbpgJson(string(body))
@@ -25,7 +24,7 @@ func (c *Client) GetEbgpPeer(endpointId string, ebgpPeerId string) (EbgpPeer, er
 	ebgPeer := EbgpPeer{}
 	err = json.Unmarshal([]byte(simplePeer), &ebgPeer)
 	if err != nil {
-		log.Println(err)
+		return EbgpPeer{}, err
 	}
 
 	return ebgPeer, nil
@@ -35,17 +34,17 @@ func (c *Client) CreateEbgpPeer(endpointId string, ebgp_peer *EbgpPeer) (*EbgpPe
 
 	rb, err := json.Marshal(ebgp_peer)
 	if err != nil {
-		return nil, err
+		return &EbgpPeer{}, err
 	}
 
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/ipsec/endpoints/%s/ebgp_peers", c.HostURL, endpointId), strings.NewReader(string(rb)))
 	if err != nil {
-		return nil, err
+		return &EbgpPeer{}, err
 	}
 
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return &EbgpPeer{}, err
 	}
 
 	simplePeer := SimplifyEbpgJson(string(body))
@@ -53,7 +52,7 @@ func (c *Client) CreateEbgpPeer(endpointId string, ebgp_peer *EbgpPeer) (*EbgpPe
 	newPeer := EbgpPeer{}
 	err = json.Unmarshal([]byte(simplePeer), &newPeer)
 	if err != nil {
-		log.Println(err)
+		return &EbgpPeer{}, err
 	}
 
 	return &newPeer, nil

@@ -13,6 +13,8 @@ type Client struct {
 	HostURL    string
 	HTTPClient *http.Client
 	Token      string
+	Username   string
+	Password   string
 }
 
 // NewClient -
@@ -21,6 +23,8 @@ func NewClient(username, password, token, hostUrl *string) (*Client, error) {
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 		HostURL:    *hostUrl,
 		Token:      *token,
+		Username:   *username,
+		Password:   *password,
 	}
 
 	//If username or password not provided, return empty client
@@ -32,7 +36,11 @@ func NewClient(username, password, token, hostUrl *string) (*Client, error) {
 }
 
 func (c *Client) doRequest(req *http.Request) ([]byte, error) {
-	req.Header.Add("Api-Token", c.Token)
+	if len(c.Token) != 0 {
+		req.Header.Add("Api-Token", c.Token)
+	} else {
+		req.SetBasicAuth(c.Username, c.Password)
+	}
 	req.Header.Add("Content-Type", "application/json")
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	res, err := c.HTTPClient.Do(req)
