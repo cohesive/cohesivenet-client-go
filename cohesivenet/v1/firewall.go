@@ -3,7 +3,6 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -12,21 +11,21 @@ import (
 func (c *Client) GetFirewallRules() (FirewallResponse, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/firewall/rules", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return FirewallResponse{}, err
 	}
 
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return FirewallResponse{}, err
 	}
 
 	simpleJson := simplifyJson(string(body))
 
 	firewallResponse := FirewallResponse{}
-	errUnmarshal := json.Unmarshal([]byte(simpleJson), &firewallResponse)
+	err = json.Unmarshal([]byte(simpleJson), &firewallResponse)
 
 	if err != nil {
-		log.Println(errUnmarshal)
+		return FirewallResponse{}, err
 	}
 
 	return firewallResponse, nil
@@ -42,16 +41,16 @@ func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) ([]*FirewallRespo
 
 		rb, err := json.Marshal(rule)
 		if err != nil {
-			log.Println(err)
+			return []*FirewallResponse{}, err
 		}
 		req, err := http.NewRequest("POST", fmt.Sprintf("%s/firewall/rules", c.HostURL), strings.NewReader(string(rb)))
 		if err != nil {
-			log.Println(err)
+			return []*FirewallResponse{}, err
 		}
 
-		_, err2 := c.doRequest(req)
+		_, err = c.doRequest(req)
 		if err != nil {
-			log.Println(err2)
+			return []*FirewallResponse{}, err
 		}
 
 		i++
@@ -59,18 +58,18 @@ func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) ([]*FirewallRespo
 
 	req2, err := http.NewRequest("GET", fmt.Sprintf("%s/firewall/rules", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return []*FirewallResponse{}, err
 	}
 
 	body, err := c.doRequest(req2)
 	if err != nil {
-		log.Println(err)
+		return []*FirewallResponse{}, err
 	}
 
 	returnRules := []*FirewallResponse{}
-	errUnmarshal := json.Unmarshal([]byte(body), &returnRules)
+	err = json.Unmarshal([]byte(body), &returnRules)
 	if err != nil {
-		log.Println(errUnmarshal)
+		return []*FirewallResponse{}, err
 	}
 
 	return returnRules, nil
@@ -86,16 +85,16 @@ func (c *Client) DeleteRules(ruleList []*FirewallRule) error {
 
 		rb, err := json.Marshal(rule)
 		if err != nil {
-			log.Println(err)
+			return err
 		}
 		req, err := http.NewRequest("DELETE", fmt.Sprintf("%s/firewall/rules", c.HostURL), strings.NewReader(string(rb)))
 		if err != nil {
-			log.Println(err)
+			return err
 		}
 
-		_, err2 := c.doRequest(req)
+		_, err = c.doRequest(req)
 		if err != nil {
-			log.Println(err2)
+			return err
 		}
 
 		i++

@@ -3,7 +3,6 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -11,19 +10,19 @@ import (
 func (c *Client) GetInstance(instanceUuid string) (InstanceResponse, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/container_system/containers", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return InstanceResponse{}, err
 	}
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return InstanceResponse{}, err
 	}
 
 	simpleJson := SimplifyInstanceJson(string(body), instanceUuid)
 
 	instanceResponse := InstanceResponse{}
-	errUnmarshal := json.Unmarshal([]byte(simpleJson), &instanceResponse)
+	err = json.Unmarshal([]byte(simpleJson), &instanceResponse)
 	if err != nil {
-		log.Println(errUnmarshal)
+		return InstanceResponse{}, err
 	}
 
 	pluginInstance := InstanceResponse{}
@@ -68,22 +67,22 @@ func (c *Client) CreateInstance(instance *CreatePluginInstance) (CreatePluginIns
 
 	rb, err := json.Marshal(instance)
 	if err != nil {
-		log.Println(err)
+		return CreatePluginInstanceResponse{}, err
 	}
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/container_system/containers", c.HostURL), strings.NewReader(string(rb)))
 	if err != nil {
-		log.Println(err)
+		return CreatePluginInstanceResponse{}, err
 	}
 
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return CreatePluginInstanceResponse{}, err
 	}
 
 	newInstance := CreatePluginInstanceResponse{}
-	errUnmarshal := json.Unmarshal([]byte(body), &newInstance)
+	err = json.Unmarshal([]byte(body), &newInstance)
 	if err != nil {
-		log.Println(errUnmarshal)
+		return CreatePluginInstanceResponse{}, err
 	}
 
 	return newInstance, err

@@ -3,7 +3,6 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -12,18 +11,18 @@ import (
 func (c *Client) GetRoute(routeId string) (RouteResponse, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return RouteResponse{}, err
 	}
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return RouteResponse{}, err
 	}
 
 	simpleJson := SimplifyJson(string(body))
 	routeResponse := RouteResponse{}
-	errUnmarshal := json.Unmarshal([]byte(simpleJson), &routeResponse)
+	err = json.Unmarshal([]byte(simpleJson), &routeResponse)
 	if err != nil {
-		log.Println(errUnmarshal)
+		return RouteResponse{}, err
 	}
 
 	returnRoutes := RouteResponse{}
@@ -39,11 +38,11 @@ func (c *Client) GetRoute(routeId string) (RouteResponse, error) {
 func (c *Client) GetRoutes() (RouteResponse, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return RouteResponse{}, err
 	}
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return RouteResponse{}, err
 	}
 
 	simpleJson := SimplifyJson(string(body))
@@ -51,7 +50,7 @@ func (c *Client) GetRoutes() (RouteResponse, error) {
 	errUnmarshal := json.Unmarshal([]byte(simpleJson), &routeResponse)
 
 	if err != nil {
-		log.Println(errUnmarshal)
+		return RouteResponse{}, errUnmarshal
 	}
 
 	return routeResponse, nil
@@ -71,15 +70,15 @@ func (c *Client) CreateRoute(routeList []*Route) ([]*RouteResponse, error) {
 		}
 		rb, err := json.Marshal(route)
 		if err != nil {
-			log.Println(err)
+			return []*RouteResponse{}, err
 		}
 		req, err := http.NewRequest("POST", fmt.Sprintf("%s/routes", c.HostURL), strings.NewReader(string(rb)))
 		if err != nil {
-			log.Println(err)
+			return []*RouteResponse{}, err
 		}
-		_, err2 := c.doRequest(req)
-		if err2 != nil {
-			log.Println(err)
+		_, err = c.doRequest(req)
+		if err != nil {
+			return []*RouteResponse{}, err
 		}
 
 		i++
@@ -87,18 +86,17 @@ func (c *Client) CreateRoute(routeList []*Route) ([]*RouteResponse, error) {
 
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return []*RouteResponse{}, err
 	}
 	body, err := c.doRequest(req)
 	if err != nil {
-		log.Println(err)
+		return []*RouteResponse{}, err
 	}
 
 	newRoute := []*RouteResponse{}
-	//errUnmarshal := json.Unmarshal([]byte(simpleJson), &newRoute)
-	errUnmarshal := json.Unmarshal([]byte(body), &newRoute)
+	err = json.Unmarshal([]byte(body), &newRoute)
 	if err != nil {
-		log.Println(errUnmarshal)
+		return []*RouteResponse{}, err
 	}
 
 	return newRoute, err
@@ -117,18 +115,18 @@ func (c *Client) DeleteRoute() error {
 
 	req1, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
 	if err != nil {
-		log.Println(err)
+		return err
 	}
 	routes, err := c.doRequest(req1)
 	if err != nil {
-		log.Println(err)
+		return err
 	}
 
 	simpleJson := SimplifyJson(string(routes))
 	routeResponse := RouteResponse{}
-	errUnmarshal := json.Unmarshal([]byte(simpleJson), &routeResponse)
+	err = json.Unmarshal([]byte(simpleJson), &routeResponse)
 	if err != nil {
-		log.Println(errUnmarshal)
+		return err
 	}
 
 	for _, r := range routeResponse.Routes {
