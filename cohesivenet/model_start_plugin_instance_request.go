@@ -27,7 +27,7 @@ type StartPluginInstanceRequest struct {
 	// Optionally override the plugins command. Required if plugin command not defined.
 	Command *string `json:"command,omitempty"`
 	ManagerConfig *PluginManagerConf `json:"manager_config,omitempty"`
-	Environment []StartPluginInstanceRequestEnvironmentInner `json:"environment,omitempty"`
+	Environment []KeyValuePair `json:"environment,omitempty"`
 }
 
 // NewStartPluginInstanceRequest instantiates a new StartPluginInstanceRequest object
@@ -226,9 +226,9 @@ func (o *StartPluginInstanceRequest) SetManagerConfig(v PluginManagerConf) {
 }
 
 // GetEnvironment returns the Environment field value if set, zero value otherwise.
-func (o *StartPluginInstanceRequest) GetEnvironment() []StartPluginInstanceRequestEnvironmentInner {
+func (o *StartPluginInstanceRequest) GetEnvironment() []KeyValuePair {
 	if o == nil || o.Environment == nil {
-		var ret []StartPluginInstanceRequestEnvironmentInner
+		var ret []KeyValuePair
 		return ret
 	}
 	return o.Environment
@@ -236,7 +236,7 @@ func (o *StartPluginInstanceRequest) GetEnvironment() []StartPluginInstanceReque
 
 // GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StartPluginInstanceRequest) GetEnvironmentOk() ([]StartPluginInstanceRequestEnvironmentInner, bool) {
+func (o *StartPluginInstanceRequest) GetEnvironmentOk() ([]KeyValuePair, bool) {
 	if o == nil || o.Environment == nil {
 		return nil, false
 	}
@@ -252,8 +252,8 @@ func (o *StartPluginInstanceRequest) HasEnvironment() bool {
 	return false
 }
 
-// SetEnvironment gets a reference to the given []StartPluginInstanceRequestEnvironmentInner and assigns it to the Environment field.
-func (o *StartPluginInstanceRequest) SetEnvironment(v []StartPluginInstanceRequestEnvironmentInner) {
+// SetEnvironment gets a reference to the given []KeyValuePair and assigns it to the Environment field.
+func (o *StartPluginInstanceRequest) SetEnvironment(v []KeyValuePair) {
 	o.Environment = v
 }
 
