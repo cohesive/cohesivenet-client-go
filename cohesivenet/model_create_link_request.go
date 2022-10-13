@@ -133,7 +133,7 @@ func (o *CreateLinkRequest) GetPolicies() []string {
 
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateLinkRequest) GetPoliciesOk() ([]AlertCustomPropertyRequest, bool) {
+func (o *CreateLinkRequest) GetPoliciesOk() ([]string, bool) {
 	if o == nil || o.Policies == nil {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *CreateLinkRequest) HasPolicies() bool {
 	return false
 }
 
-// SetPolicies gets a reference to the given []AlertCustomPropertyRequest and assigns it to the Policies field.
+// SetPolicies gets a reference to the given []string and assigns it to the Policies field.
 func (o *CreateLinkRequest) SetPolicies(v []string) {
 	o.Policies = v
 }
@@ -195,8 +195,8 @@ func (o CreateLinkRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.Conf != nil {
-		toSerialize["conf"] = o.Conf
+	if true { // will need to change when vns3_controller is supported
+ 		toSerialize["conf"] = o.Conf
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description

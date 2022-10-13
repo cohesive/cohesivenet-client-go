@@ -26,7 +26,7 @@ type Link struct {
 	Connected *bool `json:"connected,omitempty"`
 	// openvpn or wireguard
 	Type *string `json:"type,omitempty"`
-	Tags []KeyValueTag `json:"tags,omitempty"`
+	Tags []KeyValuePair `json:"tags,omitempty"`
 	LastConnect *time.Time `json:"last_connect,omitempty"`
 	LastDisconnect *time.Time `json:"last_disconnect,omitempty"`
 	// Time of last WG handshake
@@ -291,9 +291,9 @@ func (o *Link) SetType(v string) {
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *Link) GetTags() []KeyValueTag {
+func (o *Link) GetTags() []KeyValuePair {
 	if o == nil || o.Tags == nil {
-		var ret []KeyValueTag
+		var ret []KeyValuePair
 		return ret
 	}
 	return o.Tags
@@ -301,7 +301,7 @@ func (o *Link) GetTags() []KeyValueTag {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetTagsOk() ([]KeyValueTag, bool) {
+func (o *Link) GetTagsOk() ([]KeyValuePair, bool) {
 	if o == nil || o.Tags == nil {
 		return nil, false
 	}
@@ -317,8 +317,8 @@ func (o *Link) HasTags() bool {
 	return false
 }
 
-// SetTags gets a reference to the given []KeyValueTag and assigns it to the Tags field.
-func (o *Link) SetTags(v []KeyValueTag) {
+// SetTags gets a reference to the given []KeyValuePair and assigns it to the Tags field.
+func (o *Link) SetTags(v []KeyValuePair) {
 	o.Tags = v
 }
 
