@@ -31,7 +31,7 @@ func (c *Client) GetFirewallRules() (FirewallResponse, error) {
 	return firewallResponse, nil
 }
 
-func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) ([]*FirewallResponse, error) {
+func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) error {
 	i := 0
 	for _, rl := range ruleList {
 		rule := FirewallRule{
@@ -41,38 +41,22 @@ func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) ([]*FirewallRespo
 
 		rb, err := json.Marshal(rule)
 		if err != nil {
-			return []*FirewallResponse{}, err
+			return err
 		}
 		req, err := http.NewRequest("POST", fmt.Sprintf("%s/firewall/rules", c.HostURL), strings.NewReader(string(rb)))
 		if err != nil {
-			return []*FirewallResponse{}, err
+			return err
 		}
 
 		_, err = c.doRequest(req)
 		if err != nil {
-			return []*FirewallResponse{}, err
+			return err
 		}
 
 		i++
 	}
 
-	req2, err := http.NewRequest("GET", fmt.Sprintf("%s/firewall/rules", c.HostURL), nil)
-	if err != nil {
-		return []*FirewallResponse{}, err
-	}
-
-	body, err := c.doRequest(req2)
-	if err != nil {
-		return []*FirewallResponse{}, err
-	}
-
-	returnRules := []*FirewallResponse{}
-	err = json.Unmarshal([]byte(body), &returnRules)
-	if err != nil {
-		return []*FirewallResponse{}, err
-	}
-
-	return returnRules, nil
+	return nil
 }
 
 func (c *Client) DeleteRules(ruleList []*FirewallRule) error {
