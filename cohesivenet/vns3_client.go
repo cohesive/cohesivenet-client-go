@@ -54,7 +54,7 @@ type VNS3Client struct {
 
 	AccessApi *AccessApiService
 
-	// BGPApi *BGPApiService
+	BGPApi *BGPApiService
 
 	ConfigurationApi *ConfigurationApiService
 
@@ -62,19 +62,19 @@ type VNS3Client struct {
 
 	IPsecApi *IpsecApiService
 
-	// InterfacesApi *InterfacesApiService
+	InterfacesApi *InterfacesApiService
 
-	// MonitoringAlertingApi *MonitoringAlertingApiService
+	MonitoringAlertingApi *MonitoringAlertingApiService
 
-	// NetworkEdgePluginsApi *NetworkEdgePluginsApiService
+	NetworkEdgePluginsApi *NetworkEdgePluginsApiService
 
-	// OverlayNetworkApi *OverlayNetworkApiService
+	OverlayNetworkApi *OverlayNetworkApiService
 
 	PeeringApi *PeeringApiService
 
 	RoutingApi *RoutingApiService
 
-	// SnapshotsApi *SnapshotsApiService
+	SnapshotsApi *SnapshotsApiService
 
 	SystemAdministrationApi *SystemAdministrationApiService
 }
@@ -117,17 +117,17 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 	// For golang newbies (like me): this is casting c.common pointer (which is type service) as 
 	// a AccessApiService pointer. as VNS3Client.AccessApi is defined as type AccessApiService pointer
 	c.AccessApi = (*AccessApiService)(&c.common)
-	// c.BGPApi = (*BGPApiService)(&c.common)
+	c.BGPApi = (*BGPApiService)(&c.common)
 	c.ConfigurationApi = (*ConfigurationApiService)(&c.common)
 	c.FirewallApi = (*FirewallApiService)(&c.common)
 	c.IPsecApi = (*IpsecApiService)(&c.common)
-	// c.InterfacesApi = (*InterfacesApiService)(&c.common)
-	// c.MonitoringAlertingApi = (*MonitoringAlertingApiService)(&c.common)
-	// c.NetworkEdgePluginsApi = (*NetworkEdgePluginsApiService)(&c.common)
-	// c.OverlayNetworkApi = (*OverlayNetworkApiService)(&c.common)
+	c.InterfacesApi = (*InterfacesApiService)(&c.common)
+	c.MonitoringAlertingApi = (*MonitoringAlertingApiService)(&c.common)
+	c.NetworkEdgePluginsApi = (*NetworkEdgePluginsApiService)(&c.common)
+	c.OverlayNetworkApi = (*OverlayNetworkApiService)(&c.common)
 	c.PeeringApi = (*PeeringApiService)(&c.common)
 	c.RoutingApi = (*RoutingApiService)(&c.common)
-	// c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
+	c.SnapshotsApi = (*SnapshotsApiService)(&c.common)
 	c.SystemAdministrationApi = (*SystemAdministrationApiService)(&c.common)
 
 	return c
@@ -664,8 +664,11 @@ func (e GenericAPIError) GetMessage() string {
 
 // Model returns the unpacked model of the error
 func (e GenericAPIError) GetErrorMessage() string {
-	errResponse := e.model.(ErrorResponse)
-	return (&errResponse).GetErrorMessage()
+	if e.model != nil {
+		errResponse := e.model.(ErrorResponse)
+		return (&errResponse).GetErrorMessage()
+	}
+	return ""
 }
 
 // Model returns the unpacked model of the error

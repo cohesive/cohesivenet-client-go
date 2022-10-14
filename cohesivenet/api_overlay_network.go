@@ -38,11 +38,11 @@ func (r ApiDeleteClientpackTagRequest) ClientpackTagKeyRequest(clientpackTagKeyR
 }
 
 func (r ApiDeleteClientpackTagRequest) Execute() (*ClientpackTagsResponse, *http.Response, error) {
-	return r.ApiService.DeleteClientpackTagExecute(r)
+	return r.ApiService.DeleteClientpackTag(r)
 }
 
 /*
-DeleteClientpackTag Delete clientpack tag
+DeleteClientpackTagRequest Delete clientpack tag
 
 For deleting individual clientpack tags
 
@@ -50,7 +50,7 @@ For deleting individual clientpack tags
  @param clientpackName name of clientpack
  @return ApiDeleteClientpackTagRequest
 */
-func (a *OverlayNetworkApiService) DeleteClientpackTag(ctx context.Context, clientpackName string) ApiDeleteClientpackTagRequest {
+func (a *OverlayNetworkApiService) DeleteClientpackTagRequest(ctx context.Context, clientpackName string) ApiDeleteClientpackTagRequest {
 	return ApiDeleteClientpackTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,7 +60,7 @@ func (a *OverlayNetworkApiService) DeleteClientpackTag(ctx context.Context, clie
 
 // Execute executes the request
 //  @return ClientpackTagsResponse
-func (a *OverlayNetworkApiService) DeleteClientpackTagExecute(r ApiDeleteClientpackTagRequest) (*ClientpackTagsResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) DeleteClientpackTag(r ApiDeleteClientpackTagRequest) (*ClientpackTagsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -165,11 +165,11 @@ type ApiGetClientpackRequest struct {
 }
 
 func (r ApiGetClientpackRequest) Execute() (*ClientpackDetailResponse, *http.Response, error) {
-	return r.ApiService.GetClientpackExecute(r)
+	return r.ApiService.GetClientpack(r)
 }
 
 /*
-GetClientpack Get clientpack details
+GetClientpackRequest Get clientpack details
 
 Returns detailed information about all of the clientpacks in the topology.  If manager's are properly peered, this information can come from any of the controllers.
 
@@ -178,7 +178,7 @@ Returns detailed information about all of the clientpacks in the topology.  If m
  @param clientpackName name of clientpack
  @return ApiGetClientpackRequest
 */
-func (a *OverlayNetworkApiService) GetClientpack(ctx context.Context, clientpackName string) ApiGetClientpackRequest {
+func (a *OverlayNetworkApiService) GetClientpackRequest(ctx context.Context, clientpackName string) ApiGetClientpackRequest {
 	return ApiGetClientpackRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -186,9 +186,9 @@ func (a *OverlayNetworkApiService) GetClientpack(ctx context.Context, clientpack
 	}
 }
 
-// Execute executes the request
+// GetClientpack executes the request
 //  @return ClientpackDetailResponse
-func (a *OverlayNetworkApiService) GetClientpackExecute(r ApiGetClientpackRequest) (*ClientpackDetailResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetClientpack(r ApiGetClientpackRequest) (*ClientpackDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -284,18 +284,18 @@ func (r ApiGetClientpacksRequest) Sorted(sorted bool) ApiGetClientpacksRequest {
 }
 
 func (r ApiGetClientpacksRequest) Execute() (*ClientpackListResponse, *http.Response, error) {
-	return r.ApiService.GetClientpacksExecute(r)
+	return r.ApiService.GetClientpacks(r)
 }
 
 /*
-GetClientpacks Get clientpacks
+GetClientpacksRequest Get clientpacks
 
 Returns detailed information about all of the clientpacks in the topology. If manager's are properly peered, this information can come from any of the controllers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetClientpacksRequest
 */
-func (a *OverlayNetworkApiService) GetClientpacks(ctx context.Context) ApiGetClientpacksRequest {
+func (a *OverlayNetworkApiService) GetClientpacksRequest(ctx context.Context) ApiGetClientpacksRequest {
 	return ApiGetClientpacksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -304,7 +304,7 @@ func (a *OverlayNetworkApiService) GetClientpacks(ctx context.Context) ApiGetCli
 
 // Execute executes the request
 //  @return ClientpackListResponse
-func (a *OverlayNetworkApiService) GetClientpacksExecute(r ApiGetClientpacksRequest) (*ClientpackListResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetClientpacks(r ApiGetClientpacksRequest) (*ClientpackListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -395,18 +395,18 @@ type ApiGetClientsStatusRequest struct {
 }
 
 func (r ApiGetClientsStatusRequest) Execute() (*OverlayClientsListResponse, *http.Response, error) {
-	return r.ApiService.GetClientsStatusExecute(r)
+	return r.ApiService.GetClientsStatus(r)
 }
 
 /*
-GetClientsStatus Get clients status
+GetClientsStatusRequest Get clients status
 
 Describe overlay clients
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetClientsStatusRequest
 */
-func (a *OverlayNetworkApiService) GetClientsStatus(ctx context.Context) ApiGetClientsStatusRequest {
+func (a *OverlayNetworkApiService) GetClientsStatusRequest(ctx context.Context) ApiGetClientsStatusRequest {
 	return ApiGetClientsStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -415,7 +415,7 @@ func (a *OverlayNetworkApiService) GetClientsStatus(ctx context.Context) ApiGetC
 
 // Execute executes the request
 //  @return OverlayClientsListResponse
-func (a *OverlayNetworkApiService) GetClientsStatusExecute(r ApiGetClientsStatusRequest) (*OverlayClientsListResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetClientsStatus(r ApiGetClientsStatusRequest) (*OverlayClientsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -508,11 +508,11 @@ func (r ApiGetDownloadClientpackRequest) Fileformat(fileformat string) ApiGetDow
 }
 
 func (r ApiGetDownloadClientpackRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.GetDownloadClientpackExecute(r)
+	return r.ApiService.GetDownloadClientpack(r)
 }
 
 /*
-GetDownloadClientpack Download clientpack
+GetDownloadClientpackRequest Download clientpack
 
 Returns clientpack file. Clientpacks are files with the necessary information and credentials  for an overlay client to be connected to the VNS3 topology
 
@@ -520,7 +520,7 @@ Returns clientpack file. Clientpacks are files with the necessary information an
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDownloadClientpackRequest
 */
-func (a *OverlayNetworkApiService) GetDownloadClientpack(ctx context.Context) ApiGetDownloadClientpackRequest {
+func (a *OverlayNetworkApiService) GetDownloadClientpackRequest(ctx context.Context) ApiGetDownloadClientpackRequest {
 	return ApiGetDownloadClientpackRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -529,7 +529,7 @@ func (a *OverlayNetworkApiService) GetDownloadClientpack(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return *os.File
-func (a *OverlayNetworkApiService) GetDownloadClientpackExecute(r ApiGetDownloadClientpackRequest) (**os.File, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetDownloadClientpack(r ApiGetDownloadClientpackRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -626,11 +626,11 @@ type ApiGetDownloadNamedClientpackRequest struct {
 }
 
 func (r ApiGetDownloadNamedClientpackRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.GetDownloadNamedClientpackExecute(r)
+	return r.ApiService.GetDownloadNamedClientpack(r)
 }
 
 /*
-GetDownloadNamedClientpack Download clientpack by name
+GetDownloadNamedClientpackRequest Download clientpack by name
 
 Returns clientpack binary file. Clientpacks are files with the necessary information and credentials  for an overlay client to be connected to the VNS3 topology
 
@@ -639,7 +639,7 @@ Returns clientpack binary file. Clientpacks are files with the necessary informa
  @param clientpackName name of clientpack
  @return ApiGetDownloadNamedClientpackRequest
 */
-func (a *OverlayNetworkApiService) GetDownloadNamedClientpack(ctx context.Context, clientpackName string) ApiGetDownloadNamedClientpackRequest {
+func (a *OverlayNetworkApiService) GetDownloadNamedClientpackRequest(ctx context.Context, clientpackName string) ApiGetDownloadNamedClientpackRequest {
 	return ApiGetDownloadNamedClientpackRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -649,7 +649,7 @@ func (a *OverlayNetworkApiService) GetDownloadNamedClientpack(ctx context.Contex
 
 // Execute executes the request
 //  @return *os.File
-func (a *OverlayNetworkApiService) GetDownloadNamedClientpackExecute(r ApiGetDownloadNamedClientpackRequest) (**os.File, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetDownloadNamedClientpack(r ApiGetDownloadNamedClientpackRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -744,18 +744,18 @@ func (r ApiAddClientpacksRequest) AddClientpackRequest(addClientpackRequest AddC
 }
 
 func (r ApiAddClientpacksRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.PostAddClientpacksExecute(r)
+	return r.ApiService.PostAddClientpacks(r)
 }
 
 /*
-PostAddClientpacks Create new clientpack
+PostAddClientpacksRequest Create new clientpack
 
 Incrementally add new clientpacks for use
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddClientpacksRequest
 */
-func (a *OverlayNetworkApiService) PostAddClientpacks(ctx context.Context) ApiAddClientpacksRequest {
+func (a *OverlayNetworkApiService) PostAddClientpacksRequest(ctx context.Context) ApiAddClientpacksRequest {
 	return ApiAddClientpacksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -764,7 +764,7 @@ func (a *OverlayNetworkApiService) PostAddClientpacks(ctx context.Context) ApiAd
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (a *OverlayNetworkApiService) PostAddClientpacksExecute(r ApiAddClientpacksRequest) (*SimpleStringResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PostAddClientpacks(r ApiAddClientpacksRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -863,11 +863,11 @@ func (r ApiPostCheckoutNextClientpackRequest) CheckoutNextClientpackRequest(chec
 }
 
 func (r ApiPostCheckoutNextClientpackRequest) Execute() (*ClientpackResponse, *http.Response, error) {
-	return r.ApiService.PostCheckoutNextClientpackExecute(r)
+	return r.ApiService.PostCheckoutNextClientpack(r)
 }
 
 /*
-PostCheckoutNextClientpack Checkout next clientpack
+PostCheckoutNextClientpackRequest Checkout next clientpack
 
 Get next sequential client pack. Provides sufficient information to call GET /clientpack.  Note, Using this resource against multiple controllers in the same topology could cause distribution of the  same clientpack to multiple overlay devices which is not allowed.
 
@@ -875,7 +875,7 @@ Get next sequential client pack. Provides sufficient information to call GET /cl
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCheckoutNextClientpackRequest
 */
-func (a *OverlayNetworkApiService) PostCheckoutNextClientpack(ctx context.Context) ApiPostCheckoutNextClientpackRequest {
+func (a *OverlayNetworkApiService) PostCheckoutNextClientpackRequest(ctx context.Context) ApiPostCheckoutNextClientpackRequest {
 	return ApiPostCheckoutNextClientpackRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -884,7 +884,7 @@ func (a *OverlayNetworkApiService) PostCheckoutNextClientpack(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientpackResponse
-func (a *OverlayNetworkApiService) PostCheckoutNextClientpackExecute(r ApiPostCheckoutNextClientpackRequest) (*ClientpackResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PostCheckoutNextClientpack(r ApiPostCheckoutNextClientpackRequest) (*ClientpackResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -981,11 +981,11 @@ func (r ApiPostCreateClientpackTagRequest) CreateClientpackTagRequest(createClie
 }
 
 func (r ApiPostCreateClientpackTagRequest) Execute() (*ClientpackTagsResponse, *http.Response, error) {
-	return r.ApiService.PostCreateClientpackTagExecute(r)
+	return r.ApiService.PostCreateClientpackTag(r)
 }
 
 /*
-PostCreateClientpackTag Create clientpack tag
+PostCreateClientpackTagRequest Create clientpack tag
 
 For tagging individual clientpacks.
 
@@ -993,7 +993,7 @@ For tagging individual clientpacks.
  @param clientpackName name of clientpack
  @return ApiPostCreateClientpackTagRequest
 */
-func (a *OverlayNetworkApiService) PostCreateClientpackTag(ctx context.Context, clientpackName string) ApiPostCreateClientpackTagRequest {
+func (a *OverlayNetworkApiService) PostCreateClientpackTagRequest(ctx context.Context, clientpackName string) ApiPostCreateClientpackTagRequest {
 	return ApiPostCreateClientpackTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1003,7 +1003,7 @@ func (a *OverlayNetworkApiService) PostCreateClientpackTag(ctx context.Context, 
 
 // Execute executes the request
 //  @return ClientpackTagsResponse
-func (a *OverlayNetworkApiService) PostCreateClientpackTagExecute(r ApiPostCreateClientpackTagRequest) (*ClientpackTagsResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PostCreateClientpackTag(r ApiPostCreateClientpackTagRequest) (*ClientpackTagsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1107,18 +1107,18 @@ type ApiPostResetAllClientsRequest struct {
 }
 
 func (r ApiPostResetAllClientsRequest) Execute() (*BulkClientResetStatusResponse, *http.Response, error) {
-	return r.ApiService.PostResetAllClientsExecute(r)
+	return r.ApiService.PostResetAllClients(r)
 }
 
 /*
-PostResetAllClients Reset all clients
+PostResetAllClientsRequest Reset all clients
 
 For resetting all of the connections of clients connected to the VNS3 Controller
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostResetAllClientsRequest
 */
-func (a *OverlayNetworkApiService) PostResetAllClients(ctx context.Context) ApiPostResetAllClientsRequest {
+func (a *OverlayNetworkApiService) PostResetAllClientsRequest(ctx context.Context) ApiPostResetAllClientsRequest {
 	return ApiPostResetAllClientsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1127,7 +1127,7 @@ func (a *OverlayNetworkApiService) PostResetAllClients(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return BulkClientResetStatusResponse
-func (a *OverlayNetworkApiService) PostResetAllClientsExecute(r ApiPostResetAllClientsRequest) (*BulkClientResetStatusResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PostResetAllClients(r ApiPostResetAllClientsRequest) (*BulkClientResetStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1221,18 +1221,18 @@ func (r ApiPostResetClientRequest) ResetOverlayClientRequest(resetOverlayClientR
 }
 
 func (r ApiPostResetClientRequest) Execute() (*ClientpackStatusResponse, *http.Response, error) {
-	return r.ApiService.PostResetClientExecute(r)
+	return r.ApiService.PostResetClient(r)
 }
 
 /*
-PostResetClient Reset client
+PostResetClientRequest Reset client
 
 For resetting the connection of a client to a VNS3 Controller
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostResetClientRequest
 */
-func (a *OverlayNetworkApiService) PostResetClient(ctx context.Context) ApiPostResetClientRequest {
+func (a *OverlayNetworkApiService) PostResetClientRequest(ctx context.Context) ApiPostResetClientRequest {
 	return ApiPostResetClientRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1241,7 +1241,7 @@ func (a *OverlayNetworkApiService) PostResetClient(ctx context.Context) ApiPostR
 
 // Execute executes the request
 //  @return ClientpackStatusResponse
-func (a *OverlayNetworkApiService) PostResetClientExecute(r ApiPostResetClientRequest) (*ClientpackStatusResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PostResetClient(r ApiPostResetClientRequest) (*ClientpackStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1341,11 +1341,11 @@ func (r ApiPutDisconnectClientpackRequest) DisconnectClientRequest(disconnectCli
 }
 
 func (r ApiPutDisconnectClientpackRequest) Execute() (*ClientpackStatusResponse, *http.Response, error) {
-	return r.ApiService.PutDisconnectClientpackExecute(r)
+	return r.ApiService.PutDisconnectClientpack(r)
 }
 
 /*
-PutDisconnectClientpack Disconnect clientpack
+PutDisconnectClientpackRequest Disconnect clientpack
 
 Force disconnect client for named clientpack
 
@@ -1353,7 +1353,7 @@ Force disconnect client for named clientpack
  @param clientpackName name of clientpack
  @return ApiPutDisconnectClientpackRequest
 */
-func (a *OverlayNetworkApiService) PutDisconnectClientpack(ctx context.Context, clientpackName string) ApiPutDisconnectClientpackRequest {
+func (a *OverlayNetworkApiService) PutDisconnectClientpackRequest(ctx context.Context, clientpackName string) ApiPutDisconnectClientpackRequest {
 	return ApiPutDisconnectClientpackRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1363,7 +1363,7 @@ func (a *OverlayNetworkApiService) PutDisconnectClientpack(ctx context.Context, 
 
 // Execute executes the request
 //  @return ClientpackStatusResponse
-func (a *OverlayNetworkApiService) PutDisconnectClientpackExecute(r ApiPutDisconnectClientpackRequest) (*ClientpackStatusResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PutDisconnectClientpack(r ApiPutDisconnectClientpackRequest) (*ClientpackStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1473,11 +1473,11 @@ func (r ApiUpdateAllClientpacksRequest) UpdateConfigClientpackRequest(updateConf
 }
 
 func (r ApiUpdateAllClientpacksRequest) Execute() (*ClientpacksConfigResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateAllClientpacksExecute(r)
+	return r.ApiService.PutUpdateAllClientpacks(r)
 }
 
 /*
-PutUpdateAllClientpacks Update all clientpacks
+PutUpdateAllClientpacksRequest Update all clientpacks
 
 For bulk set of the enabled (true/false) state for all clientpacks and the checked_out (true/false) state for all clientpacks.  This enables a variety of work flows by calling these functions after key generation,  but before general provisioning of addresses to devivces
 
@@ -1485,7 +1485,7 @@ For bulk set of the enabled (true/false) state for all clientpacks and the check
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateAllClientpacksRequest
 */
-func (a *OverlayNetworkApiService) PutUpdateAllClientpacks(ctx context.Context) ApiUpdateAllClientpacksRequest {
+func (a *OverlayNetworkApiService) PutUpdateAllClientpacksRequest(ctx context.Context) ApiUpdateAllClientpacksRequest {
 	return ApiUpdateAllClientpacksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1494,7 +1494,7 @@ func (a *OverlayNetworkApiService) PutUpdateAllClientpacks(ctx context.Context) 
 
 // Execute executes the request
 //  @return ClientpacksConfigResponse
-func (a *OverlayNetworkApiService) PutUpdateAllClientpacksExecute(r ApiUpdateAllClientpacksRequest) (*ClientpacksConfigResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PutUpdateAllClientpacks(r ApiUpdateAllClientpacksRequest) (*ClientpacksConfigResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1603,18 +1603,18 @@ func (r ApiPutUpdateClientpackRequest) UpdateClientpackRequest(updateClientpackR
 }
 
 func (r ApiPutUpdateClientpackRequest) Execute() (*UpdateClientpackResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateClientpackExecute(r)
+	return r.ApiService.PutUpdateClientpack(r)
 }
 
 /*
-PutUpdateClientpack Update clientpack
+PutUpdateClientpackRequest Update clientpack
 
 Change properties of clientpacks; enabling or disabling, checking in or out, or regenerating
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutUpdateClientpackRequest
 */
-func (a *OverlayNetworkApiService) PutUpdateClientpack(ctx context.Context) ApiPutUpdateClientpackRequest {
+func (a *OverlayNetworkApiService) PutUpdateClientpackRequest(ctx context.Context) ApiPutUpdateClientpackRequest {
 	return ApiPutUpdateClientpackRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1623,7 +1623,7 @@ func (a *OverlayNetworkApiService) PutUpdateClientpack(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return UpdateClientpackResponse
-func (a *OverlayNetworkApiService) PutUpdateClientpackExecute(r ApiPutUpdateClientpackRequest) (*UpdateClientpackResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PutUpdateClientpack(r ApiPutUpdateClientpackRequest) (*UpdateClientpackResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1735,18 +1735,18 @@ func (r ApiCreateLinkRequest) CreateLinkRequest(createLinkRequest CreateLinkRequ
 }
 
 func (r ApiCreateLinkRequest) Execute() (*LinkDetailResponse, *http.Response, error) {
-	return r.ApiService.CreateLinkExecute(r)
+	return r.ApiService.CreateLink(r)
 }
 
 /*
-CreateLink Create new Link
+CreateLinkRequest Create new Link
 
 Create new Link
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateLinkRequest
 */
-func (a *OverlayNetworkApiService) CreateLink(ctx context.Context) ApiCreateLinkRequest {
+func (a *OverlayNetworkApiService) CreateLinkRequest(ctx context.Context) ApiCreateLinkRequest {
 	return ApiCreateLinkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1755,7 +1755,7 @@ func (a *OverlayNetworkApiService) CreateLink(ctx context.Context) ApiCreateLink
 
 // Execute executes the request
 //  @return LinkDetailResponse
-func (a *OverlayNetworkApiService) CreateLinkExecute(r ApiCreateLinkRequest) (*LinkDetailResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) CreateLink(r ApiCreateLinkRequest) (*LinkDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1846,7 +1846,7 @@ func (a *OverlayNetworkApiService) CreateLinkExecute(r ApiCreateLinkRequest) (*L
 type ApiCreateLinkTagRequest struct {
 	ctx context.Context
 	ApiService *OverlayNetworkApiService
-	linkId string
+	linkId interface{} // handling int32 AND string for backwards compat
 	createLinkTagRequest *CreateClientpackTagRequest
 }
 
@@ -1856,11 +1856,11 @@ func (r ApiCreateLinkTagRequest) CreateLinkTagRequest(createLinkTagRequest Creat
 }
 
 func (r ApiCreateLinkTagRequest) Execute() (*KeyValuePairsListResponse, *http.Response, error) {
-	return r.ApiService.CreateLinkTagExecute(r)
+	return r.ApiService.CreateLinkTag(r)
 }
 
 /*
-CreateLinkTag Create link tag
+CreateLinkTagRequest Create link tag
 
 Create new link tag
 
@@ -1868,7 +1868,7 @@ Create new link tag
  @param linkId ID for link
  @return ApiCreateLinkTagRequest
 */
-func (a *OverlayNetworkApiService) CreateLinkTag(ctx context.Context, linkId string) ApiCreateLinkTagRequest {
+func (a *OverlayNetworkApiService) CreateLinkTagRequest(ctx context.Context, linkId interface{}) ApiCreateLinkTagRequest {
 	return ApiCreateLinkTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1878,7 +1878,7 @@ func (a *OverlayNetworkApiService) CreateLinkTag(ctx context.Context, linkId str
 
 // Execute executes the request
 //  @return KeyValuePairsListResponse
-func (a *OverlayNetworkApiService) CreateLinkTagExecute(r ApiCreateLinkTagRequest) (*KeyValuePairsListResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) CreateLinkTag(r ApiCreateLinkTagRequest) (*KeyValuePairsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1973,18 +1973,18 @@ type ApiGetLinksRequest struct {
 }
 
 func (r ApiGetLinksRequest) Execute() (*LinksListResponse, *http.Response, error) {
-	return r.ApiService.GetLinksExecute(r)
+	return r.ApiService.GetLinks(r)
 }
 
 /*
-GetLinks Get all links
+GetLinksRequest Get all links
 
 Retrieve all links
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetLinksRequest
 */
-func (a *OverlayNetworkApiService) GetLinks(ctx context.Context) ApiGetLinksRequest {
+func (a *OverlayNetworkApiService) GetLinksRequest(ctx context.Context) ApiGetLinksRequest {
 	return ApiGetLinksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1993,7 +1993,7 @@ func (a *OverlayNetworkApiService) GetLinks(ctx context.Context) ApiGetLinksRequ
 
 // Execute executes the request
 //  @return LinksListResponse
-func (a *OverlayNetworkApiService) GetLinksExecute(r ApiGetLinksRequest) (*LinksListResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetLinks(r ApiGetLinksRequest) (*LinksListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2079,18 +2079,18 @@ func (r ApiPutGlobalLinkPoliciesRequest) UpdateGlobalLinkPoliciesRequest(updateG
 }
 
 func (r ApiPutGlobalLinkPoliciesRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.PutGlobalLinkPoliciesExecute(r)
+	return r.ApiService.PutGlobalLinkPolicies(r)
 }
 
 /*
-PutGlobalLinkPolicies Update global link policies
+PutGlobalLinkPoliciesRequest Update global link policies
 
 Overwrite global link policies
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutGlobalLinkPoliciesRequest
 */
-func (a *OverlayNetworkApiService) PutGlobalLinkPolicies(ctx context.Context) ApiPutGlobalLinkPoliciesRequest {
+func (a *OverlayNetworkApiService) PutGlobalLinkPoliciesRequest(ctx context.Context) ApiPutGlobalLinkPoliciesRequest {
 	return ApiPutGlobalLinkPoliciesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2099,7 +2099,7 @@ func (a *OverlayNetworkApiService) PutGlobalLinkPolicies(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (a *OverlayNetworkApiService) PutGlobalLinkPoliciesExecute(r ApiPutGlobalLinkPoliciesRequest) (*SimpleStringResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PutGlobalLinkPolicies(r ApiPutGlobalLinkPoliciesRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2191,7 +2191,7 @@ func (a *OverlayNetworkApiService) PutGlobalLinkPoliciesExecute(r ApiPutGlobalLi
 type ApiPutUpdateLinkRequest struct {
 	ctx context.Context
 	ApiService *OverlayNetworkApiService
-	linkId string
+	linkId interface{} // handling int32 AND string for backwards compat
 	updateLinkRequest *UpdateLinkRequest
 }
 
@@ -2201,11 +2201,11 @@ func (r ApiPutUpdateLinkRequest) UpdateLinkRequest(updateLinkRequest UpdateLinkR
 }
 
 func (r ApiPutUpdateLinkRequest) Execute() (*LinkDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateLinkExecute(r)
+	return r.ApiService.PutUpdateLink(r)
 }
 
 /*
-PutUpdateLink Get link details
+PutUpdateLinkRequest Get link details
 
 Update link details
 
@@ -2213,7 +2213,7 @@ Update link details
  @param linkId ID for link
  @return ApiPutUpdateLinkRequest
 */
-func (a *OverlayNetworkApiService) PutUpdateLink(ctx context.Context, linkId string) ApiPutUpdateLinkRequest {
+func (a *OverlayNetworkApiService) PutUpdateLinkRequest(ctx context.Context, linkId interface{}) ApiPutUpdateLinkRequest {
 	return ApiPutUpdateLinkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2223,7 +2223,7 @@ func (a *OverlayNetworkApiService) PutUpdateLink(ctx context.Context, linkId str
 
 // Execute executes the request
 //  @return LinkDetailResponse
-func (a *OverlayNetworkApiService) PutUpdateLinkExecute(r ApiPutUpdateLinkRequest) (*LinkDetailResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) PutUpdateLink(r ApiPutUpdateLinkRequest) (*LinkDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2315,15 +2315,15 @@ func (a *OverlayNetworkApiService) PutUpdateLinkExecute(r ApiPutUpdateLinkReques
 type ApiDeleteLinkRequest struct {
 	ctx context.Context
 	ApiService *OverlayNetworkApiService
-	linkId string
+	linkId interface{}
 }
 
 func (r ApiDeleteLinkRequest) Execute() (*LinkDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteLinkExecute(r)
+	return r.ApiService.DeleteLink(r)
 }
 
 /*
-DeleteLink Delete link and interface
+DeleteLinkRequest Delete link and interface
 
 Delete link
 
@@ -2331,7 +2331,7 @@ Delete link
  @param linkId ID for link
  @return ApiDeleteLinkRequest
 */
-func (a *OverlayNetworkApiService) DeleteLink(ctx context.Context, linkId string) ApiDeleteLinkRequest {
+func (a *OverlayNetworkApiService) DeleteLinkRequest(ctx context.Context, linkId interface{}) ApiDeleteLinkRequest {
 	return ApiDeleteLinkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2341,7 +2341,7 @@ func (a *OverlayNetworkApiService) DeleteLink(ctx context.Context, linkId string
 
 // Execute executes the request
 //  @return LinkDetailResponse
-func (a *OverlayNetworkApiService) DeleteLinkExecute(r ApiDeleteLinkRequest) (*LinkDetailResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) DeleteLink(r ApiDeleteLinkRequest) (*LinkDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -2427,16 +2427,16 @@ func (a *OverlayNetworkApiService) DeleteLinkExecute(r ApiDeleteLinkRequest) (*L
 type ApiDeleteLinkTagRequest struct {
 	ctx context.Context
 	ApiService *OverlayNetworkApiService
-	linkId string
+	linkId interface{}
 	tagkey string
 }
 
 func (r ApiDeleteLinkTagRequest) Execute() (*KeyValuePairsListResponse, *http.Response, error) {
-	return r.ApiService.DeleteLinkTagExecute(r)
+	return r.ApiService.DeleteLinkTag(r)
 }
 
 /*
-DeleteLinkTag Delete link tag
+DeleteLinkTagRequest Delete link tag
 
 Delete link tag
 
@@ -2445,7 +2445,7 @@ Delete link tag
  @param tagkey Key of link tag to delete
  @return ApiDeleteLinkTagRequest
 */
-func (a *OverlayNetworkApiService) DeleteLinkTag(ctx context.Context, linkId string, tagkey string) ApiDeleteLinkTagRequest {
+func (a *OverlayNetworkApiService) DeleteLinkTagRequest(ctx context.Context, linkId interface{}, tagkey string) ApiDeleteLinkTagRequest {
 	return ApiDeleteLinkTagRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2456,7 +2456,7 @@ func (a *OverlayNetworkApiService) DeleteLinkTag(ctx context.Context, linkId str
 
 // Execute executes the request
 //  @return KeyValuePairsListResponse
-func (a *OverlayNetworkApiService) DeleteLinkTagExecute(r ApiDeleteLinkTagRequest) (*KeyValuePairsListResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) DeleteLinkTag(r ApiDeleteLinkTagRequest) (*KeyValuePairsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -2548,24 +2548,24 @@ type ApiGetGlobalLinkPoliciesRequest struct {
 }
 
 // Type of Link. openvpn or wireguard. defaults to openvpn
-func (r ApiGetGlobalLinkPoliciesRequest) Type_(type_ string) ApiGetGlobalLinkPoliciesRequest {
+func (r ApiGetGlobalLinkPoliciesRequest) Type(type_ string) ApiGetGlobalLinkPoliciesRequest {
 	r.type_ = &type_
 	return r
 }
 
 func (r ApiGetGlobalLinkPoliciesRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.GetGlobalLinkPoliciesExecute(r)
+	return r.ApiService.GetGlobalLinkPolicies(r)
 }
 
 /*
-GetGlobalLinkPolicies Get global link policies
+GetGlobalLinkPoliciesRequest Get global link policies
 
 Retrieve global link policies
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGlobalLinkPoliciesRequest
 */
-func (a *OverlayNetworkApiService) GetGlobalLinkPolicies(ctx context.Context) ApiGetGlobalLinkPoliciesRequest {
+func (a *OverlayNetworkApiService) GetGlobalLinkPoliciesRequest(ctx context.Context) ApiGetGlobalLinkPoliciesRequest {
 	return ApiGetGlobalLinkPoliciesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2574,7 +2574,7 @@ func (a *OverlayNetworkApiService) GetGlobalLinkPolicies(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (a *OverlayNetworkApiService) GetGlobalLinkPoliciesExecute(r ApiGetGlobalLinkPoliciesRequest) (*SimpleStringResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetGlobalLinkPolicies(r ApiGetGlobalLinkPoliciesRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2653,15 +2653,15 @@ func (a *OverlayNetworkApiService) GetGlobalLinkPoliciesExecute(r ApiGetGlobalLi
 type ApiGetLinkRequest struct {
 	ctx context.Context
 	ApiService *OverlayNetworkApiService
-	linkId string
+	linkId interface{}
 }
 
 func (r ApiGetLinkRequest) Execute() (*LinkDetailResponse, *http.Response, error) {
-	return r.ApiService.GetLinkExecute(r)
+	return r.ApiService.GetLink(r)
 }
 
 /*
-GetLink Get link details
+GetLinkRequest Get link details
 
 Get link details
 
@@ -2669,7 +2669,7 @@ Get link details
  @param linkId ID for link
  @return ApiGetLinkRequest
 */
-func (a *OverlayNetworkApiService) GetLink(ctx context.Context, linkId string) ApiGetLinkRequest {
+func (a *OverlayNetworkApiService) GetLinkRequest(ctx context.Context, linkId interface{}) ApiGetLinkRequest {
 	return ApiGetLinkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2679,7 +2679,7 @@ func (a *OverlayNetworkApiService) GetLink(ctx context.Context, linkId string) A
 
 // Execute executes the request
 //  @return LinkDetailResponse
-func (a *OverlayNetworkApiService) GetLinkExecute(r ApiGetLinkRequest) (*LinkDetailResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetLink(r ApiGetLinkRequest) (*LinkDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2765,7 +2765,7 @@ func (a *OverlayNetworkApiService) GetLinkExecute(r ApiGetLinkRequest) (*LinkDet
 type ApiGetLinkLogsRequest struct {
 	ctx context.Context
 	ApiService *OverlayNetworkApiService
-	linkId string
+	linkId interface{}
 	lines *int32
 	sort *string
 }
@@ -2783,11 +2783,11 @@ func (r ApiGetLinkLogsRequest) Sort(sort string) ApiGetLinkLogsRequest {
 }
 
 func (r ApiGetLinkLogsRequest) Execute() (*SimpleStringListResponse, *http.Response, error) {
-	return r.ApiService.GetLinkLogsExecute(r)
+	return r.ApiService.GetLinkLogs(r)
 }
 
 /*
-GetLinkLogs Get link logs data
+GetLinkLogsRequest Get link logs data
 
 Retrieve link log data
 
@@ -2795,7 +2795,7 @@ Retrieve link log data
  @param linkId ID for link
  @return ApiGetLinkLogsRequest
 */
-func (a *OverlayNetworkApiService) GetLinkLogs(ctx context.Context, linkId string) ApiGetLinkLogsRequest {
+func (a *OverlayNetworkApiService) GetLinkLogsRequest(ctx context.Context, linkId interface{}) ApiGetLinkLogsRequest {
 	return ApiGetLinkLogsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2805,7 +2805,7 @@ func (a *OverlayNetworkApiService) GetLinkLogs(ctx context.Context, linkId strin
 
 // Execute executes the request
 //  @return SimpleStringListResponse
-func (a *OverlayNetworkApiService) GetLinkLogsExecute(r ApiGetLinkLogsRequest) (*SimpleStringListResponse, *http.Response, error) {
+func (a *OverlayNetworkApiService) GetLinkLogs(r ApiGetLinkLogsRequest) (*SimpleStringListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

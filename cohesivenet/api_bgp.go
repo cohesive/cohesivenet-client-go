@@ -37,11 +37,11 @@ func (r ApiCreateBgpPeerRequest) CreateBGPPeerRequest(createBGPPeerRequest Creat
 }
 
 func (r ApiCreateBgpPeerRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.CreateBgpPeerExecute(r)
+	return r.ApiService.CreateBgpPeer(r)
 }
 
 /*
-CreateBgpPeer Create BGP Peer
+CreateBgpPeerRequest Create BGP Peer
 
 Create new BGP peer connection for IPsec endpoint
 
@@ -49,7 +49,7 @@ Create new BGP peer connection for IPsec endpoint
  @param endpointId ID for IPsec endpoint
  @return ApiCreateBgpPeerRequest
 */
-func (a *BGPApiService) CreateBgpPeer(ctx context.Context, endpointId int32) ApiCreateBgpPeerRequest {
+func (a *BGPApiService) CreateBgpPeerRequest(ctx context.Context, endpointId int32) ApiCreateBgpPeerRequest {
 	return ApiCreateBgpPeerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *BGPApiService) CreateBgpPeer(ctx context.Context, endpointId int32) Api
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (a *BGPApiService) CreateBgpPeerExecute(r ApiCreateBgpPeerRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (a *BGPApiService) CreateBgpPeer(r ApiCreateBgpPeerRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -159,11 +159,11 @@ type ApiDeleteBgpPeerRequest struct {
 }
 
 func (r ApiDeleteBgpPeerRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.DeleteBgpPeerExecute(r)
+	return r.ApiService.DeleteBgpPeer(r)
 }
 
 /*
-DeleteBgpPeer Delete BGP Peer
+DeleteBgpPeerRequest Delete BGP Peer
 
 Delete BGP Peer connection for IPsec endpoint
 
@@ -172,7 +172,7 @@ Delete BGP Peer connection for IPsec endpoint
  @param bgpPeerId ID for BGP peer
  @return ApiDeleteBgpPeerRequest
 */
-func (a *BGPApiService) DeleteBgpPeer(ctx context.Context, endpointId int32, bgpPeerId int32) ApiDeleteBgpPeerRequest {
+func (a *BGPApiService) DeleteBgpPeerRequest(ctx context.Context, endpointId int32, bgpPeerId int32) ApiDeleteBgpPeerRequest {
 	return ApiDeleteBgpPeerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -183,7 +183,7 @@ func (a *BGPApiService) DeleteBgpPeer(ctx context.Context, endpointId int32, bgp
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (a *BGPApiService) DeleteBgpPeerExecute(r ApiDeleteBgpPeerRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (a *BGPApiService) DeleteBgpPeer(r ApiDeleteBgpPeerRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -289,11 +289,11 @@ func (r ApiGetBgpPeerRequest) Verbose(verbose bool) ApiGetBgpPeerRequest {
 }
 
 func (r ApiGetBgpPeerRequest) Execute() (*BGPPeerResponse, *http.Response, error) {
-	return r.ApiService.GetBgpPeerExecute(r)
+	return r.ApiService.GetBgpPeer(r)
 }
 
 /*
-GetBgpPeer Get eBGP peer
+GetBgpPeerRequest Get eBGP peer
 
 Get eBGP peer details
 
@@ -302,7 +302,7 @@ Get eBGP peer details
  @param bgpPeerId ID for BGP peer
  @return ApiGetBgpPeerRequest
 */
-func (a *BGPApiService) GetBgpPeer(ctx context.Context, endpointId int32, bgpPeerId int32) ApiGetBgpPeerRequest {
+func (a *BGPApiService) GetBgpPeerRequest(ctx context.Context, endpointId int32, bgpPeerId int32) ApiGetBgpPeerRequest {
 	return ApiGetBgpPeerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -313,7 +313,7 @@ func (a *BGPApiService) GetBgpPeer(ctx context.Context, endpointId int32, bgpPee
 
 // Execute executes the request
 //  @return BGPPeerResponse
-func (a *BGPApiService) GetBgpPeerExecute(r ApiGetBgpPeerRequest) (*BGPPeerResponse, *http.Response, error) {
+func (a *BGPApiService) GetBgpPeer(r ApiGetBgpPeerRequest) (*BGPPeerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -411,11 +411,11 @@ func (r ApiUpdateBgpPeerRequest) UpdateBGPPeerRequest(updateBGPPeerRequest Updat
 }
 
 func (r ApiUpdateBgpPeerRequest) Execute() (*IpsecRemoteEndpointDetail, *http.Response, error) {
-	return r.ApiService.UpdateBgpPeerExecute(r)
+	return r.ApiService.UpdateBgpPeer(r)
 }
 
 /*
-UpdateBgpPeer Update BGP Peer
+UpdateBgpPeerRequest Update BGP Peer
 
 Edit IPsec endpoint BGP peer connection parameters
 
@@ -424,7 +424,7 @@ Edit IPsec endpoint BGP peer connection parameters
  @param bgpPeerId ID for BGP peer
  @return ApiUpdateBgpPeerRequest
 */
-func (a *BGPApiService) UpdateBgpPeer(ctx context.Context, endpointId int32, bgpPeerId int32) ApiUpdateBgpPeerRequest {
+func (a *BGPApiService) UpdateBgpPeerRequest(ctx context.Context, endpointId int32, bgpPeerId int32) ApiUpdateBgpPeerRequest {
 	return ApiUpdateBgpPeerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -435,7 +435,7 @@ func (a *BGPApiService) UpdateBgpPeer(ctx context.Context, endpointId int32, bgp
 
 // Execute executes the request
 //  @return IpsecRemoteEndpointDetail
-func (a *BGPApiService) UpdateBgpPeerExecute(r ApiUpdateBgpPeerRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
+func (a *BGPApiService) UpdateBgpPeer(r ApiUpdateBgpPeerRequest) (*IpsecRemoteEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

@@ -32,7 +32,7 @@ type ApiDeleteSnapshotRequest struct {
 }
 
 func (r ApiDeleteSnapshotRequest) Execute() (*SnapshotsListResponse, *http.Response, error) {
-	return r.ApiService.DeleteSnapshotExecute(r)
+	return r.ApiService.DeleteSnapshot(r)
 }
 
 /*
@@ -44,7 +44,7 @@ Delete named snapshot
  @param snapshotName name of Snapshot
  @return ApiDeleteSnapshotRequest
 */
-func (a *SnapshotsApiService) DeleteSnapshot(ctx context.Context, snapshotName string) ApiDeleteSnapshotRequest {
+func (a *SnapshotsApiService) DeleteSnapshotRequest(ctx context.Context, snapshotName string) ApiDeleteSnapshotRequest {
 	return ApiDeleteSnapshotRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -54,7 +54,7 @@ func (a *SnapshotsApiService) DeleteSnapshot(ctx context.Context, snapshotName s
 
 // Execute executes the request
 //  @return SnapshotsListResponse
-func (a *SnapshotsApiService) DeleteSnapshotExecute(r ApiDeleteSnapshotRequest) (*SnapshotsListResponse, *http.Response, error) {
+func (a *SnapshotsApiService) DeleteSnapshot(r ApiDeleteSnapshotRequest) (*SnapshotsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -144,7 +144,7 @@ type ApiGetDownloadSnapshotRequest struct {
 }
 
 func (r ApiGetDownloadSnapshotRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.GetDownloadSnapshotExecute(r)
+	return r.ApiService.GetDownloadSnapshot(r)
 }
 
 /*
@@ -156,7 +156,7 @@ Download snapshot file
  @param snapshotName name of Snapshot
  @return ApiGetDownloadSnapshotRequest
 */
-func (a *SnapshotsApiService) GetDownloadSnapshot(ctx context.Context, snapshotName string) ApiGetDownloadSnapshotRequest {
+func (a *SnapshotsApiService) GetDownloadSnapshotRequest(ctx context.Context, snapshotName string) ApiGetDownloadSnapshotRequest {
 	return ApiGetDownloadSnapshotRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -166,7 +166,7 @@ func (a *SnapshotsApiService) GetDownloadSnapshot(ctx context.Context, snapshotN
 
 // Execute executes the request
 //  @return *os.File
-func (a *SnapshotsApiService) GetDownloadSnapshotExecute(r ApiGetDownloadSnapshotRequest) (**os.File, *http.Response, error) {
+func (a *SnapshotsApiService) GetDownloadSnapshot(r ApiGetDownloadSnapshotRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -255,7 +255,7 @@ type ApiGetSnapshotsRequest struct {
 }
 
 func (r ApiGetSnapshotsRequest) Execute() (*SnapshotsListResponse, *http.Response, error) {
-	return r.ApiService.GetSnapshotsExecute(r)
+	return r.ApiService.GetSnapshots(r)
 }
 
 /*
@@ -266,7 +266,7 @@ Get list of snapshots
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSnapshotsRequest
 */
-func (a *SnapshotsApiService) GetSnapshots(ctx context.Context) ApiGetSnapshotsRequest {
+func (a *SnapshotsApiService) GetSnapshotsRequest(ctx context.Context) ApiGetSnapshotsRequest {
 	return ApiGetSnapshotsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -275,7 +275,7 @@ func (a *SnapshotsApiService) GetSnapshots(ctx context.Context) ApiGetSnapshotsR
 
 // Execute executes the request
 //  @return SnapshotsListResponse
-func (a *SnapshotsApiService) GetSnapshotsExecute(r ApiGetSnapshotsRequest) (*SnapshotsListResponse, *http.Response, error) {
+func (a *SnapshotsApiService) GetSnapshots(r ApiGetSnapshotsRequest) (*SnapshotsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -360,7 +360,7 @@ func (r ApiPostCreateSnapshotRequest) CreateSnapshotRequest(createSnapshotReques
 }
 
 func (r ApiPostCreateSnapshotRequest) Execute() (*SnapshotDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCreateSnapshotExecute(r)
+	return r.ApiService.PostCreateSnapshot(r)
 }
 
 /*
@@ -371,7 +371,7 @@ Create a new snapshot
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateSnapshotRequest
 */
-func (a *SnapshotsApiService) PostCreateSnapshot(ctx context.Context) ApiPostCreateSnapshotRequest {
+func (a *SnapshotsApiService) PostCreateSnapshotRequest(ctx context.Context) ApiPostCreateSnapshotRequest {
 	return ApiPostCreateSnapshotRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -380,7 +380,7 @@ func (a *SnapshotsApiService) PostCreateSnapshot(ctx context.Context) ApiPostCre
 
 // Execute executes the request
 //  @return SnapshotDetailResponse
-func (a *SnapshotsApiService) PostCreateSnapshotExecute(r ApiPostCreateSnapshotRequest) (*SnapshotDetailResponse, *http.Response, error) {
+func (a *SnapshotsApiService) PostCreateSnapshot(r ApiPostCreateSnapshotRequest) (*SnapshotDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -484,7 +484,7 @@ func (r ApiPutImportSnapshotRequest) Async(async bool) ApiPutImportSnapshotReque
 }
 
 func (r ApiPutImportSnapshotRequest) Execute() (*SnapshotImportStatusResponse, *http.Response, error) {
-	return r.ApiService.PutImportSnapshotExecute(r)
+	return r.ApiService.PutImportSnapshot(r)
 }
 
 /*
@@ -495,7 +495,7 @@ Import snapshot into the manager and triggers a reboot for the Configuration to 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutImportSnapshotRequest
 */
-func (a *SnapshotsApiService) PutImportSnapshot(ctx context.Context) ApiPutImportSnapshotRequest {
+func (a *SnapshotsApiService) PutImportSnapshotRequest(ctx context.Context) ApiPutImportSnapshotRequest {
 	return ApiPutImportSnapshotRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -504,7 +504,7 @@ func (a *SnapshotsApiService) PutImportSnapshot(ctx context.Context) ApiPutImpor
 
 // Execute executes the request
 //  @return SnapshotImportStatusResponse
-func (a *SnapshotsApiService) PutImportSnapshotExecute(r ApiPutImportSnapshotRequest) (*SnapshotImportStatusResponse, *http.Response, error) {
+func (a *SnapshotsApiService) PutImportSnapshot(r ApiPutImportSnapshotRequest) (*SnapshotImportStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
