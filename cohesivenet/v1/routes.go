@@ -56,7 +56,7 @@ func (c *Client) GetRoutes() (RouteResponse, error) {
 	return routeResponse, nil
 }
 
-func (c *Client) CreateRoute(routeList []*Route) ([]*RouteResponse, error) {
+func (c *Client) CreateRoute(routeList []*Route) error {
 	i := 0
 	for _, rt := range routeList {
 		route := Route{
@@ -70,45 +70,30 @@ func (c *Client) CreateRoute(routeList []*Route) ([]*RouteResponse, error) {
 		}
 		rb, err := json.Marshal(route)
 		if err != nil {
-			return []*RouteResponse{}, err
+			return err
 		}
 		req, err := http.NewRequest("POST", fmt.Sprintf("%s/routes", c.HostURL), strings.NewReader(string(rb)))
 		if err != nil {
-			return []*RouteResponse{}, err
+			return err
 		}
 		_, err = c.doRequest(req)
 		if err != nil {
-			return []*RouteResponse{}, err
+			return err
 		}
 
 		i++
 	}
 
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/routes", c.HostURL), nil)
-	if err != nil {
-		return []*RouteResponse{}, err
-	}
-	body, err := c.doRequest(req)
-	if err != nil {
-		return []*RouteResponse{}, err
-	}
-
-	newRoute := []*RouteResponse{}
-	err = json.Unmarshal([]byte(body), &newRoute)
-	if err != nil {
-		return []*RouteResponse{}, err
-	}
-
-	return newRoute, err
+	return nil
 
 }
 
-func (c *Client) UpdateRoute(routeList []*Route) ([]*RouteResponse, error) {
+func (c *Client) UpdateRoute(routeList []*Route) error {
 
 	c.DeleteRoute()
-	newRoute, err := c.CreateRoute(routeList)
+	err := c.CreateRoute(routeList)
 
-	return newRoute, err
+	return err
 }
 
 func (c *Client) DeleteRoute() error {
