@@ -21,15 +21,18 @@ import (
 
 
 func main() {
+    // Example basic auth
     // auth := context.WithValue(context.Background(), cn.ContextBasicAuth, cn.BasicAuth{
     //     UserName: "api",
-    //     Password: "testtest1234",
+    //     Password: "password",
     // })
 
-    // token := "eb0431ded2351eff780f30a81d01786941a8af58975e7d9c4b0cc1b0fcc337f8"
+    // Example token auth
+    // token := "tokentokentoken"
     // auth := context.WithValue(context.Background(), cn.ContextAccessToken, token)
-    host := "18.214.182.69"
-    ps := "testtest1234"
+    host := "34.231.116.245"
+    ps := "i-09e5074ff34cdc9a6"
+
     // config := cn.NewConfigurationWithAuth("3.222.246.246", cn.ContextAccessToken, token)
     config := cn.NewConfigurationWithAuth(host, cn.ContextBasicAuth, cn.BasicAuth{
         UserName: "api",
