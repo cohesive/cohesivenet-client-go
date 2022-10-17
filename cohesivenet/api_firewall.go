@@ -4826,18 +4826,18 @@ func (r ApiExportFirewallRulesRequest) Format(format string) ApiExportFirewallRu
 }
 
 func (r ApiExportFirewallRulesRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.ExportFirewallRulesExecute(r)
+	return r.ApiService.ExportFirewallRules(r)
 }
 
 /*
-ExportFirewallRules V2 Export firewall rules
+ExportFirewallRulesRequest V2 Export firewall rules
 
 Download export of firewall rules
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiExportFirewallRulesRequest
 */
-func (a *FirewallApiService) ExportFirewallRules(ctx context.Context) ApiExportFirewallRulesRequest {
+func (a *FirewallApiService) ExportFirewallRulesRequest(ctx context.Context) ApiExportFirewallRulesRequest {
 	return ApiExportFirewallRulesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4846,7 +4846,7 @@ func (a *FirewallApiService) ExportFirewallRules(ctx context.Context) ApiExportF
 
 // Execute executes the request
 //  @return *os.File
-func (a *FirewallApiService) ExportFirewallRulesExecute(r ApiExportFirewallRulesRequest) (**os.File, *http.Response, error) {
+func (a *FirewallApiService) ExportFirewallRules(r ApiExportFirewallRulesRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

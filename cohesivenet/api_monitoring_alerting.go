@@ -37,7 +37,7 @@ func (r ApiCreatePacketMonitorRequest) CreatePacketMonitorRequest(createPacketMo
 }
 
 func (r ApiCreatePacketMonitorRequest) Execute() (*PacketMonitorDetailResponse, *http.Response, error) {
-	return r.ApiService.CreatePacketMonitorExecute(r)
+	return r.ApiService.CreatePacketMonitor(r)
 }
 
 /*
@@ -49,7 +49,7 @@ CreatePacketMonitor Create packet monitor
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePacketMonitorRequest
 */
-func (a *MonitoringAlertingApiService) CreatePacketMonitor(ctx context.Context) ApiCreatePacketMonitorRequest {
+func (a *MonitoringAlertingApiService) CreatePacketMonitorRequest(ctx context.Context) ApiCreatePacketMonitorRequest {
 	return ApiCreatePacketMonitorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *MonitoringAlertingApiService) CreatePacketMonitor(ctx context.Context) 
 
 // Execute executes the request
 //  @return PacketMonitorDetailResponse
-func (a *MonitoringAlertingApiService) CreatePacketMonitorExecute(r ApiCreatePacketMonitorRequest) (*PacketMonitorDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) CreatePacketMonitor(r ApiCreatePacketMonitorRequest) (*PacketMonitorDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -153,7 +153,7 @@ type ApiDeleteAlertRequest struct {
 }
 
 func (r ApiDeleteAlertRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteAlertExecute(r)
+	return r.ApiService.DeleteAlert(r)
 }
 
 /*
@@ -165,7 +165,7 @@ Delete defined alert
  @param alertId ID for Alert definition
  @return ApiDeleteAlertRequest
 */
-func (a *MonitoringAlertingApiService) DeleteAlert(ctx context.Context, alertId int32) ApiDeleteAlertRequest {
+func (a *MonitoringAlertingApiService) DeleteAlertRequest(ctx context.Context, alertId int32) ApiDeleteAlertRequest {
 	return ApiDeleteAlertRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -175,7 +175,7 @@ func (a *MonitoringAlertingApiService) DeleteAlert(ctx context.Context, alertId 
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (a *MonitoringAlertingApiService) DeleteAlertExecute(r ApiDeleteAlertRequest) (*AlertDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) DeleteAlert(r ApiDeleteAlertRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -268,7 +268,7 @@ type ApiDeletePacketMonitorRequest struct {
 }
 
 func (r ApiDeletePacketMonitorRequest) Execute() (*SimpleOutputResponse, *http.Response, error) {
-	return r.ApiService.DeletePacketMonitorExecute(r)
+	return r.ApiService.DeletePacketMonitor(r)
 }
 
 /*
@@ -281,7 +281,7 @@ DeletePacketMonitor Delete packet monitor
  @param name Unique name for packet monitor
  @return ApiDeletePacketMonitorRequest
 */
-func (a *MonitoringAlertingApiService) DeletePacketMonitor(ctx context.Context, name string) ApiDeletePacketMonitorRequest {
+func (a *MonitoringAlertingApiService) DeletePacketMonitorRequest(ctx context.Context, name string) ApiDeletePacketMonitorRequest {
 	return ApiDeletePacketMonitorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -291,7 +291,7 @@ func (a *MonitoringAlertingApiService) DeletePacketMonitor(ctx context.Context, 
 
 // Execute executes the request
 //  @return SimpleOutputResponse
-func (a *MonitoringAlertingApiService) DeletePacketMonitorExecute(r ApiDeletePacketMonitorRequest) (*SimpleOutputResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) DeletePacketMonitor(r ApiDeletePacketMonitorRequest) (*SimpleOutputResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -372,7 +372,7 @@ type ApiDeleteWebhookRequest struct {
 }
 
 func (r ApiDeleteWebhookRequest) Execute() (*WebhookDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteWebhookExecute(r)
+	return r.ApiService.DeleteWebhook(r)
 }
 
 /*
@@ -384,7 +384,7 @@ Delete defined webhook integration.
  @param webhookId ID for webhook integration
  @return ApiDeleteWebhookRequest
 */
-func (a *MonitoringAlertingApiService) DeleteWebhook(ctx context.Context, webhookId int32) ApiDeleteWebhookRequest {
+func (a *MonitoringAlertingApiService) DeleteWebhookRequest(ctx context.Context, webhookId int32) ApiDeleteWebhookRequest {
 	return ApiDeleteWebhookRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -394,7 +394,7 @@ func (a *MonitoringAlertingApiService) DeleteWebhook(ctx context.Context, webhoo
 
 // Execute executes the request
 //  @return WebhookDetailResponse
-func (a *MonitoringAlertingApiService) DeleteWebhookExecute(r ApiDeleteWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) DeleteWebhook(r ApiDeleteWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -487,7 +487,7 @@ type ApiDownloadPacketMonitorDataRequest struct {
 }
 
 func (r ApiDownloadPacketMonitorDataRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.DownloadPacketMonitorDataExecute(r)
+	return r.ApiService.DownloadPacketMonitorData(r)
 }
 
 /*
@@ -500,7 +500,7 @@ DownloadPacketMonitorData Download packet data
  @param name Unique name for packet monitor
  @return ApiDownloadPacketMonitorDataRequest
 */
-func (a *MonitoringAlertingApiService) DownloadPacketMonitorData(ctx context.Context, name string) ApiDownloadPacketMonitorDataRequest {
+func (a *MonitoringAlertingApiService) DownloadPacketMonitorDataRequest(ctx context.Context, name string) ApiDownloadPacketMonitorDataRequest {
 	return ApiDownloadPacketMonitorDataRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -510,7 +510,7 @@ func (a *MonitoringAlertingApiService) DownloadPacketMonitorData(ctx context.Con
 
 // Execute executes the request
 //  @return *os.File
-func (a *MonitoringAlertingApiService) DownloadPacketMonitorDataExecute(r ApiDownloadPacketMonitorDataRequest) (**os.File, *http.Response, error) {
+func (a *MonitoringAlertingApiService) DownloadPacketMonitorData(r ApiDownloadPacketMonitorDataRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -591,7 +591,7 @@ type ApiGetAlertRequest struct {
 }
 
 func (r ApiGetAlertRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
-	return r.ApiService.GetAlertExecute(r)
+	return r.ApiService.GetAlert(r)
 }
 
 /*
@@ -603,7 +603,7 @@ Retrieve details for single alert
  @param alertId ID for Alert definition
  @return ApiGetAlertRequest
 */
-func (a *MonitoringAlertingApiService) GetAlert(ctx context.Context, alertId int32) ApiGetAlertRequest {
+func (a *MonitoringAlertingApiService) GetAlertRequest(ctx context.Context, alertId int32) ApiGetAlertRequest {
 	return ApiGetAlertRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -613,7 +613,7 @@ func (a *MonitoringAlertingApiService) GetAlert(ctx context.Context, alertId int
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (a *MonitoringAlertingApiService) GetAlertExecute(r ApiGetAlertRequest) (*AlertDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetAlert(r ApiGetAlertRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -705,7 +705,7 @@ type ApiGetAlertEventsRequest struct {
 }
 
 func (r ApiGetAlertEventsRequest) Execute() (*SimpleStringListResponse, *http.Response, error) {
-	return r.ApiService.GetAlertEventsExecute(r)
+	return r.ApiService.GetAlertEvents(r)
 }
 
 /*
@@ -716,7 +716,7 @@ Retrieve all possible alert event s
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAlertEventsRequest
 */
-func (a *MonitoringAlertingApiService) GetAlertEvents(ctx context.Context) ApiGetAlertEventsRequest {
+func (a *MonitoringAlertingApiService) GetAlertEventsRequest(ctx context.Context) ApiGetAlertEventsRequest {
 	return ApiGetAlertEventsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -725,7 +725,7 @@ func (a *MonitoringAlertingApiService) GetAlertEvents(ctx context.Context) ApiGe
 
 // Execute executes the request
 //  @return SimpleStringListResponse
-func (a *MonitoringAlertingApiService) GetAlertEventsExecute(r ApiGetAlertEventsRequest) (*SimpleStringListResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetAlertEvents(r ApiGetAlertEventsRequest) (*SimpleStringListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -804,7 +804,7 @@ type ApiGetAlertsRequest struct {
 }
 
 func (r ApiGetAlertsRequest) Execute() (*AlertsListResponse, *http.Response, error) {
-	return r.ApiService.GetAlertsExecute(r)
+	return r.ApiService.GetAlerts(r)
 }
 
 /*
@@ -815,7 +815,7 @@ Retrieve all alerts
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAlertsRequest
 */
-func (a *MonitoringAlertingApiService) GetAlerts(ctx context.Context) ApiGetAlertsRequest {
+func (a *MonitoringAlertingApiService) GetAlertsRequestRequest(ctx context.Context) ApiGetAlertsRequest {
 	return ApiGetAlertsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -824,7 +824,7 @@ func (a *MonitoringAlertingApiService) GetAlerts(ctx context.Context) ApiGetAler
 
 // Execute executes the request
 //  @return AlertsListResponse
-func (a *MonitoringAlertingApiService) GetAlertsExecute(r ApiGetAlertsRequest) (*AlertsListResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetAlerts(r ApiGetAlertsRequest) (*AlertsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -904,7 +904,7 @@ type ApiGetPacketMonitorRequest struct {
 }
 
 func (r ApiGetPacketMonitorRequest) Execute() (*PacketMonitorDetailResponse, *http.Response, error) {
-	return r.ApiService.GetPacketMonitorExecute(r)
+	return r.ApiService.GetPacketMonitor(r)
 }
 
 /*
@@ -917,7 +917,7 @@ GetPacketMonitor Get packet monitor
  @param name Unique name for packet monitor
  @return ApiGetPacketMonitorRequest
 */
-func (a *MonitoringAlertingApiService) GetPacketMonitor(ctx context.Context, name string) ApiGetPacketMonitorRequest {
+func (a *MonitoringAlertingApiService) GetPacketMonitorRequestRequest(ctx context.Context, name string) ApiGetPacketMonitorRequest {
 	return ApiGetPacketMonitorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -927,7 +927,7 @@ func (a *MonitoringAlertingApiService) GetPacketMonitor(ctx context.Context, nam
 
 // Execute executes the request
 //  @return PacketMonitorDetailResponse
-func (a *MonitoringAlertingApiService) GetPacketMonitorExecute(r ApiGetPacketMonitorRequest) (*PacketMonitorDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetPacketMonitor(r ApiGetPacketMonitorRequest) (*PacketMonitorDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1007,7 +1007,7 @@ type ApiGetPacketMonitorsRequest struct {
 }
 
 func (r ApiGetPacketMonitorsRequest) Execute() (*PacketMonitorsListResponse, *http.Response, error) {
-	return r.ApiService.GetPacketMonitorsExecute(r)
+	return r.ApiService.GetPacketMonitors(r)
 }
 
 /*
@@ -1018,7 +1018,7 @@ GetPacketMonitors Get all packet monitors
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPacketMonitorsRequest
 */
-func (a *MonitoringAlertingApiService) GetPacketMonitors(ctx context.Context) ApiGetPacketMonitorsRequest {
+func (a *MonitoringAlertingApiService) GetPacketMonitorsRequestRequest(ctx context.Context) ApiGetPacketMonitorsRequest {
 	return ApiGetPacketMonitorsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1027,7 +1027,7 @@ func (a *MonitoringAlertingApiService) GetPacketMonitors(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return PacketMonitorsListResponse
-func (a *MonitoringAlertingApiService) GetPacketMonitorsExecute(r ApiGetPacketMonitorsRequest) (*PacketMonitorsListResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetPacketMonitors(r ApiGetPacketMonitorsRequest) (*PacketMonitorsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1107,7 +1107,7 @@ type ApiGetWebhookRequest struct {
 }
 
 func (r ApiGetWebhookRequest) Execute() (*WebhookDetailResponse, *http.Response, error) {
-	return r.ApiService.GetWebhookExecute(r)
+	return r.ApiService.GetWebhook(r)
 }
 
 /*
@@ -1119,7 +1119,7 @@ Retrieve details for single webhook integration
  @param webhookId ID for webhook integration
  @return ApiGetWebhookRequest
 */
-func (a *MonitoringAlertingApiService) GetWebhook(ctx context.Context, webhookId int32) ApiGetWebhookRequest {
+func (a *MonitoringAlertingApiService) GetWebhookRequestRequest(ctx context.Context, webhookId int32) ApiGetWebhookRequest {
 	return ApiGetWebhookRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1129,7 +1129,7 @@ func (a *MonitoringAlertingApiService) GetWebhook(ctx context.Context, webhookId
 
 // Execute executes the request
 //  @return Object
-func (a *MonitoringAlertingApiService) GetWebhookExecute(r ApiGetWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetWebhook(r ApiGetWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1221,7 +1221,7 @@ type ApiGetWebhooksRequest struct {
 }
 
 func (r ApiGetWebhooksRequest) Execute() (*WebhooksListResponse, *http.Response, error) {
-	return r.ApiService.GetWebhooksExecute(r)
+	return r.ApiService.GetWebhooks(r)
 }
 
 /*
@@ -1232,7 +1232,7 @@ Retrieve all webhooks
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetWebhooksRequest
 */
-func (a *MonitoringAlertingApiService) GetWebhooks(ctx context.Context) ApiGetWebhooksRequest {
+func (a *MonitoringAlertingApiService) GetWebhooksRequestRequest(ctx context.Context) ApiGetWebhooksRequest {
 	return ApiGetWebhooksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1241,7 +1241,7 @@ func (a *MonitoringAlertingApiService) GetWebhooks(ctx context.Context) ApiGetWe
 
 // Execute executes the request
 //  @return WebhooksListResponse
-func (a *MonitoringAlertingApiService) GetWebhooksExecute(r ApiGetWebhooksRequest) (*WebhooksListResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) GetWebhooks(r ApiGetWebhooksRequest) (*WebhooksListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1326,7 +1326,7 @@ func (r ApiPostCreateAlertRequest) CreateAlertRequest(createAlertRequest CreateA
 }
 
 func (r ApiPostCreateAlertRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCreateAlertExecute(r)
+	return r.ApiService.PostCreateAlert(r)
 }
 
 /*
@@ -1338,7 +1338,7 @@ Define new alert. Events will trigger this alert and an alert will be pushed to 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateAlertRequest
 */
-func (a *MonitoringAlertingApiService) PostCreateAlert(ctx context.Context) ApiPostCreateAlertRequest {
+func (a *MonitoringAlertingApiService) PostCreateAlertRequestRequest(ctx context.Context) ApiPostCreateAlertRequest {
 	return ApiPostCreateAlertRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1347,7 +1347,7 @@ func (a *MonitoringAlertingApiService) PostCreateAlert(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (a *MonitoringAlertingApiService) PostCreateAlertExecute(r ApiPostCreateAlertRequest) (*AlertDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PostCreateAlert(r ApiPostCreateAlertRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1447,7 +1447,7 @@ func (r ApiPostCreateWebhookRequest) CreateWebookRequest(createWebookRequest Cre
 }
 
 func (r ApiPostCreateWebhookRequest) Execute() (*WebhookDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCreateWebhookExecute(r)
+	return r.ApiService.PostCreateWebhook(r)
 }
 
 /*
@@ -1458,7 +1458,7 @@ Create new Webhook integration. Webhooks are endpoints for posting alerts.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateWebhookRequest
 */
-func (a *MonitoringAlertingApiService) PostCreateWebhook(ctx context.Context) ApiPostCreateWebhookRequest {
+func (a *MonitoringAlertingApiService) PostCreateWebhookRequestRequest(ctx context.Context) ApiPostCreateWebhookRequest {
 	return ApiPostCreateWebhookRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1467,7 +1467,7 @@ func (a *MonitoringAlertingApiService) PostCreateWebhook(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return WebhookDetailResponse
-func (a *MonitoringAlertingApiService) PostCreateWebhookExecute(r ApiPostCreateWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PostCreateWebhook(r ApiPostCreateWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1562,7 +1562,7 @@ type ApiPostTestAlertRequest struct {
 }
 
 func (r ApiPostTestAlertRequest) Execute() (*StatusCodeMessageResponse, *http.Response, error) {
-	return r.ApiService.PostTestAlertExecute(r)
+	return r.ApiService.PostTestAlert(r)
 }
 
 /*
@@ -1575,7 +1575,7 @@ Send test alert for this defined alert to configured webhook endpoint
  @param alertId ID for Alert definition
  @return ApiPostTestAlertRequest
 */
-func (a *MonitoringAlertingApiService) PostTestAlert(ctx context.Context, alertId int32) ApiPostTestAlertRequest {
+func (a *MonitoringAlertingApiService) PostTestAlertRequest(ctx context.Context, alertId int32) ApiPostTestAlertRequest {
 	return ApiPostTestAlertRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1585,7 +1585,7 @@ func (a *MonitoringAlertingApiService) PostTestAlert(ctx context.Context, alertI
 
 // Execute executes the request
 //  @return StatusCodeMessageResponse
-func (a *MonitoringAlertingApiService) PostTestAlertExecute(r ApiPostTestAlertRequest) (*StatusCodeMessageResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PostTestAlert(r ApiPostTestAlertRequest) (*StatusCodeMessageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1678,7 +1678,7 @@ type ApiPostToggleEnableAlertRequest struct {
 }
 
 func (r ApiPostToggleEnableAlertRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
-	return r.ApiService.PostToggleEnableAlertExecute(r)
+	return r.ApiService.PostToggleEnableAlert(r)
 }
 
 /*
@@ -1691,7 +1691,7 @@ Enable this alert. Associated events will trigger alerts sent to configured webh
  @param alertId ID for Alert definition
  @return ApiPostToggleEnableAlertRequest
 */
-func (a *MonitoringAlertingApiService) PostToggleEnableAlert(ctx context.Context, alertId int32) ApiPostToggleEnableAlertRequest {
+func (a *MonitoringAlertingApiService) PostToggleEnableAlertRequest(ctx context.Context, alertId int32) ApiPostToggleEnableAlertRequest {
 	return ApiPostToggleEnableAlertRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1701,7 +1701,7 @@ func (a *MonitoringAlertingApiService) PostToggleEnableAlert(ctx context.Context
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (a *MonitoringAlertingApiService) PostToggleEnableAlertExecute(r ApiPostToggleEnableAlertRequest) (*AlertDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PostToggleEnableAlert(r ApiPostToggleEnableAlertRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1794,7 +1794,7 @@ type ApiPutStartPacketMonitorRequest struct {
 }
 
 func (r ApiPutStartPacketMonitorRequest) Execute() (*SimpleOutputResponse, *http.Response, error) {
-	return r.ApiService.PutStartPacketMonitorExecute(r)
+	return r.ApiService.PutStartPacketMonitor(r)
 }
 
 /*
@@ -1807,7 +1807,7 @@ PutStartPacketMonitor Start packet monitor
  @param name Unique name for packet monitor
  @return ApiPutStartPacketMonitorRequest
 */
-func (a *MonitoringAlertingApiService) PutStartPacketMonitor(ctx context.Context, name string) ApiPutStartPacketMonitorRequest {
+func (a *MonitoringAlertingApiService) PutStartPacketMonitorRequest(ctx context.Context, name string) ApiPutStartPacketMonitorRequest {
 	return ApiPutStartPacketMonitorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1817,7 +1817,7 @@ func (a *MonitoringAlertingApiService) PutStartPacketMonitor(ctx context.Context
 
 // Execute executes the request
 //  @return SimpleOutputResponse
-func (a *MonitoringAlertingApiService) PutStartPacketMonitorExecute(r ApiPutStartPacketMonitorRequest) (*SimpleOutputResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PutStartPacketMonitor(r ApiPutStartPacketMonitorRequest) (*SimpleOutputResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1898,7 +1898,7 @@ type ApiPutStopPacketMonitorRequest struct {
 }
 
 func (r ApiPutStopPacketMonitorRequest) Execute() (*SimpleOutputResponse, *http.Response, error) {
-	return r.ApiService.PutStopPacketMonitorExecute(r)
+	return r.ApiService.PutStopPacketMonitor(r)
 }
 
 /*
@@ -1911,7 +1911,7 @@ PutStopPacketMonitor Stop packet monitor
  @param name Unique name for packet monitor
  @return ApiPutStopPacketMonitorRequest
 */
-func (a *MonitoringAlertingApiService) PutStopPacketMonitor(ctx context.Context, name string) ApiPutStopPacketMonitorRequest {
+func (a *MonitoringAlertingApiService) PutStopPacketMonitorRequest(ctx context.Context, name string) ApiPutStopPacketMonitorRequest {
 	return ApiPutStopPacketMonitorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1921,7 +1921,7 @@ func (a *MonitoringAlertingApiService) PutStopPacketMonitor(ctx context.Context,
 
 // Execute executes the request
 //  @return SimpleOutputResponse
-func (a *MonitoringAlertingApiService) PutStopPacketMonitorExecute(r ApiPutStopPacketMonitorRequest) (*SimpleOutputResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PutStopPacketMonitor(r ApiPutStopPacketMonitorRequest) (*SimpleOutputResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2008,7 +2008,7 @@ func (r ApiPutUpdateAlertRequest) UpdateAlertRequest(updateAlertRequest UpdateAl
 }
 
 func (r ApiPutUpdateAlertRequest) Execute() (*AlertDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateAlertExecute(r)
+	return r.ApiService.PutUpdateAlert(r)
 }
 
 /*
@@ -2020,7 +2020,7 @@ Edit defined alert
  @param alertId ID for Alert definition
  @return ApiPutUpdateAlertRequest
 */
-func (a *MonitoringAlertingApiService) PutUpdateAlert(ctx context.Context, alertId int32) ApiPutUpdateAlertRequest {
+func (a *MonitoringAlertingApiService) PutUpdateAlertRequest(ctx context.Context, alertId int32) ApiPutUpdateAlertRequest {
 	return ApiPutUpdateAlertRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2030,7 +2030,7 @@ func (a *MonitoringAlertingApiService) PutUpdateAlert(ctx context.Context, alert
 
 // Execute executes the request
 //  @return AlertDetailResponse
-func (a *MonitoringAlertingApiService) PutUpdateAlertExecute(r ApiPutUpdateAlertRequest) (*AlertDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PutUpdateAlert(r ApiPutUpdateAlertRequest) (*AlertDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2144,7 +2144,7 @@ func (r ApiPutUpdateWebhookRequest) UpdateWebhookRequest(updateWebhookRequest Up
 }
 
 func (r ApiPutUpdateWebhookRequest) Execute() (*WebhookDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateWebhookExecute(r)
+	return r.ApiService.PutUpdateWebhook(r)
 }
 
 /*
@@ -2156,7 +2156,7 @@ Edit defined webhook integration
  @param webhookId ID for webhook integration
  @return ApiPutUpdateWebhookRequest
 */
-func (a *MonitoringAlertingApiService) PutUpdateWebhook(ctx context.Context, webhookId int32) ApiPutUpdateWebhookRequest {
+func (a *MonitoringAlertingApiService) PutUpdateWebhookRequest(ctx context.Context, webhookId int32) ApiPutUpdateWebhookRequest {
 	return ApiPutUpdateWebhookRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2166,7 +2166,7 @@ func (a *MonitoringAlertingApiService) PutUpdateWebhook(ctx context.Context, web
 
 // Execute executes the request
 //  @return WebhookDetailResponse
-func (a *MonitoringAlertingApiService) PutUpdateWebhookExecute(r ApiPutUpdateWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
+func (a *MonitoringAlertingApiService) PutUpdateWebhook(r ApiPutUpdateWebhookRequest) (*WebhookDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

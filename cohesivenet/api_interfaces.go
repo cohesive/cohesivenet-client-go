@@ -37,11 +37,11 @@ func (r ApiCreateInterfaceAddressRequest) CreateInterfaceAddressRequest(createIn
 }
 
 func (r ApiCreateInterfaceAddressRequest) Execute() (*InterfaceAddressDetail, *http.Response, error) {
-	return r.ApiService.CreateInterfaceAddressExecute(r)
+	return r.ApiService.CreateInterfaceAddress(r)
 }
 
 /*
-CreateInterfaceAddress Create system interface address
+CreateInterfaceAddressRequest Create system interface address
 
 Create new system interface address
 
@@ -49,7 +49,7 @@ Create new system interface address
  @param interfaceId ID for system interface
  @return ApiCreateInterfaceAddressRequest
 */
-func (a *InterfacesApiService) CreateInterfaceAddress(ctx context.Context, interfaceId string) ApiCreateInterfaceAddressRequest {
+func (a *InterfacesApiService) CreateInterfaceAddressRequest(ctx context.Context, interfaceId string) ApiCreateInterfaceAddressRequest {
 	return ApiCreateInterfaceAddressRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *InterfacesApiService) CreateInterfaceAddress(ctx context.Context, inter
 
 // Execute executes the request
 //  @return interface{}
-func (a *InterfacesApiService) CreateInterfaceAddressExecute(r ApiCreateInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
+func (a *InterfacesApiService) CreateInterfaceAddress(r ApiCreateInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -155,11 +155,11 @@ type ApiDeleteGreInterfaceRequest struct {
 }
 
 func (r ApiDeleteGreInterfaceRequest) Execute() (*GREEndpointDetail, *http.Response, error) {
-	return r.ApiService.DeleteGreInterfaceExecute(r)
+	return r.ApiService.DeleteGreInterface(r)
 }
 
 /*
-DeleteGreInterface Delete GRE interface
+DeleteGreInterfaceRequest Delete GRE interface
 
 Delete GRE Interface
 
@@ -167,7 +167,7 @@ Delete GRE Interface
  @param interfaceId ID for system interface
  @return ApiDeleteGreInterfaceRequest
 */
-func (a *InterfacesApiService) DeleteGreInterface(ctx context.Context, interfaceId string) ApiDeleteGreInterfaceRequest {
+func (a *InterfacesApiService) DeleteGreInterfaceRequest(ctx context.Context, interfaceId string) ApiDeleteGreInterfaceRequest {
 	return ApiDeleteGreInterfaceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -177,7 +177,7 @@ func (a *InterfacesApiService) DeleteGreInterface(ctx context.Context, interface
 
 // Execute executes the request
 //  @return GREEndpointDetail
-func (a *InterfacesApiService) DeleteGreInterfaceExecute(r ApiDeleteGreInterfaceRequest) (*GREEndpointDetail, *http.Response, error) {
+func (a *InterfacesApiService) DeleteGreInterface(r ApiDeleteGreInterfaceRequest) (*GREEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -268,11 +268,11 @@ type ApiDeleteInterfaceAddressRequest struct {
 }
 
 func (r ApiDeleteInterfaceAddressRequest) Execute() (*InterfaceAddressDetail, *http.Response, error) {
-	return r.ApiService.DeleteInterfaceAddressExecute(r)
+	return r.ApiService.DeleteInterfaceAddress(r)
 }
 
 /*
-DeleteInterfaceAddress Delete system interface address
+DeleteInterfaceAddressRequest Delete system interface address
 
 Delete system interface address
 
@@ -281,7 +281,7 @@ Delete system interface address
  @param addressId ID for interface address
  @return ApiDeleteInterfaceAddressRequest
 */
-func (a *InterfacesApiService) DeleteInterfaceAddress(ctx context.Context, interfaceId string, addressId int32) ApiDeleteInterfaceAddressRequest {
+func (a *InterfacesApiService) DeleteInterfaceAddressRequest(ctx context.Context, interfaceId string, addressId int32) ApiDeleteInterfaceAddressRequest {
 	return ApiDeleteInterfaceAddressRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -292,7 +292,7 @@ func (a *InterfacesApiService) DeleteInterfaceAddress(ctx context.Context, inter
 
 // Execute executes the request
 //  @return InterfaceAddressDetail
-func (a *InterfacesApiService) DeleteInterfaceAddressExecute(r ApiDeleteInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
+func (a *InterfacesApiService) DeleteInterfaceAddress(r ApiDeleteInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -383,11 +383,11 @@ type ApiDeleteSystemInterfaceRequest struct {
 }
 
 func (r ApiDeleteSystemInterfaceRequest) Execute() (*SystemInterfaceDetail, *http.Response, error) {
-	return r.ApiService.DeleteSystemInterfaceExecute(r)
+	return r.ApiService.DeleteSystemInterface(r)
 }
 
 /*
-DeleteSystemInterface Delete system interface
+DeleteSystemInterfaceRequest Delete system interface
 
 Delete system interface
 
@@ -395,7 +395,7 @@ Delete system interface
  @param interfaceId ID for system interface
  @return ApiDeleteSystemInterfaceRequest
 */
-func (a *InterfacesApiService) DeleteSystemInterface(ctx context.Context, interfaceId string) ApiDeleteSystemInterfaceRequest {
+func (a *InterfacesApiService) DeleteSystemInterfaceRequest(ctx context.Context, interfaceId string) ApiDeleteSystemInterfaceRequest {
 	return ApiDeleteSystemInterfaceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -405,7 +405,7 @@ func (a *InterfacesApiService) DeleteSystemInterface(ctx context.Context, interf
 
 // Execute executes the request
 //  @return SystemInterfaceDetail
-func (a *InterfacesApiService) DeleteSystemInterfaceExecute(r ApiDeleteSystemInterfaceRequest) (*SystemInterfaceDetail, *http.Response, error) {
+func (a *InterfacesApiService) DeleteSystemInterface(r ApiDeleteSystemInterfaceRequest) (*SystemInterfaceDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -495,11 +495,11 @@ type ApiGetGreInterfaceDetailsRequest struct {
 }
 
 func (r ApiGetGreInterfaceDetailsRequest) Execute() (*GREEndpointDetail, *http.Response, error) {
-	return r.ApiService.GetGreInterfaceDetailsExecute(r)
+	return r.ApiService.GetGreInterfaceDetails(r)
 }
 
 /*
-GetGreInterfaceDetails Get GRE interface details
+GetGreInterfaceDetailsRequest Get GRE interface details
 
 Get GRE interface details by id or name
 
@@ -507,7 +507,7 @@ Get GRE interface details by id or name
  @param interfaceId ID for system interface
  @return ApiGetGreInterfaceDetailsRequest
 */
-func (a *InterfacesApiService) GetGreInterfaceDetails(ctx context.Context, interfaceId string) ApiGetGreInterfaceDetailsRequest {
+func (a *InterfacesApiService) GetGreInterfaceDetailsRequest(ctx context.Context, interfaceId string) ApiGetGreInterfaceDetailsRequest {
 	return ApiGetGreInterfaceDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -517,7 +517,7 @@ func (a *InterfacesApiService) GetGreInterfaceDetails(ctx context.Context, inter
 
 // Execute executes the request
 //  @return GREEndpointDetail
-func (a *InterfacesApiService) GetGreInterfaceDetailsExecute(r ApiGetGreInterfaceDetailsRequest) (*GREEndpointDetail, *http.Response, error) {
+func (a *InterfacesApiService) GetGreInterfaceDetails(r ApiGetGreInterfaceDetailsRequest) (*GREEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -606,7 +606,7 @@ type ApiGetGreInterfacesRequest struct {
 }
 
 func (r ApiGetGreInterfacesRequest) Execute() (*GREEndpointListResponse, *http.Response, error) {
-	return r.ApiService.GetGreInterfacesExecute(r)
+	return r.ApiService.GetGreInterfaces(r)
 }
 
 /*
@@ -617,7 +617,7 @@ Get Edge GRE interface details
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetGreInterfacesRequest
 */
-func (a *InterfacesApiService) GetGreInterfaces(ctx context.Context) ApiGetGreInterfacesRequest {
+func (a *InterfacesApiService) GetGreInterfacesRequest(ctx context.Context) ApiGetGreInterfacesRequest {
 	return ApiGetGreInterfacesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -626,7 +626,7 @@ func (a *InterfacesApiService) GetGreInterfaces(ctx context.Context) ApiGetGreIn
 
 // Execute executes the request
 //  @return GREEndpointListResponse
-func (a *InterfacesApiService) GetGreInterfacesExecute(r ApiGetGreInterfacesRequest) (*GREEndpointListResponse, *http.Response, error) {
+func (a *InterfacesApiService) GetGreInterfaces(r ApiGetGreInterfacesRequest) (*GREEndpointListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -707,7 +707,7 @@ type ApiGetInterfaceAddressRequest struct {
 }
 
 func (r ApiGetInterfaceAddressRequest) Execute() (*InterfaceAddressDetail, *http.Response, error) {
-	return r.ApiService.GetInterfaceAddressExecute(r)
+	return r.ApiService.GetInterfaceAddress(r)
 }
 
 /*
@@ -720,7 +720,7 @@ Get interface address details
  @param addressId ID for interface address
  @return ApiGetInterfaceAddressRequest
 */
-func (a *InterfacesApiService) GetInterfaceAddress(ctx context.Context, interfaceId string, addressId int32) ApiGetInterfaceAddressRequest {
+func (a *InterfacesApiService) GetInterfaceAddressRequest(ctx context.Context, interfaceId string, addressId int32) ApiGetInterfaceAddressRequest {
 	return ApiGetInterfaceAddressRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -731,7 +731,7 @@ func (a *InterfacesApiService) GetInterfaceAddress(ctx context.Context, interfac
 
 // Execute executes the request
 //  @return InterfaceAddressDetail
-func (a *InterfacesApiService) GetInterfaceAddressExecute(r ApiGetInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
+func (a *InterfacesApiService) GetInterfaceAddress(r ApiGetInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -822,7 +822,7 @@ type ApiGetInterfaceAddressesRequest struct {
 }
 
 func (r ApiGetInterfaceAddressesRequest) Execute() (*InterfaceAddressListResponse, *http.Response, error) {
-	return r.ApiService.GetInterfaceAddressesExecute(r)
+	return r.ApiService.GetInterfaceAddresses(r)
 }
 
 /*
@@ -834,7 +834,7 @@ Get system interface addresses
  @param interfaceId ID for system interface
  @return ApiGetInterfaceAddressesRequest
 */
-func (a *InterfacesApiService) GetInterfaceAddresses(ctx context.Context, interfaceId string) ApiGetInterfaceAddressesRequest {
+func (a *InterfacesApiService) GetInterfaceAddressesRequest(ctx context.Context, interfaceId string) ApiGetInterfaceAddressesRequest {
 	return ApiGetInterfaceAddressesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -844,7 +844,7 @@ func (a *InterfacesApiService) GetInterfaceAddresses(ctx context.Context, interf
 
 // Execute executes the request
 //  @return InterfaceAddressListResponse
-func (a *InterfacesApiService) GetInterfaceAddressesExecute(r ApiGetInterfaceAddressesRequest) (*InterfaceAddressListResponse, *http.Response, error) {
+func (a *InterfacesApiService) GetInterfaceAddresses(r ApiGetInterfaceAddressesRequest) (*InterfaceAddressListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -924,7 +924,7 @@ type ApiGetInterfacesRequest struct {
 }
 
 func (r ApiGetInterfacesRequest) Execute() (*SystemInterfaceListResponse, *http.Response, error) {
-	return r.ApiService.GetInterfacesExecute(r)
+	return r.ApiService.GetInterfaces(r)
 }
 
 /*
@@ -935,7 +935,7 @@ GetInterfaces Get all interfaces
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetInterfacesRequest
 */
-func (a *InterfacesApiService) GetInterfaces(ctx context.Context) ApiGetInterfacesRequest {
+func (a *InterfacesApiService) GetInterfacesRequest(ctx context.Context) ApiGetInterfacesRequest {
 	return ApiGetInterfacesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -944,7 +944,7 @@ func (a *InterfacesApiService) GetInterfaces(ctx context.Context) ApiGetInterfac
 
 // Execute executes the request
 //  @return SystemInterfaceListResponse
-func (a *InterfacesApiService) GetInterfacesExecute(r ApiGetInterfacesRequest) (*SystemInterfaceListResponse, *http.Response, error) {
+func (a *InterfacesApiService) GetInterfaces(r ApiGetInterfacesRequest) (*SystemInterfaceListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1024,7 +1024,7 @@ type ApiGetSystemInterfaceDetailsRequest struct {
 }
 
 func (r ApiGetSystemInterfaceDetailsRequest) Execute() (*SystemInterfaceDetail, *http.Response, error) {
-	return r.ApiService.GetSystemInterfaceDetailsExecute(r)
+	return r.ApiService.GetSystemInterfaceDetails(r)
 }
 
 /*
@@ -1036,7 +1036,7 @@ Get interface details by name
  @param interfaceId ID for system interface
  @return ApiGetSystemInterfaceDetailsRequest
 */
-func (a *InterfacesApiService) GetSystemInterfaceDetails(ctx context.Context, interfaceId string) ApiGetSystemInterfaceDetailsRequest {
+func (a *InterfacesApiService) GetSystemInterfaceDetailsRequest(ctx context.Context, interfaceId string) ApiGetSystemInterfaceDetailsRequest {
 	return ApiGetSystemInterfaceDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1046,7 +1046,7 @@ func (a *InterfacesApiService) GetSystemInterfaceDetails(ctx context.Context, in
 
 // Execute executes the request
 //  @return SystemInterfaceDetail
-func (a *InterfacesApiService) GetSystemInterfaceDetailsExecute(r ApiGetSystemInterfaceDetailsRequest) (*SystemInterfaceDetail, *http.Response, error) {
+func (a *InterfacesApiService) GetSystemInterfaceDetails(r ApiGetSystemInterfaceDetailsRequest) (*SystemInterfaceDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1135,7 +1135,7 @@ type ApiGetSystemInterfacesRequest struct {
 }
 
 func (r ApiGetSystemInterfacesRequest) Execute() (*SystemInterfaceListResponse, *http.Response, error) {
-	return r.ApiService.GetSystemInterfacesExecute(r)
+	return r.ApiService.GetSystemInterfaces(r)
 }
 
 /*
@@ -1146,7 +1146,7 @@ Get system interfaces
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSystemInterfacesRequest
 */
-func (a *InterfacesApiService) GetSystemInterfaces(ctx context.Context) ApiGetSystemInterfacesRequest {
+func (a *InterfacesApiService) GetSystemInterfacesRequest(ctx context.Context) ApiGetSystemInterfacesRequest {
 	return ApiGetSystemInterfacesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1155,7 +1155,7 @@ func (a *InterfacesApiService) GetSystemInterfaces(ctx context.Context) ApiGetSy
 
 // Execute executes the request
 //  @return SystemInterfaceListResponse
-func (a *InterfacesApiService) GetSystemInterfacesExecute(r ApiGetSystemInterfacesRequest) (*SystemInterfaceListResponse, *http.Response, error) {
+func (a *InterfacesApiService) GetSystemInterfaces(r ApiGetSystemInterfacesRequest) (*SystemInterfaceListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1240,7 +1240,7 @@ func (r ApiCreateGreInterfaceRequest) CreateGreInterfaceRequest(createGreInterfa
 }
 
 func (r ApiCreateGreInterfaceRequest) Execute() (*GREEndpointDetail, *http.Response, error) {
-	return r.ApiService.PostCreateGreInterfaceExecute(r)
+	return r.ApiService.PostCreateGreInterface(r)
 }
 
 /*
@@ -1251,7 +1251,7 @@ Create new edge GRE interface
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateGreInterfaceRequest
 */
-func (a *InterfacesApiService) PostCreateGreInterface(ctx context.Context) ApiCreateGreInterfaceRequest {
+func (a *InterfacesApiService) PostCreateGreInterfaceRequest(ctx context.Context) ApiCreateGreInterfaceRequest {
 	return ApiCreateGreInterfaceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1260,7 +1260,7 @@ func (a *InterfacesApiService) PostCreateGreInterface(ctx context.Context) ApiCr
 
 // Execute executes the request
 //  @return GREEndpointDetail
-func (a *InterfacesApiService) PostCreateGreInterfaceExecute(r ApiCreateGreInterfaceRequest) (*GREEndpointDetail, *http.Response, error) {
+func (a *InterfacesApiService) PostCreateGreInterface(r ApiCreateGreInterfaceRequest) (*GREEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1360,7 +1360,7 @@ func (r ApiCreateSystemInterfaceRequest) CreateSystemInterfaceRequest(createSyst
 }
 
 func (r ApiCreateSystemInterfaceRequest) Execute() (*SystemInterfaceDetail, *http.Response, error) {
-	return r.ApiService.PostCreateSystemInterfaceExecute(r)
+	return r.ApiService.PostCreateSystemInterface(r)
 }
 
 /*
@@ -1371,7 +1371,7 @@ Create new system interface
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSystemInterfaceRequest
 */
-func (a *InterfacesApiService) PostCreateSystemInterface(ctx context.Context) ApiCreateSystemInterfaceRequest {
+func (a *InterfacesApiService) PostCreateSystemInterfaceRequest(ctx context.Context) ApiCreateSystemInterfaceRequest {
 	return ApiCreateSystemInterfaceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1380,7 +1380,7 @@ func (a *InterfacesApiService) PostCreateSystemInterface(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return SystemInterfaceDetail
-func (a *InterfacesApiService) PostCreateSystemInterfaceExecute(r ApiCreateSystemInterfaceRequest) (*SystemInterfaceDetail, *http.Response, error) {
+func (a *InterfacesApiService) PostCreateSystemInterface(r ApiCreateSystemInterfaceRequest) (*SystemInterfaceDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1480,7 +1480,7 @@ func (r ApiPostInterfacesActionRequest) InterfaceActionRequest(interfaceActionRe
 }
 
 func (r ApiPostInterfacesActionRequest) Execute() (*SystemInterfaceListResponse, *http.Response, error) {
-	return r.ApiService.PostInterfacesActionExecute(r)
+	return r.ApiService.PostInterfacesAction(r)
 }
 
 /*
@@ -1492,7 +1492,7 @@ Take action on interfaces collection. Only one action can be taken per request. 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostInterfacesActionRequest
 */
-func (a *InterfacesApiService) PostInterfacesAction(ctx context.Context) ApiPostInterfacesActionRequest {
+func (a *InterfacesApiService) PostInterfacesActionRequest(ctx context.Context) ApiPostInterfacesActionRequest {
 	return ApiPostInterfacesActionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1501,7 +1501,7 @@ func (a *InterfacesApiService) PostInterfacesAction(ctx context.Context) ApiPost
 
 // Execute executes the request
 //  @return SystemInterfaceListResponse
-func (a *InterfacesApiService) PostInterfacesActionExecute(r ApiPostInterfacesActionRequest) (*SystemInterfaceListResponse, *http.Response, error) {
+func (a *InterfacesApiService) PostInterfacesAction(r ApiPostInterfacesActionRequest) (*SystemInterfaceListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1602,7 +1602,7 @@ func (r ApiPutUpdateGreInterfaceRequest) CreateGreInterfaceRequest(createGreInte
 }
 
 func (r ApiPutUpdateGreInterfaceRequest) Execute() (*GREEndpointDetail, *http.Response, error) {
-	return r.ApiService.PutUpdateGreInterfaceExecute(r)
+	return r.ApiService.PutUpdateGreInterface(r)
 }
 
 /*
@@ -1614,7 +1614,7 @@ Update GRE interface
  @param interfaceId ID for system interface
  @return ApiPutUpdateGreInterfaceRequest
 */
-func (a *InterfacesApiService) PutUpdateGreInterface(ctx context.Context, interfaceId string) ApiPutUpdateGreInterfaceRequest {
+func (a *InterfacesApiService) PutUpdateGreInterfaceRequest(ctx context.Context, interfaceId string) ApiPutUpdateGreInterfaceRequest {
 	return ApiPutUpdateGreInterfaceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1624,7 +1624,7 @@ func (a *InterfacesApiService) PutUpdateGreInterface(ctx context.Context, interf
 
 // Execute executes the request
 //  @return GREEndpointDetail
-func (a *InterfacesApiService) PutUpdateGreInterfaceExecute(r ApiPutUpdateGreInterfaceRequest) (*GREEndpointDetail, *http.Response, error) {
+func (a *InterfacesApiService) PutUpdateGreInterface(r ApiPutUpdateGreInterfaceRequest) (*GREEndpointDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1727,7 +1727,7 @@ func (r ApiUpdateInterfaceAddressRequest) UpdateInterfaceAddressRequest(updateIn
 }
 
 func (r ApiUpdateInterfaceAddressRequest) Execute() (*InterfaceAddressDetail, *http.Response, error) {
-	return r.ApiService.PutUpdateInterfaceAddressExecute(r)
+	return r.ApiService.PutUpdateInterfaceAddress(r)
 }
 
 /*
@@ -1740,7 +1740,7 @@ Update system interface address
  @param addressId ID for interface address
  @return ApiUpdateInterfaceAddressRequest
 */
-func (a *InterfacesApiService) PutUpdateInterfaceAddress(ctx context.Context, interfaceId string, addressId int32) ApiUpdateInterfaceAddressRequest {
+func (a *InterfacesApiService) PutUpdateInterfaceAddressRequest(ctx context.Context, interfaceId string, addressId int32) ApiUpdateInterfaceAddressRequest {
 	return ApiUpdateInterfaceAddressRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1751,7 +1751,7 @@ func (a *InterfacesApiService) PutUpdateInterfaceAddress(ctx context.Context, in
 
 // Execute executes the request
 //  @return InterfaceAddressDetail
-func (a *InterfacesApiService) PutUpdateInterfaceAddressExecute(r ApiUpdateInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
+func (a *InterfacesApiService) PutUpdateInterfaceAddress(r ApiUpdateInterfaceAddressRequest) (*InterfaceAddressDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1851,7 +1851,7 @@ func (r ApiUpdateSystemInterfaceRequest) UpdateSystemInterfaceRequest(updateSyst
 }
 
 func (r ApiUpdateSystemInterfaceRequest) Execute() (*SystemInterfaceDetail, *http.Response, error) {
-	return r.ApiService.PutUpdateSystemInterfaceExecute(r)
+	return r.ApiService.PutUpdateSystemInterface(r)
 }
 
 /*
@@ -1863,7 +1863,7 @@ Update system interface
  @param interfaceId ID for system interface
  @return ApiUpdateSystemInterfaceRequest
 */
-func (a *InterfacesApiService) PutUpdateSystemInterface(ctx context.Context, interfaceId string) ApiUpdateSystemInterfaceRequest {
+func (a *InterfacesApiService) PutUpdateSystemInterfaceRequest(ctx context.Context, interfaceId string) ApiUpdateSystemInterfaceRequest {
 	return ApiUpdateSystemInterfaceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1873,7 +1873,7 @@ func (a *InterfacesApiService) PutUpdateSystemInterface(ctx context.Context, int
 
 // Execute executes the request
 //  @return SystemInterfaceDetail
-func (a *InterfacesApiService) PutUpdateSystemInterfaceExecute(r ApiUpdateSystemInterfaceRequest) (*SystemInterfaceDetail, *http.Response, error) {
+func (a *InterfacesApiService) PutUpdateSystemInterface(r ApiUpdateSystemInterfaceRequest) (*SystemInterfaceDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

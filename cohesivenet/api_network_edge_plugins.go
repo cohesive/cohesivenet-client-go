@@ -33,7 +33,7 @@ type ApiClearPluginInstanceConfFileHistoryRequest struct {
 }
 
 func (r ApiClearPluginInstanceConfFileHistoryRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.ClearPluginInstanceConfFileHistoryExecute(r)
+	return r.ApiService.ClearPluginInstanceConfFileHistory(r)
 }
 
 /*
@@ -47,7 +47,7 @@ Clear plugin instance configuration file history
  @param slug Either the index of the config file in the manager configuration  or the name of the confiig file. e.g. 0 or \"name\" 
  @return ApiClearPluginInstanceConfFileHistoryRequest
 */
-func (a *NetworkEdgePluginsApiService) ClearPluginInstanceConfFileHistory(ctx context.Context, id int32, slug string) ApiClearPluginInstanceConfFileHistoryRequest {
+func (a *NetworkEdgePluginsApiService) ClearPluginInstanceConfFileHistoryRequest(ctx context.Context, id int32, slug string) ApiClearPluginInstanceConfFileHistoryRequest {
 	return ApiClearPluginInstanceConfFileHistoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *NetworkEdgePluginsApiService) ClearPluginInstanceConfFileHistory(ctx co
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) ClearPluginInstanceConfFileHistoryExecute(r ApiClearPluginInstanceConfFileHistoryRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) ClearPluginInstanceConfFileHistory(r ApiClearPluginInstanceConfFileHistoryRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -155,7 +155,7 @@ func (r ApiCreatePluginExportRequest) CreatePluginExportRequest(createPluginExpo
 }
 
 func (r ApiCreatePluginExportRequest) Execute() (*PluginExportResponse, *http.Response, error) {
-	return r.ApiService.CreatePluginExportExecute(r)
+	return r.ApiService.CreatePluginExport(r)
 }
 
 /*
@@ -167,7 +167,7 @@ Create new plugin export
  @param id ID for plugin (container image)
  @return ApiCreatePluginExportRequest
 */
-func (a *NetworkEdgePluginsApiService) CreatePluginExport(ctx context.Context, id int32) ApiCreatePluginExportRequest {
+func (a *NetworkEdgePluginsApiService) CreatePluginExportRequest(ctx context.Context, id int32) ApiCreatePluginExportRequest {
 	return ApiCreatePluginExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -177,7 +177,7 @@ func (a *NetworkEdgePluginsApiService) CreatePluginExport(ctx context.Context, i
 
 // Execute executes the request
 //  @return PluginExportResponse
-func (a *NetworkEdgePluginsApiService) CreatePluginExportExecute(r ApiCreatePluginExportRequest) (*PluginExportResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) CreatePluginExport(r ApiCreatePluginExportRequest) (*PluginExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -278,7 +278,7 @@ func (r ApiCreatePluginInstanceExportRequest) CreatePluginInstanceExportRequest(
 }
 
 func (r ApiCreatePluginInstanceExportRequest) Execute() (*PluginExportResponse, *http.Response, error) {
-	return r.ApiService.CreatePluginInstanceExportExecute(r)
+	return r.ApiService.CreatePluginInstanceExport(r)
 }
 
 /*
@@ -290,7 +290,7 @@ Create new plugin instance export
  @param id ID for plugin instance
  @return ApiCreatePluginInstanceExportRequest
 */
-func (a *NetworkEdgePluginsApiService) CreatePluginInstanceExport(ctx context.Context, id int32) ApiCreatePluginInstanceExportRequest {
+func (a *NetworkEdgePluginsApiService) CreatePluginInstanceExportRequest(ctx context.Context, id int32) ApiCreatePluginInstanceExportRequest {
 	return ApiCreatePluginInstanceExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -300,7 +300,7 @@ func (a *NetworkEdgePluginsApiService) CreatePluginInstanceExport(ctx context.Co
 
 // Execute executes the request
 //  @return PluginExportResponse
-func (a *NetworkEdgePluginsApiService) CreatePluginInstanceExportExecute(r ApiCreatePluginInstanceExportRequest) (*PluginExportResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) CreatePluginInstanceExport(r ApiCreatePluginInstanceExportRequest) (*PluginExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -395,7 +395,7 @@ type ApiDeleteContainerRequest struct {
 }
 
 func (r ApiDeleteContainerRequest) Execute() (*DeleteContainerDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteContainerExecute(r)
+	return r.ApiService.DeleteContainer(r)
 }
 
 /*
@@ -407,7 +407,7 @@ Stop and delete container
  @param uuid uuid of resource
  @return ApiDeleteContainerRequest
 */
-func (a *NetworkEdgePluginsApiService) DeleteContainer(ctx context.Context, uuid string) ApiDeleteContainerRequest {
+func (a *NetworkEdgePluginsApiService) DeleteContainerRequest(ctx context.Context, uuid string) ApiDeleteContainerRequest {
 	return ApiDeleteContainerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -417,7 +417,7 @@ func (a *NetworkEdgePluginsApiService) DeleteContainer(ctx context.Context, uuid
 
 // Execute executes the request
 //  @return DeleteContainerDetailResponse
-func (a *NetworkEdgePluginsApiService) DeleteContainerExecute(r ApiDeleteContainerRequest) (*DeleteContainerDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeleteContainer(r ApiDeleteContainerRequest) (*DeleteContainerDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -514,7 +514,7 @@ func (r ApiDeleteContainerImageRequest) Force(force bool) ApiDeleteContainerImag
 }
 
 func (r ApiDeleteContainerImageRequest) Execute() (*DeleteContainerImageDetailResponse, *http.Response, error) {
-	return r.ApiService.DeleteContainerImageExecute(r)
+	return r.ApiService.DeleteContainerImage(r)
 }
 
 /*
@@ -526,7 +526,7 @@ Delete container image
  @param uuid uuid of resource
  @return ApiDeleteContainerImageRequest
 */
-func (a *NetworkEdgePluginsApiService) DeleteContainerImage(ctx context.Context, uuid string) ApiDeleteContainerImageRequest {
+func (a *NetworkEdgePluginsApiService) DeleteContainerImageRequest(ctx context.Context, uuid string) ApiDeleteContainerImageRequest {
 	return ApiDeleteContainerImageRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -536,7 +536,7 @@ func (a *NetworkEdgePluginsApiService) DeleteContainerImage(ctx context.Context,
 
 // Execute executes the request
 //  @return DeleteContainerImageDetailResponse
-func (a *NetworkEdgePluginsApiService) DeleteContainerImageExecute(r ApiDeleteContainerImageRequest) (*DeleteContainerImageDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeleteContainerImage(r ApiDeleteContainerImageRequest) (*DeleteContainerImageDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -630,7 +630,7 @@ type ApiDeletePluginRequest struct {
 }
 
 func (r ApiDeletePluginRequest) Execute() (*PluginDetailResponse, *http.Response, error) {
-	return r.ApiService.DeletePluginExecute(r)
+	return r.ApiService.DeletePlugin(r)
 }
 
 /*
@@ -642,7 +642,7 @@ Delete plugin
  @param id ID for plugin (container image)
  @return ApiDeletePluginRequest
 */
-func (a *NetworkEdgePluginsApiService) DeletePlugin(ctx context.Context, id int32) ApiDeletePluginRequest {
+func (a *NetworkEdgePluginsApiService) DeletePluginRequest(ctx context.Context, id int32) ApiDeletePluginRequest {
 	return ApiDeletePluginRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -652,7 +652,7 @@ func (a *NetworkEdgePluginsApiService) DeletePlugin(ctx context.Context, id int3
 
 // Execute executes the request
 //  @return PluginDetailResponse
-func (a *NetworkEdgePluginsApiService) DeletePluginExecute(r ApiDeletePluginRequest) (*PluginDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeletePlugin(r ApiDeletePluginRequest) (*PluginDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -743,7 +743,7 @@ type ApiDeletePluginExportRequest struct {
 }
 
 func (r ApiDeletePluginExportRequest) Execute() (*PluginExportsListResponse, *http.Response, error) {
-	return r.ApiService.DeletePluginExportExecute(r)
+	return r.ApiService.DeletePluginExport(r)
 }
 
 /*
@@ -756,7 +756,7 @@ Delete plugin export
  @param exportName Name of export file
  @return ApiDeletePluginExportRequest
 */
-func (a *NetworkEdgePluginsApiService) DeletePluginExport(ctx context.Context, id int32, exportName string) ApiDeletePluginExportRequest {
+func (a *NetworkEdgePluginsApiService) DeletePluginExportRequest(ctx context.Context, id int32, exportName string) ApiDeletePluginExportRequest {
 	return ApiDeletePluginExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -767,7 +767,7 @@ func (a *NetworkEdgePluginsApiService) DeletePluginExport(ctx context.Context, i
 
 // Execute executes the request
 //  @return PluginExportsListResponse
-func (a *NetworkEdgePluginsApiService) DeletePluginExportExecute(r ApiDeletePluginExportRequest) (*PluginExportsListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeletePluginExport(r ApiDeletePluginExportRequest) (*PluginExportsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -864,7 +864,7 @@ func (r ApiDeletePluginInstanceRequest) DeletePluginInstanceRequest(deletePlugin
 }
 
 func (r ApiDeletePluginInstanceRequest) Execute() (*PluginInstanceDetailResponse, *http.Response, error) {
-	return r.ApiService.DeletePluginInstanceExecute(r)
+	return r.ApiService.DeletePluginInstance(r)
 }
 
 /*
@@ -876,7 +876,7 @@ Delete plugin instance
  @param id ID for plugin instance
  @return ApiDeletePluginInstanceRequest
 */
-func (a *NetworkEdgePluginsApiService) DeletePluginInstance(ctx context.Context, id int32) ApiDeletePluginInstanceRequest {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceRequest(ctx context.Context, id int32) ApiDeletePluginInstanceRequest {
 	return ApiDeletePluginInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -886,7 +886,7 @@ func (a *NetworkEdgePluginsApiService) DeletePluginInstance(ctx context.Context,
 
 // Execute executes the request
 //  @return PluginInstanceDetailResponse
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceExecute(r ApiDeletePluginInstanceRequest) (*PluginInstanceDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstance(r ApiDeletePluginInstanceRequest) (*PluginInstanceDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -980,7 +980,7 @@ type ApiDeletePluginInstanceConfigVersionRequest struct {
 }
 
 func (r ApiDeletePluginInstanceConfigVersionRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.DeletePluginInstanceConfigVersionExecute(r)
+	return r.ApiService.DeletePluginInstanceConfigVersion(r)
 }
 
 /*
@@ -994,7 +994,7 @@ Delete plugin instance config file version
  @param version Version to delete
  @return ApiDeletePluginInstanceConfigVersionRequest
 */
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceConfigVersion(ctx context.Context, id int32, slug string, version int32) ApiDeletePluginInstanceConfigVersionRequest {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceConfigVersionRequest(ctx context.Context, id int32, slug string, version int32) ApiDeletePluginInstanceConfigVersionRequest {
 	return ApiDeletePluginInstanceConfigVersionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1006,7 +1006,7 @@ func (a *NetworkEdgePluginsApiService) DeletePluginInstanceConfigVersion(ctx con
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceConfigVersionExecute(r ApiDeletePluginInstanceConfigVersionRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceConfigVersion(r ApiDeletePluginInstanceConfigVersionRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1109,7 +1109,7 @@ type ApiDeletePluginInstanceExportRequest struct {
 }
 
 func (r ApiDeletePluginInstanceExportRequest) Execute() (*PluginExportsListResponse, *http.Response, error) {
-	return r.ApiService.DeletePluginInstanceExportExecute(r)
+	return r.ApiService.DeletePluginInstanceExport(r)
 }
 
 /*
@@ -1122,7 +1122,7 @@ Delete plugin instance export
  @param exportName Name of export file
  @return ApiDeletePluginInstanceExportRequest
 */
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceExport(ctx context.Context, id int32, exportName string) ApiDeletePluginInstanceExportRequest {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceExportRequest(ctx context.Context, id int32, exportName string) ApiDeletePluginInstanceExportRequest {
 	return ApiDeletePluginInstanceExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1133,7 +1133,7 @@ func (a *NetworkEdgePluginsApiService) DeletePluginInstanceExport(ctx context.Co
 
 // Execute executes the request
 //  @return PluginExportsListResponse
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceExportExecute(r ApiDeletePluginInstanceExportRequest) (*PluginExportsListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceExport(r ApiDeletePluginInstanceExportRequest) (*PluginExportsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1225,7 +1225,7 @@ type ApiDeletePluginInstanceUserRequest struct {
 }
 
 func (r ApiDeletePluginInstanceUserRequest) Execute() (*PluginInstanceUsersListResponse, *http.Response, error) {
-	return r.ApiService.DeletePluginInstanceUserExecute(r)
+	return r.ApiService.DeletePluginInstanceUser(r)
 }
 
 /*
@@ -1238,7 +1238,7 @@ Delete plugin instance user
  @param username Name of user
  @return ApiDeletePluginInstanceUserRequest
 */
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceUser(ctx context.Context, id int32, username string) ApiDeletePluginInstanceUserRequest {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceUserRequest(ctx context.Context, id int32, username string) ApiDeletePluginInstanceUserRequest {
 	return ApiDeletePluginInstanceUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1249,7 +1249,7 @@ func (a *NetworkEdgePluginsApiService) DeletePluginInstanceUser(ctx context.Cont
 
 // Execute executes the request
 //  @return PluginInstanceUsersListResponse
-func (a *NetworkEdgePluginsApiService) DeletePluginInstanceUserExecute(r ApiDeletePluginInstanceUserRequest) (*PluginInstanceUsersListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) DeletePluginInstanceUser(r ApiDeletePluginInstanceUserRequest) (*PluginInstanceUsersListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1346,7 +1346,7 @@ func (r ApiGetContainerImagesRequest) Uuid(uuid string) ApiGetContainerImagesReq
 }
 
 func (r ApiGetContainerImagesRequest) Execute() (*ContainerImageListResponse, *http.Response, error) {
-	return r.ApiService.GetContainerImagesExecute(r)
+	return r.ApiService.GetContainerImages(r)
 }
 
 /*
@@ -1357,7 +1357,7 @@ Get list of existing container system images
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetContainerImagesRequest
 */
-func (a *NetworkEdgePluginsApiService) GetContainerImages(ctx context.Context) ApiGetContainerImagesRequest {
+func (a *NetworkEdgePluginsApiService) GetContainerImagesRequest(ctx context.Context) ApiGetContainerImagesRequest {
 	return ApiGetContainerImagesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1366,7 +1366,7 @@ func (a *NetworkEdgePluginsApiService) GetContainerImages(ctx context.Context) A
 
 // Execute executes the request
 //  @return ContainerImageListResponse
-func (a *NetworkEdgePluginsApiService) GetContainerImagesExecute(r ApiGetContainerImagesRequest) (*ContainerImageListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetContainerImages(r ApiGetContainerImagesRequest) (*ContainerImageListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1475,7 +1475,7 @@ func (r ApiGetContainerLogsRequest) Lines(lines int32) ApiGetContainerLogsReques
 }
 
 func (r ApiGetContainerLogsRequest) Execute() (*ContainerLogsResponse, *http.Response, error) {
-	return r.ApiService.GetContainerLogsExecute(r)
+	return r.ApiService.GetContainerLogs(r)
 }
 
 /*
@@ -1487,7 +1487,7 @@ Fetch containers log messages
  @param uuid uuid of resource
  @return ApiGetContainerLogsRequest
 */
-func (a *NetworkEdgePluginsApiService) GetContainerLogs(ctx context.Context, uuid string) ApiGetContainerLogsRequest {
+func (a *NetworkEdgePluginsApiService) GetContainerLogsRequest(ctx context.Context, uuid string) ApiGetContainerLogsRequest {
 	return ApiGetContainerLogsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1497,7 +1497,7 @@ func (a *NetworkEdgePluginsApiService) GetContainerLogs(ctx context.Context, uui
 
 // Execute executes the request
 //  @return ContainerLogsResponse
-func (a *NetworkEdgePluginsApiService) GetContainerLogsExecute(r ApiGetContainerLogsRequest) (*ContainerLogsResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetContainerLogs(r ApiGetContainerLogsRequest) (*ContainerLogsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1581,7 +1581,7 @@ type ApiGetContainerSystemIpsRequest struct {
 }
 
 func (r ApiGetContainerSystemIpsRequest) Execute() (*ContainerSystemIPListResponse, *http.Response, error) {
-	return r.ApiService.GetContainerSystemIpsExecute(r)
+	return r.ApiService.GetContainerSystemIps(r)
 }
 
 /*
@@ -1593,7 +1593,7 @@ Retrieve IP address list for current container network configuration  and addres
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetContainerSystemIpsRequest
 */
-func (a *NetworkEdgePluginsApiService) GetContainerSystemIps(ctx context.Context) ApiGetContainerSystemIpsRequest {
+func (a *NetworkEdgePluginsApiService) GetContainerSystemIpsRequest(ctx context.Context) ApiGetContainerSystemIpsRequest {
 	return ApiGetContainerSystemIpsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1602,7 +1602,7 @@ func (a *NetworkEdgePluginsApiService) GetContainerSystemIps(ctx context.Context
 
 // Execute executes the request
 //  @return ContainerSystemIPListResponse
-func (a *NetworkEdgePluginsApiService) GetContainerSystemIpsExecute(r ApiGetContainerSystemIpsRequest) (*ContainerSystemIPListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetContainerSystemIps(r ApiGetContainerSystemIpsRequest) (*ContainerSystemIPListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1690,7 +1690,7 @@ type ApiGetContainerSystemStatusRequest struct {
 }
 
 func (r ApiGetContainerSystemStatusRequest) Execute() (*ContainerSystemStatusResponse, *http.Response, error) {
-	return r.ApiService.GetContainerSystemStatusExecute(r)
+	return r.ApiService.GetContainerSystemStatus(r)
 }
 
 /*
@@ -1701,7 +1701,7 @@ Retrieve status of container system
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetContainerSystemStatusRequest
 */
-func (a *NetworkEdgePluginsApiService) GetContainerSystemStatus(ctx context.Context) ApiGetContainerSystemStatusRequest {
+func (a *NetworkEdgePluginsApiService) GetContainerSystemStatusRequest(ctx context.Context) ApiGetContainerSystemStatusRequest {
 	return ApiGetContainerSystemStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1710,7 +1710,7 @@ func (a *NetworkEdgePluginsApiService) GetContainerSystemStatus(ctx context.Cont
 
 // Execute executes the request
 //  @return ContainerSystemStatusResponse
-func (a *NetworkEdgePluginsApiService) GetContainerSystemStatusExecute(r ApiGetContainerSystemStatusRequest) (*ContainerSystemStatusResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetContainerSystemStatus(r ApiGetContainerSystemStatusRequest) (*ContainerSystemStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1800,7 +1800,7 @@ type ApiGetDownloadPluginExportRequest struct {
 }
 
 func (r ApiGetDownloadPluginExportRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.GetDownloadPluginExportExecute(r)
+	return r.ApiService.GetDownloadPluginExport(r)
 }
 
 /*
@@ -1813,7 +1813,7 @@ Download plugin export
  @param exportName Name of export file
  @return ApiGetDownloadPluginExportRequest
 */
-func (a *NetworkEdgePluginsApiService) GetDownloadPluginExport(ctx context.Context, id int32, exportName string) ApiGetDownloadPluginExportRequest {
+func (a *NetworkEdgePluginsApiService) GetDownloadPluginExportRequest(ctx context.Context, id int32, exportName string) ApiGetDownloadPluginExportRequest {
 	return ApiGetDownloadPluginExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1824,7 +1824,7 @@ func (a *NetworkEdgePluginsApiService) GetDownloadPluginExport(ctx context.Conte
 
 // Execute executes the request
 //  @return *os.File
-func (a *NetworkEdgePluginsApiService) GetDownloadPluginExportExecute(r ApiGetDownloadPluginExportRequest) (**os.File, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetDownloadPluginExport(r ApiGetDownloadPluginExportRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1916,7 +1916,7 @@ type ApiGetDownloadPluginInstanceExportRequest struct {
 }
 
 func (r ApiGetDownloadPluginInstanceExportRequest) Execute() (**os.File, *http.Response, error) {
-	return r.ApiService.GetDownloadPluginInstanceExportExecute(r)
+	return r.ApiService.GetDownloadPluginInstanceExport(r)
 }
 
 /*
@@ -1929,7 +1929,7 @@ Download plugin instance export
  @param exportName Name of export file
  @return ApiGetDownloadPluginInstanceExportRequest
 */
-func (a *NetworkEdgePluginsApiService) GetDownloadPluginInstanceExport(ctx context.Context, id int32, exportName string) ApiGetDownloadPluginInstanceExportRequest {
+func (a *NetworkEdgePluginsApiService) GetDownloadPluginInstanceExportRequest(ctx context.Context, id int32, exportName string) ApiGetDownloadPluginInstanceExportRequest {
 	return ApiGetDownloadPluginInstanceExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1940,7 +1940,7 @@ func (a *NetworkEdgePluginsApiService) GetDownloadPluginInstanceExport(ctx conte
 
 // Execute executes the request
 //  @return *os.File
-func (a *NetworkEdgePluginsApiService) GetDownloadPluginInstanceExportExecute(r ApiGetDownloadPluginInstanceExportRequest) (**os.File, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetDownloadPluginInstanceExport(r ApiGetDownloadPluginInstanceExportRequest) (**os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2031,7 +2031,7 @@ type ApiGetPluginRequest struct {
 }
 
 func (r ApiGetPluginRequest) Execute() (*PluginDetailResponse, *http.Response, error) {
-	return r.ApiService.GetPluginExecute(r)
+	return r.ApiService.GetPlugin(r)
 }
 
 /*
@@ -2043,7 +2043,7 @@ Get plugin details by id
  @param id ID for plugin (container image)
  @return ApiGetPluginRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPlugin(ctx context.Context, id int32) ApiGetPluginRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginRequest(ctx context.Context, id int32) ApiGetPluginRequest {
 	return ApiGetPluginRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2053,7 +2053,7 @@ func (a *NetworkEdgePluginsApiService) GetPlugin(ctx context.Context, id int32) 
 
 // Execute executes the request
 //  @return PluginDetailResponse
-func (a *NetworkEdgePluginsApiService) GetPluginExecute(r ApiGetPluginRequest) (*PluginDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPlugin(r ApiGetPluginRequest) (*PluginDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2142,7 +2142,7 @@ type ApiGetPluginCatalogRequest struct {
 }
 
 func (r ApiGetPluginCatalogRequest) Execute() (*PluginCatalogResponse, *http.Response, error) {
-	return r.ApiService.GetPluginCatalogExecute(r)
+	return r.ApiService.GetPluginCatalog(r)
 }
 
 /*
@@ -2153,7 +2153,7 @@ Get plugin catalog
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPluginCatalogRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginCatalog(ctx context.Context) ApiGetPluginCatalogRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginCatalogRequest(ctx context.Context) ApiGetPluginCatalogRequest {
 	return ApiGetPluginCatalogRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2162,7 +2162,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginCatalog(ctx context.Context) Api
 
 // Execute executes the request
 //  @return PluginCatalogResponse
-func (a *NetworkEdgePluginsApiService) GetPluginCatalogExecute(r ApiGetPluginCatalogRequest) (*PluginCatalogResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginCatalog(r ApiGetPluginCatalogRequest) (*PluginCatalogResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2251,7 +2251,7 @@ type ApiGetPluginExportsRequest struct {
 }
 
 func (r ApiGetPluginExportsRequest) Execute() (*PluginExportsListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginExportsExecute(r)
+	return r.ApiService.GetPluginExports(r)
 }
 
 /*
@@ -2263,7 +2263,7 @@ Get plugin exports
  @param id ID for plugin (container image)
  @return ApiGetPluginExportsRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginExports(ctx context.Context, id int32) ApiGetPluginExportsRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginExportsRequest(ctx context.Context, id int32) ApiGetPluginExportsRequest {
 	return ApiGetPluginExportsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2273,7 +2273,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginExports(ctx context.Context, id 
 
 // Execute executes the request
 //  @return PluginExportsListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginExportsExecute(r ApiGetPluginExportsRequest) (*PluginExportsListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginExports(r ApiGetPluginExportsRequest) (*PluginExportsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2370,7 +2370,7 @@ func (r ApiGetPluginInstanceRequest) SystemData(systemData bool) ApiGetPluginIns
 }
 
 func (r ApiGetPluginInstanceRequest) Execute() (*PluginInstanceDetailResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceExecute(r)
+	return r.ApiService.GetPluginInstance(r)
 }
 
 /*
@@ -2382,7 +2382,7 @@ Get plugin instance details by id
  @param id ID for plugin instance (container)
  @return ApiGetPluginInstanceRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstance(ctx context.Context, id int32) ApiGetPluginInstanceRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceRequest(ctx context.Context, id int32) ApiGetPluginInstanceRequest {
 	return ApiGetPluginInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2392,7 +2392,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstance(ctx context.Context, id
 
 // Execute executes the request
 //  @return PluginInstanceDetailResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceExecute(r ApiGetPluginInstanceRequest) (*PluginInstanceDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstance(r ApiGetPluginInstanceRequest) (*PluginInstanceDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2493,7 +2493,7 @@ func (r ApiGetPluginInstanceConfigContentRequest) Version(version int32) ApiGetP
 }
 
 func (r ApiGetPluginInstanceConfigContentRequest) Execute() (*SimpleStringResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceConfigContentExecute(r)
+	return r.ApiService.GetPluginInstanceConfigContent(r)
 }
 
 /*
@@ -2506,7 +2506,7 @@ Get plugin instance config file contents
  @param slug Either the index of the config file in the configuration  or the name of the config file. e.g. 0 or \"name\" 
  @return ApiGetPluginInstanceConfigContentRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigContent(ctx context.Context, id int32, slug string) ApiGetPluginInstanceConfigContentRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigContentRequest(ctx context.Context, id int32, slug string) ApiGetPluginInstanceConfigContentRequest {
 	return ApiGetPluginInstanceConfigContentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2517,7 +2517,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigContent(ctx contex
 
 // Execute executes the request
 //  @return SimpleStringResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigContentExecute(r ApiGetPluginInstanceConfigContentRequest) (*SimpleStringResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigContent(r ApiGetPluginInstanceConfigContentRequest) (*SimpleStringResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2621,7 +2621,7 @@ type ApiGetPluginInstanceConfigFilesRequest struct {
 }
 
 func (r ApiGetPluginInstanceConfigFilesRequest) Execute() (*PluginManagerConfigFilesResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceConfigFilesExecute(r)
+	return r.ApiService.GetPluginInstanceConfigFiles(r)
 }
 
 /*
@@ -2633,7 +2633,7 @@ Get plugin instance configuration file configs
  @param id ID for plugin instance (container)
  @return ApiGetPluginInstanceConfigFilesRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigFiles(ctx context.Context, id int32) ApiGetPluginInstanceConfigFilesRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigFilesRequest(ctx context.Context, id int32) ApiGetPluginInstanceConfigFilesRequest {
 	return ApiGetPluginInstanceConfigFilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2643,7 +2643,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigFiles(ctx context.
 
 // Execute executes the request
 //  @return PluginManagerConfigFilesResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigFilesExecute(r ApiGetPluginInstanceConfigFilesRequest) (*PluginManagerConfigFilesResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceConfigFiles(r ApiGetPluginInstanceConfigFilesRequest) (*PluginManagerConfigFilesResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2733,7 +2733,7 @@ type ApiGetPluginInstanceExportsRequest struct {
 }
 
 func (r ApiGetPluginInstanceExportsRequest) Execute() (*PluginExportsListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceExportsExecute(r)
+	return r.ApiService.GetPluginInstanceExports(r)
 }
 
 /*
@@ -2745,7 +2745,7 @@ Get plugin instance exports
  @param id ID for plugin instance
  @return ApiGetPluginInstanceExportsRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceExports(ctx context.Context, id int32) ApiGetPluginInstanceExportsRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceExportsRequest(ctx context.Context, id int32) ApiGetPluginInstanceExportsRequest {
 	return ApiGetPluginInstanceExportsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2755,7 +2755,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceExports(ctx context.Cont
 
 // Execute executes the request
 //  @return PluginExportsListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceExportsExecute(r ApiGetPluginInstanceExportsRequest) (*PluginExportsListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceExports(r ApiGetPluginInstanceExportsRequest) (*PluginExportsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2845,7 +2845,7 @@ type ApiGetPluginInstanceFirewallRequest struct {
 }
 
 func (r ApiGetPluginInstanceFirewallRequest) Execute() (*PluginInstanceFirewallResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceFirewallExecute(r)
+	return r.ApiService.GetPluginInstanceFirewall(r)
 }
 
 /*
@@ -2857,7 +2857,7 @@ Get plugin instance firewall
  @param id ID for plugin instance (container)
  @return ApiGetPluginInstanceFirewallRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceFirewall(ctx context.Context, id int32) ApiGetPluginInstanceFirewallRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceFirewallRequest(ctx context.Context, id int32) ApiGetPluginInstanceFirewallRequest {
 	return ApiGetPluginInstanceFirewallRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2867,7 +2867,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceFirewall(ctx context.Con
 
 // Execute executes the request
 //  @return PluginInstanceFirewallResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceFirewallExecute(r ApiGetPluginInstanceFirewallRequest) (*PluginInstanceFirewallResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceFirewall(r ApiGetPluginInstanceFirewallRequest) (*PluginInstanceFirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2965,7 +2965,7 @@ func (r ApiGetPluginInstanceLogContentRequest) Lines(lines int32) ApiGetPluginIn
 }
 
 func (r ApiGetPluginInstanceLogContentRequest) Execute() (*SimpleStringListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceLogContentExecute(r)
+	return r.ApiService.GetPluginInstanceLogContent(r)
 }
 
 /*
@@ -2978,7 +2978,7 @@ Get plugin instance log file contents
  @param slug Either the index of the log file in the configuration  or the name of the log file. e.g. 0 or \"name\" 
  @return ApiGetPluginInstanceLogContentRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogContent(ctx context.Context, id int32, slug string) ApiGetPluginInstanceLogContentRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogContentRequest(ctx context.Context, id int32, slug string) ApiGetPluginInstanceLogContentRequest {
 	return ApiGetPluginInstanceLogContentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2989,7 +2989,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogContent(ctx context.C
 
 // Execute executes the request
 //  @return SimpleStringListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogContentExecute(r ApiGetPluginInstanceLogContentRequest) (*SimpleStringListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogContent(r ApiGetPluginInstanceLogContentRequest) (*SimpleStringListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3093,7 +3093,7 @@ type ApiGetPluginInstanceLogFilesRequest struct {
 }
 
 func (r ApiGetPluginInstanceLogFilesRequest) Execute() (*PluginManagerLogFilesListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceLogFilesExecute(r)
+	return r.ApiService.GetPluginInstanceLogFiles(r)
 }
 
 /*
@@ -3105,7 +3105,7 @@ Get plugin instance log file configurations
  @param id ID for plugin instance (container)
  @return ApiGetPluginInstanceLogFilesRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogFiles(ctx context.Context, id int32) ApiGetPluginInstanceLogFilesRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogFilesRequest(ctx context.Context, id int32) ApiGetPluginInstanceLogFilesRequest {
 	return ApiGetPluginInstanceLogFilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3115,7 +3115,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogFiles(ctx context.Con
 
 // Execute executes the request
 //  @return PluginManagerLogFilesListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogFilesExecute(r ApiGetPluginInstanceLogFilesRequest) (*PluginManagerLogFilesListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceLogFiles(r ApiGetPluginInstanceLogFilesRequest) (*PluginManagerLogFilesListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3205,7 +3205,7 @@ type ApiGetPluginInstanceProcessesRequest struct {
 }
 
 func (r ApiGetPluginInstanceProcessesRequest) Execute() (*PluginManagerProcessManagerResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceProcessesExecute(r)
+	return r.ApiService.GetPluginInstanceProcesses(r)
 }
 
 /*
@@ -3217,7 +3217,7 @@ Get plugin instance process manager
  @param id ID for plugin instance (container)
  @return ApiGetPluginInstanceProcessesRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceProcesses(ctx context.Context, id int32) ApiGetPluginInstanceProcessesRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceProcessesRequest(ctx context.Context, id int32) ApiGetPluginInstanceProcessesRequest {
 	return ApiGetPluginInstanceProcessesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3227,7 +3227,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceProcesses(ctx context.Co
 
 // Execute executes the request
 //  @return PluginManagerProcessManagerResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceProcessesExecute(r ApiGetPluginInstanceProcessesRequest) (*PluginManagerProcessManagerResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceProcesses(r ApiGetPluginInstanceProcessesRequest) (*PluginManagerProcessManagerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3316,7 +3316,7 @@ type ApiGetPluginInstancesRequest struct {
 }
 
 func (r ApiGetPluginInstancesRequest) Execute() (*PluginInstanceListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstancesExecute(r)
+	return r.ApiService.GetPluginInstances(r)
 }
 
 /*
@@ -3327,7 +3327,7 @@ Get running plugin instances. These are running containers allocated from plugin
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPluginInstancesRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstances(ctx context.Context) ApiGetPluginInstancesRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstancesRequest(ctx context.Context) ApiGetPluginInstancesRequest {
 	return ApiGetPluginInstancesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3336,7 +3336,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstances(ctx context.Context) A
 
 // Execute executes the request
 //  @return PluginInstanceListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstancesExecute(r ApiGetPluginInstancesRequest) (*PluginInstanceListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstances(r ApiGetPluginInstancesRequest) (*PluginInstanceListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3425,7 +3425,7 @@ type ApiGetPluginInstanceusersRequest struct {
 }
 
 func (r ApiGetPluginInstanceusersRequest) Execute() (*PluginInstanceUsersListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginInstanceusersExecute(r)
+	return r.ApiService.GetPluginInstanceusers(r)
 }
 
 /*
@@ -3437,7 +3437,7 @@ Get plugin instance users
  @param id ID for plugin instance
  @return ApiGetPluginInstanceusersRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceusers(ctx context.Context, id int32) ApiGetPluginInstanceusersRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceusersRequest(ctx context.Context, id int32) ApiGetPluginInstanceusersRequest {
 	return ApiGetPluginInstanceusersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3447,7 +3447,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginInstanceusers(ctx context.Contex
 
 // Execute executes the request
 //  @return PluginInstanceUsersListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginInstanceusersExecute(r ApiGetPluginInstanceusersRequest) (*PluginInstanceUsersListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginInstanceusers(r ApiGetPluginInstanceusersRequest) (*PluginInstanceUsersListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3537,7 +3537,7 @@ type ApiGetPluginManagerConfigRequest struct {
 }
 
 func (r ApiGetPluginManagerConfigRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.GetPluginManagerConfigExecute(r)
+	return r.ApiService.GetPluginManagerConfig(r)
 }
 
 /*
@@ -3549,7 +3549,7 @@ Get plugin manager config
  @param id ID for plugin (container image)
  @return ApiGetPluginManagerConfigRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginManagerConfig(ctx context.Context, id int32) ApiGetPluginManagerConfigRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginManagerConfigRequest(ctx context.Context, id int32) ApiGetPluginManagerConfigRequest {
 	return ApiGetPluginManagerConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3559,7 +3559,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginManagerConfig(ctx context.Contex
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) GetPluginManagerConfigExecute(r ApiGetPluginManagerConfigRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginManagerConfig(r ApiGetPluginManagerConfigRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3648,7 +3648,7 @@ type ApiGetPluginSystemExportsRequest struct {
 }
 
 func (r ApiGetPluginSystemExportsRequest) Execute() (*PluginExportsListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginSystemExportsExecute(r)
+	return r.ApiService.GetPluginSystemExports(r)
 }
 
 /*
@@ -3659,7 +3659,7 @@ Get list of available plugin exports
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPluginSystemExportsRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPluginSystemExports(ctx context.Context) ApiGetPluginSystemExportsRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginSystemExportsRequest(ctx context.Context) ApiGetPluginSystemExportsRequest {
 	return ApiGetPluginSystemExportsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3668,7 +3668,7 @@ func (a *NetworkEdgePluginsApiService) GetPluginSystemExports(ctx context.Contex
 
 // Execute executes the request
 //  @return PluginExportsListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginSystemExportsExecute(r ApiGetPluginSystemExportsRequest) (*PluginExportsListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPluginSystemExports(r ApiGetPluginSystemExportsRequest) (*PluginExportsListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3756,7 +3756,7 @@ type ApiGetPluginsRequest struct {
 }
 
 func (r ApiGetPluginsRequest) Execute() (*PluginListResponse, *http.Response, error) {
-	return r.ApiService.GetPluginsExecute(r)
+	return r.ApiService.GetPlugins(r)
 }
 
 /*
@@ -3767,7 +3767,7 @@ Get list of plugins. These are container images installed with the container sub
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPluginsRequest
 */
-func (a *NetworkEdgePluginsApiService) GetPlugins(ctx context.Context) ApiGetPluginsRequest {
+func (a *NetworkEdgePluginsApiService) GetPluginsRequest(ctx context.Context) ApiGetPluginsRequest {
 	return ApiGetPluginsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3776,7 +3776,7 @@ func (a *NetworkEdgePluginsApiService) GetPlugins(ctx context.Context) ApiGetPlu
 
 // Execute executes the request
 //  @return PluginListResponse
-func (a *NetworkEdgePluginsApiService) GetPluginsExecute(r ApiGetPluginsRequest) (*PluginListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetPlugins(r ApiGetPluginsRequest) (*PluginListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3878,7 +3878,7 @@ func (r ApiGetRunningContainersRequest) Uuid(uuid string) ApiGetRunningContainer
 }
 
 func (r ApiGetRunningContainersRequest) Execute() (*ContainersListResponse, *http.Response, error) {
-	return r.ApiService.GetRunningContainersExecute(r)
+	return r.ApiService.GetRunningContainers(r)
 }
 
 /*
@@ -3889,7 +3889,7 @@ Provides description information for one or all allocated containers
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRunningContainersRequest
 */
-func (a *NetworkEdgePluginsApiService) GetRunningContainers(ctx context.Context) ApiGetRunningContainersRequest {
+func (a *NetworkEdgePluginsApiService) GetRunningContainersRequest(ctx context.Context) ApiGetRunningContainersRequest {
 	return ApiGetRunningContainersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3898,7 +3898,7 @@ func (a *NetworkEdgePluginsApiService) GetRunningContainers(ctx context.Context)
 
 // Execute executes the request
 //  @return ContainersListResponse
-func (a *NetworkEdgePluginsApiService) GetRunningContainersExecute(r ApiGetRunningContainersRequest) (*ContainersListResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) GetRunningContainers(r ApiGetRunningContainersRequest) (*ContainersListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3998,7 +3998,7 @@ func (r ApiInstallPluginRequest) InstallPluginRequest(installPluginRequest Insta
 }
 
 func (r ApiInstallPluginRequest) Execute() (*PluginDetailResponse, *http.Response, error) {
-	return r.ApiService.InstallPluginExecute(r)
+	return r.ApiService.InstallPlugin(r)
 }
 
 /*
@@ -4009,7 +4009,7 @@ Install a new plugin
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiInstallPluginRequest
 */
-func (a *NetworkEdgePluginsApiService) InstallPlugin(ctx context.Context) ApiInstallPluginRequest {
+func (a *NetworkEdgePluginsApiService) InstallPluginRequest(ctx context.Context) ApiInstallPluginRequest {
 	return ApiInstallPluginRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4018,7 +4018,7 @@ func (a *NetworkEdgePluginsApiService) InstallPlugin(ctx context.Context) ApiIns
 
 // Execute executes the request
 //  @return PluginDetailResponse
-func (a *NetworkEdgePluginsApiService) InstallPluginExecute(r ApiInstallPluginRequest) (*PluginDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) InstallPlugin(r ApiInstallPluginRequest) (*PluginDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4127,7 +4127,7 @@ func (r ApiPostActionContainerSystemRequest) ContainerSystemActionRequest(contai
 }
 
 func (r ApiPostActionContainerSystemRequest) Execute() (*ContainerSystemStatusResponse, *http.Response, error) {
-	return r.ApiService.PostActionContainerSystemExecute(r)
+	return r.ApiService.PostActionContainerSystem(r)
 }
 
 /*
@@ -4138,7 +4138,7 @@ Take action on container system. Supported actions are start and stop.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostActionContainerSystemRequest
 */
-func (a *NetworkEdgePluginsApiService) PostActionContainerSystem(ctx context.Context) ApiPostActionContainerSystemRequest {
+func (a *NetworkEdgePluginsApiService) PostActionContainerSystemRequest(ctx context.Context) ApiPostActionContainerSystemRequest {
 	return ApiPostActionContainerSystemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4147,7 +4147,7 @@ func (a *NetworkEdgePluginsApiService) PostActionContainerSystem(ctx context.Con
 
 // Execute executes the request
 //  @return ContainerSystemStatusResponse
-func (a *NetworkEdgePluginsApiService) PostActionContainerSystemExecute(r ApiPostActionContainerSystemRequest) (*ContainerSystemStatusResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostActionContainerSystem(r ApiPostActionContainerSystemRequest) (*ContainerSystemStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4257,7 +4257,7 @@ func (r ApiPostCommitContainerRequest) CommitContainerRequest(commitContainerReq
 }
 
 func (r ApiPostCommitContainerRequest) Execute() (*CreateContainerImageResponse, *http.Response, error) {
-	return r.ApiService.PostCommitContainerExecute(r)
+	return r.ApiService.PostCommitContainer(r)
 }
 
 /*
@@ -4269,7 +4269,7 @@ Creates a new container image from a running container
  @param uuid uuid of resource
  @return ApiPostCommitContainerRequest
 */
-func (a *NetworkEdgePluginsApiService) PostCommitContainer(ctx context.Context, uuid string) ApiPostCommitContainerRequest {
+func (a *NetworkEdgePluginsApiService) PostCommitContainerRequest(ctx context.Context, uuid string) ApiPostCommitContainerRequest {
 	return ApiPostCommitContainerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4279,7 +4279,7 @@ func (a *NetworkEdgePluginsApiService) PostCommitContainer(ctx context.Context, 
 
 // Execute executes the request
 //  @return CreateContainerImageResponse
-func (a *NetworkEdgePluginsApiService) PostCommitContainerExecute(r ApiPostCommitContainerRequest) (*CreateContainerImageResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostCommitContainer(r ApiPostCommitContainerRequest) (*CreateContainerImageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4380,7 +4380,7 @@ func (r ApiPostCommitPluginInstanceRequest) CommitPluginInstanceImageRequest(com
 }
 
 func (r ApiPostCommitPluginInstanceRequest) Execute() (*PluginDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCommitPluginInstanceExecute(r)
+	return r.ApiService.PostCommitPluginInstance(r)
 }
 
 /*
@@ -4392,7 +4392,7 @@ Create new plugin image from a running plugin instance. This will create a new c
  @param id ID for plugin instance (container)
  @return ApiPostCommitPluginInstanceRequest
 */
-func (a *NetworkEdgePluginsApiService) PostCommitPluginInstance(ctx context.Context, id int32) ApiPostCommitPluginInstanceRequest {
+func (a *NetworkEdgePluginsApiService) PostCommitPluginInstanceRequest(ctx context.Context, id int32) ApiPostCommitPluginInstanceRequest {
 	return ApiPostCommitPluginInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4402,7 +4402,7 @@ func (a *NetworkEdgePluginsApiService) PostCommitPluginInstance(ctx context.Cont
 
 // Execute executes the request
 //  @return PluginDetailResponse
-func (a *NetworkEdgePluginsApiService) PostCommitPluginInstanceExecute(r ApiPostCommitPluginInstanceRequest) (*PluginDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostCommitPluginInstance(r ApiPostCommitPluginInstanceRequest) (*PluginDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4512,7 +4512,7 @@ func (r ApiPostCreateContainerImageRequest) CreateContainerImageRequest(createCo
 }
 
 func (r ApiPostCreateContainerImageRequest) Execute() (*CreateImageDetailResponse, *http.Response, error) {
-	return r.ApiService.PostCreateContainerImageExecute(r)
+	return r.ApiService.PostCreateContainerImage(r)
 }
 
 /*
@@ -4523,7 +4523,7 @@ Create new container image
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostCreateContainerImageRequest
 */
-func (a *NetworkEdgePluginsApiService) PostCreateContainerImage(ctx context.Context) ApiPostCreateContainerImageRequest {
+func (a *NetworkEdgePluginsApiService) PostCreateContainerImageRequest(ctx context.Context) ApiPostCreateContainerImageRequest {
 	return ApiPostCreateContainerImageRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4532,7 +4532,7 @@ func (a *NetworkEdgePluginsApiService) PostCreateContainerImage(ctx context.Cont
 
 // Execute executes the request
 //  @return CreateImageDetailResponse
-func (a *NetworkEdgePluginsApiService) PostCreateContainerImageExecute(r ApiPostCreateContainerImageRequest) (*CreateImageDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostCreateContainerImage(r ApiPostCreateContainerImageRequest) (*CreateImageDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4642,7 +4642,7 @@ func (r ApiPostCreateManagerConfigRequest) ManagerConfigRequest(conf PluginManag
 }
 
 func (r ApiPostCreateManagerConfigRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.PostCreateManagerConfigExecute(r)
+	return r.ApiService.PostCreateManagerConfig(r)
 }
 
 /*
@@ -4655,7 +4655,7 @@ Create new manager configuration for running plugin instance.  If no payload is 
  @param id ID for plugin instance (container)
  @return ApiPostCreateManagerConfigRequest
 */
-func (a *NetworkEdgePluginsApiService) PostCreateManagerConfig(ctx context.Context, id int32) ApiPostCreateManagerConfigRequest {
+func (a *NetworkEdgePluginsApiService) PostCreateManagerConfigRequest(ctx context.Context, id int32) ApiPostCreateManagerConfigRequest {
 	return ApiPostCreateManagerConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4665,7 +4665,7 @@ func (a *NetworkEdgePluginsApiService) PostCreateManagerConfig(ctx context.Conte
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) PostCreateManagerConfigExecute(r ApiPostCreateManagerConfigRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostCreateManagerConfig(r ApiPostCreateManagerConfigRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4772,7 +4772,7 @@ func (r ApiPostExportImageRequest) CreateContainerImageExportRequest(createConta
 }
 
 func (r ApiPostExportImageRequest) Execute() (*SimpleStatusResponse, *http.Response, error) {
-	return r.ApiService.PostExportImageExecute(r)
+	return r.ApiService.PostExportImage(r)
 }
 
 /*
@@ -4784,7 +4784,7 @@ Create exported container image
  @param uuid uuid of resource
  @return ApiPostExportImageRequest
 */
-func (a *NetworkEdgePluginsApiService) PostExportImage(ctx context.Context, uuid string) ApiPostExportImageRequest {
+func (a *NetworkEdgePluginsApiService) PostExportImageRequest(ctx context.Context, uuid string) ApiPostExportImageRequest {
 	return ApiPostExportImageRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4794,7 +4794,7 @@ func (a *NetworkEdgePluginsApiService) PostExportImage(ctx context.Context, uuid
 
 // Execute executes the request
 //  @return SimpleStatusResponse
-func (a *NetworkEdgePluginsApiService) PostExportImageExecute(r ApiPostExportImageRequest) (*SimpleStatusResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostExportImage(r ApiPostExportImageRequest) (*SimpleStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4904,7 +4904,7 @@ func (r ApiPostStartContainerRequest) AllocateContainerRequest(allocateContainer
 }
 
 func (r ApiPostStartContainerRequest) Execute() (*RunContainerDetailResponse, *http.Response, error) {
-	return r.ApiService.PostStartContainerExecute(r)
+	return r.ApiService.PostStartContainer(r)
 }
 
 /*
@@ -4915,7 +4915,7 @@ Create (allocate) a new container or start an existing one
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostStartContainerRequest
 */
-func (a *NetworkEdgePluginsApiService) PostStartContainer(ctx context.Context) ApiPostStartContainerRequest {
+func (a *NetworkEdgePluginsApiService) PostStartContainerRequest(ctx context.Context) ApiPostStartContainerRequest {
 	return ApiPostStartContainerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4924,7 +4924,7 @@ func (a *NetworkEdgePluginsApiService) PostStartContainer(ctx context.Context) A
 
 // Execute executes the request
 //  @return RunContainerDetailResponse
-func (a *NetworkEdgePluginsApiService) PostStartContainerExecute(r ApiPostStartContainerRequest) (*RunContainerDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PostStartContainer(r ApiPostStartContainerRequest) (*RunContainerDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5033,7 +5033,7 @@ func (r ApiPutConfigureContainerSystemRequest) ConfigureContainerSystemRequest(c
 }
 
 func (r ApiPutConfigureContainerSystemRequest) Execute() (*ContainerSystemStatusResponse, *http.Response, error) {
-	return r.ApiService.PutConfigureContainerSystemExecute(r)
+	return r.ApiService.PutConfigureContainerSystem(r)
 }
 
 /*
@@ -5044,7 +5044,7 @@ Configures the container network.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutConfigureContainerSystemRequest
 */
-func (a *NetworkEdgePluginsApiService) PutConfigureContainerSystem(ctx context.Context) ApiPutConfigureContainerSystemRequest {
+func (a *NetworkEdgePluginsApiService) PutConfigureContainerSystemRequest(ctx context.Context) ApiPutConfigureContainerSystemRequest {
 	return ApiPutConfigureContainerSystemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5053,7 +5053,7 @@ func (a *NetworkEdgePluginsApiService) PutConfigureContainerSystem(ctx context.C
 
 // Execute executes the request
 //  @return ContainerSystemStatusResponse
-func (a *NetworkEdgePluginsApiService) PutConfigureContainerSystemExecute(r ApiPutConfigureContainerSystemRequest) (*ContainerSystemStatusResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutConfigureContainerSystem(r ApiPutConfigureContainerSystemRequest) (*ContainerSystemStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5153,7 +5153,7 @@ func (r ApiPutPluginInstanceFirewallRuleRequest) CreatePluginInstanceFirewallRul
 }
 
 func (r ApiPutPluginInstanceFirewallRuleRequest) Execute() (*PluginInstanceFirewallResponse, *http.Response, error) {
-	return r.ApiService.PutPluginInstanceFirewallRuleExecute(r)
+	return r.ApiService.PutPluginInstanceFirewallRule(r)
 }
 
 /*
@@ -5165,7 +5165,7 @@ Create preset plugin instance firewall rule
  @param id ID for plugin instance (container)
  @return ApiPutPluginInstanceFirewallRuleRequest
 */
-func (a *NetworkEdgePluginsApiService) PutPluginInstanceFirewallRule(ctx context.Context, id int32) ApiPutPluginInstanceFirewallRuleRequest {
+func (a *NetworkEdgePluginsApiService) PutPluginInstanceFirewallRuleRequest(ctx context.Context, id int32) ApiPutPluginInstanceFirewallRuleRequest {
 	return ApiPutPluginInstanceFirewallRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5175,7 +5175,7 @@ func (a *NetworkEdgePluginsApiService) PutPluginInstanceFirewallRule(ctx context
 
 // Execute executes the request
 //  @return PluginInstanceFirewallResponse
-func (a *NetworkEdgePluginsApiService) PutPluginInstanceFirewallRuleExecute(r ApiPutPluginInstanceFirewallRuleRequest) (*PluginInstanceFirewallResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutPluginInstanceFirewallRule(r ApiPutPluginInstanceFirewallRuleRequest) (*PluginInstanceFirewallResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5286,7 +5286,7 @@ func (r ApiPluginInstanceUserRequest) PluginInstanceUserRequest(pluginInstanceUs
 }
 
 func (r ApiPluginInstanceUserRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.PutPluginInstanceUserExecute(r)
+	return r.ApiService.PutPluginInstanceUser(r)
 }
 
 /*
@@ -5298,7 +5298,7 @@ Update or create plugin instance user
  @param id ID for plugin instance
  @return ApiPluginInstanceUserRequest
 */
-func (a *NetworkEdgePluginsApiService) PutPluginInstanceUser(ctx context.Context, id int32) ApiPluginInstanceUserRequest {
+func (a *NetworkEdgePluginsApiService) PutPluginInstanceUserRequest(ctx context.Context, id int32) ApiPluginInstanceUserRequest {
 	return ApiPluginInstanceUserRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5308,7 +5308,7 @@ func (a *NetworkEdgePluginsApiService) PutPluginInstanceUser(ctx context.Context
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) PutPluginInstanceUserExecute(r ApiPluginInstanceUserRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutPluginInstanceUser(r ApiPluginInstanceUserRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5413,7 +5413,7 @@ type ApiPutStopContainerRequest struct {
 }
 
 func (r ApiPutStopContainerRequest) Execute() (*RunContainerDetail, *http.Response, error) {
-	return r.ApiService.PutStopContainerExecute(r)
+	return r.ApiService.PutStopContainer(r)
 }
 
 /*
@@ -5425,7 +5425,7 @@ Stops a running container
  @param uuid uuid of resource
  @return ApiPutStopContainerRequest
 */
-func (a *NetworkEdgePluginsApiService) PutStopContainer(ctx context.Context, uuid string) ApiPutStopContainerRequest {
+func (a *NetworkEdgePluginsApiService) PutStopContainerRequest(ctx context.Context, uuid string) ApiPutStopContainerRequest {
 	return ApiPutStopContainerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5435,7 +5435,7 @@ func (a *NetworkEdgePluginsApiService) PutStopContainer(ctx context.Context, uui
 
 // Execute executes the request
 //  @return RunContainerDetail
-func (a *NetworkEdgePluginsApiService) PutStopContainerExecute(r ApiPutStopContainerRequest) (*RunContainerDetail, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutStopContainer(r ApiPutStopContainerRequest) (*RunContainerDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5531,7 +5531,7 @@ func (r ApiPutUpdateContainerImageRequest) UpdateContainerImageRequest(updateCon
 }
 
 func (r ApiPutUpdateContainerImageRequest) Execute() (*UpdateContainerImageDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateContainerImageExecute(r)
+	return r.ApiService.PutUpdateContainerImage(r)
 }
 
 /*
@@ -5543,7 +5543,7 @@ Edits container image
  @param uuid uuid of resource
  @return ApiPutUpdateContainerImageRequest
 */
-func (a *NetworkEdgePluginsApiService) PutUpdateContainerImage(ctx context.Context, uuid string) ApiPutUpdateContainerImageRequest {
+func (a *NetworkEdgePluginsApiService) PutUpdateContainerImageRequest(ctx context.Context, uuid string) ApiPutUpdateContainerImageRequest {
 	return ApiPutUpdateContainerImageRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5553,7 +5553,7 @@ func (a *NetworkEdgePluginsApiService) PutUpdateContainerImage(ctx context.Conte
 
 // Execute executes the request
 //  @return UpdateContainerImageDetailResponse
-func (a *NetworkEdgePluginsApiService) PutUpdateContainerImageExecute(r ApiPutUpdateContainerImageRequest) (*UpdateContainerImageDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutUpdateContainerImage(r ApiPutUpdateContainerImageRequest) (*UpdateContainerImageDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5664,7 +5664,7 @@ func (r ApiPutUpdateManagerConfigRequest) ManagerConfigRequest(conf PluginManage
 }
 
 func (r ApiPutUpdateManagerConfigRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.PutUpdateManagerConfigExecute(r)
+	return r.ApiService.PutUpdateManagerConfig(r)
 }
 
 /*
@@ -5676,7 +5676,7 @@ Update manager configuration for running plugin instance.
  @param id ID for plugin instance (container)
  @return ApiPutUpdateManagerConfigRequest
 */
-func (a *NetworkEdgePluginsApiService) PutUpdateManagerConfig(ctx context.Context, id int32) ApiPutUpdateManagerConfigRequest {
+func (a *NetworkEdgePluginsApiService) PutUpdateManagerConfigRequest(ctx context.Context, id int32) ApiPutUpdateManagerConfigRequest {
 	return ApiPutUpdateManagerConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5686,7 +5686,7 @@ func (a *NetworkEdgePluginsApiService) PutUpdateManagerConfig(ctx context.Contex
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) PutUpdateManagerConfigExecute(r ApiPutUpdateManagerConfigRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutUpdateManagerConfig(r ApiPutUpdateManagerConfigRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5798,7 +5798,7 @@ func (r ApiPutUpdatePluginRequest) UpdatePluginRequest(updatePluginRequest Updat
 }
 
 func (r ApiPutUpdatePluginRequest) Execute() (*PluginDetailResponse, *http.Response, error) {
-	return r.ApiService.PutUpdatePluginExecute(r)
+	return r.ApiService.PutUpdatePlugin(r)
 }
 
 /*
@@ -5810,7 +5810,7 @@ Update plugin data
  @param id ID for plugin (container image)
  @return ApiPutUpdatePluginRequest
 */
-func (a *NetworkEdgePluginsApiService) PutUpdatePlugin(ctx context.Context, id int32) ApiPutUpdatePluginRequest {
+func (a *NetworkEdgePluginsApiService) PutUpdatePluginRequest(ctx context.Context, id int32) ApiPutUpdatePluginRequest {
 	return ApiPutUpdatePluginRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5820,7 +5820,7 @@ func (a *NetworkEdgePluginsApiService) PutUpdatePlugin(ctx context.Context, id i
 
 // Execute executes the request
 //  @return PluginDetailResponse
-func (a *NetworkEdgePluginsApiService) PutUpdatePluginExecute(r ApiPutUpdatePluginRequest) (*PluginDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) PutUpdatePlugin(r ApiPutUpdatePluginRequest) (*PluginDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5932,7 +5932,7 @@ func (r ApiUpdatePluginInstanceConfigFileRequest) UpdateFileContentRequest(updat
 }
 
 func (r ApiUpdatePluginInstanceConfigFileRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.UpdatePluginInstanceConfigFileContentExecute(r)
+	return r.ApiService.UpdatePluginInstanceConfigFileContent(r)
 }
 
 /*
@@ -5945,7 +5945,7 @@ Update plugin instance config file contents
  @param slug Either the index of the config file in the configuration  or the name of the config file. e.g. 0 or \"name\" 
  @return ApiUpdatePluginInstanceConfigFileRequest
 */
-func (a *NetworkEdgePluginsApiService) UpdatePluginInstanceConfigContent(ctx context.Context, id int32, slug string) ApiUpdatePluginInstanceConfigFileRequest {
+func (a *NetworkEdgePluginsApiService) UpdatePluginInstanceConfigContentRequest(ctx context.Context, id int32, slug string) ApiUpdatePluginInstanceConfigFileRequest {
 	return ApiUpdatePluginInstanceConfigFileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5956,7 +5956,7 @@ func (a *NetworkEdgePluginsApiService) UpdatePluginInstanceConfigContent(ctx con
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) UpdatePluginInstanceConfigFileContentExecute(r ApiUpdatePluginInstanceConfigFileRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) UpdatePluginInstanceConfigFileContent(r ApiUpdatePluginInstanceConfigFileRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -6069,7 +6069,7 @@ func (r ApiRevertPluginInstanceConfigFileRequest) RevertPluginInstanceConfigFile
 }
 
 func (r ApiRevertPluginInstanceConfigFileRequest) Execute() (*PluginManagerConfResponse, *http.Response, error) {
-	return r.ApiService.RevertPluginInstanceConfigFileExecute(r)
+	return r.ApiService.RevertPluginInstanceConfigFile(r)
 }
 
 /*
@@ -6083,7 +6083,7 @@ Revert plugin instance configuration file to a different version
  @param slug Either the index of the config file in the manager configuration  or the name of the confiig file. e.g. 0 or \"name\" 
  @return ApiRevertPluginInstanceConfigFileRequest
 */
-func (a *NetworkEdgePluginsApiService) RevertPluginInstanceConfigFile(ctx context.Context, id int32, slug string) ApiRevertPluginInstanceConfigFileRequest {
+func (a *NetworkEdgePluginsApiService) RevertPluginInstanceConfigFileRequest(ctx context.Context, id int32, slug string) ApiRevertPluginInstanceConfigFileRequest {
 	return ApiRevertPluginInstanceConfigFileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6094,7 +6094,7 @@ func (a *NetworkEdgePluginsApiService) RevertPluginInstanceConfigFile(ctx contex
 
 // Execute executes the request
 //  @return PluginManagerConfResponse
-func (a *NetworkEdgePluginsApiService) RevertPluginInstanceConfigFileExecute(r ApiRevertPluginInstanceConfigFileRequest) (*PluginManagerConfResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) RevertPluginInstanceConfigFile(r ApiRevertPluginInstanceConfigFileRequest) (*PluginManagerConfResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6206,7 +6206,7 @@ func (r ApiRunPluginInstanceExecutableCommandRequest) RunPluginInstanceCommandRe
 }
 
 func (r ApiRunPluginInstanceExecutableCommandRequest) Execute() (*PluginManagerCommandResponse, *http.Response, error) {
-	return r.ApiService.RunPluginInstanceExecutableCommandExecute(r)
+	return r.ApiService.RunPluginInstanceExecutableCommand(r)
 }
 
 /*
@@ -6218,7 +6218,7 @@ Run command for plugin instance executable
  @param id ID for plugin instance (container)
  @return ApiRunPluginInstanceExecutableCommandRequest
 */
-func (a *NetworkEdgePluginsApiService) RunPluginInstanceExecutableCommand(ctx context.Context, id int32) ApiRunPluginInstanceExecutableCommandRequest {
+func (a *NetworkEdgePluginsApiService) RunPluginInstanceExecutableCommandRequest(ctx context.Context, id int32) ApiRunPluginInstanceExecutableCommandRequest {
 	return ApiRunPluginInstanceExecutableCommandRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6228,7 +6228,7 @@ func (a *NetworkEdgePluginsApiService) RunPluginInstanceExecutableCommand(ctx co
 
 // Execute executes the request
 //  @return PluginManagerCommandResponse
-func (a *NetworkEdgePluginsApiService) RunPluginInstanceExecutableCommandExecute(r ApiRunPluginInstanceExecutableCommandRequest) (*PluginManagerCommandResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) RunPluginInstanceExecutableCommand(r ApiRunPluginInstanceExecutableCommandRequest) (*PluginManagerCommandResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6339,7 +6339,7 @@ func (r ApiRunPluginInstanceProcessActionRequest) RunPluginInstanceProcessAction
 }
 
 func (r ApiRunPluginInstanceProcessActionRequest) Execute() (*PluginManagerCommandResponse, *http.Response, error) {
-	return r.ApiService.RunPluginInstanceProcessActionExecute(r)
+	return r.ApiService.RunPluginInstanceProcessAction(r)
 }
 
 /*
@@ -6351,7 +6351,7 @@ Take action on a managed process
  @param id ID for plugin instance (container)
  @return ApiRunPluginInstanceProcessActionRequest
 */
-func (a *NetworkEdgePluginsApiService) RunPluginInstanceProcessAction(ctx context.Context, id int32) ApiRunPluginInstanceProcessActionRequest {
+func (a *NetworkEdgePluginsApiService) RunPluginInstanceProcessActionRequest(ctx context.Context, id int32) ApiRunPluginInstanceProcessActionRequest {
 	return ApiRunPluginInstanceProcessActionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6361,7 +6361,7 @@ func (a *NetworkEdgePluginsApiService) RunPluginInstanceProcessAction(ctx contex
 
 // Execute executes the request
 //  @return PluginManagerCommandResponse
-func (a *NetworkEdgePluginsApiService) RunPluginInstanceProcessActionExecute(r ApiRunPluginInstanceProcessActionRequest) (*PluginManagerCommandResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) RunPluginInstanceProcessAction(r ApiRunPluginInstanceProcessActionRequest) (*PluginManagerCommandResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -6471,7 +6471,7 @@ func (r ApiStartPluginInstanceRequest) StartPluginInstanceRequest(startPluginIns
 }
 
 func (r ApiStartPluginInstanceRequest) Execute() (*PluginInstanceDetailResponse, *http.Response, error) {
-	return r.ApiService.StartPluginInstanceExecute(r)
+	return r.ApiService.StartPluginInstance(r)
 }
 
 /*
@@ -6482,7 +6482,7 @@ Start plugin instance
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartPluginInstanceRequest
 */
-func (a *NetworkEdgePluginsApiService) StartPluginInstance(ctx context.Context) ApiStartPluginInstanceRequest {
+func (a *NetworkEdgePluginsApiService) StartPluginInstanceRequest(ctx context.Context) ApiStartPluginInstanceRequest {
 	return ApiStartPluginInstanceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6491,7 +6491,7 @@ func (a *NetworkEdgePluginsApiService) StartPluginInstance(ctx context.Context) 
 
 // Execute executes the request
 //  @return PluginInstanceDetailResponse
-func (a *NetworkEdgePluginsApiService) StartPluginInstanceExecute(r ApiStartPluginInstanceRequest) (*PluginInstanceDetailResponse, *http.Response, error) {
+func (a *NetworkEdgePluginsApiService) StartPluginInstance(r ApiStartPluginInstanceRequest) (*PluginInstanceDetailResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
