@@ -40,6 +40,10 @@ func (c *Client) GetImage(imageId string) (ImageResponse, error) {
 
 func (c *Client) CreateImage(image *PluginImage) (ImageResponse, error) {
 
+	// synchronize creating a plugin image
+	c.ReqLock.Lock()
+	defer c.ReqLock.Unlock()
+
 	rb, err := json.Marshal(image)
 	if err != nil {
 		log.Println(err)
