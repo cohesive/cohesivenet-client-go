@@ -17,7 +17,7 @@ type Client struct {
 	Username   string
 	Password   string
 
-	// used to synchroize client requests i.e. create plugin image
+	// used to synchronize client requests i.e. create plugin image
 	ReqLock	   sync.Mutex
 }
 
