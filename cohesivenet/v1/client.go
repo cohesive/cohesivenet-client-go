@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"sync"
 	"time"
 )
 
@@ -15,6 +16,9 @@ type Client struct {
 	Token      string
 	Username   string
 	Password   string
+
+	// used to synchronize client requests i.e. create plugin image
+	ReqLock	   sync.Mutex
 }
 
 // NewClient -
