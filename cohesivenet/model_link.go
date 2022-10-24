@@ -40,7 +40,7 @@ type Link struct {
 	// Clientpack name
 	Clientpack *string `json:"clientpack,omitempty"`
 	// Policy insertions for this clientpack
-	Policies *string `json:"policies,omitempty"`
+	Policies []string `json:"policies,omitempty"`
 	// Readable state of Link - connecting, connected, disconnected
 	State *string `json:"state,omitempty"`
 	Device *string `json:"device,omitempty"`
@@ -547,17 +547,17 @@ func (o *Link) SetClientpack(v string) {
 }
 
 // GetPolicies returns the Policies field value if set, zero value otherwise.
-func (o *Link) GetPolicies() string {
+func (o *Link) GetPolicies() []string {
 	if o == nil || o.Policies == nil {
-		var ret string
+		var ret []string
 		return ret
 	}
-	return *o.Policies
+	return o.Policies
 }
 
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetPoliciesOk() (*string, bool) {
+func (o *Link) GetPoliciesOk() ([]string, bool) {
 	if o == nil || o.Policies == nil {
 		return nil, false
 	}
@@ -574,8 +574,8 @@ func (o *Link) HasPolicies() bool {
 }
 
 // SetPolicies gets a reference to the given string and assigns it to the Policies field.
-func (o *Link) SetPolicies(v string) {
-	o.Policies = &v
+func (o *Link) SetPolicies(v []string) {
+	o.Policies = v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
