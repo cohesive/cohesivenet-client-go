@@ -14,7 +14,38 @@ package cohesivenet
 import (
 	"encoding/json"
 	"time"
+	"strings"
+	"fmt"
 )
+
+type LinkTimestamp struct {
+    time.Time
+}
+
+const ctLayout = "2006-01-02 15:04:05"
+var nilTime = (time.Time{}).UnixNano()
+
+func (ct *LinkTimestamp) UnmarshalJSON(b []byte) (err error) {
+    s := strings.Trim(string(b), "\"")
+    if s == "null" {
+       ct.Time = time.Time{}
+       return
+    }
+    ct.Time, err = time.Parse(ctLayout, s)
+    return
+}
+
+func (ct *LinkTimestamp) MarshalJSON() ([]byte, error) {
+  if ct.Time.UnixNano() == nilTime {
+    return []byte("null"), nil
+  }
+  return []byte(fmt.Sprintf("\"%s\"", ct.Time.Format(ctLayout))), nil
+}
+
+
+func (ct *LinkTimestamp) IsSet() bool {
+    return ct.UnixNano() != nilTime
+}
 
 // Link struct for Link
 type Link struct {
@@ -27,10 +58,10 @@ type Link struct {
 	// openvpn or wireguard
 	Type *string `json:"type,omitempty"`
 	Tags []KeyValuePair `json:"tags,omitempty"`
-	LastConnect *time.Time `json:"last_connect,omitempty"`
-	LastDisconnect *time.Time `json:"last_disconnect,omitempty"`
+	LastConnect *LinkTimestamp `json:"last_connect,omitempty"`
+	LastDisconnect *LinkTimestamp `json:"last_disconnect,omitempty"`
 	// Time of last WG handshake
-	LastHandshake *time.Time `json:"last_handshake,omitempty"`
+	LastHandshake *LinkTimestamp `json:"last_handshake,omitempty"`
 	// Timeout for WG connection in seconds
 	HandshakeTimeout *int32 `json:"handshake_timeout,omitempty"`
 	// Alias for endpoints
@@ -323,9 +354,9 @@ func (o *Link) SetTags(v []KeyValuePair) {
 }
 
 // GetLastConnect returns the LastConnect field value if set, zero value otherwise.
-func (o *Link) GetLastConnect() time.Time {
+func (o *Link) GetLastConnect() LinkTimestamp {
 	if o == nil || o.LastConnect == nil {
-		var ret time.Time
+		var ret LinkTimestamp
 		return ret
 	}
 	return *o.LastConnect
@@ -333,7 +364,7 @@ func (o *Link) GetLastConnect() time.Time {
 
 // GetLastConnectOk returns a tuple with the LastConnect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetLastConnectOk() (*time.Time, bool) {
+func (o *Link) GetLastConnectOk() (*LinkTimestamp, bool) {
 	if o == nil || o.LastConnect == nil {
 		return nil, false
 	}
@@ -349,15 +380,15 @@ func (o *Link) HasLastConnect() bool {
 	return false
 }
 
-// SetLastConnect gets a reference to the given time.Time and assigns it to the LastConnect field.
-func (o *Link) SetLastConnect(v time.Time) {
+// SetLastConnect gets a reference to the given LinkTimestamp and assigns it to the LastConnect field.
+func (o *Link) SetLastConnect(v LinkTimestamp) {
 	o.LastConnect = &v
 }
 
 // GetLastDisconnect returns the LastDisconnect field value if set, zero value otherwise.
-func (o *Link) GetLastDisconnect() time.Time {
+func (o *Link) GetLastDisconnect() LinkTimestamp {
 	if o == nil || o.LastDisconnect == nil {
-		var ret time.Time
+		var ret LinkTimestamp
 		return ret
 	}
 	return *o.LastDisconnect
@@ -365,7 +396,7 @@ func (o *Link) GetLastDisconnect() time.Time {
 
 // GetLastDisconnectOk returns a tuple with the LastDisconnect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetLastDisconnectOk() (*time.Time, bool) {
+func (o *Link) GetLastDisconnectOk() (*LinkTimestamp, bool) {
 	if o == nil || o.LastDisconnect == nil {
 		return nil, false
 	}
@@ -381,15 +412,15 @@ func (o *Link) HasLastDisconnect() bool {
 	return false
 }
 
-// SetLastDisconnect gets a reference to the given time.Time and assigns it to the LastDisconnect field.
-func (o *Link) SetLastDisconnect(v time.Time) {
+// SetLastDisconnect gets a reference to the given LinkTimestamp and assigns it to the LastDisconnect field.
+func (o *Link) SetLastDisconnect(v LinkTimestamp) {
 	o.LastDisconnect = &v
 }
 
 // GetLastHandshake returns the LastHandshake field value if set, zero value otherwise.
-func (o *Link) GetLastHandshake() time.Time {
+func (o *Link) GetLastHandshake() LinkTimestamp {
 	if o == nil || o.LastHandshake == nil {
-		var ret time.Time
+		var ret LinkTimestamp
 		return ret
 	}
 	return *o.LastHandshake
@@ -397,7 +428,7 @@ func (o *Link) GetLastHandshake() time.Time {
 
 // GetLastHandshakeOk returns a tuple with the LastHandshake field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetLastHandshakeOk() (*time.Time, bool) {
+func (o *Link) GetLastHandshakeOk() (*LinkTimestamp, bool) {
 	if o == nil || o.LastHandshake == nil {
 		return nil, false
 	}
@@ -413,8 +444,8 @@ func (o *Link) HasLastHandshake() bool {
 	return false
 }
 
-// SetLastHandshake gets a reference to the given time.Time and assigns it to the LastHandshake field.
-func (o *Link) SetLastHandshake(v time.Time) {
+// SetLastHandshake gets a reference to the given LinkTimestamp and assigns it to the LastHandshake field.
+func (o *Link) SetLastHandshake(v LinkTimestamp) {
 	o.LastHandshake = &v
 }
 
