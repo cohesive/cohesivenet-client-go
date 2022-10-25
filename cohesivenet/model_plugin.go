@@ -517,6 +517,71 @@ func (o *Plugin) SetInstances(v []int32) {
 	o.Instances = v
 }
 
+
+// GetExports returns the Exports field value if set, zero value otherwise.
+func (o *Plugin) GetExports() []string {
+	if o == nil || o.Exports == nil {
+		var ret []string
+		return ret
+	}
+	return o.Exports
+}
+
+// GetExportsOk returns a tuple with the Exports field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Plugin) GetExportsOk() ([]string, bool) {
+	if o == nil || o.Exports == nil {
+		return nil, false
+	}
+	return o.Exports, true
+}
+
+// HasExports returns a boolean if a field has been set.
+func (o *Plugin) HasExports() bool {
+	if o != nil && o.Exports != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExports gets a reference to the given []string and assigns it to the Exports field.
+func (o *Plugin) SetExports(v []string) {
+	o.Exports = v
+}
+
+// GetInstanceCount returns the InstanceCount field value if set, zero value otherwise.
+func (o *Plugin) GetInstanceCount() int32 {
+	if o == nil || o.InstanceCount == nil {
+		var ret int32
+		return ret
+	}
+	return *o.InstanceCount
+}
+
+// GetInstanceCountOk returns a tuple with the InstanceCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Plugin) GetInstanceCountOk() (*int32, bool) {
+	if o == nil || o.InstanceCount == nil {
+		return nil, false
+	}
+	return o.InstanceCount, true
+}
+
+// HasInstanceCount returns a boolean if a field has been set.
+func (o *Plugin) HasInstanceCount() bool {
+	if o != nil && o.InstanceCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceCount gets a reference to the given int32 and assigns it to the InstanceCount field.
+func (o *Plugin) SetInstanceCount(v int32) {
+	o.InstanceCount = &v
+}
+
 // GetRunningContainers returns the RunningContainers field value if set, zero value otherwise.
 func (o *Plugin) GetRunningContainers() int32 {
 	if o == nil || o.RunningContainers == nil {
@@ -547,6 +612,72 @@ func (o *Plugin) HasRunningContainers() bool {
 // SetRunningContainers gets a reference to the given int32 and assigns it to the RunningContainers field.
 func (o *Plugin) SetRunningContainers(v int32) {
 	o.RunningContainers = &v
+}
+
+
+// GetDocumentationUrl returns the DocumentationUrl field value if set, zero value otherwise.
+func (o *Plugin) GetDocumentationUrl() string {
+	if o == nil || o.DocumentationUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.DocumentationUrl
+}
+
+// GetDocumentationUrlOk returns a tuple with the DocumentationUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Plugin) GetDocumentationUrlOk() (*string, bool) {
+	if o == nil || o.DocumentationUrl == nil {
+		return nil, false
+	}
+	return o.DocumentationUrl, true
+}
+
+// HasDocumentationUrl returns a boolean if a field has been set.
+func (o *Plugin) HasDocumentationUrl() bool {
+	if o != nil && o.DocumentationUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDocumentationUrl gets a reference to the given string and assigns it to the DocumentationUrl field.
+func (o *Plugin) SetDocumentationUrl(v string) {
+	o.DocumentationUrl = &v
+}
+
+
+// GetSupportUrl returns the SupportUrl field value if set, zero value otherwise.
+func (o *Plugin) GetSupportUrl() string {
+	if o == nil || o.SupportUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.SupportUrl
+}
+
+// GetSupportUrlOk returns a tuple with the SupportUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Plugin) GetSupportUrlOk() (*string, bool) {
+	if o == nil || o.SupportUrl == nil {
+		return nil, false
+	}
+	return o.SupportUrl, true
+}
+
+// HasSupportUrl returns a boolean if a field has been set.
+func (o *Plugin) HasSupportUrl() bool {
+	if o != nil && o.SupportUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSupportUrl gets a reference to the given string and assigns it to the SupportUrl field.
+func (o *Plugin) SetSupportUrl(v string) {
+	o.SupportUrl = &v
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
@@ -595,6 +726,9 @@ func (o Plugin) MarshalJSON() ([]byte, error) {
 	if o.TagName != nil {
 		toSerialize["tag_name"] = o.TagName
 	}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
+	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
 	}
@@ -619,8 +753,23 @@ func (o Plugin) MarshalJSON() ([]byte, error) {
 	if o.CatalogId != nil {
 		toSerialize["catalog_id"] = o.CatalogId
 	}
+	if o.Instances != nil {
+		toSerialize["instances"] = o.Instances
+	}
+	if o.Exports != nil {
+		toSerialize["exports"] = o.Exports
+	}
+	if o.InstanceCount != nil {
+		toSerialize["instance_count"] = o.InstanceCount
+	}
 	if o.RunningContainers != nil {
 		toSerialize["running_containers"] = o.RunningContainers
+	}
+	if o.DocumentationUrl != nil {
+		toSerialize["documentation_url"] = o.DocumentationUrl
+	}
+	if o.SupportUrl != nil {
+		toSerialize["support_url"] = o.SupportUrl
 	}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data

@@ -95,7 +95,6 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 		params.Timeout = 10
 	}
 
-
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
 	if cfg.HTTPClient == nil {

@@ -21,7 +21,7 @@ type CreateLinkRequest struct {
 	Name string `json:"name"` // required
 	Conf string `json:"conf"` // required. once vns3 controller fetching supported, can use that to get next conf
 	Description *string `json:"description"`
-	Policies []string `json:"policies"`
+	Policies *[]string `json:"policies"`
 	// fetching conf from vns3 not supported yet
 	// Vns3Controller *string `json:"vns3_controller"`
 	// Vns3Auth *string `json:"vns3_uath"`
@@ -36,7 +36,6 @@ func NewCreateLinkRequest(id int32, name string) *CreateLinkRequest {
 	this := CreateLinkRequest{}
 	this.Id = id
 	this.Name = name
-	this.Policies = []string{}
 	return &this
 }
 
@@ -45,7 +44,6 @@ func NewCreateLinkRequest(id int32, name string) *CreateLinkRequest {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateLinkRequestWithDefaults() *CreateLinkRequest {
 	this := CreateLinkRequest{}
-	this.Policies = []string{}
 	return &this
 }
 
@@ -128,7 +126,7 @@ func (o *CreateLinkRequest) GetPolicies() []string {
 		var ret []string
 		return ret
 	}
-	return o.Policies
+	return *o.Policies
 }
 
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
@@ -137,7 +135,7 @@ func (o *CreateLinkRequest) GetPoliciesOk() ([]string, bool) {
 	if o == nil || o.Policies == nil {
 		return nil, false
 	}
-	return o.Policies, true
+	return *o.Policies, true
 }
 
 // HasPolicies returns a boolean if a field has been set.
@@ -151,7 +149,7 @@ func (o *CreateLinkRequest) HasPolicies() bool {
 
 // SetPolicies gets a reference to the given []string and assigns it to the Policies field.
 func (o *CreateLinkRequest) SetPolicies(v []string) {
-	o.Policies = v
+	o.Policies = &v
 }
 
 
@@ -201,7 +199,7 @@ func (o CreateLinkRequest) MarshalJSON() ([]byte, error) {
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if len(o.Policies) != 0 {
+	if o.Policies != nil {
 		toSerialize["policies"] = o.Policies
 	}
 	return json.Marshal(toSerialize)
