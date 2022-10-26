@@ -44,6 +44,31 @@ func StringAsAnyValue(v *string) AnyValue {
 	}
 }
 
+func InterfaceAsAnyValue(v interface{}) (AnyValue, error) {
+	vAsInt, isInt := v.(int32)
+	if isInt {
+		return AnyValue{
+			Int32: &vAsInt,
+		}, nil
+	}
+
+	vAsBool, isBool := v.(bool)
+	if isBool {
+		return AnyValue{
+			Bool: &vAsBool,
+		}, nil
+	}
+
+	vAsString, isString := v.(string)
+	if isString {
+		return AnyValue{
+			String: &vAsString,
+		}, nil
+	}
+
+	return AnyValue{}, fmt.Errorf("invalid value. must be int32, bool or string")
+}
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AnyValue) UnmarshalJSON(data []byte) error {

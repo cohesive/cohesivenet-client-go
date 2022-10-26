@@ -53,7 +53,7 @@ type Link struct {
 	Description *string `json:"description,omitempty"`
 	Interface *string `json:"interface,omitempty"`
 	ClientpackIp *string `json:"clientpack_ip,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *AnyValue `json:"id,omitempty"`
 	Connected *bool `json:"connected,omitempty"`
 	// openvpn or wireguard
 	Type *string `json:"type,omitempty"`
@@ -75,8 +75,8 @@ type Link struct {
 	// Readable state of Link - connecting, connected, disconnected
 	State *string `json:"state,omitempty"`
 	Device *string `json:"device,omitempty"`
-	TunMtu *int32 `json:"tun_mtu,omitempty"`
-	LinkMtu *int32 `json:"link_mtu,omitempty"`
+	TunMtu *AnyValue `json:"tun_mtu,omitempty"`
+	LinkMtu *AnyValue `json:"link_mtu,omitempty"`
 	LocalIp *string `json:"local_ip,omitempty"`
 }
 
@@ -226,9 +226,9 @@ func (o *Link) SetClientpackIp(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Link) GetId() int32 {
+func (o *Link) GetId() AnyValue {
 	if o == nil || o.Id == nil {
-		var ret int32
+		var ret AnyValue
 		return ret
 	}
 	return *o.Id
@@ -236,7 +236,7 @@ func (o *Link) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetIdOk() (*int32, bool) {
+func (o *Link) GetIdOk() (*AnyValue, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -253,8 +253,9 @@ func (o *Link) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *Link) SetId(v int32) {
-	o.Id = &v
+func (o *Link) SetId(v interface{}) {
+	anyVal, _ := InterfaceAsAnyValue(v)
+	o.Id = &anyVal
 }
 
 // GetConnected returns the Connected field value if set, zero value otherwise.
@@ -674,9 +675,9 @@ func (o *Link) SetDevice(v string) {
 }
 
 // GetTunMtu returns the TunMtu field value if set, zero value otherwise.
-func (o *Link) GetTunMtu() int32 {
+func (o *Link) GetTunMtu() AnyValue {
 	if o == nil || o.TunMtu == nil {
-		var ret int32
+		var ret AnyValue
 		return ret
 	}
 	return *o.TunMtu
@@ -684,7 +685,7 @@ func (o *Link) GetTunMtu() int32 {
 
 // GetTunMtuOk returns a tuple with the TunMtu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetTunMtuOk() (*int32, bool) {
+func (o *Link) GetTunMtuOk() (*AnyValue, bool) {
 	if o == nil || o.TunMtu == nil {
 		return nil, false
 	}
@@ -701,14 +702,15 @@ func (o *Link) HasTunMtu() bool {
 }
 
 // SetTunMtu gets a reference to the given int32 and assigns it to the TunMtu field.
-func (o *Link) SetTunMtu(v int32) {
-	o.TunMtu = &v
+func (o *Link) SetTunMtu(v interface{}) {
+	anyVal, _ := InterfaceAsAnyValue(v)
+	o.TunMtu = &anyVal
 }
 
 // GetLinkMtu returns the LinkMtu field value if set, zero value otherwise.
-func (o *Link) GetLinkMtu() int32 {
+func (o *Link) GetLinkMtu() AnyValue {
 	if o == nil || o.LinkMtu == nil {
-		var ret int32
+		var ret AnyValue
 		return ret
 	}
 	return *o.LinkMtu
@@ -716,7 +718,7 @@ func (o *Link) GetLinkMtu() int32 {
 
 // GetLinkMtuOk returns a tuple with the LinkMtu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Link) GetLinkMtuOk() (*int32, bool) {
+func (o *Link) GetLinkMtuOk() (*AnyValue, bool) {
 	if o == nil || o.LinkMtu == nil {
 		return nil, false
 	}
@@ -733,8 +735,9 @@ func (o *Link) HasLinkMtu() bool {
 }
 
 // SetLinkMtu gets a reference to the given int32 and assigns it to the LinkMtu field.
-func (o *Link) SetLinkMtu(v int32) {
-	o.LinkMtu = &v
+func (o *Link) SetLinkMtu(v interface{}) {
+	anyVal, _ := InterfaceAsAnyValue(v)
+	o.LinkMtu = &anyVal
 }
 
 // GetLocalIp returns the LocalIp field value if set, zero value otherwise.
