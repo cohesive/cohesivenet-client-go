@@ -34,7 +34,7 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-
+	"sync"
 	"golang.org/x/oauth2"
 )
 
@@ -81,6 +81,8 @@ type VNS3Client struct {
 
 type service struct {
 	client *VNS3Client
+	// used to synchronize client requests i.e. create plugin image
+	ReqLock	   sync.Mutex
 }
 
 type ClientParams struct {
