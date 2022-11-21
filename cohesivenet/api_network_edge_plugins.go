@@ -4019,7 +4019,6 @@ func (a *NetworkEdgePluginsApiService) InstallPluginRequest(ctx context.Context)
 // Execute executes the request
 //  @return PluginDetailResponse
 func (a *NetworkEdgePluginsApiService) InstallPlugin(r ApiInstallPluginRequest) (*PluginDetailResponse, *http.Response, error) {
-	
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
