@@ -49,6 +49,8 @@ type VNS3Client struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 	Log CanLog
+	// used to synchronize client requests i.e. create plugin image
+	ReqLock	*sync.Mutex
 
 	// API Services
 
@@ -81,8 +83,6 @@ type VNS3Client struct {
 
 type service struct {
 	client *VNS3Client
-	// used to synchronize client requests i.e. create plugin image
-	ReqLock	   sync.Mutex
 }
 
 type ClientParams struct {
@@ -113,7 +113,8 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 	c.cfg = cfg
 	c.common.client = c
 	c.Log = NewLogger(getLogLevel(os.Getenv("COHESIVE_LOG_LEVEL")))
-
+	c.ReqLock = new(sync.Mutex)
+	
 	// API Services
 	// For golang newbies (like me): this is casting c.common pointer (which is type service) as 
 	// a AccessApiService pointer. as VNS3Client.AccessApi is defined as type AccessApiService pointer
