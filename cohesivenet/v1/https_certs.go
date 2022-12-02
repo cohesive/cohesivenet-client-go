@@ -3,25 +3,14 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"strings"
 )
 
-func (c *Client) UpdateHttpsCerts(cert, key string) (HttpsCertResponse, error) {
+func (c *Client) UpdateHttpsCertByValue(cert, key string) (HttpsCertResponse, error) {
 
-	certFile, err := ioutil.ReadFile(cert)
-	if err != nil {
-		return HttpsCertResponse{}, err
-	}
-
-	keyFile, err2 := ioutil.ReadFile(key)
-	if err2 != nil {
-		return HttpsCertResponse{}, err
-	}
-
-	cf := string(certFile)
-	kf := string(keyFile)
+	cf := string(cert)
+	kf := string(key)
 
 	https := HttpsCert{
 		Cert: cf,
@@ -37,7 +26,6 @@ func (c *Client) UpdateHttpsCerts(cert, key string) (HttpsCertResponse, error) {
 		return HttpsCertResponse{}, err
 	}
 
-	//body, err := c.doRequest(req)
 	c.doRequest(req)
 	if err != nil {
 		return HttpsCertResponse{}, err
