@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -62,8 +61,6 @@ func (c *Client) UpdateHttpsCertsByFilepath(cert_file, key_file string) (HttpsCe
 	if err2 != nil {
 		return HttpsCertResponse{}, err
 	}
-	log.Println(certFile)
-	log.Println(keyFile)
 
 	cf := string(certFile)
 	kf := string(keyFile)
