@@ -27,8 +27,12 @@ func (c *Client) UpdateHttpsCertByValue(cert, key string) (HttpsCertResponse, er
 		return HttpsCertResponse{}, err
 	}
 
-	c.doRequest(req)
+	body, err := c.doRequest(req)
 	if err != nil {
+		return HttpsCertResponse{}, err
+	}
+
+	if string(body) == "400" {
 		return HttpsCertResponse{}, err
 	}
 
@@ -79,8 +83,12 @@ func (c *Client) UpdateHttpsCertsByFilepath(cert_file, key_file string) (HttpsCe
 		return HttpsCertResponse{}, err
 	}
 
-	c.doRequest(req)
+	body, err := c.doRequest(req)
 	if err != nil {
+		return HttpsCertResponse{}, err
+	}
+
+	if string(body) == "400" {
 		return HttpsCertResponse{}, err
 	}
 
