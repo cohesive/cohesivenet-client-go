@@ -59,8 +59,22 @@ func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) error {
 	return nil
 }
 func (c *Client) UpdateRules(ruleList []*FirewallRule) error {
+	var rulesList []*FirewallRule
+	rules := FirewallResponse{}
+	rules, _ = c.GetFirewallRules()
+	r := getRulesData(rules)
 
-	c.DeleteRules(ruleList)
+	for _, rule := range r {
+		rle := rule.(map[string]interface{})
+		rule := FirewallRule{
+			ID:   rle["id"].(string),
+			Rule: rle["script"].(string),
+		}
+
+		rulesList = append(rulesList, &rule)
+	}
+
+	c.DeleteRules(rulesList)
 	c.CreateFirewallRules(ruleList)
 
 	return nil
@@ -113,4 +127,20 @@ func simplifyJson(input string) string {
 	list += "]}"
 
 	return list
+}
+
+func getRulesData(ruleResponse FirewallResponse) []interface{} {
+	routes := make([]interface{}, len(ruleResponse.FirewallRules))
+
+	i := 0
+	for _, rt := range ruleResponse.FirewallRules {
+		row := make(map[string]interface{})
+		row["id"] = rt.ID
+		row["script"] = rt.Rule
+		routes[i] = row
+		i++
+	}
+
+	return routes
+
 }
