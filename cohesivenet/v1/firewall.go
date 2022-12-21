@@ -58,6 +58,13 @@ func (c *Client) CreateFirewallRules(ruleList []*FirewallRule) error {
 
 	return nil
 }
+func (c *Client) UpdateRules(ruleList []*FirewallRule) error {
+
+	c.DeleteRules(ruleList)
+	c.CreateFirewallRules(ruleList)
+
+	return nil
+}
 
 func (c *Client) DeleteRules(ruleList []*FirewallRule) error {
 	i := 0
