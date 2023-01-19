@@ -60,7 +60,7 @@ func LicenseController(vns3 *cn.VNS3Client, licensePath string, licenseParams *c
     }
 
     vns3.Log.Debug("Waiting for VNS3 reboot")
-    _, err = vns3.ConfigurationApi.WaitForDown(&ctx, 60*5, 2)
+    _, err = vns3.ConfigurationApi.WaitForDown(&ctx, 60*20, 2)
     if err != nil {
         return nil, fmt.Errorf("ERROR: VNS3 Reboot: %+v", err)
     }
@@ -228,7 +228,7 @@ func FetchKeysetFromSource(vns3 *cn.VNS3Client, source string, token string, wai
                     } else if strings.Contains(message, "already exists") {
                         vns3.Log.Debug("Keyset already exists. Waiting for VNS3 reboot and keyset")
                         // keyset already exists, wait for vns3 reboot and keyset
-                        _, err = vns3.ConfigurationApi.WaitForDown(&ctx, 180, 2)
+                        _, err = vns3.ConfigurationApi.WaitForDown(&ctx, 20*60, 2)
                         if err != nil {
                             return nil, fmt.Errorf("VNS3 failed to go down for reboot: %v", err.Error())
                         }
@@ -342,7 +342,7 @@ func FetchKeysetFromSource(vns3 *cn.VNS3Client, source string, token string, wai
 func SetupController(vns3 *cn.VNS3Client, setupRequest SetupRequest) (*cn.ConfigDetail, error) {
 	ctx := context.Background()
 
-    initConfig, err :=  vns3.ConfigurationApi.WaitForApi(&ctx, 30, 1, 5)
+    initConfig, err :=  vns3.ConfigurationApi.WaitForApi(&ctx, 60*20, 1, 5)
     if err != nil {
         return nil, fmt.Errorf("Failed to connect to VNS3: %+v", err)
     }
