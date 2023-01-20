@@ -364,7 +364,9 @@ func CheckHttpErrorUnavailable(err error) (bool, string) {
         errMessage := err.Error()
         if strings.Contains(errMessage, "connection refused") {
             return true, "connrefused"
-        }
+        } else if (strings.Contains(errMessage, "Unauthorized")) {
+			return true, "unauthorized"
+		}
         return false, errMessage
     }
 
