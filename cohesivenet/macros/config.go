@@ -359,6 +359,7 @@ func InitControllerFromSource(vns3 *cn.VNS3Client, source string, password strin
 	SnapshotFetchStatusResponse, _, err := vns3.SnapshotsApi.PutFetchSnapshot(fetchSnapshotRequest)
 	if err != nil {
 		vns3.Log.Error(fmt.Sprintf("Failed to fetch snapshot: %+v", err.Error()))
+		//improve on this, importsnapshot reboots before json response is sent
 		if !strings.Contains(err.Error(), "EOF") {
 			return nil, err
 		}
