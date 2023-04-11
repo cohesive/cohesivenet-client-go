@@ -593,3 +593,123 @@ func (a *SnapshotsApiService) PutImportSnapshot(r ApiPutImportSnapshotRequest) (
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+//Fetch snapshot
+
+type ApiPutFetchSnapshotRequest struct {
+	ctx context.Context
+	ApiService *SnapshotsApiService
+	fetchSnapshotRequest *FetchSnapshotParamsRequest
+}
+
+func (r ApiPutFetchSnapshotRequest) FetchSnapshotRequest(fetchSnapshotRequest FetchSnapshotParamsRequest) ApiPutFetchSnapshotRequest {
+	r.fetchSnapshotRequest = &fetchSnapshotRequest
+	return r
+}
+
+func (r ApiPutFetchSnapshotRequest) Execute() (*SnapshotFetchStatusResponse, *http.Response, error) {
+	return r.ApiService.PutFetchSnapshot(r)
+}
+
+/*
+PutFetchSnapshot Fetch snapshot
+
+Fetch snapshot into the manager and triggers a reboot for the Configuration to take effect.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPutImportSnapshotRequest
+*/
+func (a *SnapshotsApiService) PutFetchSnapshotRequest(ctx context.Context) ApiPutFetchSnapshotRequest {
+	return ApiPutFetchSnapshotRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return SnapshotImportStatusResponse
+func (a *SnapshotsApiService) PutFetchSnapshot(r ApiPutFetchSnapshotRequest) (*SnapshotFetchStatusResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SnapshotFetchStatusResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SnapshotsApiService.PutFetchSnapshot")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/snapshots/fetch_config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+
+	// body params
+	localVarPostBody = r.fetchSnapshotRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+

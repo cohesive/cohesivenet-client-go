@@ -355,7 +355,7 @@ func CheckHttpErrorUnavailable(err error) (bool, string) {
 			return true, "eof"
 		} else if (strings.Contains(errMessage, "Unauthorized")) {
 			return true, "unauthorized"
-		}
+		} 
     case *url.Error:
         if errT, ok := errT.Err.(net.Error); ok && errT.Timeout() {
             return true, "timeout"
@@ -366,6 +366,8 @@ func CheckHttpErrorUnavailable(err error) (bool, string) {
             return true, "connrefused"
         } else if (strings.Contains(errMessage, "Unauthorized")) {
 			return true, "unauthorized"
+		} else if (strings.Contains(errMessage, "Unavailable")) {
+			return true, "NotAvailable"
 		}
         return false, errMessage
     }
