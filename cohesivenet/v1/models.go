@@ -131,7 +131,7 @@ type RouteResponse struct {
 }
 
 type EbgpPeer struct {
-	ID                          string `json:"id,omitempty"`
+	ID                          int    `json:"id,omitempty"`
 	Ipaddress                   string `json:"ipaddress,omitempty"`
 	Asn                         int    `json:"asn,omitempty"`
 	LocalAsnAlias               int    `json:"local_asn_alias,omitempty"`
