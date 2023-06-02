@@ -97,22 +97,19 @@ func SimplifyEbpgJson(jsonInput string) string {
 		lastPeer = peer
 	}
 	if lastPeer != nil {
-		//list += "{ "
 		values := lastPeer.(map[string]interface{})
-		list += "\"id\":\"" + strconv.Itoa(int(values["id"].(float64))) + "\","
+		list += "\"id\":" + formatFloatValue(values, "id") + ","
 		list += "\"ipaddress\":\"" + UnmarshalString(values, "ipaddress") + "\","
-		list += "\"asn\": " + strconv.Itoa(int(values["asn"].(float64))) + ","
-		list += "\"local_asn_alias\":" + strconv.Itoa(int(values["local_asn_alias"].(float64))) + ","
-		list += "\"keepalive_interval\":" + strconv.Itoa(int(values["keepalive_interval"].(float64))) + ","
-		list += "\"hold_time\":\"" + strconv.Itoa(int(values["hold_time"].(float64))) + "\","
+		list += "\"asn\":" + formatFloatValue(values, "asn") + ","
+		list += "\"local_asn_alias\":" + formatFloatValue(values, "local_asn_alias") + ","
+		list += "\"keepalive_interval\":" + formatFloatValue(values, "keepalive_interval") + ","
+		list += "\"hold_time\":" + formatFloatValue(values, "hold_time") + ","
 		list += "\"bgp_password\":\"" + UnmarshalString(values, "bgp_password") + "\","
 		list += "\"access_list\":\"" + UnmarshalString(values, "access_list") + "\","
 		list += "\"add_network_distance\":" + strconv.FormatBool(values["add_network_distance"].(bool)) + ","
 		list += "\"add_network_distance_direction\":\"" + UnmarshalString(values, "add_network_distance_direction") + "\","
-		list += "\"add_network_distance_hops\":" + strconv.Itoa(int(values["add_network_distance_hops"].(float64))) + ""
-		//	list += " },"
+		list += "\"add_network_distance_hops\":" + formatFloatValue(values, "add_network_distance_hops") + ""
 	}
-	//list = strings.TrimSuffix(list, ",") //remove last comma
 	list += "}"
 	return list
 }
@@ -123,29 +120,35 @@ func SimplifyGetEbpgJson(jsonInput string) string {
 	json.Unmarshal([]byte(input), &result)
 	var values = result["response"].(map[string]interface{})
 	var list string = " { "
-	list += "\"id\":\"" + strconv.Itoa(int(values["id"].(float64))) + "\","
+	list += "\"id\":" + formatFloatValue(values, "id") + ","
 	list += "\"ipaddress\":\"" + UnmarshalString(values, "ipaddress") + "\","
-	list += "\"asn\": " + strconv.Itoa(int(values["asn"].(float64))) + ","
-	list += "\"local_asn_alias\":" + strconv.Itoa(int(values["local_asn_alias"].(float64))) + ","
-	list += "\"keepalive_interval\":" + strconv.Itoa(int(values["keepalive_interval"].(float64))) + ","
-	list += "\"hold_time\":\"" + strconv.Itoa(int(values["hold_time"].(float64))) + "\","
+	list += "\"asn\":" + formatFloatValue(values, "asn") + ","
+	list += "\"local_asn_alias\":" + formatFloatValue(values, "local_asn_alias") + ","
+	list += "\"keepalive_interval\":" + formatFloatValue(values, "keepalive_interval") + ","
+	list += "\"hold_time\":" + formatFloatValue(values, "hold_time") + ","
 	list += "\"bgp_password\":\"" + UnmarshalString(values, "bgp_password") + "\","
 	list += "\"access_list\":\"" + UnmarshalString(values, "access_list") + "\","
 	list += "\"add_network_distance\":" + strconv.FormatBool(values["add_network_distance"].(bool)) + ","
 	list += "\"add_network_distance_direction\":\"" + UnmarshalString(values, "add_network_distance_direction") + "\","
-	list += "\"add_network_distance_hops\":" + strconv.Itoa(int(values["add_network_distance_hops"].(float64))) + ""
-	//	list += " },
-	//list = strings.TrimSuffix(list, ",") //remove last comma
-	list += "}"
+	list += "\"add_network_distance_hops\":" + formatFloatValue(values, "add_network_distance_hops") + ""
+	list += " }"
 	return list
 }
 
-// handles missing properties and null values for strings
-func UnmarshalString(values map[string]interface{}, name string) string {
-	if val, ok := values[name]; ok {
-		if val != nil {
-			return fmt.Sprintf("%v", val)
+func formatFloatValue(values map[string]interface{}, key string) string {
+	value, ok := values[key]
+	if ok && value != nil {
+		if floatValue, ok := value.(float64); ok && floatValue != 0 {
+			return strconv.FormatFloat(floatValue, 'f', -1, 64)
 		}
+	}
+	return "null"
+}
+
+func UnmarshalString(values map[string]interface{}, key string) string {
+	value, ok := values[key]
+	if ok && value != nil {
+		return value.(string)
 	}
 	return ""
 }
