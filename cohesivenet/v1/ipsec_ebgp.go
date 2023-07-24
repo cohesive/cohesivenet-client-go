@@ -60,10 +60,27 @@ func (c *Client) CreateEbgpPeer(endpointId string, ebgp_peer *EbgpPeer) (*EbgpPe
 
 func (c *Client) UpdateEbgpPeer(endpointId string, ebgpPeerId string, ebgp_peer *EbgpPeer) (*EbgpPeer, error) {
 
-	c.DeleteEbgpPeer(endpointId, ebgpPeerId)
-	ebgPeer, _ := c.CreateEbgpPeer(endpointId, ebgp_peer)
+	requestBody, err := json.Marshal(ebgp_peer)
+	if err != nil {
+		return &EbgpPeer{}, err
+	}
+	req, err := http.NewRequest("PUT", fmt.Sprintf("%s/ipsec/endpoints/%s/ebgp_peers/%s", c.HostURL, endpointId, ebgpPeerId), strings.NewReader(string(requestBody)))
+	if err != nil {
+		return &EbgpPeer{}, err
+	}
+	body, err := c.doRequest(req)
+	if err != nil {
+		return &EbgpPeer{}, err
+	}
 
-	return ebgPeer, nil
+	simplePeer := SimplifyEbpgJson(string(body))
+
+	newPeer := EbgpPeer{}
+	err = json.Unmarshal([]byte(simplePeer), &newPeer)
+	if err != nil {
+		return &EbgpPeer{}, err
+	}
+	return &newPeer, nil
 }
 
 func (c *Client) DeleteEbgpPeer(endpointId string, ebgpPeerId string) error {
