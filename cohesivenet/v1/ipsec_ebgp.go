@@ -102,9 +102,8 @@ func (c *Client) DeleteEbgpPeer(endpointId string, ebgpPeerId string) error {
 }
 
 func SimplifyEbpgJson(jsonInput string) string {
-	input := strings.ReplaceAll(jsonInput, "\\n", ",")
 	var result map[string]interface{}
-	json.Unmarshal([]byte(input), &result)
+	json.Unmarshal([]byte(jsonInput), &result)
 	var response = result["response"].(map[string]interface{})
 	var peers = response["bgp_peers"].(map[string]interface{})
 	var list string = " { "
@@ -122,7 +121,7 @@ func SimplifyEbpgJson(jsonInput string) string {
 		list += "\"keepalive_interval\":" + formatFloatValue(values, "keepalive_interval") + ","
 		list += "\"hold_time\":" + formatFloatValue(values, "hold_time") + ","
 		list += "\"bgp_password\":\"" + UnmarshalString(values, "bgp_password") + "\","
-		list += "\"access_list\":\"" + UnmarshalString(values, "access_list") + "\","
+		list += "\"access_list\":\"" + UnmarshalString(values, strings.ReplaceAll(strings.ReplaceAll(values["access_list"].(string), "\r", ""), "\n", ",")) + "\","
 		list += "\"add_network_distance\":" + strconv.FormatBool(values["add_network_distance"].(bool)) + ","
 		list += "\"add_network_distance_direction\":\"" + UnmarshalString(values, "add_network_distance_direction") + "\","
 		list += "\"add_network_distance_hops\":" + formatFloatValue(values, "add_network_distance_hops") + ""
@@ -132,9 +131,8 @@ func SimplifyEbpgJson(jsonInput string) string {
 }
 
 func SimplifyGetEbpgJson(jsonInput string) string {
-	input := strings.ReplaceAll(jsonInput, "\\n", ",")
 	var result map[string]interface{}
-	json.Unmarshal([]byte(input), &result)
+	json.Unmarshal([]byte(jsonInput), &result)
 	var values = result["response"].(map[string]interface{})
 	var list string = " { "
 	list += "\"id\":" + formatFloatValue(values, "id") + ","
@@ -144,7 +142,7 @@ func SimplifyGetEbpgJson(jsonInput string) string {
 	list += "\"keepalive_interval\":" + formatFloatValue(values, "keepalive_interval") + ","
 	list += "\"hold_time\":" + formatFloatValue(values, "hold_time") + ","
 	list += "\"bgp_password\":\"" + UnmarshalString(values, "bgp_password") + "\","
-	list += "\"access_list\":\"" + UnmarshalString(values, "access_list") + "\","
+	list += "\"access_list\":\"" + UnmarshalString(values, strings.ReplaceAll(strings.ReplaceAll(values["access_list"].(string), "\r", ""), "\n", ",")) + "\","
 	list += "\"add_network_distance\":" + strconv.FormatBool(values["add_network_distance"].(bool)) + ","
 	list += "\"add_network_distance_direction\":\"" + UnmarshalString(values, "add_network_distance_direction") + "\","
 	list += "\"add_network_distance_hops\":" + formatFloatValue(values, "add_network_distance_hops") + ""
