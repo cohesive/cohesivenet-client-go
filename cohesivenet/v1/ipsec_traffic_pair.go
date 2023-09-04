@@ -3,6 +3,7 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -97,6 +98,42 @@ func (c *Client) UpdateTrafficPair(endpointId int, trafficPairId string, traffic
 	}
 
 	return newTrafficPair, err
+}
+
+func (c *Client) EnableDisableTrafficPair(endpointId int, trafficPairId string, enabled bool) error {
+	endId := strconv.Itoa(endpointId)
+
+	if enabled {
+
+		req, err := http.NewRequest("PUT", fmt.Sprintf("%s/ipsec/endpoints/%s/traffic_pairs/%s/enable", c.HostURL, endId, trafficPairId), nil)
+		log.Println(req)
+		if err != nil {
+			return err
+		}
+
+		_, err = c.doRequest(req)
+		if err != nil {
+			return err
+		}
+
+	}
+
+	if !enabled {
+
+		req, err := http.NewRequest("PUT", fmt.Sprintf("%s/ipsec/endpoints/%s/traffic_pairs/%s/disable", c.HostURL, endId, trafficPairId), nil)
+		log.Println(req)
+		if err != nil {
+			return err
+		}
+
+		_, err = c.doRequest(req)
+		if err != nil {
+			return err
+		}
+
+		return err
+	}
+	return nil
 }
 
 func (c *Client) DeleteTrafficPair(endpointId int, trafficPairId string) error {

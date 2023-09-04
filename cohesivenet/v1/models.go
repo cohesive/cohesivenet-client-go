@@ -147,37 +147,6 @@ type NewTunnel struct {
 	PingInterval  int    `json:"ping_interval,omitempty"`
 }
 
-/*
-type NewTunnel struct {
-	ID               string   `json:"id"`
-	Name             string   `json:"name"`
-	Ipaddress        string   `json:"ipaddress"`
-	Pfs              bool     `json:"pfs"`
-	IkeVersion       int      `json:"ike_version"`
-	NatTEnabled      bool     `json:"nat_t_enabled"`
-	PrivateIpaddress string   `json:"private_ipaddress"`
-	ExtraConfig      []string `json:"extra_config"`
-	Description      string   `json:"description"`
-	Tunnels          struct {
-		Num3 struct {
-			ID            int    `json:"id"`
-			LocalSubnet   string `json:"local_subnet"`
-			RemoteSubnet  string `json:"remote_subnet"`
-			EndpointID    int    `json:"endpoint_id"`
-			Enabled       bool   `json:"enabled"`
-			Description   string `json:"description"`
-			PingIpaddress string `json:"ping_ipaddress"`
-			PingInterface string `json:"ping_interface"`
-			PingInterval  string `json:"ping_interval"`
-		} `json:"3"`
-	} `json:"tunnels"`
-	BgpPeers struct {
-	} `json:"bgp_peers"`
-	Type    string `json:"type"`
-	VpnType string `json:"vpn_type"`
-	Psk     string `json:"psk"`
-}
-*/
 type Route struct {
 	ID          string `json:"id,omitempty"`
 	Description string `json:"description,omitempty"`
