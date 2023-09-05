@@ -111,6 +111,42 @@ type NewEndpoint struct {
 	} `json:"response"`
 }
 
+type Tunnel struct {
+	Remote_Subnet  string `json:"remote_subnet,omitempty"`
+	Local_Subnet   string `json:"local_subnet,omitempty"`
+	Ping_Ipaddress string `json:"ping_ipaddress,omitempty"`
+	Ping_Interval  int    `json:"ping_interval,omitempty"`
+	Ping_Interface string `json:"ping_interface,omitempty"`
+	Enabled        bool   `json:"enabled,omitempty"`
+	Description    string `json:"description,omitempty"`
+}
+
+type TrafficPair struct {
+	ID             int    `json:"id,omitempty"`
+	Remote_Subnet  string `json:"remote_subnet,omitempty"`
+	Local_Subnet   string `json:"local_subnet,omitempty"`
+	Ping_Ipaddress string `json:"ping_ipaddress,omitempty"`
+	Ping_Interval  int    `json:"ping_interval,omitempty"`
+	Ping_Interface string `json:"ping_interface,omitempty"`
+	Enabled        bool   `json:"enabled,omitempty"`
+	Description    string `json:"description,omitempty"`
+}
+
+type NewTunnelResponse struct {
+	NewTunnels []NewTunnel `json:"response"`
+}
+type NewTunnel struct {
+	ID            int    `json:"id,omitempty"`
+	LocalSubnet   string `json:"local_subnet,omitempty"`
+	RemoteSubnet  string `json:"remote_subnet,omitempty"`
+	EndpointID    int    `json:"endpoint_id,omitempty"`
+	Enabled       bool   `json:"enabled,omitempty"`
+	Description   string `json:"description,omitempty"`
+	PingIpaddress string `json:"ping_ipaddress,omitempty"`
+	PingInterface string `json:"ping_interface,omitempty"`
+	PingInterval  int    `json:"ping_interval,omitempty"`
+}
+
 type Route struct {
 	ID          string `json:"id,omitempty"`
 	Description string `json:"description,omitempty"`
@@ -404,4 +440,32 @@ type HttpsCertResponse struct {
 		Status string `json:"status"`
 		UUID   string `json:"uuid"`
 	} `json:"response"`
+}
+
+type UpdateTunnelResponse struct {
+	Response struct {
+		ID           int    `json:"id,omitempty"`
+		LocalSubnet  string `json:"local_subnet,omitempty"`
+		RemoteSubnet string `json:"remote_subnet,omitempty"`
+		EndpointID   int    `json:"endpoint_id,omitempty"`
+		Enabled      bool   `json:"enabled,omitempty"`
+		Description  string `json:"description,omitempty"`
+		Bounce       bool   `json:"bounce,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type CreateTrafficPairResponse struct {
+	Response struct {
+		ID              int       `json:"id,omitempty"`
+		RemoteSubnet    string    `json:"remote_subnet,omitempty"`
+		LocalSubnet     string    `json:"local_subnet,omitempty"`
+		PingIpaddress   string    `json:"ping_ipaddress,omitempty"`
+		PingInterval    int       `json:"ping_interval,omitempty"`
+		PingInterface   string    `json:"ping_interface,omitempty"`
+		Enabled         bool      `json:"enabled,omitempty"`
+		Description     string    `json:"description,omitempty"`
+		IpsecEndpointID int       `json:"ipsec_endpoint_id,omitempty"`
+		CreatedAt       time.Time `json:"created_at,omitempty"`
+		UpdatedAt       time.Time `json:"updated_at,omitempty"`
+	} `json:"response,omitempty"`
 }
