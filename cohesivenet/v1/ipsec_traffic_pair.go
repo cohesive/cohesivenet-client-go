@@ -3,7 +3,6 @@ package cohesivenetv1
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -106,7 +105,6 @@ func (c *Client) EnableDisableTrafficPair(endpointId int, trafficPairId string, 
 	if enabled {
 
 		req, err := http.NewRequest("POST", fmt.Sprintf("%s/ipsec/endpoints/%s/traffic_pairs/%s/enable", c.HostURL, endId, trafficPairId), nil)
-		log.Println(req)
 		if err != nil {
 			return err
 		}
@@ -121,7 +119,6 @@ func (c *Client) EnableDisableTrafficPair(endpointId int, trafficPairId string, 
 	if !enabled {
 
 		req, err := http.NewRequest("POST", fmt.Sprintf("%s/ipsec/endpoints/%s/traffic_pairs/%s/disable", c.HostURL, endId, trafficPairId), nil)
-		log.Println(req)
 		if err != nil {
 			return err
 		}
