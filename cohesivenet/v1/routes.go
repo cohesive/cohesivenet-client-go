@@ -26,9 +26,9 @@ func (c *Client) GetRoute(routeId string) (RouteResponse, error) {
 	}
 
 	returnRoutes := RouteResponse{}
-	for _, r := range returnRoutes.Routes {
+	for _, r := range routeResponse.Routes {
 		if r.ID == routeId {
-			routeResponse.Routes = []Route{r}
+			returnRoutes.Routes = []Route{r}
 		}
 	}
 
