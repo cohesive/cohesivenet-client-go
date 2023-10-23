@@ -23,6 +23,9 @@ type FirewallRuleOsRule struct {
 	Table *string `json:"table,omitempty"`
 	// Indicates where this rule exists in OS
 	RuleType *string `json:"rule_type,omitempty"`
+	// New props to support 6.1
+	Size *int `json:"size,omitempty"`
+	EndPosition *int `json:"end_position,omitempty"`
 }
 
 // NewFirewallRuleOsRule instantiates a new FirewallRuleOsRule object
