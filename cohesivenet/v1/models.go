@@ -117,7 +117,7 @@ type Tunnel struct {
 	Ping_Ipaddress string `json:"ping_ipaddress,omitempty"`
 	Ping_Interval  int    `json:"ping_interval,omitempty"`
 	Ping_Interface string `json:"ping_interface,omitempty"`
-	Enabled        bool   `json:"enabled"`
+	Enabled        bool   `json:"enabled,omitempty"`
 	Description    string `json:"description,omitempty"`
 }
 
@@ -128,7 +128,7 @@ type TrafficPair struct {
 	Ping_Ipaddress string `json:"ping_ipaddress,omitempty"`
 	Ping_Interval  int    `json:"ping_interval,omitempty"`
 	Ping_Interface string `json:"ping_interface,omitempty"`
-	Enabled        bool   `json:"enabled"`
+	Enabled        bool   `json:"enabled,omitempty"`
 	Description    string `json:"description,omitempty"`
 }
 
@@ -140,7 +140,7 @@ type NewTunnel struct {
 	LocalSubnet   string `json:"local_subnet,omitempty"`
 	RemoteSubnet  string `json:"remote_subnet,omitempty"`
 	EndpointID    int    `json:"endpoint_id,omitempty"`
-	Enabled       bool   `json:"enabled"`
+	Enabled       bool   `json:"enabled,omitempty"`
 	Description   string `json:"description,omitempty"`
 	PingIpaddress string `json:"ping_ipaddress,omitempty"`
 	PingInterface string `json:"ping_interface,omitempty"`
@@ -150,9 +150,9 @@ type NewTunnel struct {
 type Route struct {
 	ID          string `json:"id,omitempty"`
 	Description string `json:"description,omitempty"`
-	Advertise   bool   `json:"advertise"`
-	Enabled     bool   `json:"enabled"`
-	Editable    bool   `json:"editable"`
+	Advertise   bool   `json:"advertise,omitempty"`
+	Enabled     bool   `json:"enabled,omitempty"`
+	Editable    bool   `json:"editable,omitempty"`
 	Cidr        string `json:"cidr,omitempty"`
 	Gateway     string `json:"gateway,omitempty"`
 	Netmask     string `json:"netmask,omitempty"`
@@ -174,7 +174,7 @@ type EbgpPeer struct {
 	AccessList                  string `json:"access_list,omitempty"`
 	AddNetworkDistanceHops      int    `json:"add_network_distance_hops,omitempty"`
 	BgpPassword                 string `json:"bgp_password,omitempty"`
-	AddNetworkDistance          bool   `json:"add_network_distance"`
+	AddNetworkDistance          bool   `json:"add_network_distance,omitempty"`
 	AddNetworkDistanceDirection string `json:"add_network_distance_direction,omitempty"`
 }
 
@@ -231,7 +231,7 @@ type CreatePluginInstance struct {
 type CreatePluginInstanceResponse struct {
 	Instance struct {
 		UUID             string `json:"uuid,omitempty"`
-		ContainerStarted bool   `json:"container_started"`
+		ContainerStarted bool   `json:"container_started,omitempty"`
 		IPAddress        string `json:"ip_address,omitempty"`
 		Status           string `json:"status,omitempty"`
 	} `json:"response,omitempty"`
@@ -246,11 +246,11 @@ type GetPluginInstances struct {
 			Args    []interface{} `json:"Args,omitempty"`
 			State   struct {
 				Status     string    `json:"Status,omitempty"`
-				Running    bool      `json:"Running"`
-				Paused     bool      `json:"Paused"`
-				Restarting bool      `json:"Restarting"`
-				OOMKilled  bool      `json:"OOMKilled"`
-				Dead       bool      `json:"Dead"`
+				Running    bool      `json:"Running,omitempty"`
+				Paused     bool      `json:"Paused,omitempty"`
+				Restarting bool      `json:"Restarting,omitempty"`
+				OOMKilled  bool      `json:"OOMKilled,omitempty"`
+				Dead       bool      `json:"Dead,omitempty"`
 				Pid        int       `json:"Pid,omitempty"`
 				ExitCode   int       `json:"ExitCode,omitempty"`
 				Error      string    `json:"Error,omitempty"`
@@ -285,7 +285,7 @@ type GetPluginInstances struct {
 					Name              string `json:"Name,omitempty"`
 					MaximumRetryCount int    `json:"MaximumRetryCount,omitempty"`
 				} `json:"RestartPolicy,omitempty"`
-				AutoRemove           bool          `json:"AutoRemove"`
+				AutoRemove           bool          `json:"AutoRemove,omitempty"`
 				VolumeDriver         string        `json:"VolumeDriver,omitempty"`
 				VolumesFrom          interface{}   `json:"VolumesFrom,omitempty"`
 				CapAdd               interface{}   `json:"CapAdd,omitempty"`
@@ -301,9 +301,9 @@ type GetPluginInstances struct {
 				Links                interface{}   `json:"Links,omitempty"`
 				OomScoreAdj          int           `json:"OomScoreAdj,omitempty"`
 				PidMode              string        `json:"PidMode,omitempty"`
-				Privileged           bool          `json:"Privileged"`
-				PublishAllPorts      bool          `json:"PublishAllPorts"`
-				ReadonlyRootfs       bool          `json:"ReadonlyRootfs"`
+				Privileged           bool          `json:"Privileged,omitempty"`
+				PublishAllPorts      bool          `json:"PublishAllPorts,omitempty"`
+				ReadonlyRootfs       bool          `json:"ReadonlyRootfs,omitempty"`
 				SecurityOpt          interface{}   `json:"SecurityOpt,omitempty"`
 				UTSMode              string        `json:"UTSMode,omitempty"`
 				UsernsMode           string        `json:"UsernsMode,omitempty"`
@@ -335,7 +335,7 @@ type GetPluginInstances struct {
 				MemoryReservation    int           `json:"MemoryReservation,omitempty"`
 				MemorySwap           int           `json:"MemorySwap,omitempty"`
 				MemorySwappiness     interface{}   `json:"MemorySwappiness,omitempty"`
-				OomKillDisable       bool          `json:"OomKillDisable"`
+				OomKillDisable       bool          `json:"OomKillDisable,omitempty"`
 				PidsLimit            interface{}   `json:"PidsLimit,omitempty"`
 				Ulimits              interface{}   `json:"Ulimits,omitempty"`
 				CPUCount             int           `json:"CpuCount,omitempty"`
@@ -359,12 +359,12 @@ type GetPluginInstances struct {
 				Hostname     string      `json:"Hostname,omitempty"`
 				Domainname   string      `json:"Domainname,omitempty"`
 				User         string      `json:"User,omitempty"`
-				AttachStdin  bool        `json:"AttachStdin"`
-				AttachStdout bool        `json:"AttachStdout"`
-				AttachStderr bool        `json:"AttachStderr"`
-				Tty          bool        `json:"Tty"`
-				OpenStdin    bool        `json:"OpenStdin"`
-				StdinOnce    bool        `json:"StdinOnce"`
+				AttachStdin  bool        `json:"AttachStdin,omitempty"`
+				AttachStdout bool        `json:"AttachStdout,omitempty"`
+				AttachStderr bool        `json:"AttachStderr,omitempty"`
+				Tty          bool        `json:"Tty,omitempty"`
+				OpenStdin    bool        `json:"OpenStdin,omitempty"`
+				StdinOnce    bool        `json:"StdinOnce,omitempty"`
 				Env          []string    `json:"Env,omitempty"`
 				Cmd          []string    `json:"Cmd,omitempty"`
 				Image        string      `json:"Image,omitempty"`
@@ -378,7 +378,7 @@ type GetPluginInstances struct {
 			NetworkSettings struct {
 				Bridge                 string `json:"Bridge,omitempty"`
 				SandboxID              string `json:"SandboxID,omitempty"`
-				HairpinMode            bool   `json:"HairpinMode"`
+				HairpinMode            bool   `json:"HairpinMode,omitempty"`
 				LinkLocalIPv6Address   string `json:"LinkLocalIPv6Address,omitempty"`
 				LinkLocalIPv6PrefixLen int    `json:"LinkLocalIPv6PrefixLen,omitempty"`
 				Ports                  struct {
@@ -448,9 +448,9 @@ type UpdateTunnelResponse struct {
 		LocalSubnet  string `json:"local_subnet,omitempty"`
 		RemoteSubnet string `json:"remote_subnet,omitempty"`
 		EndpointID   int    `json:"endpoint_id,omitempty"`
-		Enabled      bool   `json:"enabled"`
+		Enabled      bool   `json:"enabled,omitempty"`
 		Description  string `json:"description,omitempty"`
-		Bounce       bool   `json:"bounce"`
+		Bounce       bool   `json:"bounce,omitempty"`
 	} `json:"response,omitempty"`
 }
 
@@ -462,7 +462,7 @@ type CreateTrafficPairResponse struct {
 		PingIpaddress   string    `json:"ping_ipaddress,omitempty"`
 		PingInterval    int       `json:"ping_interval,omitempty"`
 		PingInterface   string    `json:"ping_interface,omitempty"`
-		Enabled         bool      `json:"enabled"`
+		Enabled         bool      `json:"enabled,omitempty"`
 		Description     string    `json:"description,omitempty"`
 		IpsecEndpointID int       `json:"ipsec_endpoint_id,omitempty"`
 		CreatedAt       time.Time `json:"created_at,omitempty"`
