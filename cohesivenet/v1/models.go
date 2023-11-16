@@ -150,7 +150,7 @@ type NewTunnel struct {
 type Route struct {
 	ID          string `json:"id,omitempty"`
 	Description string `json:"description,omitempty"`
-	Advertise   bool   `json:"advertise,omitempty"`
+	Advertise   bool   `json:"advertise"`
 	Enabled     bool   `json:"enabled,omitempty"`
 	Editable    bool   `json:"editable,omitempty"`
 	Cidr        string `json:"cidr,omitempty"`
