@@ -469,3 +469,27 @@ type CreateTrafficPairResponse struct {
 		UpdatedAt       time.Time `json:"updated_at,omitempty"`
 	} `json:"response,omitempty"`
 }
+
+type Alert struct {
+	Response struct {
+		ID               int           `json:"id,omitempty"`
+		Name             string        `json:"name,omitempty"`
+		URL              string        `json:"url,omitempty"`
+		Enabled          bool          `json:"enabled,omitempty"`
+		WebhookID        int           `json:"webhook_id,omitempty"`
+		CreatedAt        string        `json:"created_at,omitempty"`
+		UpdatedAt        string        `json:"updated_at,omitempty"`
+		Events           []interface{} `json:"events,omitempty"`
+		CustomProperties []interface{} `json:"custom_properties,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type NewAlert struct {
+	ID               int           `json:"id,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	Url              string        `json:"url,omitempty"`
+	Enabled          bool          `json:"enabled,omitempty"`
+	WebhookId        int           `json:"webhook_id,omitempty"`
+	Events           []interface{} `json:"events,omitempty"`
+	CustomProperties interface{}   `json:"custom_properties,omitempty"`
+}
