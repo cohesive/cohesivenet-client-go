@@ -96,7 +96,7 @@ func (c *Client) UpdateAlert(alertId string, alert NewAlert) error {
 }
 
 func (c *Client) DeleteAlert(alertId string) error {
-	req, errNewRequest := http.NewRequest("DELETE", fmt.Sprintf("%s/alert/%s", c.HostURL, alertId), nil)
+	req, errNewRequest := http.NewRequest("DELETE", fmt.Sprintf("%s%s%s", c.HostURL, alertsEndpoint, alertId), nil)
 	if errNewRequest != nil {
 		return fmt.Errorf("error creating request: %w", errNewRequest)
 	}

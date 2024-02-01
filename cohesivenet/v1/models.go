@@ -493,3 +493,34 @@ type NewAlert struct {
 	Events           []interface{} `json:"events,omitempty"`
 	CustomProperties interface{}   `json:"custom_properties,omitempty"`
 }
+type Webhook struct {
+	Response struct {
+		ID               int       `json:"id,omitempty"`
+		Name             string    `json:"name,omitempty"`
+		ValidateCert     bool      `json:"validate_cert,omitempty"`
+		CreatedAt        time.Time `json:"created_at,omitempty"`
+		UpdatedAt        time.Time `json:"updated_at,omitempty"`
+		System           bool      `json:"system,omitempty"`
+		URL              string    `json:"url,omitempty"`
+		Body             string    `json:"body,omitempty"`
+		CustomProperties []struct {
+			Name        string `json:"name,omitempty"`
+			Value       string `json:"value,omitempty"`
+			Description string `json:"description,omitempty"`
+		} `json:"custom_properties,omitempty"`
+		Headers    interface{}   `json:"headers,omitempty"`
+		Parameters interface{}   `json:"parameters,omitempty"`
+		Events     []interface{} `json:"events,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type NewWebhook struct {
+	Name             string        `json:"name,omitempty"`
+	ValidateCert     bool          `json:"validate_cert,omitempty"`
+	URL              string        `json:"url,omitempty"`
+	Body             string        `json:"body,omitempty"`
+	Headers          interface{}   `json:"headers,omitempty"`
+	Parameters       interface{}   `json:"parameters,omitempty"`
+	Events           []interface{} `json:"events,omitempty"`
+	CustomProperties interface{}   `json:"custom_properties,omitempty"`
+}
