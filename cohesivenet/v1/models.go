@@ -508,9 +508,15 @@ type Webhook struct {
 			Value       string `json:"value,omitempty"`
 			Description string `json:"description,omitempty"`
 		} `json:"custom_properties,omitempty"`
-		Headers    interface{}   `json:"headers,omitempty"`
-		Parameters interface{}   `json:"parameters,omitempty"`
-		Events     []interface{} `json:"events,omitempty"`
+		Headers []struct {
+			Name  string `json:"name,omitempty"`
+			Value string `json:"value,omitempty"`
+		} `json:"headers,omitempty"`
+		Parameters []struct {
+			Name  string `json:"name,omitempty"`
+			Value string `json:"value,omitempty"`
+		} `json:"parameters,omitempty"`
+		Events []interface{} `json:"events,omitempty"`
 	} `json:"response,omitempty"`
 }
 
@@ -519,8 +525,18 @@ type NewWebhook struct {
 	ValidateCert     bool          `json:"validate_cert,omitempty"`
 	URL              string        `json:"url,omitempty"`
 	Body             string        `json:"body,omitempty"`
-	Headers          interface{}   `json:"headers,omitempty"`
-	Parameters       interface{}   `json:"parameters,omitempty"`
 	Events           []interface{} `json:"events,omitempty"`
-	CustomProperties interface{}   `json:"custom_properties,omitempty"`
+	CustomProperties []struct {
+		Name        string `json:"name,omitempty"`
+		Value       string `json:"value,omitempty"`
+		Description string `json:"description,omitempty"`
+	} `json:"custom_properties,omitempty"`
+	Headers []struct {
+		Name  string `json:"name,omitempty"`
+		Value string `json:"value,omitempty"`
+	} `json:"headers,omitempty"`
+	Parameters []struct {
+		Name  string `json:"name,omitempty"`
+		Value string `json:"value,omitempty"`
+	} `json:"parameters,omitempty"`
 }
