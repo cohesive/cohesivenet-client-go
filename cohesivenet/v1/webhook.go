@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -37,6 +38,8 @@ func (c *Client) GetWebhook(webhookId string) (Webhook, error) {
 
 func (c *Client) CreateWebhook(webhook NewWebhook) (Webhook, error) {
 
+	webhook.Body, _ = url.QueryUnescape(webhook.Body)
+
 	rb, errMarshal := json.Marshal(webhook)
 	if errMarshal != nil {
 		return Webhook{}, fmt.Errorf("error marshaling alert: %w", errMarshal)
@@ -67,6 +70,9 @@ func (c *Client) CreateWebhook(webhook NewWebhook) (Webhook, error) {
 }
 
 func (c *Client) UpdateWebhook(webhookId string, webhook NewWebhook) error {
+
+	webhook.Body, _ = url.QueryUnescape(webhook.Body)
+
 	rb, errMarshal := json.Marshal(webhook)
 	if errMarshal != nil {
 		return fmt.Errorf("error marshaling webhook: %w", errMarshal)
