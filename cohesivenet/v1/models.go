@@ -540,3 +540,182 @@ type NewWebhook struct {
 		Value string `json:"value,omitempty"`
 	} `json:"parameters,omitempty"`
 }
+
+type NewIdentityVpn struct {
+	ID                    int    `json:"id,omitempty"`
+	Provider              string `json:"provider,omitempty"`
+	Identifier            string `json:"identifier,omitempty"`
+	Enabled               bool   `json:"enabled,omitempty"`
+	Secret                string `json:"secret,omitempty"`
+	RedirectUri           string `json:"redirect_uri,omitempty"`
+	AuthorizationEndpoint string `json:"authorization_endpoint,omitempty"`
+	TokenEndpoint         string `json:"token_endpoint,omitempty"`
+	UserinfoEndpoint      string `json:"userinfo_endpoint,omitempty"`
+	JwksUri               string `json:"jwks_uri,omitempty"`
+	RedirectHostname      string `json:"redirect_hostname,omitempty"`
+	ProviderUrl           string `json:"provider_url,omitempty"`
+	Issuer                string `json:"issuer,omitempty"`
+}
+
+type IdentityVpn struct {
+	Response struct {
+		ID                    int    `json:"id,omitempty"`
+		Provider              string `json:"provider,omitempty"`
+		Identifier            string `json:"identifier,omitempty"`
+		Enabled               bool   `json:"enabled,omitempty"`
+		Secret                string `json:"secret,omitempty"`
+		RedirectUri           string `json:"redirect_uri,omitempty"`
+		AuthorizationEndpoint string `json:"authorization_endpoint,omitempty"`
+		TokenEndpoint         string `json:"token_endpoint,omitempty"`
+		UserinfoEndpoint      string `json:"userinfo_endpoint,omitempty"`
+		JwksUri               string `json:"jwks_uri,omitempty"`
+		RedirectHostname      string `json:"redirect_hostname,omitempty"`
+		ProviderUrl           string `json:"provider_url,omitempty"`
+		Issuer                string `json:"issuer,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type NewIdentityController struct {
+	ID                      int    `json:"id,omitempty"`
+	Provider                string `json:"provider,omitempty"`
+	Identifier              string `json:"identifier,omitempty"`
+	Enabled                 bool   `json:"enabled,omitempty"`
+	Secret                  string `json:"secret,omitempty"`
+	RedirectUri             string `json:"redirect_uri,omitempty"`
+	AuthorizationEndpoint   string `json:"authorization_endpoint,omitempty"`
+	TokenEndpoint           string `json:"token_endpoint,omitempty"`
+	UserinfoEndpoint        string `json:"userinfo_endpoint,omitempty"`
+	JwksUri                 string `json:"jwks_uri,omitempty"`
+	RedirectHostname        string `json:"redirect_hostname,omitempty"`
+	ProviderUrl             string `json:"provider_url,omitempty"`
+	Issuer                  string `json:"issuer,omitempty"`
+	Port                    int    `json:"port,omitempty"`
+	Encrypt                 bool   `json:"encrypt,omitempty"`
+	EncryptLdaps            bool   `json:"encrypt_ldaps,omitempty"`
+	EncryptAuth             bool   `json:"encrypt_auth,omitempty"`
+	EncryptAuthKey          bool   `json:"encrypt_auth_key,omitempty"`
+	EncryptAuthCert         bool   `json:"encrypt_auth_cert,omitempty"`
+	EncryptVerifyCa         bool   `json:"encrypt_verify_ca,omitempty"`
+	EncryptCaCert           bool   `json:"encrypt_ca_cert,omitempty"`
+	Binddn                  string `json:"binddn,omitempty"`
+	Bindpw                  string `json:"bindpw,omitempty"`
+	EncryptAuthCertData     string `json:"encrypt_auth_cert_data,omitempty"`
+	EncryptAuthCertFilename string `json:"encrypt_auth_cert_filename,omitempty"`
+	EncryptAuthKeyData      string `json:"encrypt_auth_key_data,omitempty"`
+	EncryptAuthKeyFilename  string `json:"encrypt_auth_key_filename,omitempty"`
+	EncryptCaCertData       string `json:"encrypt_ca_cert_data,omitempty"`
+	EncryptCaCertFilename   string `json:"encrypt_ca_cert_filename,omitempty"`
+	UserBase                string `json:"user_base,omitempty"`
+	UserIDAttribute         string `json:"user_id_attribute,omitempty"`
+	UserListFilter          string `json:"user_list_filter,omitempty"`
+	GroupBase               string `json:"group_base,omitempty"`
+	GroupIDAttribute        string `json:"group_id_attribute,omitempty"`
+	GroupListFilter         string `json:"group_list_filter,omitempty"`
+	GroupMemberAttribute    string `json:"group_member_attribute,omitempty"`
+	GroupMemberAttrFormat   string `json:"group_member_attr_format,omitempty"`
+	GroupSearchScope        string `json:"group_search_scope,omitempty"`
+	Otp                     bool   `json:"otp,omitempty"`
+	OtpURL                  string `json:"otp_url,omitempty"`
+}
+
+type IdentityController struct {
+	Response struct {
+		ID                      int    `json:"id,omitempty"`
+		Provider                string `json:"provider,omitempty"`
+		Identifier              string `json:"identifier,omitempty"`
+		Enabled                 bool   `json:"enabled,omitempty"`
+		Secret                  string `json:"secret,omitempty"`
+		RedirectUri             string `json:"redirect_uri,omitempty"`
+		AuthorizationEndpoint   string `json:"authorization_endpoint,omitempty"`
+		TokenEndpoint           string `json:"token_endpoint,omitempty"`
+		UserinfoEndpoint        string `json:"userinfo_endpoint,omitempty"`
+		JwksUri                 string `json:"jwks_uri,omitempty"`
+		RedirectHostname        string `json:"redirect_hostname,omitempty"`
+		ProviderUrl             string `json:"provider_url,omitempty"`
+		Issuer                  string `json:"issuer,omitempty"`
+		Port                    int    `json:"port,omitempty"`
+		Encrypt                 bool   `json:"encrypt,omitempty"`
+		EncryptLdaps            bool   `json:"encrypt_ldaps,omitempty"`
+		EncryptAuth             bool   `json:"encrypt_auth,omitempty"`
+		EncryptAuthKey          bool   `json:"encrypt_auth_key,omitempty"`
+		EncryptAuthCert         bool   `json:"encrypt_auth_cert,omitempty"`
+		EncryptVerifyCa         bool   `json:"encrypt_verify_ca,omitempty"`
+		EncryptCaCert           bool   `json:"encrypt_ca_cert,omitempty"`
+		Binddn                  string `json:"binddn,omitempty"`
+		Bindpw                  string `json:"bindpw,omitempty"`
+		EncryptAuthCertData     string `json:"encrypt_auth_cert_data,omitempty"`
+		EncryptAuthCertFilename string `json:"encrypt_auth_cert_filename,omitempty"`
+		EncryptAuthKeyData      string `json:"encrypt_auth_key_data,omitempty"`
+		EncryptAuthKeyFilename  string `json:"encrypt_auth_key_filename,omitempty"`
+		EncryptCaCertData       string `json:"encrypt_ca_cert_data,omitempty"`
+		EncryptCaCertFilename   string `json:"encrypt_ca_cert_filename,omitempty"`
+		UserBase                string `json:"user_base,omitempty"`
+		UserIDAttribute         string `json:"user_id_attribute,omitempty"`
+		UserListFilter          string `json:"user_list_filter,omitempty"`
+		GroupBase               string `json:"group_base,omitempty"`
+		GroupIDAttribute        string `json:"group_id_attribute,omitempty"`
+		GroupListFilter         string `json:"group_list_filter,omitempty"`
+		GroupMemberAttribute    string `json:"group_member_attribute,omitempty"`
+		GroupMemberAttrFormat   string `json:"group_member_attr_format,omitempty"`
+		GroupSearchScope        string `json:"group_search_scope,omitempty"`
+		Otp                     bool   `json:"otp,omitempty"`
+		OtpURL                  string `json:"otp_url,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type LicenseUpgrade struct {
+	Response struct {
+		License        string `json:"license,omitempty"`
+		Uniq           string `json:"uniq,omitempty"`
+		NewClientpacks int    `json:"new_clientpacks,omitempty"`
+		Finalized      bool   `json:"finalized,omitempty"`
+		NewManagers    int    `json:"new_managers,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type LicenseParams struct {
+	Subnet       string `json:"subnet,omitempty"`
+	Managers     string `json:"managers,omitempty"`
+	Asns         string `json:"asns,omitempty"`
+	Clients      string `json:"clients,omitempty"`
+	MyManagerVip string `json:"my_manager_vip,omitempty"`
+	Default      bool   `json:"default,omitempty"`
+}
+
+type ControllerLicense struct {
+	Response struct {
+		LicensePresent bool   `json:"license_present,omitempty"`
+		Sha1Checksum   string `json:"sha1_checksum,omitempty"`
+		UploadedAt     string `json:"uploaded_at,omitempty"`
+		UploadedAtI    int    `json:"uploaded_at_i,omitempty"`
+		Topology       struct {
+			Managers []struct {
+				ManagerID        int `json:"manager_id,omitempty"`
+				OverlayIpaddress struct {
+					IPAddress string `json:"ip_address,omitempty"`
+					Octets    []int  `json:"octets,omitempty"`
+				} `json:"overlay_ipaddress,omitempty"`
+				Asn int `json:"asn,omitempty"`
+			} `json:"managers,omitempty"`
+			Clients []struct {
+				IPAddress string `json:"ip_address,omitempty"`
+				Octets    []int  `json:"octets,omitempty"`
+			} `json:"clients,omitempty"`
+			TotalClients      int      `json:"total_clients,omitempty"`
+			OverlayMaxClients int      `json:"overlay_max_clients,omitempty"`
+			OverlaySubnet     string   `json:"overlay_subnet,omitempty"`
+			IpsecMaxEndpoints int      `json:"ipsec_max_endpoints,omitempty"`
+			IpsecMaxSubnets   int      `json:"ipsec_max_subnets,omitempty"`
+			LinksLimit        int      `json:"links_limit,omitempty"`
+			LicenseUpgrades   []string `json:"license_upgrades,omitempty"`
+		} `json:"topology,omitempty"`
+		Capabilities     []string `json:"capabilities,omitempty"`
+		ContainerDetails struct {
+			ContainersRunCount   int `json:"containers_run_count,omitempty"`
+			ContainersImageCount int `json:"containers_image_count,omitempty"`
+		} `json:"container_details,omitempty"`
+		Finalized        bool   `json:"finalized,omitempty"`
+		CustomAddressing bool   `json:"custom_addressing,omitempty"`
+		MyManagerVip     string `json:"my_manager_vip,omitempty"`
+	} `json:"response,omitempty"`
+}
