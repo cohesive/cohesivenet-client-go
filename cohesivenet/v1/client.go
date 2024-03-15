@@ -64,3 +64,29 @@ func (c *Client) doRequest(req *http.Request) ([]byte, error) {
 
 	return body, err
 }
+
+func (c *Client) doRequestWithTextHeader(req *http.Request) ([]byte, error) {
+	if len(c.Token) != 0 {
+		req.Header.Add("Api-Token", c.Token)
+	} else {
+		req.SetBasicAuth(c.Username, c.Password)
+	}
+	req.Header.Add("Content-Type", "text/plain")
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+	res, err := c.HTTPClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	if res.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("status: %d, body: %s", res.StatusCode, body)
+	}
+
+	return body, err
+}
