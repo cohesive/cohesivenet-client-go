@@ -637,8 +637,8 @@ type IdentityController struct {
 		Encrypt                 bool   `json:"encrypt,omitempty"`
 		EncryptLdaps            bool   `json:"encrypt_ldaps,omitempty"`
 		EncryptAuth             bool   `json:"encrypt_auth,omitempty"`
-		EncryptAuthKey          bool   `json:"encrypt_auth_key,omitempty"`
-		EncryptAuthCert         bool   `json:"encrypt_auth_cert,omitempty"`
+		EncryptAuthKey          string `json:"encrypt_auth_key,omitempty"`
+		EncryptAuthCert         string `json:"encrypt_auth_cert,omitempty"`
 		EncryptVerifyCa         bool   `json:"encrypt_verify_ca,omitempty"`
 		EncryptCaCert           bool   `json:"encrypt_ca_cert,omitempty"`
 		Binddn                  string `json:"binddn,omitempty"`
