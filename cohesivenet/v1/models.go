@@ -589,6 +589,7 @@ type NewIdentityController struct {
 	RedirectHostname        string `json:"redirect_hostname,omitempty"`
 	ProviderUrl             string `json:"provider_url,omitempty"`
 	Issuer                  string `json:"issuer,omitempty"`
+	Host                    string `json:"host,omitempty"`
 	Port                    int    `json:"port,omitempty"`
 	Encrypt                 bool   `json:"encrypt,omitempty"`
 	EncryptLdaps            bool   `json:"encrypt_ldaps,omitempty"`
@@ -633,6 +634,7 @@ type IdentityController struct {
 		RedirectHostname        string `json:"redirect_hostname,omitempty"`
 		ProviderUrl             string `json:"provider_url,omitempty"`
 		Issuer                  string `json:"issuer,omitempty"`
+		Host                    string `json:"host,omitempty"`
 		Port                    int    `json:"port,omitempty"`
 		Encrypt                 bool   `json:"encrypt,omitempty"`
 		EncryptLdaps            bool   `json:"encrypt_ldaps,omitempty"`
