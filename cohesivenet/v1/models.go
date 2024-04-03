@@ -662,3 +662,60 @@ type IdentityController struct {
 		OtpURL                  string `json:"otp_url,omitempty"`
 	} `json:"response,omitempty"`
 }
+
+type LicenseUpgrade struct {
+	Response struct {
+		License        string `json:"license,omitempty"`
+		Uniq           string `json:"uniq,omitempty"`
+		NewClientpacks int    `json:"new_clientpacks,omitempty"`
+		Finalized      bool   `json:"finalized,omitempty"`
+		NewManagers    int    `json:"new_managers,omitempty"`
+	} `json:"response,omitempty"`
+}
+
+type LicenseParams struct {
+	Subnet       string `json:"subnet,omitempty"`
+	Managers     string `json:"managers,omitempty"`
+	Asns         string `json:"asns,omitempty"`
+	Clients      string `json:"clients,omitempty"`
+	MyManagerVip string `json:"my_manager_vip,omitempty"`
+	Default      bool   `json:"default,omitempty"`
+}
+
+type ControllerLicense struct {
+	Response struct {
+		LicensePresent bool   `json:"license_present,omitempty"`
+		Sha1Checksum   string `json:"sha1_checksum,omitempty"`
+		UploadedAt     string `json:"uploaded_at,omitempty"`
+		UploadedAtI    int    `json:"uploaded_at_i,omitempty"`
+		Topology       struct {
+			Managers []struct {
+				ManagerID        int `json:"manager_id,omitempty"`
+				OverlayIpaddress struct {
+					IPAddress string `json:"ip_address,omitempty"`
+					Octets    []int  `json:"octets,omitempty"`
+				} `json:"overlay_ipaddress,omitempty"`
+				Asn int `json:"asn,omitempty"`
+			} `json:"managers,omitempty"`
+			Clients []struct {
+				IPAddress string `json:"ip_address,omitempty"`
+				Octets    []int  `json:"octets,omitempty"`
+			} `json:"clients,omitempty"`
+			TotalClients      int      `json:"total_clients,omitempty"`
+			OverlayMaxClients int      `json:"overlay_max_clients,omitempty"`
+			OverlaySubnet     string   `json:"overlay_subnet,omitempty"`
+			IpsecMaxEndpoints int      `json:"ipsec_max_endpoints,omitempty"`
+			IpsecMaxSubnets   int      `json:"ipsec_max_subnets,omitempty"`
+			LinksLimit        int      `json:"links_limit,omitempty"`
+			LicenseUpgrades   []string `json:"license_upgrades,omitempty"`
+		} `json:"topology,omitempty"`
+		Capabilities     []string `json:"capabilities,omitempty"`
+		ContainerDetails struct {
+			ContainersRunCount   int `json:"containers_run_count,omitempty"`
+			ContainersImageCount int `json:"containers_image_count,omitempty"`
+		} `json:"container_details,omitempty"`
+		Finalized        bool   `json:"finalized,omitempty"`
+		CustomAddressing bool   `json:"custom_addressing,omitempty"`
+		MyManagerVip     string `json:"my_manager_vip,omitempty"`
+	} `json:"response,omitempty"`
+}
