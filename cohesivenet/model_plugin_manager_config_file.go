@@ -14,7 +14,27 @@ package cohesivenet
 import (
 	"encoding/json"
 	"time"
+	"strings"
 )
+
+// Add a custom time type for the config files
+type ConfigTime time.Time
+
+// Add this method to convert ConfigTime to time.Time
+func (ct ConfigTime) Time() time.Time {
+    return time.Time(ct)
+}
+
+// Add UnmarshalJSON method to handle the specific format
+func (ct *ConfigTime) UnmarshalJSON(b []byte) error {
+    s := strings.Trim(string(b), "\"")
+    t, err := time.Parse("2006-01-02 15:04:05 MST", s)
+    if err != nil {
+        return err
+    }
+    *ct = ConfigTime(t)
+    return nil
+}
 
 // PluginManagerConfigFile struct for PluginManagerConfigFile
 type PluginManagerConfigFile struct {
@@ -22,7 +42,7 @@ type PluginManagerConfigFile struct {
 	Path *string `json:"path,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Version *int32 `json:"version,omitempty"`
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt       *ConfigTime `json:"created_at,omitempty"`
 	PreviousVersions []PluginManagerConfigFileVersion `json:"previous_versions,omitempty"`
 }
 
@@ -177,7 +197,7 @@ func (o *PluginManagerConfigFile) GetCreatedAt() time.Time {
 		var ret time.Time
 		return ret
 	}
-	return *o.CreatedAt
+	return time.Time(*o.CreatedAt)
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
@@ -186,7 +206,10 @@ func (o *PluginManagerConfigFile) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || o.CreatedAt == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	//return o.CreatedAt, true
+	t := time.Time(*o.CreatedAt)
+    return &t, true
+
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
@@ -198,9 +221,9 @@ func (o *PluginManagerConfigFile) HasCreatedAt() bool {
 	return false
 }
 
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *PluginManagerConfigFile) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
+    ct := ConfigTime(v)
+    o.CreatedAt = &ct
 }
 
 // GetPreviousVersions returns the PreviousVersions field value if set, zero value otherwise.
