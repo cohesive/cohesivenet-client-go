@@ -72,6 +72,7 @@ type Endpoint struct {
 	Ike_version             int    `json:"ike_version"`
 	Nat_t_enabled           bool   `json:"nat_t_enabled"`
 	Extra_config            string `json:"extra_config"`
+	Private_ipaddress       string `json:"private_ipaddress"`
 	Vpn_type                string `json:"vpn_type"`
 	Route_based_int_address string `json:"route_based_int_address"`
 	Route_based_local       string `json:"route_based_local"`
@@ -80,15 +81,16 @@ type Endpoint struct {
 
 type NewEndpoint struct {
 	Response struct {
-		ID          int      `json:"id"`
-		Name        string   `json:"name"`
-		Description string   `json:"description"`
-		Ipaddress   string   `json:"ipaddress"`
-		Pfs         bool     `json:"pfs"`
-		IkeVersion  int      `json:"ike_version"`
-		NatTEnabled bool     `json:"nat_t_enabled"`
-		ExtraConfig []string `json:"extra_config"`
-		Tunnels     struct {
+		ID               int      `json:"id"`
+		Name             string   `json:"name"`
+		Description      string   `json:"description"`
+		Ipaddress        string   `json:"ipaddress"`
+		Pfs              bool     `json:"pfs"`
+		IkeVersion       int      `json:"ike_version"`
+		NatTEnabled      bool     `json:"nat_t_enabled"`
+		PrivateIpaddress string   `json:"private_ipaddress"`
+		ExtraConfig      []string `json:"extra_config"`
+		Tunnels          struct {
 			Num3 struct {
 				ID           int    `json:"id"`
 				LocalSubnet  string `json:"local_subnet"`
