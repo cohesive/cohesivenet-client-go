@@ -31,9 +31,9 @@ type InstallPluginRequest struct {
 	CatalogId *string `json:"catalog_id,omitempty"`
 	Version *string `json:"version,omitempty"`
 	// Key Value pairs associated with plugin
-	Tags *map[string]string `json:"tags,omitempty"`
+	Tags *map[string]interface{} `json:"tags,omitempty"`
 	// Optional additional data to associate with metadata
-	Metadata *map[string]string `json:"metadata,omitempty"`
+	Metadata *map[string]interface{} `json:"metadata,omitempty"`
 }
 
 // NewInstallPluginRequest instantiates a new InstallPluginRequest object
@@ -300,9 +300,9 @@ func (o *InstallPluginRequest) SetVersion(v string) {
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *InstallPluginRequest) GetTags() map[string]string {
+func (o *InstallPluginRequest) GetTags() map[string]interface{} {
 	if o == nil || o.Tags == nil {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Tags
@@ -310,7 +310,7 @@ func (o *InstallPluginRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallPluginRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *InstallPluginRequest) GetTagsOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Tags == nil {
 		return nil, false
 	}
@@ -327,14 +327,14 @@ func (o *InstallPluginRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *InstallPluginRequest) SetTags(v map[string]string) {
+func (o *InstallPluginRequest) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *InstallPluginRequest) GetMetadata() map[string]string {
+func (o *InstallPluginRequest) GetMetadata() map[string]interface{} {
 	if o == nil || o.Metadata == nil {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Metadata
@@ -342,7 +342,7 @@ func (o *InstallPluginRequest) GetMetadata() map[string]string {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallPluginRequest) GetMetadataOk() (*map[string]string, bool) {
+func (o *InstallPluginRequest) GetMetadataOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Metadata == nil {
 		return nil, false
 	}
@@ -359,7 +359,7 @@ func (o *InstallPluginRequest) HasMetadata() bool {
 }
 
 // SetMetadata gets a reference to the given map[string]string and assigns it to the Metadata field.
-func (o *InstallPluginRequest) SetMetadata(v map[string]string) {
+func (o *InstallPluginRequest) SetMetadata(v map[string]interface{}) {
 	o.Metadata = &v
 }
 

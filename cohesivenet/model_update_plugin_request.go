@@ -27,7 +27,7 @@ type UpdatePluginRequest struct {
 	SupportUrl *string `json:"support_url,omitempty"`
 	Version *string `json:"version,omitempty"`
 	// Key Value pairs associated with plugin
-	Tags *map[string]string `json:"tags,omitempty"`
+	Tags *map[string]interface{} `json:"tags,omitempty"`
 }
 
 // NewUpdatePluginRequest instantiates a new UpdatePluginRequest object
@@ -240,9 +240,9 @@ func (o *UpdatePluginRequest) SetVersion(v string) {
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *UpdatePluginRequest) GetTags() map[string]string {
+func (o *UpdatePluginRequest) GetTags() map[string]interface{} {
 	if o == nil || o.Tags == nil {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.Tags
@@ -250,7 +250,7 @@ func (o *UpdatePluginRequest) GetTags() map[string]string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdatePluginRequest) GetTagsOk() (*map[string]string, bool) {
+func (o *UpdatePluginRequest) GetTagsOk() (*map[string]interface{}, bool) {
 	if o == nil || o.Tags == nil {
 		return nil, false
 	}
@@ -267,7 +267,7 @@ func (o *UpdatePluginRequest) HasTags() bool {
 }
 
 // SetTags gets a reference to the given map[string]string and assigns it to the Tags field.
-func (o *UpdatePluginRequest) SetTags(v map[string]string) {
+func (o *UpdatePluginRequest) SetTags(v map[string]interface{}) {
 	o.Tags = &v
 }
 
