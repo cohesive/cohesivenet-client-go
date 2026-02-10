@@ -115,6 +115,10 @@ func (c *Client) DeleteRoute() error {
 	}
 
 	for _, r := range routeResponse.Routes {
+		if !r.Editable {
+			continue
+		}
+
 		routeId := r.ID
 
 		req, err := http.NewRequest("DELETE", fmt.Sprintf("%s/routes/%s", c.HostURL, routeId), nil)

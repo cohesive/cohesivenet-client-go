@@ -25,6 +25,8 @@ type FetchSnapshotParamsRequest struct {
 	Password *string `json:"password,omitempty"`
 	// timeout
 	Timeout *int `json:"timeout,omitempty"`
+	// recover plugins flag
+	RecoverPlugins *bool `json:"recover_plugins,omitempty"`
 }
 
 // FetchSnapshotParamsRequest instantiates a new FetchSnapshotParamsRequest object
@@ -34,6 +36,8 @@ type FetchSnapshotParamsRequest struct {
 func NewFetchSnapshotParamsRequest(source string) *FetchSnapshotParamsRequest {
 	this := FetchSnapshotParamsRequest{}
 	this.Source = &source
+	defaultRecoverPlugins := true
+	this.RecoverPlugins = &defaultRecoverPlugins
 	return &this
 }
 
@@ -164,6 +168,36 @@ func (o *FetchSnapshotParamsRequest) HasTimeout() bool {
 	return false
 }
 
+
+// GetRecoverPlugins returns the RecoverPlugins field value if set, zero value otherwise.
+func (o *FetchSnapshotParamsRequest) GetRecoverPlugins() bool {
+	if o == nil || o.RecoverPlugins == nil {
+		return true  // default value
+	}
+	return *o.RecoverPlugins
+}
+
+// GetRecoverPluginsOk returns a tuple with the RecoverPlugins field value if set, nil otherwise
+func (o *FetchSnapshotParamsRequest) GetRecoverPluginsOk() (*bool, bool) {
+	if o == nil || o.RecoverPlugins == nil {
+		return nil, false
+	}
+	return o.RecoverPlugins, true
+}
+
+// HasRecoverPlugins returns a boolean if a field has been set.
+func (o *FetchSnapshotParamsRequest) HasRecoverPlugins() bool {
+	if o != nil && o.RecoverPlugins != nil {
+		return true
+	}
+	return false
+}
+
+// SetRecoverPlugins gets a reference to the given bool and assigns it to the RecoverPlugins field.
+func (o *FetchSnapshotParamsRequest) SetRecoverPlugins(v bool) {
+	o.RecoverPlugins = &v
+}
+
 func (o FetchSnapshotParamsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Source != nil {
@@ -178,6 +212,9 @@ func (o FetchSnapshotParamsRequest) MarshalJSON() ([]byte, error) {
 	if o.Timeout != nil {
 		toSerialize["timeout"] = o.Password
 	}
+	if o.RecoverPlugins != nil {
+		toSerialize["recover_plugins"] = o.RecoverPlugins
+    }
 	return json.Marshal(toSerialize)
 }
 
