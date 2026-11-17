@@ -21,19 +21,32 @@ type Client struct {
 	ReqLock sync.Mutex
 }
 
-// NewClient -
+// NewClient creates a client that verifies the server's TLS certificate.
 func NewClient(username, password, token, hostUrl *string) (*Client, error) {
-	c := Client{
-		HTTPClient: &http.Client{Timeout: 10 * time.Second},
-		HostURL:    *hostUrl,
-		Token:      *token,
-		Username:   *username,
-		Password:   *password,
+	return NewClientWithTLS(username, password, token, hostUrl, false)
+}
+
+// NewClientWithTLS creates a client. When insecureSkipVerify is true the
+// server's TLS certificate is NOT verified; it should
+// only be enabled by explicit user opt-in. Each client gets its own transport;
+// http.DefaultTransport is never modified.
+func NewClientWithTLS(username, password, token, hostUrl *string, insecureSkipVerify bool) (*Client, error) {
+	deref := func(s *string) string {
+		if s == nil {
+			return ""
+		}
+		return *s
 	}
 
-	//If username or password not provided, return empty client
-	if username == nil || password == nil {
-		return &c, nil
+	transport := http.DefaultTransport.(*http.Transport).Clone()
+	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: insecureSkipVerify}
+
+	c := Client{
+		HTTPClient: &http.Client{Timeout: 10 * time.Second, Transport: transport},
+		HostURL:    deref(hostUrl),
+		Token:      deref(token),
+		Username:   deref(username),
+		Password:   deref(password),
 	}
 
 	return &c, nil
@@ -46,7 +59,6 @@ func (c *Client) doRequest(req *http.Request) ([]byte, error) {
 		req.SetBasicAuth(c.Username, c.Password)
 	}
 	req.Header.Add("Content-Type", "application/json")
-	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	res, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
@@ -72,7 +84,6 @@ func (c *Client) doRequestWithTextHeader(req *http.Request) ([]byte, error) {
 		req.SetBasicAuth(c.Username, c.Password)
 	}
 	req.Header.Add("Content-Type", "text/plain")
-	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	res, err := c.HTTPClient.Do(req)
 	if err != nil {
 		return nil, err
