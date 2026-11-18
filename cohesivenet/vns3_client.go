@@ -99,7 +99,6 @@ func NewVNS3Client(cfg *Configuration, params ClientParams) *VNS3Client {
 	}
 
 	if cfg.HTTPClient == nil {
-		// Todo. support certs
 		transport := http.DefaultTransport.(*http.Transport).Clone()
 		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: !params.TLS}
 		cfg.HTTPClient = &http.Client{

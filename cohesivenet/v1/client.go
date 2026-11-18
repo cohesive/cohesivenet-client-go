@@ -21,16 +21,11 @@ type Client struct {
 	ReqLock sync.Mutex
 }
 
-// NewClient creates a client that verifies the server's TLS certificate.
-func NewClient(username, password, token, hostUrl *string) (*Client, error) {
-	return NewClientWithTLS(username, password, token, hostUrl, false)
-}
-
-// NewClientWithTLS creates a client. When insecureSkipVerify is true the
-// server's TLS certificate is NOT verified; it should
-// only be enabled by explicit user opt-in. Each client gets its own transport;
-// http.DefaultTransport is never modified.
-func NewClientWithTLS(username, password, token, hostUrl *string, insecureSkipVerify bool) (*Client, error) {
+// NewClient creates a client. When insecureSkipVerify is true the server's TLS
+// certificate is NOT verified; it should only be enabled by
+// explicit user opt-in. Each client gets its own transport; http.DefaultTransport
+// is never modified.
+func NewClient(username, password, token, hostUrl *string, insecureSkipVerify bool) (*Client, error) {
 	deref := func(s *string) string {
 		if s == nil {
 			return ""
